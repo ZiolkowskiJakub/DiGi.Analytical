@@ -1,11 +1,12 @@
 ﻿using DiGi.Analytical.Interfaces;
 using DiGi.Core.Classes;
+using DiGi.Core.Relation.Interfaces;
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Classes
 {
-    public class AnalyticalRelationCluster : UniqueObjectRelationCluster<IAnalyticalUniqueObject>, IAnalyticalObject
+    public class AnalyticalRelationCluster : UniqueObjectRelationCluster<IAnalyticalUniqueObject, IRelation>, IAnalyticalObject
     {
         public AnalyticalRelationCluster()
             :base()

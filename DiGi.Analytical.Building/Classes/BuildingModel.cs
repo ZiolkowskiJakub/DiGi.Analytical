@@ -31,25 +31,25 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Update(construction.Clone<IConstruction>());
         }
 
-        private bool Assign(IComponent component, IConstruction construction)
+        private bool Assign(IWall wall, IWallConstruction wallConstruction)
         {
-            if (component == null || construction == null)
+            if (wall == null || wallConstruction == null)
             {
                 return false;
             }
 
-            if(!buildingRelationCluster.Update(component))
+            if(!buildingRelationCluster.Update(wall))
             {
                 return false;
             }
 
 
-            if(!buildingRelationCluster.Update(construction))
+            if(!buildingRelationCluster.Update(wallConstruction))
             {
                 return false;
             }
 
-            return buildingRelationCluster.AddRelation(component, construction) != null;
+            return buildingRelationCluster.AddRelation(wall, wallConstruction) != null;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface ISpace : IBuildingPointObject
+    public interface IFloorConstruction : IConstruction
     {
-
     }
 }

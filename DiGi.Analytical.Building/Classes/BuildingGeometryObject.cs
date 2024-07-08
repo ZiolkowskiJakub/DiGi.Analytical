@@ -1,9 +1,9 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
-using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Core;
 using System.Text.Json.Nodes;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using DiGi.Geometry.Spatial.Interfaces;
 
 namespace DiGi.Analytical.Building.Classes
 {

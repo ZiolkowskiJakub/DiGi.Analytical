@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Interfaces
 {
-    public interface IUniqueAnalytical : IAnalytical, IUniqueObject
+    public interface IAnalyticalUniqueObject : IAnalyticalObject, IUniqueObject
     {
     }
 }

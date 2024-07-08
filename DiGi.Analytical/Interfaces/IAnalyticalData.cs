@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Interfaces
 {
-    public interface IAnalyticalData : IUniqueAnalytical
+    public interface IAnalyticalData : IAnalyticalUniqueObject
     {
     }
 }

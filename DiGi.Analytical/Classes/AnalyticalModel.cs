@@ -3,13 +3,14 @@ using DiGi.Core.Parameter.Classes;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 using DiGi.Core;
+using DiGi.Core.Interfaces;
 
 namespace DiGi.Analytical.Classes
 {
-    public class AnalyticalModel : UniqueParametrizedObject, IUniqueAnalytical
+    public class AnalyticalModel : UniqueParametrizedObject, IAnalyticalUniqueObject, IModel
     {
-        [JsonInclude, JsonPropertyName("AnalyticalCluster"), Description("AnalyticalCluster")]
-        private AnalyticalCluster analyticalCluster = new AnalyticalCluster();
+        [JsonInclude, JsonPropertyName("AnalyticalRelationCluster"), Description("AnalyticalRelationCluster")]
+        private AnalyticalRelationCluster analyticalRelationCluster = new AnalyticalRelationCluster();
 
         public AnalyticalModel()
             : base()
@@ -20,7 +21,7 @@ namespace DiGi.Analytical.Classes
         public AnalyticalModel(AnalyticalModel analyticalModel)
             : base(analyticalModel)
         {
-            analyticalCluster = analyticalModel?.analyticalCluster?.Clone<AnalyticalCluster>();
+            analyticalRelationCluster = analyticalModel?.analyticalRelationCluster?.Clone<AnalyticalRelationCluster>();
         }
 
         public bool Add(IAnalyticalFace analyticalFace)
@@ -30,7 +31,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return analyticalCluster.Update(analyticalFace);
+            return analyticalRelationCluster.Update(analyticalFace);
         }
 
         public bool Add(IAnalyticalSpace analyticalSpace)
@@ -40,7 +41,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return analyticalCluster.Update(analyticalSpace);
+            return analyticalRelationCluster.Update(analyticalSpace);
         }
 
         public bool Add(IAnalyticalFaceData analyticalFaceData)
@@ -50,7 +51,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return analyticalCluster.Update(analyticalFaceData);
+            return analyticalRelationCluster.Update(analyticalFaceData);
         }
 
         public bool Add(IAnalyticalSpaceData analyticalSpaceData)
@@ -60,7 +61,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return analyticalCluster.Update(analyticalSpaceData);
+            return analyticalRelationCluster.Update(analyticalSpaceData);
         }
     }
 

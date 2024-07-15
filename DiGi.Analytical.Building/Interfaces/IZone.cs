@@ -1,6 +1,7 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IWallConstruction : IComponentConstruction
+    public interface IZone : IBuildingUniqueObject
     {
+
     }
 }

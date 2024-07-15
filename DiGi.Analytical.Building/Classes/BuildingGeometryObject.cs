@@ -7,7 +7,7 @@ using DiGi.Geometry.Spatial.Interfaces;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class BuildingGeometryObject : Core.Parameter.Classes.UniqueParametrizedObject, IBuildingGeometryObject
+    public abstract class BuildingGeometryObject : BuildingObject, IBuildingGeometryObject
     {
         public BuildingGeometryObject(BuildingGeometryObject buildingGeometryObject)
             : base(buildingGeometryObject)

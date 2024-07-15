@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IRoof : IBuildingGeometryObject
+    public interface IRoof : IBuildingGeometryObject, IComponent
     {
 
     }

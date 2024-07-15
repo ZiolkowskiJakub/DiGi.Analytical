@@ -2,6 +2,6 @@
 {
     public interface IConstruction : IBuildingUniqueObject
     {
-        IStructure Structure { get; }
+
     }
 }

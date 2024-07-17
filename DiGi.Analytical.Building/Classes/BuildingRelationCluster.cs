@@ -61,17 +61,27 @@ namespace DiGi.Analytical.Building.Classes
 
         public ComponentConstructionRelation AddRelation(IWall wall, IWallConstruction wallConstruction)
         {
-            return AddRelation(new ComponentConstructionRelation(wall, wallConstruction));
+            return AddRelation(wall, wallConstruction);
         }
 
         public ComponentConstructionRelation AddRelation(IRoof roof, IRoofConstruction roofConstruction)
         {
-            return AddRelation(new ComponentConstructionRelation(roof, roofConstruction));
+            return AddRelation(roof, roofConstruction);
         }
 
         public ComponentConstructionRelation AddRelation(IFloor floor, IFloorConstruction floorConstruction)
         {
-            return AddRelation(new ComponentConstructionRelation(floor, floorConstruction));
+            return AddRelation(floor, floorConstruction);
+        }
+
+        public OpeningConstructionRelation AddRelation(IWindow window, IWindowConstruction windowConstruction)
+        {
+            return AddRelation(window, windowConstruction);
+        }
+
+        public OpeningConstructionRelation AddRelation(IDoor door, IDoorConstruction doorConstruction)
+        {
+            return AddRelation(door, doorConstruction);
         }
 
         private ComponentConstructionRelation AddRelation(IComponent component, IComponentConstruction componentConstruction)
@@ -90,7 +100,23 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(new ComponentConstructionRelation(component, componentConstruction));
         }
 
-        public List<Space> GetSpaces(SpaceRelation spaceRelation)
+        private OpeningConstructionRelation AddRelation(IOpening opening, IOpeningConstruction openingConstruction)
+        {
+            if (opening == null || openingConstruction == null)
+            {
+                return null;
+            }
+
+            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new UniqueReference(opening));
+            if (openingConstructionRelation != null)
+            {
+                Remove(openingConstructionRelation);
+            }
+
+            return AddRelation(new OpeningConstructionRelation(opening, openingConstruction));
+        }
+
+        public List<ISpace> GetSpaces(SpaceRelation spaceRelation)
         {
             List<UniqueReference> uniqueReferences = spaceRelation?.UniqueReferences_To;
             if(uniqueReferences == null)
@@ -98,7 +124,23 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if(!TryGetObjects(uniqueReferences, out List<Space> result))
+            if(!TryGetObjects(uniqueReferences, out List<ISpace> result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public List<ISpace> GetSpaces(ZoneRelation zoneRelation)
+        {
+            List<UniqueReference> uniqueReferences = zoneRelation?.UniqueReferences_To;
+            if (uniqueReferences == null)
+            {
+                return null;
+            }
+
+            if (!TryGetObjects(uniqueReferences, out List<ISpace> result))
             {
                 return null;
             }
@@ -109,6 +151,22 @@ namespace DiGi.Analytical.Building.Classes
         public IComponent GetComponent(SpaceRelation spaceRelation)
         {
             UniqueReference uniqueReference = spaceRelation?.UniqueReference_From;
+            if (uniqueReference == null)
+            {
+                return null;
+            }
+
+            if (!TryGetObject(uniqueReference, out IComponent result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public IComponent GetComponent(OpeningRelation openingRelation)
+        {
+            UniqueReference uniqueReference = openingRelation?.UniqueReference_From;
             if (uniqueReference == null)
             {
                 return null;
@@ -138,6 +196,38 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
+        public IOpening GetOpening(OpeningConstructionRelation openingConstructionRelation)
+        {
+            UniqueReference uniqueReference = openingConstructionRelation?.UniqueReference_From;
+            if (uniqueReference == null)
+            {
+                return null;
+            }
+
+            if (!TryGetObject(uniqueReference, out IOpening result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public List<IOpening> GetOpenings(OpeningRelation openingRelation)
+        {
+            List<UniqueReference> uniqueReferences = openingRelation?.UniqueReferences_To;
+            if (uniqueReferences == null)
+            {
+                return null;
+            }
+
+            if (!TryGetObjects(uniqueReferences, out List<IOpening> result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
         public IConstruction GetConstruction(ComponentConstructionRelation componentConstructionRelation)
         {
             UniqueReference uniqueReference = componentConstructionRelation?.UniqueReference_To;
@@ -147,6 +237,22 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             if (!TryGetObject(uniqueReference, out IConstruction result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public IOpeningConstruction GetOpeningConstruction(OpeningConstructionRelation openingConstructionRelation)
+        {
+            UniqueReference uniqueReference = openingConstructionRelation?.UniqueReference_To;
+            if (uniqueReference == null)
+            {
+                return null;
+            }
+
+            if (!TryGetObject(uniqueReference, out IOpeningConstruction result))
             {
                 return null;
             }

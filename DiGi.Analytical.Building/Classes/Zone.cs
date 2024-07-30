@@ -39,5 +39,14 @@ namespace DiGi.Analytical.Building.Classes
                 name = zone.name;
             }
         }
+
+        public Zone(System.Guid guid, Zone zone)
+            : base(guid, zone)
+        {
+            if (zone != null)
+            {
+                name = zone.name;
+            }
+        }
     }
 }

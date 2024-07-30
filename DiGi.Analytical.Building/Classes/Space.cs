@@ -32,6 +32,15 @@ namespace DiGi.Analytical.Building.Classes
            
         }
 
+        public Space(System.Guid guid, Space space)
+            : base(guid, space)
+        {
+            if (space != null)
+            {
+                name = space.name;
+            }
+        }
+
         public Space(Space space)
             : base(space)
         {

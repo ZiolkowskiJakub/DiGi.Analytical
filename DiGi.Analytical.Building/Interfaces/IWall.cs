@@ -7,12 +7,7 @@ namespace DiGi.Analytical.Building.Interfaces
 
     }
 
-    public interface ISurfaceWall : IWall, IBuildingSurfaceObject, IComponent<ISurface3D>
-    {
-
-    }
-
-    public interface ICurveWall : IWall, IBuildingCurveObject, IComponent<ICurve3D>
+    public interface IWall<T> : IWall, IBuildingGeometryObject<T> where T : IGeometry3D
     {
 
     }

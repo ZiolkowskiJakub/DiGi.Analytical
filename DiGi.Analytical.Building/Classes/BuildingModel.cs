@@ -306,7 +306,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public T GetObject<T>(UniqueReference uniqueReference) where T : IBuildingUniqueObject
         {
-            if (!TryGetObject<T>(uniqueReference, out T result))
+            if (!TryGetObject(uniqueReference, out T result))
             {
                 return result;
             }

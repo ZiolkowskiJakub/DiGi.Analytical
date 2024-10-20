@@ -31,7 +31,7 @@ namespace DiGi.Analytical.Building
 
         public static CurveWall CurveWall(this VolatileSegment3D volatileSegment3D, double height, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            return CurveWall(volatileSegment3D, height, Constans.Vector3D.WorldZ, tolerance);
+            return CurveWall(volatileSegment3D, height, Geometry.Spatial.Constans.Vector3D.WorldZ, tolerance);
         }
     }
 }

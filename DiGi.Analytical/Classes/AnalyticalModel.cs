@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return uniqueObjectRelationCluster.Update(analyticalFace.Clone<IAnalyticalFace>());
+            return uniqueObjectRelationCluster.Add(analyticalFace.Clone<IAnalyticalFace>());
         }
 
         public bool Add(IAnalyticalSpace analyticalSpace)
@@ -35,7 +35,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return uniqueObjectRelationCluster.Update(analyticalSpace.Clone<IAnalyticalSpace>());
+            return uniqueObjectRelationCluster.Add(analyticalSpace.Clone<IAnalyticalSpace>());
         }
 
         public bool Add(IAnalyticalFaceData analyticalFaceData)
@@ -45,7 +45,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return uniqueObjectRelationCluster.Update(analyticalFaceData.Clone<IAnalyticalFaceData>());
+            return uniqueObjectRelationCluster.Add(analyticalFaceData.Clone<IAnalyticalFaceData>());
         }
 
         public bool Add(IAnalyticalSpaceData analyticalSpaceData)
@@ -55,7 +55,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            return uniqueObjectRelationCluster.Update(analyticalSpaceData.Clone<IAnalyticalSpaceData>());
+            return uniqueObjectRelationCluster.Add(analyticalSpaceData.Clone<IAnalyticalSpaceData>());
         }
     }
 

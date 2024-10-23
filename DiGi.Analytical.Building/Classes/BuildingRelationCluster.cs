@@ -125,7 +125,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if(!TryGetObjects(uniqueReferences, out List<ISpace> result))
+            if(!TryGetValues(uniqueReferences, out List<ISpace> result))
             {
                 return null;
             }
@@ -141,7 +141,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObjects(uniqueReferences, out List<ISpace> result))
+            if (!TryGetValues(uniqueReferences, out List<ISpace> result))
             {
                 return null;
             }
@@ -157,7 +157,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IComponent result))
+            if (!TryGetValue(uniqueReference, out IComponent result))
             {
                 return null;
             }
@@ -173,7 +173,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IComponent result))
+            if (!TryGetValue(uniqueReference, out IComponent result))
             {
                 return null;
             }
@@ -189,7 +189,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IComponent result))
+            if (!TryGetValue(uniqueReference, out IComponent result))
             {
                 return null;
             }
@@ -205,7 +205,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IOpening result))
+            if (!TryGetValue(uniqueReference, out IOpening result))
             {
                 return null;
             }
@@ -221,7 +221,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObjects(uniqueReferences, out List<IOpening> result))
+            if (!TryGetValues(uniqueReferences, out List<IOpening> result))
             {
                 return null;
             }
@@ -237,7 +237,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IConstruction result))
+            if (!TryGetValue(uniqueReference, out IConstruction result))
             {
                 return null;
             }
@@ -253,7 +253,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetObject(uniqueReference, out IOpeningConstruction result))
+            if (!TryGetValue(uniqueReference, out IOpeningConstruction result))
             {
                 return null;
             }

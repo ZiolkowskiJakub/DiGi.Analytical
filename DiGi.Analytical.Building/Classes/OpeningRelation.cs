@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class OpeningRelation : OneToManyBidirectionalRelation, IBuildingRelation
+    public class OpeningRelation : OneToManyBidirectionalRelation<IComponent, IOpening>, IBuildingRelation
     {
         public OpeningRelation(IComponent component, IOpening opening)
             : base(component, new List<IOpening>() { opening })

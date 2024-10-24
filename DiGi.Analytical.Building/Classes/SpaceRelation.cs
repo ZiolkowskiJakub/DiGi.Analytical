@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class SpaceRelation : OneToManyBidirectionalRelation, IBuildingRelation
+    public class SpaceRelation : OneToManyBidirectionalRelation<IComponent, ISpace>, IBuildingRelation
     {
         public SpaceRelation(IComponent component, ISpace space)
             : base(component, new List<ISpace>() { space })

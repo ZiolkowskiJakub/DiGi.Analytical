@@ -2,6 +2,7 @@
 using DiGi.Core.Classes;
 using DiGi.Core.Relation.Classes;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
@@ -35,7 +36,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            SpaceRelation spaceRelation = GetRelation<SpaceRelation>(new UniqueReference(component));
+            SpaceRelation spaceRelation = GetRelation<SpaceRelation>(new GuidReference(component));
             if (spaceRelation != null)
             {
                 Remove(spaceRelation);
@@ -51,7 +52,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            ZoneRelation zoneRelation = GetRelation<ZoneRelation>(new UniqueReference(zone));
+            ZoneRelation zoneRelation = GetRelation<ZoneRelation>(new GuidReference(zone));
             if (zoneRelation != null)
             {
                 Remove(zoneRelation);
@@ -92,7 +93,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new UniqueReference(component));
+            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(component));
             if (componentConstructionRelation != null)
             {
                 Remove(componentConstructionRelation);
@@ -108,7 +109,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new UniqueReference(opening));
+            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new GuidReference(opening));
             if (openingConstructionRelation != null)
             {
                 Remove(openingConstructionRelation);
@@ -125,7 +126,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if(!TryGetValues(uniqueReferences, out List<ISpace> result))
+            if(!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
             {
                 return null;
             }
@@ -141,7 +142,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetValues(uniqueReferences, out List<ISpace> result))
+            if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
             {
                 return null;
             }
@@ -151,13 +152,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IComponent GetComponent(SpaceRelation spaceRelation)
         {
-            UniqueReference uniqueReference = spaceRelation?.UniqueReference_From;
-            if (uniqueReference == null)
+            GuidReference guidReference = spaceRelation?.UniqueReference_From as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IComponent result))
+            if (!TryGetValue(guidReference, out IComponent result))
             {
                 return null;
             }
@@ -167,13 +168,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IComponent GetComponent(OpeningRelation openingRelation)
         {
-            UniqueReference uniqueReference = openingRelation?.UniqueReference_From;
-            if (uniqueReference == null)
+            GuidReference guidReference = openingRelation?.UniqueReference_From as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IComponent result))
+            if (!TryGetValue(guidReference, out IComponent result))
             {
                 return null;
             }
@@ -183,13 +184,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IComponent GetComponent(ComponentConstructionRelation componentConstructionRelation)
         {
-            UniqueReference uniqueReference = componentConstructionRelation?.UniqueReference_From;
-            if (uniqueReference == null)
+            GuidReference guidReference = componentConstructionRelation?.UniqueReference_From as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IComponent result))
+            if (!TryGetValue(guidReference, out IComponent result))
             {
                 return null;
             }
@@ -199,13 +200,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IOpening GetOpening(OpeningConstructionRelation openingConstructionRelation)
         {
-            UniqueReference uniqueReference = openingConstructionRelation?.UniqueReference_From;
-            if (uniqueReference == null)
+            GuidReference guidReference = openingConstructionRelation?.UniqueReference_From as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IOpening result))
+            if (!TryGetValue(guidReference, out IOpening result))
             {
                 return null;
             }
@@ -221,7 +222,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!TryGetValues(uniqueReferences, out List<IOpening> result))
+            if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<IOpening> result))
             {
                 return null;
             }
@@ -231,13 +232,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IConstruction GetConstruction(ComponentConstructionRelation componentConstructionRelation)
         {
-            UniqueReference uniqueReference = componentConstructionRelation?.UniqueReference_To;
-            if (uniqueReference == null)
+            GuidReference guidReference = componentConstructionRelation?.UniqueReference_To as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IConstruction result))
+            if (!TryGetValue(guidReference, out IConstruction result))
             {
                 return null;
             }
@@ -247,13 +248,13 @@ namespace DiGi.Analytical.Building.Classes
 
         public IOpeningConstruction GetOpeningConstruction(OpeningConstructionRelation openingConstructionRelation)
         {
-            UniqueReference uniqueReference = openingConstructionRelation?.UniqueReference_To;
-            if (uniqueReference == null)
+            GuidReference guidReference = openingConstructionRelation?.UniqueReference_To as GuidReference;
+            if (guidReference == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(uniqueReference, out IOpeningConstruction result))
+            if (!TryGetValue(guidReference, out IOpeningConstruction result))
             {
                 return null;
             }

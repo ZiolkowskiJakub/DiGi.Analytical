@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using DiGi.Core.Classes;
 using System;
 using System.Linq;
+using DiGi.Core.Relation.Enums;
 
 namespace DiGi.Analytical.Building.Classes
 {
@@ -597,7 +598,7 @@ namespace DiGi.Analytical.Building.Classes
 
             GuidReference guidReference = new GuidReference(space);
 
-            if (!spaceRelation.Remove_To(guidReference))
+            if (!spaceRelation.Remove(RelationSide.To, guidReference))
             {
                 return false;
             }
@@ -626,7 +627,7 @@ namespace DiGi.Analytical.Building.Classes
 
             GuidReference guidReference = new GuidReference(space);
 
-            if (!zoneRelation.Remove_To(guidReference))
+            if (!zoneRelation.Remove(RelationSide.To, guidReference))
             {
                 return false;
             }
@@ -659,7 +660,7 @@ namespace DiGi.Analytical.Building.Classes
             }
             else
             {
-                openingRelation.Remove_To(new GuidReference(opening));
+                openingRelation.Remove(RelationSide.To, new GuidReference(opening));
             }
 
             return true;
@@ -744,7 +745,7 @@ namespace DiGi.Analytical.Building.Classes
                 }
                 else
                 {
-                    openingRelation.Remove_To(guidReference);
+                    openingRelation.Remove(RelationSide.To, guidReference);
                 }
             }
 

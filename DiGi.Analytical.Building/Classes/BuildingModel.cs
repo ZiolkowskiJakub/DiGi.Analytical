@@ -323,13 +323,13 @@ namespace DiGi.Analytical.Building.Classes
                 return default;
             }
 
-            List<UniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
+            List<IUniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
             if (uniqueReferences == null)
             {
                 return default;
             }
 
-            foreach (UniqueReference uniqueReference in uniqueReferences)
+            foreach (IUniqueReference uniqueReference in uniqueReferences)
             {
                 GuidReference guidReference = uniqueReference as GuidReference;
                 if(guidReference == null)
@@ -353,7 +353,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            List<UniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
+            List<IUniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
             if (uniqueReferences == null)
             {
                 return null;
@@ -380,7 +380,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            List<UniqueReference> uniqueReferences = openingRelation.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = openingRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 return null;
@@ -603,7 +603,7 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            List<UniqueReference> uniqueReferences = spaceRelation.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = spaceRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 buildingRelationCluster.Remove(spaceRelation);
@@ -632,7 +632,7 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            List<UniqueReference> uniqueReferences = zoneRelation.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = zoneRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 buildingRelationCluster.Remove(zoneRelation);

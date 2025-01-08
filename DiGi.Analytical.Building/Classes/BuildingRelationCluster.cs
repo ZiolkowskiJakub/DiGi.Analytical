@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Classes;
+using DiGi.Core.Interfaces;
 using DiGi.Core.Relation.Classes;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,7 +121,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public List<ISpace> GetSpaces(SpaceRelation spaceRelation)
         {
-            List<UniqueReference> uniqueReferences = spaceRelation?.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = spaceRelation?.UniqueReferences_To;
             if(uniqueReferences == null)
             {
                 return null;
@@ -136,7 +137,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public List<ISpace> GetSpaces(ZoneRelation zoneRelation)
         {
-            List<UniqueReference> uniqueReferences = zoneRelation?.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = zoneRelation?.UniqueReferences_To;
             if (uniqueReferences == null)
             {
                 return null;
@@ -216,7 +217,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public List<IOpening> GetOpenings(OpeningRelation openingRelation)
         {
-            List<UniqueReference> uniqueReferences = openingRelation?.UniqueReferences_To;
+            List<IUniqueReference> uniqueReferences = openingRelation?.UniqueReferences_To;
             if (uniqueReferences == null)
             {
                 return null;

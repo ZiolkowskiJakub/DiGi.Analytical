@@ -3,7 +3,7 @@ using DiGi.Geometry.Spatial.Interfaces;
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IBuildingGeometryObject : IBuildingUniqueObject, IGeometry3DObject
+    public interface IBuildingGeometryObject : IBuildingGuidObject, IGeometry3DObject
     {
 
     }

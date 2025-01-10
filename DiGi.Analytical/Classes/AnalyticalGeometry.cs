@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Classes
 {
-    public abstract class AnalyticalGeometry : UniqueParametrizedObject, IAnalyticalGeometry
+    public abstract class AnalyticalGeometry : ParametrizedGuidObject, IAnalyticalGeometry
     {
         [JsonInclude, JsonPropertyName("UniqueReference"), Description("UniqueReference")]
         private UniqueReference uniqueReference;

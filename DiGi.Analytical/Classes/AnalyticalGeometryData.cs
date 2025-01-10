@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Classes
 {
-    public abstract class AnalyticalGeometryData : UniqueParametrizedObject, IAnalyticalGeometryData
+    public abstract class AnalyticalGeometryData : ParametrizedGuidObject, IAnalyticalGeometryData
     {
         public AnalyticalGeometryData()
             :base()

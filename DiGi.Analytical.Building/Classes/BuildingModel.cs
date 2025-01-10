@@ -11,7 +11,7 @@ using DiGi.Core.Relation.Enums;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class BuildingModel : UniqueParametrizedObject, IBuildingUniqueObject, IModel
+    public class BuildingModel : ParametrizedGuidObject, IBuildingGuidObject, IGuidModel
     {
         [JsonInclude, JsonPropertyName("BuildingRelationCluster"), System.ComponentModel.Description("BuildingRelationCluster")]
         private BuildingRelationCluster buildingRelationCluster = new BuildingRelationCluster();
@@ -306,7 +306,7 @@ namespace DiGi.Analytical.Building.Classes
             return GetConstruction<IDoorConstruction>(door);
         }
 
-        public T GetObject<T>(GuidReference uniqueReference) where T : IBuildingUniqueObject
+        public T GetObject<T>(GuidReference uniqueReference) where T : IBuildingGuidObject
         {
             if (!TryGetObject(uniqueReference, out T result))
             {
@@ -316,7 +316,7 @@ namespace DiGi.Analytical.Building.Classes
             return default;
         }
 
-        public T GetObject<T>(IBuildingRelation buildingRelation) where T : IBuildingUniqueObject
+        public T GetObject<T>(IBuildingRelation buildingRelation) where T : IBuildingGuidObject
         {
             if (buildingRelation == null || buildingRelationCluster == null)
             {
@@ -346,7 +346,7 @@ namespace DiGi.Analytical.Building.Classes
             return default;
         }
 
-        public List<T> GetObjects<T>(IBuildingRelation buildingRelation) where T : IBuildingUniqueObject
+        public List<T> GetObjects<T>(IBuildingRelation buildingRelation) where T : IBuildingGuidObject
         {
             if (buildingRelation == null || buildingRelationCluster == null)
             {
@@ -430,7 +430,7 @@ namespace DiGi.Analytical.Building.Classes
             return result.ConvertAll(x => x.Clone<T>());
         }
 
-        public T GetRelation<T>(IBuildingUniqueObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
+        public T GetRelation<T>(IBuildingGuidObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
         {
             if (buildingUniqueObject == null || buildingRelationCluster == null)
             {
@@ -453,7 +453,7 @@ namespace DiGi.Analytical.Building.Classes
             return result == null ? default : result.Clone<T>();
         }
 
-        public List<T> GetRelations<T>(IBuildingUniqueObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
+        public List<T> GetRelations<T>(IBuildingGuidObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
         {
             if (buildingUniqueObject == null || buildingRelationCluster == null)
             {
@@ -564,7 +564,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Remove(guidReference);
         }
 
-        public bool TryGetObject<T>(GuidReference guidReference, out T buildingUniqueObject) where T : IBuildingUniqueObject
+        public bool TryGetObject<T>(GuidReference guidReference, out T buildingUniqueObject) where T : IBuildingGuidObject
         {
             buildingUniqueObject = default;
 

@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class BuildingObject : Core.Parameter.Classes.UniqueParametrizedObject, IBuildingObject
+    public abstract class BuildingObject : Core.Parameter.Classes.ParametrizedGuidObject, IBuildingObject
     {
         public BuildingObject(BuildingObject buildingObject)
             : base(buildingObject)

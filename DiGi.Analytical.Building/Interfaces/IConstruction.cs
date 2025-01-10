@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IConstruction : IBuildingUniqueObject
+    public interface IConstruction : IBuildingGuidObject
     {
 
     }

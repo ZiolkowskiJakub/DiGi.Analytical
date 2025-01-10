@@ -8,7 +8,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class BuildingRelationCluster : UniqueObjectRelationCluster<IBuildingUniqueObject, IBuildingRelation>, IBuildingObject
+    public class BuildingRelationCluster : UniqueObjectRelationCluster<IBuildingGuidObject, IBuildingRelation>, IBuildingObject
     {
         public BuildingRelationCluster()
             : base()
@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Classes
         {
         }
 
-        public BuildingRelationCluster(IEnumerable<IBuildingUniqueObject> buildingUniqueObjects)
+        public BuildingRelationCluster(IEnumerable<IBuildingGuidObject> buildingUniqueObjects)
             : base(buildingUniqueObjects)
         {
         }

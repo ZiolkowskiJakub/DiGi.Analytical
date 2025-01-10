@@ -4,7 +4,7 @@ using DiGi.Geometry.Spatial.Interfaces;
 
 namespace DiGi.Analytical.Interfaces
 {
-    public interface IAnalyticalGeometry : IAnalyticalUniqueObject, IUniqueParametrizedObject, IGeometry3DObject
+    public interface IAnalyticalGeometry : IAnalyticalUniqueObject, IParametrizedGuidObject, IGeometry3DObject
     {
     }
 

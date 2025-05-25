@@ -8,6 +8,10 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="System.Text.Json" Version="9.0.5" />
+	</ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\DiGi.Analytical\DiGi.Analytical.csproj" />
   </ItemGroup>

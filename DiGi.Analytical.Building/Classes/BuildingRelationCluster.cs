@@ -87,70 +87,6 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(door, doorConstruction);
         }
 
-        private ComponentConstructionRelation AddRelation(IComponent component, IComponentConstruction componentConstruction)
-        {
-            if (component == null || componentConstruction == null)
-            {
-                return null;
-            }
-
-            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(component));
-            if (componentConstructionRelation != null)
-            {
-                Remove(componentConstructionRelation);
-            }
-
-            return AddRelation(new ComponentConstructionRelation(component, componentConstruction));
-        }
-
-        private OpeningConstructionRelation AddRelation(IOpening opening, IOpeningConstruction openingConstruction)
-        {
-            if (opening == null || openingConstruction == null)
-            {
-                return null;
-            }
-
-            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new GuidReference(opening));
-            if (openingConstructionRelation != null)
-            {
-                Remove(openingConstructionRelation);
-            }
-
-            return AddRelation(new OpeningConstructionRelation(opening, openingConstruction));
-        }
-
-        public List<ISpace> GetSpaces(SpaceRelation spaceRelation)
-        {
-            List<IUniqueReference> uniqueReferences = spaceRelation?.UniqueReferences_To;
-            if(uniqueReferences == null)
-            {
-                return null;
-            }
-
-            if(!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
-            {
-                return null;
-            }
-
-            return result;
-        }
-
-        public List<ISpace> GetSpaces(ZoneRelation zoneRelation)
-        {
-            List<IUniqueReference> uniqueReferences = zoneRelation?.UniqueReferences_To;
-            if (uniqueReferences == null)
-            {
-                return null;
-            }
-
-            if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
-            {
-                return null;
-            }
-
-            return result;
-        }
-
         public IComponent GetComponent(SpaceRelation spaceRelation)
         {
             GuidReference guidReference = spaceRelation?.UniqueReference_From as GuidReference;
@@ -199,6 +135,27 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
+        public List<TComponent> GetComponents<TComponent>() where TComponent : IComponent
+        {
+            return GetValues<TComponent>();
+        }
+        
+        public IConstruction GetConstruction(ComponentConstructionRelation componentConstructionRelation)
+        {
+            GuidReference guidReference = componentConstructionRelation?.UniqueReference_To as GuidReference;
+            if (guidReference == null)
+            {
+                return null;
+            }
+
+            if (!TryGetValue(guidReference, out IConstruction result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
         public IOpening GetOpening(OpeningConstructionRelation openingConstructionRelation)
         {
             GuidReference guidReference = openingConstructionRelation?.UniqueReference_From as GuidReference;
@@ -208,6 +165,22 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             if (!TryGetValue(guidReference, out IOpening result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public IOpeningConstruction GetOpeningConstruction(OpeningConstructionRelation openingConstructionRelation)
+        {
+            GuidReference guidReference = openingConstructionRelation?.UniqueReference_To as GuidReference;
+            if (guidReference == null)
+            {
+                return null;
+            }
+
+            if (!TryGetValue(guidReference, out IOpeningConstruction result))
             {
                 return null;
             }
@@ -231,15 +204,15 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public IConstruction GetConstruction(ComponentConstructionRelation componentConstructionRelation)
+        public List<ISpace> GetSpaces(SpaceRelation spaceRelation)
         {
-            GuidReference guidReference = componentConstructionRelation?.UniqueReference_To as GuidReference;
-            if (guidReference == null)
+            List<IUniqueReference> uniqueReferences = spaceRelation?.UniqueReferences_To;
+            if (uniqueReferences == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(guidReference, out IConstruction result))
+            if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
             {
                 return null;
             }
@@ -247,20 +220,57 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public IOpeningConstruction GetOpeningConstruction(OpeningConstructionRelation openingConstructionRelation)
+        public List<ISpace> GetSpaces(ZoneRelation zoneRelation)
         {
-            GuidReference guidReference = openingConstructionRelation?.UniqueReference_To as GuidReference;
-            if (guidReference == null)
+            List<IUniqueReference> uniqueReferences = zoneRelation?.UniqueReferences_To;
+            if (uniqueReferences == null)
             {
                 return null;
             }
 
-            if (!TryGetValue(guidReference, out IOpeningConstruction result))
+            if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<ISpace> result))
             {
                 return null;
             }
 
             return result;
+        }
+
+        public List<TSpace> GetSpaces<TSpace>() where TSpace : ISpace
+        {
+            return GetValues<TSpace>();
+        }
+
+        private ComponentConstructionRelation AddRelation(IComponent component, IComponentConstruction componentConstruction)
+        {
+            if (component == null || componentConstruction == null)
+            {
+                return null;
+            }
+
+            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(component));
+            if (componentConstructionRelation != null)
+            {
+                Remove(componentConstructionRelation);
+            }
+
+            return AddRelation(new ComponentConstructionRelation(component, componentConstruction));
+        }
+
+        private OpeningConstructionRelation AddRelation(IOpening opening, IOpeningConstruction openingConstruction)
+        {
+            if (opening == null || openingConstruction == null)
+            {
+                return null;
+            }
+
+            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new GuidReference(opening));
+            if (openingConstructionRelation != null)
+            {
+                Remove(openingConstructionRelation);
+            }
+
+            return AddRelation(new OpeningConstructionRelation(opening, openingConstruction));
         }
     }
 }

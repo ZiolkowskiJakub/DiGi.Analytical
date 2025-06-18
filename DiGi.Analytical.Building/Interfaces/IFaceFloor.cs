@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IFloor : IComponent
+    public interface IFaceFloor : IFloor, IBuildingFaceObject, IComponent<IFace3D>
     {
 
     }

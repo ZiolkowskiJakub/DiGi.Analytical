@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IWall : IComponent, IBuildingGeometryObject
+    public interface IWall : IComponent
     {
 
     }

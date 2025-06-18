@@ -281,6 +281,11 @@ namespace DiGi.Analytical.Building.Classes
             return result.ConvertAll(x => x.Clone<T>());
         }
 
+        public List<TComponent> GetComponents<TComponent>() where TComponent : IComponent
+        {
+            return buildingRelationCluster.GetComponents<TComponent>().ConvertAll(x => x.Clone<TComponent>());
+        }
+
         public IWallConstruction GetConstruction(IWall wall)
         {
             return GetConstruction<IWallConstruction>(wall);
@@ -527,6 +532,35 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return GetSpaces(component);
+        }
+
+        public List<TSpace> GetSpaces<TSpace>() where TSpace : ISpace
+        {
+            return buildingRelationCluster.GetSpaces<TSpace>().ConvertAll(x => x.Clone<TSpace>());
+        }
+
+        public bool Inside(Geometry.Spatial.Classes.Sphere sphere, double tolerance = Core.Constans.Tolerance.Distance)
+        {
+            if(sphere == null)
+            {
+                return false;
+            }
+
+            List<IComponent> components = buildingRelationCluster.GetValues<IComponent>();
+            if(components == null || components.Count() == 0)
+            {
+                return false;
+            }
+
+            foreach(IComponent component in components)
+            {
+                if(!Query.Inside(sphere, component, tolerance))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public bool Remove(IConstruction construction)

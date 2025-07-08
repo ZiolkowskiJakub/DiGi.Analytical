@@ -1,6 +1,7 @@
 ﻿using DiGi.Analytical.Interfaces;
 using DiGi.Core;
 using DiGi.Core.Relation.Classes;
+using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Classes
 {
@@ -8,6 +9,12 @@ namespace DiGi.Analytical.Classes
     {
         public AnalyticalModel()
             : base()
+        {
+
+        }
+
+        public AnalyticalModel(JsonObject jsonObject)
+            : base(jsonObject)
         {
 
         }

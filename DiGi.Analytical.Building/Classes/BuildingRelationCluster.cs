@@ -3,6 +3,7 @@ using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
 using DiGi.Core.Relation.Classes;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text.Json.Nodes;
 
@@ -20,8 +21,8 @@ namespace DiGi.Analytical.Building.Classes
         {
         }
 
-        public BuildingRelationCluster(BuildingRelationCluster buildingCluster)
-            : base(buildingCluster)
+        public BuildingRelationCluster(BuildingRelationCluster buildingRelationCluster)
+            : base(buildingRelationCluster)
         {
         }
 
@@ -64,27 +65,82 @@ namespace DiGi.Analytical.Building.Classes
 
         public ComponentConstructionRelation AddRelation(IWall wall, IWallConstruction wallConstruction)
         {
-            return AddRelation(wall, wallConstruction);
+            if (wall == null || wallConstruction == null)
+            {
+                return null;
+            }
+
+            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(wall));
+            if (componentConstructionRelation != null)
+            {
+                Remove(componentConstructionRelation);
+            }
+
+            return AddRelation(new ComponentConstructionRelation(wall, wallConstruction));
         }
 
         public ComponentConstructionRelation AddRelation(IRoof roof, IRoofConstruction roofConstruction)
         {
-            return AddRelation(roof, roofConstruction);
+            if (roof == null || roofConstruction == null)
+            {
+                return null;
+            }
+
+            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(roof));
+            if (componentConstructionRelation != null)
+            {
+                Remove(componentConstructionRelation);
+            }
+
+            return AddRelation(new ComponentConstructionRelation(roof, roofConstruction));
         }
 
         public ComponentConstructionRelation AddRelation(IFloor floor, IFloorConstruction floorConstruction)
         {
-            return AddRelation(floor, floorConstruction);
+            if (floor == null || floorConstruction == null)
+            {
+                return null;
+            }
+
+            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(floor));
+            if (componentConstructionRelation != null)
+            {
+                Remove(componentConstructionRelation);
+            }
+
+            return AddRelation(new ComponentConstructionRelation(floor, floorConstruction));
         }
 
         public OpeningConstructionRelation AddRelation(IWindow window, IWindowConstruction windowConstruction)
         {
-            return AddRelation(window, windowConstruction);
+            if (window == null || windowConstruction == null)
+            {
+                return null;
+            }
+
+            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new GuidReference(window));
+            if (openingConstructionRelation != null)
+            {
+                Remove(openingConstructionRelation);
+            }
+
+            return AddRelation(new OpeningConstructionRelation(window, windowConstruction));
         }
 
         public OpeningConstructionRelation AddRelation(IDoor door, IDoorConstruction doorConstruction)
         {
-            return AddRelation(door, doorConstruction);
+            if (door == null || doorConstruction == null)
+            {
+                return null;
+            }
+
+            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(new GuidReference(door));
+            if (openingConstructionRelation != null)
+            {
+                Remove(openingConstructionRelation);
+            }
+
+            return AddRelation(new OpeningConstructionRelation(door, doorConstruction));
         }
 
         public IComponent GetComponent(SpaceRelation spaceRelation)

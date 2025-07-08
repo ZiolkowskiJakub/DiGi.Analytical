@@ -8,6 +8,7 @@ using DiGi.Core.Classes;
 using System;
 using System.Linq;
 using DiGi.Core.Relation.Enums;
+using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
@@ -15,6 +16,27 @@ namespace DiGi.Analytical.Building.Classes
     {
         [JsonInclude, JsonPropertyName("BuildingRelationCluster"), System.ComponentModel.Description("BuildingRelationCluster")]
         private BuildingRelationCluster buildingRelationCluster = new BuildingRelationCluster();
+
+        public BuildingModel() 
+            : base()
+        {
+            
+        }
+
+        public BuildingModel(BuildingModel buildingModel)
+            : base(buildingModel)
+        {
+            if(buildingModel != null)
+            {
+                buildingRelationCluster = Core.Query.Clone(buildingModel.buildingRelationCluster);
+            }
+        }
+
+        public BuildingModel(JsonObject jsonObject)
+            : base(jsonObject)
+        {
+
+        }
 
         public bool Assign(IWall wall, IWallConstruction wallConstruction)
         {

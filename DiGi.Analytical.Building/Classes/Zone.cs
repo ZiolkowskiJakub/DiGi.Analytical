@@ -17,6 +17,11 @@ namespace DiGi.Analytical.Building.Classes
             {
                 return name;
             }
+
+            set
+            {
+                name = value;
+            }
         }
 
         public Zone(string name)

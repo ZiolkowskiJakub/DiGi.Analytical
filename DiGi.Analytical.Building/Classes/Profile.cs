@@ -1,48 +1,50 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
-using DiGi.Geometry.Spatial.Classes;
+using DiGi.Core.Classes;
 using System.ComponentModel;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-
 namespace DiGi.Analytical.Building.Classes
 {
-    public class Space : BuildingGeometryObject<Point3D>, ISpace
+    public class Profile : BuildingObject, IProfile
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
         private string description;
 
+        [JsonInclude, JsonPropertyName("IndexDoubles")]
+        private IndexedDoubles indexDoubles;
+
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
         private string name;
         
-        public Space(Point3D geometry, string name)
-            : base(geometry)
+        public Profile()
+            : base()
         {
-            this.name = name;
+
         }
 
-        public Space(JsonObject jsonObject)
+        public Profile(JsonObject jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Space(System.Guid guid, Space space)
-            : base(guid, space)
+        public Profile(Profile profile)
+            : base(profile)
         {
-            if (space != null)
+            if (profile != null)
             {
-                name = space.name;
-                description = space.description;
+                indexDoubles = Core.Query.Clone(profile.indexDoubles);
+                name = profile.name;
             }
         }
 
-        public Space(Space space)
-            : base(space)
+        public Profile(System.Guid guid, Profile profile)
+            : base(guid, profile)
         {
-            if (space != null)
+            if (profile != null)
             {
-                name = space.name;
-                description = space.description;
+                indexDoubles = Core.Query.Clone(profile.indexDoubles);
+                name = profile.name;
             }
         }
 

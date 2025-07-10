@@ -1,5 +1,4 @@
-﻿using DiGi.Analytical.Building.Enums;
-using DiGi.Analytical.Building.Interfaces;
+﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.Text.Json.Nodes;
 

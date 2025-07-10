@@ -7,7 +7,7 @@ namespace DiGi.Analytical.Building.Interfaces
 
     }
 
-    public interface IWall<T> : IWall, IBuildingGeometryObject<T> where T : IGeometry3D
+    public interface IWall<T> : IWall, IComponent<T> where T : IGeometry3D
     {
 
     }

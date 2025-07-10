@@ -1,12 +1,11 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
-using DiGi.Geometry.Spatial.Classes;
 using System.ComponentModel;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class Space : BuildingGeometryObject<Point3D>, ISpace
+    public class InternalCondition : BuildingObject, IInternalCondition
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
         private string description;
@@ -14,35 +13,35 @@ namespace DiGi.Analytical.Building.Classes
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
         private string name;
         
-        public Space(Point3D geometry, string name)
-            : base(geometry)
+        public InternalCondition(string name)
+            : base()
         {
             this.name = name;
         }
 
-        public Space(JsonObject jsonObject)
+        public InternalCondition(JsonObject jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Space(System.Guid guid, Space space)
-            : base(guid, space)
+        public InternalCondition(InternalCondition internalCondition)
+            : base(internalCondition)
         {
-            if (space != null)
+            if (internalCondition != null)
             {
-                name = space.name;
-                description = space.description;
+                name = internalCondition.name;
+                description = internalCondition.description;
             }
         }
 
-        public Space(Space space)
-            : base(space)
+        public InternalCondition(System.Guid guid, InternalCondition internalCondition)
+            : base(guid, internalCondition)
         {
-            if (space != null)
+            if (internalCondition != null)
             {
-                name = space.name;
-                description = space.description;
+                name = internalCondition.name;
+                description = internalCondition.description;
             }
         }
 

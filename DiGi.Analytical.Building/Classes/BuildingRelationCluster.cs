@@ -3,7 +3,6 @@ using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
 using DiGi.Core.Relation.Classes;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text.Json.Nodes;
 

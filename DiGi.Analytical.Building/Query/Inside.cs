@@ -1,6 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Interfaces;
 using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building

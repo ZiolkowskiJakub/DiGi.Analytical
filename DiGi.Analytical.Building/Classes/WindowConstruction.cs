@@ -6,8 +6,8 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class WindowConstruction : OpeningConstruction<IWindow>, IWindowConstruction
     {
-        public WindowConstruction(ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
-            : base(surface2D, frameStructure, paneStructure)
+        public WindowConstruction(string name, ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
+            : base(name,surface2D, frameStructure, paneStructure)
         {
 
         }

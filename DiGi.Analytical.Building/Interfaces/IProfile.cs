@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IProfile : IBuildingGuidObject, INamedBuildingObject
+    public interface IProfile : IBuildingGuidObject, IBuildingNamedObject
     {
 
     }

@@ -1,38 +1,54 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class BuildingObject : Core.Parameter.Classes.ParametrizedGuidObject, IBuildingObject
+    public abstract class BuildingNamedObject : BuildingObject, IBuildingNamedObject
     {
-        public BuildingObject(BuildingObject buildingObject)
-            : base(buildingObject)
+        public BuildingNamedObject(string name)
+            : base()
         {
-
+            Name = name;
         }
 
-        public BuildingObject(System.Guid guid, BuildingObject buildingObject)
-            : base(guid, buildingObject)
+        public BuildingNamedObject(BuildingNamedObject buildingNamedObject)
+            : base(buildingNamedObject)
         {
-
+            if (buildingNamedObject != null)
+            {
+                Name = buildingNamedObject.Name;
+            }
         }
 
-        public BuildingObject()
+        public BuildingNamedObject(System.Guid guid, BuildingNamedObject buildingNamedObject)
+            : base(guid, buildingNamedObject)
+        {
+            if (buildingNamedObject != null)
+            {
+                Name = buildingNamedObject.Name;
+            }
+        }
+
+        public BuildingNamedObject()
             : base()
         {
 
         }
 
-        public BuildingObject(JsonObject jsonObject)
+        public BuildingNamedObject(JsonObject jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public BuildingObject(System.Guid guid)
+        public BuildingNamedObject(System.Guid guid, string name)
             : base(guid)
         {
-
+            Name = name;
         }
+
+        [JsonInclude, JsonPropertyName("Name")]
+        public string Name { get; set; }
     }
 }

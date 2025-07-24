@@ -1,14 +1,17 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
+using System.ComponentModel;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class ComponentConstruction : BuildingObject, IComponentConstruction
+    public abstract class ComponentConstruction : BuildingNamedObject, IComponentConstruction
     {
+        [JsonInclude, JsonPropertyName("Description"), Description("Description")]
+        private string description;
+
         [JsonInclude, JsonPropertyName("Structure")]
         private IStructure structure;
-
         public ComponentConstruction(IStructure structure)
             : base()
         {
@@ -37,6 +40,20 @@ namespace DiGi.Analytical.Building.Classes
             : base(jsonObject)
         {
 
+        }
+
+        [JsonIgnore]
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
         }
 
         [JsonIgnore]

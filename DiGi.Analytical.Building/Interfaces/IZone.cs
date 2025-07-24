@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IZone : IBuildingGuidObject, INamedBuildingObject
+    public interface IZone : IBuildingGuidObject, IBuildingNamedObject
     {
 
     }

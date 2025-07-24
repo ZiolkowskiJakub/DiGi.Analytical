@@ -10,9 +10,6 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class Component : BuildingGeometry3DObject, Interfaces.IComponent
     {
-        [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
-        public StructurePosition StructurePosition { get; set; }
-
         public Component(Component component)
             : base(component)
         {
@@ -42,6 +39,9 @@ namespace DiGi.Analytical.Building.Classes
         {
 
         }
+
+        [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
+        public StructurePosition StructurePosition { get; set; }
     }
 
     public abstract class Component<T> : Component, IComponent<T> where T : IGeometry3D
@@ -49,25 +49,11 @@ namespace DiGi.Analytical.Building.Classes
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
         private T geometry;
 
-        [JsonIgnore]
-        public T Geometry
-        {
-            get
-            {
-                if(geometry == null)
-                {
-                    return default;
-                }
-
-                return geometry.Clone<T>();
-            }
-        }
-
         public Component(T geometry)
             : base()
         {
 
-            if(geometry != null)
+            if (geometry != null)
             {
                 this.geometry = geometry.Clone<T>();
             }
@@ -82,9 +68,9 @@ namespace DiGi.Analytical.Building.Classes
         public Component(Component<T> component)
             : base(component)
         {
-            if(component != null)
+            if (component != null)
             {
-                if(component.geometry != null)
+                if (component.geometry != null)
                 {
                     geometry = component.geometry.Clone<T>();
                 }
@@ -100,6 +86,20 @@ namespace DiGi.Analytical.Building.Classes
                 {
                     geometry = component.geometry.Clone<T>();
                 }
+            }
+        }
+
+        [JsonIgnore]
+        public T Geometry
+        {
+            get
+            {
+                if(geometry == null)
+                {
+                    return default;
+                }
+
+                return geometry.Clone<T>();
             }
         }
     }

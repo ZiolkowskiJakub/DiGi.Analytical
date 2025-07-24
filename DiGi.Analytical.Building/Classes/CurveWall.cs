@@ -4,7 +4,6 @@ using DiGi.Geometry.Spatial;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.ComponentModel;
-using System.Numerics;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 

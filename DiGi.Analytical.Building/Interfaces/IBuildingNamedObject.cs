@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface INamedBuildingObject : IBuildingObject, INamedObject
+    public interface IBuildingNamedObject : IBuildingObject, INamedObject
     {
 
     }

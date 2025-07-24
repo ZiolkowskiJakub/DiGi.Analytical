@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Planar.Interfaces;
+using System.ComponentModel;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
@@ -8,21 +9,30 @@ namespace DiGi.Analytical.Building.Classes
 
     public abstract class OpeningConstruction : BuildingGeometry2DObject<ISurface2D>, IOpeningConstruction
     {
+        [JsonInclude, JsonPropertyName("Description"), Description("Description")]
+        private string description;
+
         [JsonInclude, JsonPropertyName("FrameStructure")]
         private IStructure frameStructure;
 
+        [JsonInclude, JsonPropertyName("Name")]
+        private string name;
+
         [JsonInclude, JsonPropertyName("PaneStructure")]
         private IStructure paneStructure;
-        public OpeningConstruction(ISurface2D surface2D, IStructure structure)
+        
+        public OpeningConstruction(string name, ISurface2D surface2D, IStructure structure)
             : base(surface2D)
         {
+            this.name = name;
             paneStructure = Core.Query.Clone(structure);
             frameStructure = Core.Query.Clone(structure);
         }
 
-        public OpeningConstruction(ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
+        public OpeningConstruction(string name, ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
             : base(surface2D)
         {
+            this.name = name;
             this.frameStructure = Core.Query.Clone(frameStructure);
             this.paneStructure = Core.Query.Clone(paneStructure);
         }
@@ -54,6 +64,20 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
+        [JsonIgnore]
         public IStructure FrameStructure
         {
             get
@@ -67,6 +91,20 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
+        [JsonIgnore]
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+        
         [JsonIgnore]
         public IStructure PaneStructure
         {
@@ -84,14 +122,14 @@ namespace DiGi.Analytical.Building.Classes
 
     public abstract class OpeningConstruction<TConstructable> : OpeningConstruction, IOpeningConstruction<TConstructable> where TConstructable : IConstructable
     {
-        public OpeningConstruction(ISurface2D surface2D, IStructure structure)
-            : base(surface2D, structure)
+        public OpeningConstruction(string name, ISurface2D surface2D, IStructure structure)
+            : base(name, surface2D, structure)
         {
 
         }
 
-        public OpeningConstruction(ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
-            : base(surface2D, frameStructure, paneStructure)
+        public OpeningConstruction(string name, ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
+            : base(name, surface2D, frameStructure, paneStructure)
         {
 
         }

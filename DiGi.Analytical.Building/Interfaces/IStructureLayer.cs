@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IStructureLayer : IBuildingObject
+    public interface IStructureLayer : IBuildingSerializableObject
     {
         string Name { get; }
         double Thickness { get; }

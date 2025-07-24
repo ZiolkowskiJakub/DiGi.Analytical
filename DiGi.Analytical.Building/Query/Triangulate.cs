@@ -7,14 +7,14 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static List<Triangle3D> Triangulate(this IBuildingGeometryObject buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
+        public static List<Triangle3D> Triangulate(this IBuildingGeometry3DObject buildingGeometry3DObject, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            if (buildingGeometryObject == null)
+            if (buildingGeometry3DObject == null)
             {
                 return null;
             }
 
-            IPolygonalFace3D polygonalFace3D = Geometry3D<IPolygonalFace3D>(buildingGeometryObject);
+            IPolygonalFace3D polygonalFace3D = Geometry3D<IPolygonalFace3D>(buildingGeometry3DObject);
             if(polygonalFace3D == null)
             {
                 return null;

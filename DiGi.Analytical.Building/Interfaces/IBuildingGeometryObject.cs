@@ -1,14 +1,14 @@
-﻿using DiGi.Geometry.Object.Spatial.Interfaces;
-using DiGi.Geometry.Spatial.Interfaces;
+﻿using DiGi.Geometry.Core.Interfaces;
+using DiGi.Geometry.Object.Core.Interfaces;
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IBuildingGeometryObject : IBuildingGuidObject, IGeometry3DObject
+    public interface IBuildingGeometryObject : IBuildingGuidObject, IGeometryObject
     {
 
     }
 
-    public interface IBuildingGeometryObject<T> : IBuildingGeometryObject, IGeometry3DObject<T> where T: IGeometry3D
+    public interface IBuildingGeometryObject<T> : IBuildingGeometry3DObject, IGeometryObject<T> where T: IGeometry
     {
         T Geometry { get; }
     }

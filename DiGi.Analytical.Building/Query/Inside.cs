@@ -6,14 +6,14 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static bool Inside(this Sphere sphere, IBuildingGeometryObject buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
+        public static bool Inside(this Sphere sphere, IBuildingGeometry3DObject buildingGeometry3DObject, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            if (buildingGeometryObject == null || sphere == null)
+            if (buildingGeometry3DObject == null || sphere == null)
             {
                 return false;
             }
 
-            List<Triangle3D> triagle3Ds = buildingGeometryObject.Triangulate(tolerance);
+            List<Triangle3D> triagle3Ds = buildingGeometry3DObject.Triangulate(tolerance);
             if(triagle3Ds == null || triagle3Ds.Count == 0)
             {
                 return false;

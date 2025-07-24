@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IWindowConstruction : IOpeningConstruction
+    public interface IWindowConstruction : IOpeningConstruction<IWindow>
     {
 
     }

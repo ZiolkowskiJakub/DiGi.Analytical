@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IShade : IBuildingGeometryObject
+    public interface IShade : IBuildingGeometry3DObject
     {
 
     }

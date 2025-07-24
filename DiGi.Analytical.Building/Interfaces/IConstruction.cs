@@ -4,4 +4,9 @@
     {
 
     }
+
+    public interface IConstruction<TConstructable> : IConstruction where TConstructable : IConstructable
+    {
+
+    }
 }

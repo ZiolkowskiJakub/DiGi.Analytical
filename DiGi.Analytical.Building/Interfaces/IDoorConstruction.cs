@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IDoorConstruction : IOpeningConstruction
+    public interface IDoorConstruction : IOpeningConstruction<IDoor>
     {
 
     }

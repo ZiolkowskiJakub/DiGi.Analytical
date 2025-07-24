@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static Mesh3D Mesh3D(this IBuildingGeometryObject buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
+        public static Mesh3D Mesh3D(this IBuildingGeometry3DObject buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if (buildingGeometryObject == null)
             {

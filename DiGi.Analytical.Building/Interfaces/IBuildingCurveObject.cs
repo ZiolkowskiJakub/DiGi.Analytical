@@ -2,7 +2,12 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IBuildingCurveObject : IBuildingGeometryObject<ICurve3D>
+    public interface IBuildingCurveObject : IBuildingGeometry3DObject
+    {
+
+    }
+
+    public interface IBuildingCurveObject<TCurve3D> : IBuildingCurveObject where TCurve3D : ICurve3D
     {
 
     }

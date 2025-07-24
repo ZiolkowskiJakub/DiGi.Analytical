@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class Space : BuildingGeometryObject<Point3D>, ISpace
+    public class Space : BuildingGeometry3DObject<Point3D>, ISpace
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
         private string description;

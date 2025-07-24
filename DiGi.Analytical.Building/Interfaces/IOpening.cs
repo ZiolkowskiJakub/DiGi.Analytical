@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IOpening : IBuildingPlaneObject
+    public interface IOpening : IBuildingPlaneObject, IConstructable
     {
 
     }

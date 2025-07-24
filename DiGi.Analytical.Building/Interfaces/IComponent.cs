@@ -3,7 +3,7 @@ using DiGi.Geometry.Spatial.Interfaces;
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IComponent : IBuildingGeometryObject
+    public interface IComponent : IBuildingGeometry3DObject, IConstructable
     {
         StructurePosition StructurePosition { get; }
     }

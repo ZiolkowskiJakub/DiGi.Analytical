@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IBuildingGuidObject : IBuildingSerializableObject, IGuidObject
+    public interface IBuildingSerializableObject : IBuildingObject, ISerializableObject
     {
 
     }

@@ -4,4 +4,8 @@
     {
         IStructure Structure { get; }
     }
+
+    public interface IComponentConstruction<TConstructable> : IComponentConstruction, IConstruction<TConstructable> where TConstructable : IConstructable
+    {
+    }
 }

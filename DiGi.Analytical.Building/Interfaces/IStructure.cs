@@ -2,7 +2,7 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IStructure : IBuildingObject
+    public interface IStructure : IBuildingSerializableObject
     {
         List<IStructureLayer> StructureLayers { get; }
     }

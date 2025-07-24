@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class Shade<T> : BuildingGeometryObject<T>, IShade<T> where T : IGeometry3D
+    public abstract class Shade<T> : BuildingGeometry3DObject<T>, IShade<T> where T : IGeometry3D
     {
         public Shade(T geometry)
             :base(geometry)

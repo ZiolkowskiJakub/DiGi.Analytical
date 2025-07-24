@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class Component : BuildingGeometryObject, Interfaces.IComponent
+    public abstract class Component : BuildingGeometry3DObject, Interfaces.IComponent
     {
         [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
         public StructurePosition StructurePosition { get; set; }

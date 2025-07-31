@@ -196,7 +196,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(zone, spaces_Temp) != null;
         }
 
-        public bool Assign(ISpace space, IInternalCondition internalCondition)
+        public bool Assign(ISpace space, IInternalCondition internalCondition, Range<int> range, string id = null)
         {
             if (space == null || internalCondition == null)
             {
@@ -213,31 +213,38 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            return buildingRelationCluster.AddRelation(space, internalCondition) != null;
+            return buildingRelationCluster.AddRelation(space, internalCondition, range, id) != null;
         }
 
-        public bool Assign<TSpace>(IEnumerable<TSpace> spaces, IInternalCondition internalCondition) where TSpace : ISpace
+        public bool Assign(ISpace space, IInternalCondition internalCondition, string id = null)
         {
-            if (internalCondition == null || spaces == null)
+            if (space == null || internalCondition == null)
             {
                 return false;
             }
 
-            bool result = false;
-            foreach(TSpace space in spaces)
+            List<IProfile> profiles = internalCondition.Profiles;
+            if (profiles == null || profiles.Count == 0)
             {
-                if(Assign(space, internalCondition))
+                return false;
+            }
+
+            int max = -1;
+
+            foreach (IProfile profile in profiles)
+            {
+                if (profile == null)
                 {
-                    result = true;
+                    continue;
+                }
+
+                if (max < profile.Count)
+                {
+                    max = profile.Count;
                 }
             }
 
-            return result;
-        }
-
-        public bool Assign(IInternalCondition internalCondition, IProfile profile, string category)
-        {
-            if (internalCondition == null || profile == null)
+            if (max <= 0)
             {
                 return false;
             }
@@ -247,12 +254,31 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            if (!Update(profile))
+            if (!Update(space))
             {
                 return false;
             }
 
-            return buildingRelationCluster.AddRelation(internalCondition, profile, category) != null;
+            return buildingRelationCluster.AddRelation(space, internalCondition, new Range<int>(0, max - 1), id) != null;
+        }
+
+        public bool Assign<TSpace>(IEnumerable<TSpace> spaces, IInternalCondition internalCondition, Range<int> range, string id = null) where TSpace : ISpace
+        {
+            if (internalCondition == null || spaces == null)
+            {
+                return false;
+            }
+
+            bool result = false;
+            foreach(TSpace space in spaces)
+            {
+                if(Assign(space, internalCondition, range, id))
+                {
+                    result = true;
+                }
+            }
+
+            return result;
         }
 
         public T GetComponent<T>(IOpening opening) where T : IComponent
@@ -392,48 +418,30 @@ namespace DiGi.Analytical.Building.Classes
             return GetConstruction<IDoorConstruction>(door);
         }
 
-        public TInternalCondition GetInternalCondition<TInternalCondition>(ISpace space) where TInternalCondition : IInternalCondition
+        public List<TInternalCondition> GetInternalConditions<TInternalCondition>(ISpace space) where TInternalCondition : IInternalCondition
         {
             if (buildingRelationCluster == null || space == null)
             {
                 return default;
             }
 
-            SpaceInternalConditionRelation spaceInternalConditionRelation = GetRelation<SpaceInternalConditionRelation>(space);
-            if (spaceInternalConditionRelation == null)
+            List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
+            if (spaceInternalConditionRelations == null)
             {
                 return default;
             }
 
-            IInternalCondition internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
-            if (internalCondition is TInternalCondition)
-            {
-                return ((TInternalCondition)internalCondition).Clone<TInternalCondition>();
-            }
-
-            return default;
-        }
-
-        public List<TInternalCondition> GetInternalConditions<TInternalCondition>(IProfile profile) where TInternalCondition : IInternalCondition
-        {
-            if(profile == null)
-            {
-                return null;
-            }
-
-            List<InternalConditionProfileRelation> internalConditionProfileRelations = buildingRelationCluster.GetRelations<InternalConditionProfileRelation>(profile);
-            if(internalConditionProfileRelations == null)
-            {
-                return null;
-            }
-
             List<TInternalCondition> result = new List<TInternalCondition>();
-            foreach(InternalConditionProfileRelation internalConditionProfileRelation in internalConditionProfileRelations)
+            foreach(SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
-                TInternalCondition internalCondition = Core.Query.Clone(buildingRelationCluster.GetInternalCondition<TInternalCondition>(internalConditionProfileRelation));
-                if(internalCondition != null)
+                IInternalCondition internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
+                if (internalCondition is TInternalCondition)
                 {
-                    result.Add(internalCondition);
+                    TInternalCondition internalCondition_Temp = ((TInternalCondition)internalCondition).Clone<TInternalCondition>();
+                    if(internalCondition_Temp != null)
+                    {
+                        result.Add(internalCondition_Temp);
+                    }
                 }
             }
 
@@ -564,48 +572,6 @@ namespace DiGi.Analytical.Building.Classes
             return result.ConvertAll(x => x.Clone<T>());
         }
 
-        public TProfile GetProfile<TProfile>(IInternalCondition internalCondition, string category) where TProfile : IProfile
-        {
-            if (internalCondition == null)
-            {
-                return default;
-            }
-
-            InternalConditionProfileRelation internalConditionProfileRelation = buildingRelationCluster.GetRelation<InternalConditionProfileRelation>(internalCondition, x => x.Category == category);
-            if (internalConditionProfileRelation == null)
-            {
-                return default;
-            }
-
-            return Core.Query.Clone(buildingRelationCluster.GetProfile<TProfile>(internalConditionProfileRelation));
-        }
-
-        public List<TProfile> GetProfiles<TProfile>(IInternalCondition internalCondition) where TProfile : IProfile
-        {
-            if (internalCondition == null)
-            {
-                return null;
-            }
-
-            List<InternalConditionProfileRelation> internalConditionProfileRelations = buildingRelationCluster.GetRelations<InternalConditionProfileRelation>(internalCondition);
-            if (internalConditionProfileRelations == null)
-            {
-                return null;
-            }
-
-            List<TProfile> result = new List<TProfile>();
-            foreach (InternalConditionProfileRelation internalConditionProfileRelation in internalConditionProfileRelations)
-            {
-                TProfile profile = Core.Query.Clone(buildingRelationCluster.GetProfile<TProfile>(internalConditionProfileRelation));
-                if (profile != null)
-                {
-                    result.Add(profile);
-                }
-            }
-
-            return result;
-        }
-        
         public T GetRelation<T>(IBuildingGuidObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
         {
             if (buildingUniqueObject == null || buildingRelationCluster == null)
@@ -650,6 +616,34 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetRelations(guidReference, func)?.ConvertAll(x => x.Clone<T>());
         }
 
+        public List<SpaceInternalCondition> GetSpaceInternalConditions(ISpace space)
+        {
+            if (buildingRelationCluster == null || space == null)
+            {
+                return default;
+            }
+
+            List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
+            if (spaceInternalConditionRelations == null)
+            {
+                return default;
+            }
+
+            List<SpaceInternalCondition> result = new List<SpaceInternalCondition>();
+            foreach (SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
+            {
+                IInternalCondition internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
+                if (internalCondition == null)
+                {
+                    continue;
+                }
+
+                result.Add(new SpaceInternalCondition(internalCondition, spaceInternalConditionRelation.Range, spaceInternalConditionRelation.Id));
+            }
+
+            return result;
+        }
+        
         public List<ISpace> GetSpaces(IZone zone)
         {
             if(zone == null)
@@ -787,11 +781,6 @@ namespace DiGi.Analytical.Building.Classes
             return Remove(internalCondition == null ? null : new GuidReference(internalCondition));
         }
 
-        public bool Remove(IProfile profile)
-        {
-            return Remove(profile == null ? null : new GuidReference(profile));
-        }
-
         public bool Remove(IShade shade)
         {
             return Remove(shade == null ? null : new GuidReference(shade));
@@ -909,22 +898,6 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        public bool UnassignProfile(IInternalCondition internalCondition, string category)
-        {
-            if(internalCondition == null)
-            {
-                return false;
-            }
-
-            InternalConditionProfileRelation internalConditionProfileRelation = buildingRelationCluster.GetRelation<InternalConditionProfileRelation>(internalCondition, x => x.Category == category);
-            if(internalConditionProfileRelation == null)
-            {
-                return false;
-            }
-
-            return buildingRelationCluster.Remove(internalConditionProfileRelation);
-        }
-
         public bool Update(IComponent component)
         {
             if (component == null)
@@ -963,16 +936,6 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return buildingRelationCluster.Add(internalCondition.Clone<IInternalCondition>());
-        }
-
-        public bool Update(IProfile profile)
-        {
-            if (profile == null)
-            {
-                return false;
-            }
-
-            return buildingRelationCluster.Add(profile.Clone<IProfile>());
         }
 
         public bool Update(IZone zone)

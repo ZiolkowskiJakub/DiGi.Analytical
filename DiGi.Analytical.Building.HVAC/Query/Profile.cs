@@ -6,14 +6,21 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static TProfie Profile<TProfie>(this BuildingModel buildingModel, IInternalCondition internalCondition, ProfileType profileType) where TProfie : IProfile
+        public static IProfile Profile(this InternalCondition internalCondition, ProfileType profileType)
         {
-            if(buildingModel == null || internalCondition == null || profileType == ProfileType.Undefined || profileType == ProfileType.Other)
+            if(internalCondition == null || profileType == ProfileType.Undefined)
             {
-                return default;
+                return null;
             }
 
-            return buildingModel.GetProfile<TProfie>(internalCondition, Core.Query.Description(profileType));
+            return internalCondition.GetProfile(Core.Query.Description(profileType));
+        }
+
+        public static TProfile Profile<TProfile>(this InternalCondition internalCondition, ProfileType profileType) where TProfile : IProfile
+        {
+            IProfile profile = Profile(internalCondition, profileType);
+
+            return profile is TProfile ? (TProfile)profile : default;
         }
     }
 }

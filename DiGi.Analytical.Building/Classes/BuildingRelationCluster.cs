@@ -62,20 +62,20 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(new ZoneRelation(zone, spaces));
         }
 
-        public SpaceInternalConditionRelation AddRelation(ISpace space, IInternalCondition internalCondition)
+        public SpaceInternalConditionRelation AddRelation(ISpace space, IInternalCondition internalCondition, Range<int> range, string id = null)
         {
             if (space == null || internalCondition == null)
             {
                 return null;
             }
 
-            SpaceInternalConditionRelation spaceInternalConditionRelation = GetRelation<SpaceInternalConditionRelation>(new GuidReference(space));
-            if (spaceInternalConditionRelation != null)
-            {
-                Remove(spaceInternalConditionRelation);
-            }
+            //List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(new GuidReference(space));
+            //if (spaceInternalConditionRelations != null)
+            //{
+            //    Remove(spaceInternalConditionRelation);
+            //}
 
-            return AddRelation(new SpaceInternalConditionRelation(space, internalCondition));
+            return AddRelation(new SpaceInternalConditionRelation(space, internalCondition, range, id));
         }
 
         public ComponentConstructionRelation AddRelation(IWall wall, IWallConstruction wallConstruction)
@@ -158,22 +158,6 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(new OpeningConstructionRelation(door, doorConstruction));
         }
 
-        public InternalConditionProfileRelation AddRelation(IInternalCondition internalCondition, IProfile profile, string category)
-        {
-            if (internalCondition == null || profile == null)
-            {
-                return null;
-            }
-
-            InternalConditionProfileRelation internalConditionProfileRelation = GetRelation<InternalConditionProfileRelation>(new GuidReference(internalCondition), x => x?.Category == category);
-            if (internalConditionProfileRelation != null)
-            {
-                Remove(internalConditionProfileRelation);
-            }
-
-            return AddRelation(new InternalConditionProfileRelation(internalCondition, profile, category));
-        }
-
         public IComponent GetComponent(SpaceRelation spaceRelation)
         {
             GuidReference guidReference = spaceRelation?.UniqueReference_From as GuidReference;
@@ -243,25 +227,9 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public TInternalCondition GetInternalCondition<TInternalCondition>(InternalConditionProfileRelation internalConditionProfileRelation) where TInternalCondition : IInternalCondition
-        {
-            GuidReference guidReference = internalConditionProfileRelation?.UniqueReference_From as GuidReference;
-            if (guidReference == null)
-            {
-                return default;
-            }
-
-            if (!TryGetValue(guidReference, out TInternalCondition result))
-            {
-                return default;
-            }
-
-            return result;
-        }
-
         public IInternalCondition GetInternalCondition(SpaceInternalConditionRelation spaceInternalConditionRelation)
         {
-            GuidReference guidReference = spaceInternalConditionRelation?.UniqueReference_From as GuidReference;
+            GuidReference guidReference = spaceInternalConditionRelation?.UniqueReference_To as GuidReference;
             if (guidReference == null)
             {
                 return null;
@@ -318,22 +286,6 @@ namespace DiGi.Analytical.Building.Classes
             if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<IOpening> result))
             {
                 return null;
-            }
-
-            return result;
-        }
-
-        public TProfile GetProfile<TProfile>(InternalConditionProfileRelation internalConditionProfileRelation) where TProfile : IProfile
-        {
-            GuidReference guidReference = internalConditionProfileRelation?.UniqueReference_To as GuidReference;
-            if (guidReference == null)
-            {
-                return default;
-            }
-
-            if (!TryGetValue(guidReference, out TProfile result))
-            {
-                return default;
             }
 
             return result;

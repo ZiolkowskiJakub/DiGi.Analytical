@@ -1,25 +1,24 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Classes;
-using System.ComponentModel;
+using System.Collections.Generic;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+
 namespace DiGi.Analytical.Building.Classes
 {
-    public class Profile : BuildingObject, IProfile
+    public class Profile : SerializableObject, IProfile
     {
-        [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        private string description;
+        [JsonInclude, JsonPropertyName("Category")]
+        private string category;
 
-        [JsonInclude, JsonPropertyName("IndexDoubles")]
-        private IndexedDoubles indexDoubles;
+        [JsonInclude, JsonPropertyName("Values")]
+        private List<double> values;
 
-        [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        private string name;
-        
-        public Profile()
+        public Profile(string category, IEnumerable<double> values)
             : base()
         {
-
+            this.category = category;
+            this.values = values == null ? null : new List<double>(values);
         }
 
         public Profile(JsonObject jsonObject)
@@ -33,46 +32,44 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (profile != null)
             {
-                indexDoubles = Core.Query.Clone(profile.indexDoubles);
-                name = profile.name;
-            }
-        }
-
-        public Profile(System.Guid guid, Profile profile)
-            : base(guid, profile)
-        {
-            if (profile != null)
-            {
-                indexDoubles = Core.Query.Clone(profile.indexDoubles);
-                name = profile.name;
+                values = profile.values == null ? null : new List<double>(profile.values);
+                category = profile.category;
             }
         }
 
         [JsonIgnore]
-        public string Description
+        public string Category
         {
             get
             {
-                return description;
-            }
-
-            set
-            {
-                description = value;
+                return category;
             }
         }
 
         [JsonIgnore]
-        public string Name
+        public int Count
         {
             get
             {
-                return name;
+                return values == null ? 0 : values.Count;
             }
+        }
 
-            set
+        [JsonIgnore]
+        public double[] Values
+        {
+            get
             {
-                name = value;
+                return values?.ToArray();
+            }
+        }
+
+        [JsonIgnore]
+        public double this[int index]
+        {
+            get
+            {
+                return values == null ? double.NaN : values[index];
             }
         }
     }

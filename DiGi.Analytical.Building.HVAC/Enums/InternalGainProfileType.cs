@@ -2,11 +2,10 @@
 
 namespace DiGi.Analytical.Building.HVAC.Enums
 {
-    [Description("Profile type")]
-    public enum ProfileType
+    [Description("Internal gain profile type")]
+    public enum InternalGainProfileType
     {
         [Description("Undefined")] Undefined,
-        [Description("Other")] Other,
         [Description("Infiltration")] Infiltration,
         [Description("Ventilation")] Ventilation,
         [Description("Lighting gain")] LightingGain,
@@ -15,9 +14,5 @@ namespace DiGi.Analytical.Building.HVAC.Enums
         [Description("Equipment sensible gain")] EquipmentSensibleGain,
         [Description("Equipment latent gain")] EquipmentLatentGain,
         [Description("Pollutant generation")] PollutantGeneration,
-        [Description("Thermostat upper limit")] ThermostatUpperLimit,
-        [Description("Thermostat lower limit")] ThermostatLowerLimit,
-        [Description("Thermostat humidity upper limit")] ThermostatHumidityUpperLimit,
-        [Description("Thermostat humidity lower limit")] ThermostatHumidityLowerLimit,
     }
 }

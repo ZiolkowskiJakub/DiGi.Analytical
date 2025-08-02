@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DiGi.Core.Parameter.Interfaces;
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IInternalCondition : IBuildingGuidObject, IBuildingNamedObject
+    public interface IInternalCondition : IBuildingGuidObject, IBuildingNamedObject, IParametrizedObject
     {
-        List<IProfile> Profiles { get; }
-        
-        IProfile this[string category] { get; }
+        string Description { get; }
     }
 }

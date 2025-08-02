@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using DiGi.Core.Relation.Enums;
 using System.Text.Json.Nodes;
+using DiGi.Analytical.Classes;
 
 namespace DiGi.Analytical.Building.Classes
 {
@@ -196,7 +197,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(zone, spaces_Temp) != null;
         }
 
-        public bool Assign(ISpace space, IInternalCondition internalCondition, Range<int> range, string id = null)
+        public bool Assign(ISpace space, IInternalCondition internalCondition, HourRange hourRange, string id = null)
         {
             if (space == null || internalCondition == null)
             {
@@ -213,56 +214,10 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            return buildingRelationCluster.AddRelation(space, internalCondition, range, id) != null;
+            return buildingRelationCluster.AddRelation(space, internalCondition, hourRange, id) != null;
         }
 
-        public bool Assign(ISpace space, IInternalCondition internalCondition, string id = null)
-        {
-            if (space == null || internalCondition == null)
-            {
-                return false;
-            }
-
-            List<IProfile> profiles = internalCondition.Profiles;
-            if (profiles == null || profiles.Count == 0)
-            {
-                return false;
-            }
-
-            int max = -1;
-
-            foreach (IProfile profile in profiles)
-            {
-                if (profile == null)
-                {
-                    continue;
-                }
-
-                if (max < profile.Count)
-                {
-                    max = profile.Count;
-                }
-            }
-
-            if (max <= 0)
-            {
-                return false;
-            }
-
-            if (!Update(internalCondition))
-            {
-                return false;
-            }
-
-            if (!Update(space))
-            {
-                return false;
-            }
-
-            return buildingRelationCluster.AddRelation(space, internalCondition, new Range<int>(0, max - 1), id) != null;
-        }
-
-        public bool Assign<TSpace>(IEnumerable<TSpace> spaces, IInternalCondition internalCondition, Range<int> range, string id = null) where TSpace : ISpace
+        public bool Assign<TSpace>(IEnumerable<TSpace> spaces, IInternalCondition internalCondition, HourRange hourRange, string id = null) where TSpace : ISpace
         {
             if (internalCondition == null || spaces == null)
             {
@@ -272,7 +227,7 @@ namespace DiGi.Analytical.Building.Classes
             bool result = false;
             foreach(TSpace space in spaces)
             {
-                if(Assign(space, internalCondition, range, id))
+                if(Assign(space, internalCondition, hourRange, id))
                 {
                     result = true;
                 }
@@ -638,7 +593,7 @@ namespace DiGi.Analytical.Building.Classes
                     continue;
                 }
 
-                result.Add(new SpaceInternalCondition(internalCondition, spaceInternalConditionRelation.Range, spaceInternalConditionRelation.Id));
+                result.Add(new SpaceInternalCondition(internalCondition, spaceInternalConditionRelation.HourRange, spaceInternalConditionRelation.Id));
             }
 
             return result;

@@ -1,5 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
-using DiGi.Core.Classes;
+using DiGi.Analytical.Classes;
 using DiGi.Core.Relation.Classes;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
@@ -8,16 +8,16 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class SpaceInternalConditionRelation : OneToOneBidirectionalRelation<ISpace, IInternalCondition>, IBuildingRelation
     {
-        [JsonInclude, JsonPropertyName("Range")]
-        private Range<int> range;
+        [JsonInclude, JsonPropertyName("HourRange")]
+        private HourRange hourRange;
 
         [JsonInclude, JsonPropertyName("Id")]
         private string id;
 
-        public SpaceInternalConditionRelation(ISpace space, IInternalCondition internalCondition, Range<int> range, string id)
+        public SpaceInternalConditionRelation(ISpace space, IInternalCondition internalCondition, HourRange hourRange, string id)
             : base(space, internalCondition)
         {
-            this.range = Core.Query.Clone(range);
+            this.hourRange = Core.Query.Clone(hourRange);
             this.id = id;
         }
 
@@ -32,17 +32,17 @@ namespace DiGi.Analytical.Building.Classes
         {
             if(spaceInternalConditionRelation != null)
             {
-                range = Core.Query.Clone(spaceInternalConditionRelation.range);
+                hourRange = Core.Query.Clone(spaceInternalConditionRelation.hourRange);
                 id = spaceInternalConditionRelation.id;
             }
         }
 
         [JsonIgnore]
-        public Range<int> Range
+        public HourRange HourRange
         {
             get
             {
-                return Core.Query.Clone(range);
+                return Core.Query.Clone(hourRange);
             }
         }
 

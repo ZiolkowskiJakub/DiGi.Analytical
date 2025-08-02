@@ -1,4 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
 using DiGi.Core.Relation.Classes;
@@ -62,7 +63,7 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(new ZoneRelation(zone, spaces));
         }
 
-        public SpaceInternalConditionRelation AddRelation(ISpace space, IInternalCondition internalCondition, Range<int> range, string id = null)
+        public SpaceInternalConditionRelation AddRelation(ISpace space, IInternalCondition internalCondition, HourRange hourRange, string id = null)
         {
             if (space == null || internalCondition == null)
             {
@@ -75,7 +76,7 @@ namespace DiGi.Analytical.Building.Classes
             //    Remove(spaceInternalConditionRelation);
             //}
 
-            return AddRelation(new SpaceInternalConditionRelation(space, internalCondition, range, id));
+            return AddRelation(new SpaceInternalConditionRelation(space, internalCondition, hourRange, id));
         }
 
         public ComponentConstructionRelation AddRelation(IWall wall, IWallConstruction wallConstruction)

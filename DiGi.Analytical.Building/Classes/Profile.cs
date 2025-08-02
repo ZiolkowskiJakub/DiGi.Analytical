@@ -8,16 +8,12 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class Profile : SerializableObject, IProfile
     {
-        [JsonInclude, JsonPropertyName("Category")]
-        private string category;
-
         [JsonInclude, JsonPropertyName("Values")]
         private List<double> values;
 
-        public Profile(string category, IEnumerable<double> values)
+        public Profile(IEnumerable<double> values)
             : base()
         {
-            this.category = category;
             this.values = values == null ? null : new List<double>(values);
         }
 
@@ -33,16 +29,6 @@ namespace DiGi.Analytical.Building.Classes
             if (profile != null)
             {
                 values = profile.values == null ? null : new List<double>(profile.values);
-                category = profile.category;
-            }
-        }
-
-        [JsonIgnore]
-        public string Category
-        {
-            get
-            {
-                return category;
             }
         }
 

@@ -1,26 +1,28 @@
-﻿using DiGi.Analytical.Building.Classes;
-using DiGi.Analytical.Building.HVAC.Enums;
+﻿using DiGi.Analytical.Building.HVAC.Enums;
 using DiGi.Analytical.Building.Interfaces;
 
 namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static IProfile Profile(this InternalCondition internalCondition, ProfileType profileType)
+        public static IProfile Profile(this IInternalCondition internalCondition, InternalGainProfileType internalGainProfileType)
         {
-            if(internalCondition == null || profileType == ProfileType.Undefined)
+            if (internalCondition == null || internalGainProfileType == InternalGainProfileType.Undefined)
             {
                 return null;
             }
 
-            return internalCondition.GetProfile(Core.Query.Description(profileType));
+            return internalCondition.InternalGain()?[internalGainProfileType];
         }
 
-        public static TProfile Profile<TProfile>(this InternalCondition internalCondition, ProfileType profileType) where TProfile : IProfile
+        public static IProfile Profile(this IInternalCondition internalCondition, ThermostatProfileType thermostatProfileType)
         {
-            IProfile profile = Profile(internalCondition, profileType);
+            if (internalCondition == null || thermostatProfileType == ThermostatProfileType.Undefined)
+            {
+                return null;
+            }
 
-            return profile is TProfile ? (TProfile)profile : default;
+            return internalCondition.Thermostat()?[thermostatProfileType];
         }
     }
 }

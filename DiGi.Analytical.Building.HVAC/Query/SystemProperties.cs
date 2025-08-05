@@ -14,7 +14,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return null;
             }
 
-            if (!internalCondition.TryGetValue(new EnumParameterDefinition(SpaceParameter.SystemProperties), out SystemProperties result, new GetValueSettings(true, false)))
+            if (!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.SystemProperties), out SystemProperties result, new GetValueSettings(true, false)))
             {
                 return null;
             }

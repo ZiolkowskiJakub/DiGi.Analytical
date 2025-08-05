@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return false;
             }
 
-            return internalCondition.SetValue(SpaceParameter.CoolingEmitter, coolingEmitter);
+            return internalCondition.SetValue(InternalConditionParameter.CoolingEmitter, coolingEmitter);
         }
     }
 }

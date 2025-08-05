@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace DiGi.Analytical.Building.HVAC.Enums
 {
     [AssociatedTypes(typeof(IInternalCondition)), Description("Internal condition parameter")]
-    public enum SpaceParameter
+    public enum InternalConditionParameter
     {
         [ParameterProperties("be61a143-04fd-418c-a184-ce435c274280", "InternalGain", "Internal Gain"), ObjectParameterValue(true, true, typeof(Classes.InternalGain))] InternalGain,
         [ParameterProperties("3686aa6d-3590-4bcf-8382-c2c086f5874b", "Thermostat", "Thermostat"), ObjectParameterValue(true, true, typeof(Classes.Thermostat))] Thermostat,

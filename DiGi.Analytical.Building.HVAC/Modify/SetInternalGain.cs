@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return false;
             }
 
-            return internalCondition.SetValue(SpaceParameter.InternalGain, internalGain);
+            return internalCondition.SetValue(InternalConditionParameter.InternalGain, internalGain);
         }
     }
 }

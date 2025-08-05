@@ -14,7 +14,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return null;
             }
 
-            if (!internalCondition.TryGetValue(new EnumParameterDefinition(SpaceParameter.Thermostat), out Thermostat result, new GetValueSettings(true, false)))
+            if (!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.Thermostat), out Thermostat result, new GetValueSettings(true, false)))
             {
                 return null;
             }

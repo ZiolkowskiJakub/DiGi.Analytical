@@ -11,14 +11,14 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         [JsonInclude, JsonPropertyName("MetabolicRate"), Description("Metabolic rate [W/p]")]
         public double MetabolicRate { get; set; }
 
-        [JsonInclude, JsonPropertyName("DHW"), Description("Domestic hot water [l/d/m2]")]
-        public double DHW { get; set; }
+        [JsonInclude, JsonPropertyName("DomesticHotWater"), Description("Domestic hot water [l/d/m2]")]
+        public double DomesticHotWater { get; set; }
 
         [JsonInclude, JsonPropertyName("OutsideAir"), Description("Outside air [l/s/p]")]
         public double OutsideAir { get; set; }
 
-        [JsonInclude, JsonPropertyName("TargetRoomIlluminance"), Description("Target room illuminance [lx]")]
-        public double TargetRoomIlluminance { get; set; }
+        [JsonInclude, JsonPropertyName("TargetIlluminance"), Description("Target illuminance [lx]")]
+        public double TargetIlluminance { get; set; }
 
         public SystemProperties()
             : base()
@@ -38,9 +38,9 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             if(systemProperties != null)
             {
                 MetabolicRate = systemProperties.MetabolicRate;
-                DHW = systemProperties.DHW;
+                DomesticHotWater = systemProperties.DomesticHotWater;
                 OutsideAir = systemProperties.OutsideAir;
-                TargetRoomIlluminance = systemProperties.TargetRoomIlluminance;
+                TargetIlluminance = systemProperties.TargetIlluminance;
             }
         }
     }

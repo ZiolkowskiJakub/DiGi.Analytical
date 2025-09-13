@@ -6,25 +6,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class Roof<T> : Component<T>, IRoof where T : ISurface3D
     {
-        public Roof(T geometry)
+        public Roof(T? geometry)
             :base(geometry)
         {
 
         }
 
-        public Roof(Roof<T> roof)
+        public Roof(Roof<T>? roof)
             : base(roof)
         {
 
         }
 
-        public Roof(System.Guid guid, Roof<T> roof)
+        public Roof(System.Guid guid, Roof<T>? roof)
             : base(guid, roof)
         {
 
         }
 
-        public Roof(JsonObject jsonObject)
+        public Roof(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

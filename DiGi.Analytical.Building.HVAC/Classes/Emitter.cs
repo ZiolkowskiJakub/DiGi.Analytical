@@ -10,10 +10,10 @@ namespace DiGi.Analytical.Building.HVAC.Classes
     public abstract class Emitter : ParametrizedObject, IHVACNamedObject
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonInclude, JsonPropertyName("RadiantProportion"), Description("RadiantProportion [0-1]")]
         public Factor RadiantProportion { get; set; }
@@ -33,13 +33,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         }
 
-        public Emitter(JsonObject jsonObject)
+        public Emitter(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Emitter(Emitter emitter)
+        public Emitter(Emitter? emitter)
             : base(emitter)
         {
             if (emitter != null)

@@ -9,25 +9,25 @@ namespace DiGi.Analytical.Building.Classes
     public class SpaceInternalConditionRelation : OneToOneBidirectionalRelation<ISpace, IInternalCondition>, IBuildingRelation
     {
         [JsonInclude, JsonPropertyName("HourRange")]
-        private HourRange hourRange;
+        private readonly HourRange? hourRange;
 
         [JsonInclude, JsonPropertyName("Id")]
-        private string id;
+        private readonly string? id;
 
-        public SpaceInternalConditionRelation(ISpace space, IInternalCondition internalCondition, HourRange hourRange, string id)
+        public SpaceInternalConditionRelation(ISpace? space, IInternalCondition? internalCondition, HourRange? hourRange, string? id)
             : base(space, internalCondition)
         {
             this.hourRange = Core.Query.Clone(hourRange);
             this.id = id;
         }
 
-        public SpaceInternalConditionRelation(JsonObject jsonObject)
+        public SpaceInternalConditionRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public SpaceInternalConditionRelation(SpaceInternalConditionRelation spaceInternalConditionRelation)
+        public SpaceInternalConditionRelation(SpaceInternalConditionRelation? spaceInternalConditionRelation)
             :base(spaceInternalConditionRelation)
         {
             if(spaceInternalConditionRelation != null)
@@ -38,7 +38,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public HourRange HourRange
+        public HourRange? HourRange
         {
             get
             {
@@ -47,7 +47,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public string Id
+        public string? Id
         {
             get
             {

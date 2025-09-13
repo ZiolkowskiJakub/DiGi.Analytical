@@ -12,10 +12,10 @@ namespace DiGi.Analytical.Classes
     public abstract class AnalyticalGeometry : ParametrizedGuidObject, IAnalyticalGeometry
     {
         [JsonInclude, JsonPropertyName("UniqueReference"), Description("UniqueReference")]
-        private UniqueReference uniqueReference;
+        private readonly UniqueReference? uniqueReference;
 
         [JsonIgnore]
-        public UniqueReference UniqueReference
+        public UniqueReference? UniqueReference
         {
             get
             {
@@ -29,7 +29,7 @@ namespace DiGi.Analytical.Classes
 
         }
 
-        public AnalyticalGeometry(UniqueReference uniqueReference)
+        public AnalyticalGeometry(UniqueReference? uniqueReference)
             : base()
         {
             this.uniqueReference = uniqueReference?.Clone<UniqueReference>();
@@ -41,7 +41,7 @@ namespace DiGi.Analytical.Classes
 
         }
 
-        public AnalyticalGeometry(AnalyticalGeometry analyticalGeometry)
+        public AnalyticalGeometry(AnalyticalGeometry? analyticalGeometry)
             : base(analyticalGeometry)
         {
             if (analyticalGeometry != null)
@@ -50,7 +50,7 @@ namespace DiGi.Analytical.Classes
             }
         }
 
-        public AnalyticalGeometry(JsonObject jsonObject)
+        public AnalyticalGeometry(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
@@ -60,10 +60,10 @@ namespace DiGi.Analytical.Classes
     public abstract class AnalyticalGeometry<T> : AnalyticalGeometry, IAnalyticalGeometry<T> where T : IGeometry3D
     {
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
-        private T geometry;
+        private readonly T? geometry;
 
         [JsonIgnore]
-        public T Geometry
+        public T? Geometry
         {
             get
             {
@@ -82,7 +82,7 @@ namespace DiGi.Analytical.Classes
 
         }
 
-        public AnalyticalGeometry(T geometry)
+        public AnalyticalGeometry(T? geometry)
             : base()
         {
             if(geometry != null)
@@ -91,7 +91,7 @@ namespace DiGi.Analytical.Classes
             }
         }
 
-        public AnalyticalGeometry(UniqueReference uniqueReference, T geometry)
+        public AnalyticalGeometry(UniqueReference? uniqueReference, T? geometry)
             : base(uniqueReference)
         {
             if (geometry != null)
@@ -100,13 +100,13 @@ namespace DiGi.Analytical.Classes
             }
         }
 
-        public AnalyticalGeometry(UniqueReference uniqueReference)
+        public AnalyticalGeometry(UniqueReference? uniqueReference)
             : base(uniqueReference)
         {
 
         }
 
-        public AnalyticalGeometry(System.Guid guid, T geometry)
+        public AnalyticalGeometry(System.Guid guid, T? geometry)
             : base(guid)
         {
             if (geometry != null)
@@ -115,7 +115,7 @@ namespace DiGi.Analytical.Classes
             }
         }
 
-        public AnalyticalGeometry(AnalyticalGeometry<T> analyticalGeometry)
+        public AnalyticalGeometry(AnalyticalGeometry<T>? analyticalGeometry)
             : base(analyticalGeometry)
         {
             if(analyticalGeometry != null)
@@ -127,7 +127,7 @@ namespace DiGi.Analytical.Classes
             }
         }
 
-        public AnalyticalGeometry(JsonObject jsonObject)
+        public AnalyticalGeometry(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

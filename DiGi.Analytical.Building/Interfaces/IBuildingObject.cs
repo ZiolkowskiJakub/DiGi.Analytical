@@ -1,8 +1,8 @@
-﻿using DiGi.Core.Interfaces;
+﻿using DiGi.Analytical.Interfaces;
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IBuildingObject : IObject
+    public interface IBuildingObject : IAnalyticalObject
     {
 
     }

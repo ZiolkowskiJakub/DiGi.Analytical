@@ -5,25 +5,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class WallConstruction : ComponentConstruction<IWall>, IWallConstruction
     {
-        public WallConstruction(IStructure structure)
-            : base(structure)
+        public WallConstruction()
+            : base()
         {
 
         }
 
-        public WallConstruction(WallConstruction wallConstruction)
+        public WallConstruction(WallConstruction? wallConstruction)
             : base(wallConstruction)
         {
 
         }
 
-        public WallConstruction(System.Guid guid, WallConstruction wallConstruction)
+        public WallConstruction(System.Guid guid, WallConstruction? wallConstruction)
             : base(guid, wallConstruction)
         {
 
         }
 
-        public WallConstruction(JsonObject jsonObject)
+        public WallConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

@@ -1,8 +1,9 @@
-﻿using DiGi.Core.Interfaces;
+﻿
+using DiGi.Core.Interfaces;
 
 namespace DiGi.Analytical.Interfaces
 {
-    public interface IAnalyticalUniqueObject : IAnalyticalObject, IUniqueObject
+    public interface IAnalyticalGuidObject : IAnalyticalUniqueObject, IGuidObject
     {
     }
 }

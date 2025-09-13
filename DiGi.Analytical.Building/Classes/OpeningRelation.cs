@@ -6,13 +6,13 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class OpeningRelation : OneToManyBidirectionalRelation<IComponent, IOpening>, IBuildingRelation
     {
-        public OpeningRelation(IComponent component, IOpening opening)
-            : base(component, new List<IOpening>() { opening })
+        public OpeningRelation(IComponent? component, IOpening? opening)
+            : base(component, Core.Query.CloneAndFilterNulls([opening]))
         {
 
         }
 
-        public OpeningRelation(IComponent component, IEnumerable<IOpening> openings)
+        public OpeningRelation(IComponent? component, IEnumerable<IOpening>? openings)
             : base(component, openings)
         {
 

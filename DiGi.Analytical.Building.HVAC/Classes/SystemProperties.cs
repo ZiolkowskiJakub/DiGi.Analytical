@@ -26,13 +26,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         }
 
-        public SystemProperties(JsonObject jsonObject)
+        public SystemProperties(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public SystemProperties(SystemProperties systemProperties)
+        public SystemProperties(SystemProperties? systemProperties)
             : base(systemProperties)
         {
             if(systemProperties != null)

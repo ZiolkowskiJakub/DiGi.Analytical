@@ -10,13 +10,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         }
 
-        public HeatingEmitter(JsonObject jsonObject)
+        public HeatingEmitter(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public HeatingEmitter(HeatingEmitter heatingEmitter)
+        public HeatingEmitter(HeatingEmitter? heatingEmitter)
             : base(heatingEmitter)
         {
 

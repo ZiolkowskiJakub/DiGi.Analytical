@@ -6,14 +6,14 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static Mesh3D Mesh3D(this IBuildingGeometry3DObject buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
+        public static Mesh3D? Mesh3D(this IBuildingGeometry3DObject? buildingGeometryObject, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if (buildingGeometryObject == null)
             {
                 return null;
             }
 
-            List<Triangle3D> triangle3Ds = buildingGeometryObject.Triangulate(tolerance);
+            List<Triangle3D>? triangle3Ds = buildingGeometryObject.Triangulate(tolerance);
             if (triangle3Ds == null || triangle3Ds.Count == 0)
             {
                 return null;

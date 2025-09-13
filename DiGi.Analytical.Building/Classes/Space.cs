@@ -9,24 +9,24 @@ namespace DiGi.Analytical.Building.Classes
     public class Space : BuildingGeometry3DObject<Point3D>, ISpace
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        private string description;
+        private string? description;
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        private string name;
+        private string? name;
         
-        public Space(Point3D geometry, string name)
+        public Space(Point3D? geometry, string? name)
             : base(geometry)
         {
             this.name = name;
         }
 
-        public Space(JsonObject jsonObject)
+        public Space(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Space(System.Guid guid, Space space)
+        public Space(System.Guid guid, Space? space)
             : base(guid, space)
         {
             if (space != null)
@@ -36,7 +36,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Space(Space space)
+        public Space(Space? space)
             : base(space)
         {
             if (space != null)
@@ -47,7 +47,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public string Description
+        public string? Description
         {
             get
             {
@@ -61,7 +61,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public string Name
+        public string? Name
         {
             get
             {

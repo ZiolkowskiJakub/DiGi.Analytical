@@ -9,13 +9,13 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class BuildingGeometry3DObject : BuildingObject, IBuildingGeometry3DObject
     {
-        public BuildingGeometry3DObject(BuildingGeometry3DObject buildingGeometry3DObject)
+        public BuildingGeometry3DObject(BuildingGeometry3DObject? buildingGeometry3DObject)
             : base(buildingGeometry3DObject)
         {
 
         }
 
-        public BuildingGeometry3DObject(System.Guid guid, BuildingGeometry3DObject buildingGeometry3DObject)
+        public BuildingGeometry3DObject(System.Guid guid, BuildingGeometry3DObject? buildingGeometry3DObject)
             : base(guid, buildingGeometry3DObject)
         {
 
@@ -27,7 +27,7 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public BuildingGeometry3DObject(JsonObject jsonObject)
+        public BuildingGeometry3DObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
@@ -43,10 +43,10 @@ namespace DiGi.Analytical.Building.Classes
     public abstract class BuildingGeometry3DObject<T> : BuildingGeometry3DObject, IBuildingGeometry3DObject<T> where T : IGeometry3D
     {
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
-        private T geometry;
+        private readonly T? geometry;
 
         [JsonIgnore]
-        public T Geometry
+        public T? Geometry
         {
             get
             {
@@ -59,7 +59,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public BuildingGeometry3DObject(T geometry)
+        public BuildingGeometry3DObject(T? geometry)
             : base()
         {
 
@@ -69,13 +69,13 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public BuildingGeometry3DObject(JsonObject jsonObject)
+        public BuildingGeometry3DObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public BuildingGeometry3DObject(BuildingGeometry3DObject<T> buildingGeometry3DObject)
+        public BuildingGeometry3DObject(BuildingGeometry3DObject<T>? buildingGeometry3DObject)
             : base(buildingGeometry3DObject)
         {
             if(buildingGeometry3DObject != null)
@@ -87,7 +87,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public BuildingGeometry3DObject(System.Guid guid, BuildingGeometry3DObject<T> buildingGeometry3DObject)
+        public BuildingGeometry3DObject(System.Guid guid, BuildingGeometry3DObject<T>? buildingGeometry3DObject)
             : base(guid, buildingGeometry3DObject)
         {
             if (buildingGeometry3DObject != null)

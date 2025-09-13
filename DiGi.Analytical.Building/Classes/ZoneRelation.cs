@@ -6,13 +6,13 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class ZoneRelation : OneToManyBidirectionalRelation<IZone, ISpace>, IBuildingRelation
     {
-        public ZoneRelation(IZone zone, ISpace space)
-            : base(zone, new List<ISpace>() { space })
+        public ZoneRelation(IZone? zone, ISpace? space)
+            : base(zone, Core.Query.CloneAndFilterNulls([space]))
         {
 
         }
 
-        public ZoneRelation(IZone zone, IEnumerable<ISpace> spaces)
+        public ZoneRelation(IZone? zone, IEnumerable<ISpace>? spaces)
             : base(zone, spaces)
         {
 

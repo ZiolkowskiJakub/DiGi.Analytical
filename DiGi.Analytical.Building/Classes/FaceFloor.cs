@@ -6,25 +6,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class FaceFloor : Floor<IFace3D>, IFaceFloor
     {
-        public FaceFloor(FaceFloor faceFloor)
+        public FaceFloor(FaceFloor? faceFloor)
             : base(faceFloor)
         {
 
         }
 
-        public FaceFloor(IFace3D face3D)
+        public FaceFloor(IFace3D? face3D)
             : base(face3D)
         {
 
         }
 
-        public FaceFloor(System.Guid guid, FaceFloor faceFloor)
+        public FaceFloor(System.Guid guid, FaceFloor? faceFloor)
             : base(guid, faceFloor)
         {
 
         }
 
-        public FaceFloor(JsonObject jsonObject)
+        public FaceFloor(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

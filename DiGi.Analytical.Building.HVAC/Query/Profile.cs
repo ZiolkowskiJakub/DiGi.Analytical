@@ -5,7 +5,7 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static IProfile Profile(this IInternalCondition internalCondition, InternalGainProfileType internalGainProfileType)
+        public static IProfile? Profile(this IInternalCondition? internalCondition, InternalGainProfileType internalGainProfileType)
         {
             if (internalCondition == null || internalGainProfileType == InternalGainProfileType.Undefined)
             {
@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building.HVAC
             return internalCondition.InternalGain()?[internalGainProfileType];
         }
 
-        public static IProfile Profile(this IInternalCondition internalCondition, ThermostatProfileType thermostatProfileType)
+        public static IProfile? Profile(this IInternalCondition? internalCondition, ThermostatProfileType thermostatProfileType)
         {
             if (internalCondition == null || thermostatProfileType == ThermostatProfileType.Undefined)
             {

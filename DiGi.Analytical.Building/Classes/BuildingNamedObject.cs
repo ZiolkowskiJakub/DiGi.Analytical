@@ -5,13 +5,13 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class BuildingObject : Core.Parameter.Classes.ParametrizedGuidObject, IBuildingObject
     {
-        public BuildingObject(BuildingObject buildingObject)
+        public BuildingObject(BuildingObject? buildingObject)
             : base(buildingObject)
         {
 
         }
 
-        public BuildingObject(System.Guid guid, BuildingObject buildingObject)
+        public BuildingObject(System.Guid guid, BuildingObject? buildingObject)
             : base(guid, buildingObject)
         {
 
@@ -23,7 +23,7 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public BuildingObject(JsonObject jsonObject)
+        public BuildingObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

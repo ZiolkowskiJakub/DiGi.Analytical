@@ -7,14 +7,14 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static CoolingEmitter CoolingEmitter(this IInternalCondition internalCondition)
+        public static CoolingEmitter? CoolingEmitter(this IInternalCondition? internalCondition)
         {
             if(internalCondition == null)
             {
                 return null;
             }
 
-            if(!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.CoolingEmitter), out CoolingEmitter result, new GetValueSettings(true, false)))
+            if(!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.CoolingEmitter), out CoolingEmitter? result, new GetValueSettings(true, false)))
             {
                 return null;
             }

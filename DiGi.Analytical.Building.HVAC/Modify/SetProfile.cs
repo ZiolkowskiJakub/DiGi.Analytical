@@ -7,14 +7,14 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Modify
     {
-        public static bool SetProfile(this InternalCondition internalCondition, InternalGainProfileType internalGainProfileType, IProfile profile)
+        public static bool SetProfile(this InternalCondition? internalCondition, InternalGainProfileType internalGainProfileType, IProfile? profile)
         {
             if (internalCondition == null)
             {
                 return false;
             }
 
-            InternalGain internalGain = internalCondition.InternalGain();
+            InternalGain? internalGain = internalCondition.InternalGain();
             if(internalGain == null)
             {
                 if(profile == null)
@@ -30,14 +30,14 @@ namespace DiGi.Analytical.Building.HVAC
             return internalCondition.SetInternalGain(internalGain);
         }
 
-        public static bool SetProfile(this InternalCondition internalCondition, ThermostatProfileType thermostatProfileType, IProfile profile)
+        public static bool SetProfile(this InternalCondition? internalCondition, ThermostatProfileType thermostatProfileType, IProfile? profile)
         {
             if (internalCondition == null)
             {
                 return false;
             }
 
-            Thermostat thermostat = internalCondition.Thermostat();
+            Thermostat? thermostat = internalCondition.Thermostat();
             if (thermostat == null)
             {
                 if (profile == null)

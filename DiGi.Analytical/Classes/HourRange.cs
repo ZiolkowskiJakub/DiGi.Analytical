@@ -5,7 +5,7 @@ namespace DiGi.Analytical.Classes
 {
     public class HourRange : Range<int>
     {
-        public HourRange(Range<int> range)
+        public HourRange(Range<int>? range)
             :base(range)
         {
 
@@ -17,13 +17,13 @@ namespace DiGi.Analytical.Classes
 
         }
 
-        public HourRange(HourRange hourRange)
+        public HourRange(HourRange? hourRange)
             :base(hourRange)
         {
 
         }
 
-        public HourRange(JsonObject jsonObject)
+        public HourRange(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

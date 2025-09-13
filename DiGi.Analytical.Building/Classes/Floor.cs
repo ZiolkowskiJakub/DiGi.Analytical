@@ -6,25 +6,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class Floor<T> : Component<T>, IFloor where T : IGeometry3D
     {
-        public Floor(T geometry)
+        public Floor(T? geometry)
             :base(geometry)
         {
 
         }
 
-        public Floor(Floor<T> wall)
+        public Floor(Floor<T>? wall)
             : base(wall)
         {
 
         }
 
-        public Floor(System.Guid guid, Floor<T> floor)
+        public Floor(System.Guid guid, Floor<T>? floor)
             : base(guid, floor)
         {
 
         }
 
-        public Floor(JsonObject jsonObject)
+        public Floor(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

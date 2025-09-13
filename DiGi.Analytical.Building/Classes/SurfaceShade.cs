@@ -6,25 +6,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class SurfaceShade : Shade<ISurface3D>, ISurfaceShade
     {
-        public SurfaceShade(SurfaceShade surfaceShade)
+        public SurfaceShade(SurfaceShade? surfaceShade)
             : base(surfaceShade)
         {
 
         }
 
-        public SurfaceShade(ISurface3D surface3D)
+        public SurfaceShade(ISurface3D? surface3D)
             : base(surface3D)
         {
 
         }
 
-        public SurfaceShade(System.Guid guid, SurfaceShade surfaceShade)
+        public SurfaceShade(System.Guid guid, SurfaceShade? surfaceShade)
             : base(guid, surfaceShade)
         {
 
         }
 
-        public SurfaceShade(JsonObject jsonObject)
+        public SurfaceShade(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

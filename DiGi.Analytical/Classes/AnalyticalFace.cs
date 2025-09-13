@@ -8,17 +8,17 @@ namespace DiGi.Analytical.Classes
 {
     public class AnalyticalFace : AnalyticalGeometry<PolygonalFace3D>, IAnalyticalFace, IPolygonalFace3DObject
     {
-        public AnalyticalFace(PolygonalFace3D polygonalFace3D)
+        public AnalyticalFace(PolygonalFace3D? polygonalFace3D)
             :base(polygonalFace3D)
         {
         }
 
-        public AnalyticalFace(UniqueReference uniqueReference, PolygonalFace3D polygonalFace3D)
-            : base(polygonalFace3D)
+        public AnalyticalFace(UniqueReference? uniqueReference, PolygonalFace3D? polygonalFace3D)
+            : base(uniqueReference, polygonalFace3D)
         {
         }
 
-        public AnalyticalFace(AnalyticalFace analyticalFace)
+        public AnalyticalFace(AnalyticalFace? analyticalFace)
             :base(analyticalFace)
         {
 

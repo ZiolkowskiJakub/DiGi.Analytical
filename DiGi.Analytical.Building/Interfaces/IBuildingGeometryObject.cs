@@ -8,8 +8,8 @@ namespace DiGi.Analytical.Building.Interfaces
 
     }
 
-    public interface IBuildingGeometryObject<T> : IBuildingGeometry3DObject, IGeometryObject<T> where T: IGeometry
+    public interface IBuildingGeometryObject<TGeometry> : IBuildingGeometry3DObject, IGeometryObject<TGeometry> where TGeometry: IGeometry
     {
-        T Geometry { get; }
+
     }
 }

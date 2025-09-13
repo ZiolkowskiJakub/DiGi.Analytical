@@ -9,26 +9,26 @@ namespace DiGi.Analytical.Building.Classes
     public class Profile : SerializableObject, IProfile
     {
         [JsonInclude, JsonPropertyName("Values")]
-        private List<double> values;
+        private readonly List<double>? values;
 
-        public Profile(IEnumerable<double> values)
+        public Profile(IEnumerable<double>? values)
             : base()
         {
-            this.values = values == null ? null : new List<double>(values);
+            this.values = values == null ? null : [.. values];
         }
 
-        public Profile(JsonObject jsonObject)
+        public Profile(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Profile(Profile profile)
+        public Profile(Profile? profile)
             : base(profile)
         {
             if (profile != null)
             {
-                values = profile.values == null ? null : new List<double>(profile.values);
+                values = profile.values == null ? null : [.. profile.values];
             }
         }
 
@@ -42,7 +42,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public double[] Values
+        public double[]? Values
         {
             get
             {

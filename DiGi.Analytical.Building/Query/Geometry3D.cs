@@ -5,19 +5,18 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static TGeometry3D Geometry3D<TGeometry3D>(this IBuildingGeometry3DObject buildingGeometry3DObject) where TGeometry3D : IGeometry3D
+        public static TGeometry3D? Geometry3D<TGeometry3D>(this IBuildingGeometry3DObject? buildingGeometry3DObject) where TGeometry3D : IGeometry3D
         {
             if (buildingGeometry3DObject == null)
             {
                 return default;
             }
 
-            IGeometry3D geometry3D = null;
+            IGeometry3D? geometry3D = null;
 
             if (buildingGeometry3DObject is IBuildingGeometry3DObject<ISurface3D>)
             {
-                IPolygonalFace3D polygonalFace3D = ((IBuildingGeometryObject<ISurface3D>)buildingGeometry3DObject).Geometry as IPolygonalFace3D;
-                if (polygonalFace3D == null)
+                if (((IBuildingGeometryObject<ISurface3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
                 {
                     throw new System.NotImplementedException();
                 }
@@ -26,8 +25,7 @@ namespace DiGi.Analytical.Building
             }
             else if (buildingGeometry3DObject is IBuildingGeometry3DObject<IFace3D>)
             {
-                IPolygonalFace3D polygonalFace3D = ((IBuildingGeometryObject<IFace3D>)buildingGeometry3DObject).Geometry as IPolygonalFace3D;
-                if (polygonalFace3D == null)
+                if (((IBuildingGeometryObject<IFace3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
                 {
                     throw new System.NotImplementedException();
                 }
@@ -37,16 +35,14 @@ namespace DiGi.Analytical.Building
             }
             else if (buildingGeometry3DObject is IBuildingGeometry3DObject<ICurve3D>)
             {
-                ISegmentable3D segmentable3D = ((IBuildingGeometryObject<ICurve3D>)buildingGeometry3DObject).Geometry as ISegmentable3D;
-                if (segmentable3D == null)
+                if (((IBuildingGeometryObject<ICurve3D>)buildingGeometry3DObject).Geometry is not ISegmentable3D)
                 {
                     throw new System.NotImplementedException();
                 }
 
-                if (buildingGeometry3DObject is Classes.CurveWall)
+                if (buildingGeometry3DObject is Classes.CurveWall wall)
                 {
-                    IPolygonalFace3D polygonalFace3D = ((Classes.CurveWall)buildingGeometry3DObject).GetSurface3D() as IPolygonalFace3D;
-                    if (polygonalFace3D == null)
+                    if (wall.GetSurface3D() is not IPolygonalFace3D polygonalFace3D)
                     {
                         throw new System.NotImplementedException();
                     }
@@ -55,9 +51,9 @@ namespace DiGi.Analytical.Building
                 }
             }
 
-            if(geometry3D is TGeometry3D)
+            if(geometry3D is TGeometry3D geometry3D_Temp)
             {
-                return (TGeometry3D)geometry3D;
+                return geometry3D_Temp;
             }
 
             return default;

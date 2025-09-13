@@ -9,7 +9,7 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static IndexedDoubles IndexedDoubles(this BuildingModel buildingModel, ISpace space, Range<int> range, System.Enum @enum, string id = null)
+        public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, System.Enum? @enum, string? id = null)
         {
             if (buildingModel == null || space == null || range == null)
             {
@@ -21,7 +21,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return null;
             }
 
-            List<SpaceInternalCondition> spaceInternalConditions = buildingModel.GetSpaceInternalConditions(space);
+            List<SpaceInternalCondition>? spaceInternalConditions = buildingModel.GetSpaceInternalConditions(space);
             if (spaceInternalConditions == null)
             {
                 return null;
@@ -31,7 +31,7 @@ namespace DiGi.Analytical.Building.HVAC
             {
                 SpaceInternalCondition spaceInternalCondition = spaceInternalConditions[i];
 
-                if (spaceInternalCondition?.Range != null && spaceInternalCondition.Id == id)
+                if (spaceInternalCondition?.HourRange != null && spaceInternalCondition.Id == id)
                 {
                     continue;
                 }
@@ -44,9 +44,9 @@ namespace DiGi.Analytical.Building.HVAC
                 return null;
             }
 
-            spaceInternalConditions.Sort((x, y) => x.Range.Min.CompareTo(y.Range.Min));
+            spaceInternalConditions.Sort((x, y) => x.HourRange!.Min.CompareTo(y.HourRange!.Min));
 
-            IndexedDoubles result = new IndexedDoubles();
+            IndexedDoubles result = [];
 
             int count_SpaceInternalConditions = spaceInternalConditions.Count;
 
@@ -54,11 +54,11 @@ namespace DiGi.Analytical.Building.HVAC
             {
                 SpaceInternalCondition spaceInternalCondition = spaceInternalConditions[i];
 
-                Range<int> range_Profile = spaceInternalCondition.Range;
+                Range<int> range_Profile = spaceInternalCondition.HourRange!;
 
                 IProfile profile = Query.Profile(spaceInternalCondition.InternalCondition, (dynamic)@enum);
 
-                double[] values_Profile = profile?.Values;
+                double[]? values_Profile = profile?.Values;
                 if (values_Profile == null || values_Profile.Length == 0)
                 {
                     for (int j = range_Profile.Min; j >= range_Profile.Max; j++)
@@ -85,7 +85,7 @@ namespace DiGi.Analytical.Building.HVAC
                     continue;
                 }
 
-                int count_Missing = spaceInternalConditions[i + 1].Range.Min - max_SpaceInternalCondition - 1;
+                int count_Missing = spaceInternalConditions[i + 1].HourRange!.Min - max_SpaceInternalCondition - 1;
                 for (int j = 0; j < count_Missing; j++)
                 {
                     result[max_SpaceInternalCondition + j + 1] = values_Profile[j % count_Profile];
@@ -98,12 +98,12 @@ namespace DiGi.Analytical.Building.HVAC
                 return result;
             }
 
-            List<double> values = null;
+            List<double>? values = null;
             int count_Values = -1;
 
             if (max.Value < range.Max)
             {
-                values = result.Values.ToList();
+                values = [.. result.Values!];
                 count_Values = values.Count;
 
                 int count_Missing = range.Max - max.Value;
@@ -123,7 +123,7 @@ namespace DiGi.Analytical.Building.HVAC
             {
                 if (values == null)
                 {
-                    values = result.Values.ToList();
+                    values = [.. result.Values!];
                     count_Values = values.Count;
                 }
 
@@ -137,7 +137,7 @@ namespace DiGi.Analytical.Building.HVAC
             return result;
         }
 
-        public static IndexedDoubles IndexedDoubles(this BuildingModel buildingModel, ISpace space, Range<int> range, ThermostatProfileType thermostatProfileType, string id = null)
+        public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, ThermostatProfileType thermostatProfileType, string? id = null)
         {
             if(buildingModel == null || space == null || range == null || thermostatProfileType == ThermostatProfileType.Undefined)
             {
@@ -147,7 +147,7 @@ namespace DiGi.Analytical.Building.HVAC
             return IndexedDoubles(buildingModel, space, range, (System.Enum)thermostatProfileType, id);
         }
 
-        public static IndexedDoubles IndexedDoubles(this BuildingModel buildingModel, ISpace space, int start, int end, ThermostatProfileType thermostatProfileType, string id = null)
+        public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, int start, int end, ThermostatProfileType thermostatProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || thermostatProfileType == ThermostatProfileType.Undefined)
             {
@@ -157,7 +157,7 @@ namespace DiGi.Analytical.Building.HVAC
             return IndexedDoubles(buildingModel, space, new Range<int>(start, end), (System.Enum)thermostatProfileType, id);
         }
 
-        public static IndexedDoubles IndexedDoubles(this BuildingModel buildingModel, ISpace space, Range<int> range, InternalGainProfileType internalGainProfileType, string id = null)
+        public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, InternalGainProfileType internalGainProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || range == null || internalGainProfileType == InternalGainProfileType.Undefined)
             {
@@ -167,7 +167,7 @@ namespace DiGi.Analytical.Building.HVAC
             return IndexedDoubles(buildingModel, space, range, (System.Enum)internalGainProfileType, id);
         }
 
-        public static IndexedDoubles IndexedDoubles(this BuildingModel buildingModel, ISpace space, int start, int end, InternalGainProfileType internalGainProfileType, string id = null)
+        public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, int start, int end, InternalGainProfileType internalGainProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || internalGainProfileType == InternalGainProfileType.Undefined)
             {

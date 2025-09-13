@@ -6,25 +6,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class WindowConstruction : OpeningConstruction<IWindow>, IWindowConstruction
     {
-        public WindowConstruction(string name, ISurface2D surface2D, IStructure frameStructure, IStructure paneStructure)
-            : base(name,surface2D, frameStructure, paneStructure)
+        public WindowConstruction(string? name, ISurface2D? surface2D)
+            : base(name,surface2D)
         {
 
         }
 
-        public WindowConstruction(WindowConstruction windowConstruction)
+        public WindowConstruction(WindowConstruction? windowConstruction)
             : base(windowConstruction)
         {
 
         }
 
-        public WindowConstruction(System.Guid guid, WindowConstruction windowConstruction)
+        public WindowConstruction(System.Guid guid, WindowConstruction? windowConstruction)
             : base(guid, windowConstruction)
         {
 
         }
 
-        public WindowConstruction(JsonObject jsonObject)
+        public WindowConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

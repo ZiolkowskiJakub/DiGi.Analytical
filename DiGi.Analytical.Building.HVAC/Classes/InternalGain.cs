@@ -13,10 +13,10 @@ namespace DiGi.Analytical.Building.HVAC.Classes
     public class InternalGain : ParametrizedObject, IHVACNamedObject
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonInclude, JsonPropertyName("LightingRadiantProportion"), Description("LightingRadiantProportion [0-1]")]
         public Factor LightingRadiantProportion { get; set; }
@@ -37,7 +37,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public Factor EquipmentViewCoefficient { get; set; }
 
         [JsonInclude, JsonPropertyName("Profiles"), Description("Profiles")]
-        private Dictionary<InternalGainProfileType, IProfile> profiles;
+        private Dictionary<InternalGainProfileType, IProfile>? profiles;
 
         public InternalGain()
             : base()
@@ -45,13 +45,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         }
 
-        public InternalGain(JsonObject jsonObject)
+        public InternalGain(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public InternalGain(InternalGain internalGain)
+        public InternalGain(InternalGain? internalGain)
             : base(internalGain)
         {
             if (internalGain != null)
@@ -61,16 +61,19 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
                 if(internalGain.profiles != null)
                 {
-                    profiles = new Dictionary<InternalGainProfileType, IProfile>();
+                    profiles = [];
                     foreach(KeyValuePair<InternalGainProfileType, IProfile> keyValuePair in profiles)
                     {
-                        profiles[keyValuePair.Key] = Core.Query.Clone(keyValuePair.Value);
+                        if(Core.Query.Clone(keyValuePair.Value) is IProfile profile)
+                        {
+                            profiles[keyValuePair.Key] = profile;
+                        }
                     }
                 }
             }
         }
 
-        public IProfile this[InternalGainProfileType internalGainProfileType]
+        public IProfile? this[InternalGainProfileType internalGainProfileType]
         {
             get
             {
@@ -89,9 +92,11 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
             set
             {
-                if(profiles == null)
+                profiles ??= [];
+
+                if(value == null)
                 {
-                    profiles = new Dictionary<InternalGainProfileType, IProfile>();
+                    return;
                 }
 
                 profiles[internalGainProfileType] = value;

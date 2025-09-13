@@ -16,30 +16,51 @@ namespace DiGi.Analytical.Building.Classes
     public class BuildingModel : ParametrizedGuidObject, IBuildingGuidObject, IGuidModel
     {
         [JsonInclude, JsonPropertyName("BuildingRelationCluster"), System.ComponentModel.Description("BuildingRelationCluster")]
-        private BuildingRelationCluster buildingRelationCluster = new BuildingRelationCluster();
+        private readonly BuildingRelationCluster buildingRelationCluster = [];
 
+        [JsonInclude, JsonPropertyName("BuildingInformation"), System.ComponentModel.Description("BuildingInformation")]
+        private BuildingInformation buildingInformation = new ();
         public BuildingModel() 
             : base()
         {
             
         }
 
-        public BuildingModel(BuildingModel buildingModel)
+        public BuildingModel(BuildingModel? buildingModel)
             : base(buildingModel)
         {
             if(buildingModel != null)
             {
-                buildingRelationCluster = Core.Query.Clone(buildingModel.buildingRelationCluster);
+                buildingRelationCluster = Core.Query.Clone(buildingModel.buildingRelationCluster) ?? [];
             }
         }
 
-        public BuildingModel(JsonObject jsonObject)
+        public BuildingModel(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public bool Assign(IWall wall, IWallConstruction wallConstruction)
+        [JsonIgnore]
+        public BuildingInformation BuildingInformation
+        {
+            get
+            {
+                return buildingInformation;
+            }
+
+            set
+            {
+                if (value is null)
+                {
+                    return;
+                }
+
+                buildingInformation = value;
+            }
+        }
+
+        public bool Assign(IWall? wall, IWallConstruction? wallConstruction)
         {
             if (wall == null || wallConstruction == null)
             {
@@ -60,7 +81,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(wall, wallConstruction) != null;
         }
 
-        public bool Assign(IRoof roof, IRoofConstruction roofConstruction)
+        public bool Assign(IRoof? roof, IRoofConstruction? roofConstruction)
         {
             if (roof == null || roofConstruction == null)
             {
@@ -81,7 +102,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(roof, roofConstruction) != null;
         }
 
-        public bool Assign(IFloor floor, IFloorConstruction floorConstruction)
+        public bool Assign(IFloor? floor, IFloorConstruction? floorConstruction)
         {
             if (floor == null || floorConstruction == null)
             {
@@ -102,7 +123,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(floor, floorConstruction) != null;
         }
 
-        public bool Assign(IWindow window, IWindowConstruction windowConstruction)
+        public bool Assign(IWindow? window, IWindowConstruction? windowConstruction)
         {
             if (window == null || windowConstruction == null)
             {
@@ -123,7 +144,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(window, windowConstruction) != null;
         }
 
-        public bool Assign(IDoor door, IDoorConstruction doorConstruction)
+        public bool Assign(IDoor? door, IDoorConstruction? doorConstruction)
         {
             if (door == null || doorConstruction == null)
             {
@@ -144,7 +165,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(door, doorConstruction) != null;
         }
 
-        public bool Assign(IComponent component, ISpace space_1, ISpace space_2 = null)
+        public bool Assign(IComponent? component, ISpace? space_1, ISpace? space_2 = null)
         {
             if (component == null || space_1 == null)
             {
@@ -173,7 +194,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(component, space_1, space_2) != null;
         }
 
-        public bool Assign(IZone zone, IEnumerable<ISpace> spaces)
+        public bool Assign(IZone? zone, IEnumerable<ISpace>? spaces)
         {
             if (zone == null || spaces == null)
             {
@@ -185,7 +206,7 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            List<ISpace> spaces_Temp = new List<ISpace>();
+            List<ISpace> spaces_Temp = [];
             foreach(ISpace space in spaces)
             {
                 if (Update(space))
@@ -197,7 +218,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(zone, spaces_Temp) != null;
         }
 
-        public bool Assign(ISpace space, IInternalCondition internalCondition, HourRange hourRange, string id = null)
+        public bool Assign(ISpace? space, IInternalCondition? internalCondition, HourRange? hourRange, string? id = null)
         {
             if (space == null || internalCondition == null)
             {
@@ -217,7 +238,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.AddRelation(space, internalCondition, hourRange, id) != null;
         }
 
-        public bool Assign<TSpace>(IEnumerable<TSpace> spaces, IInternalCondition internalCondition, HourRange hourRange, string id = null) where TSpace : ISpace
+        public bool Assign<TSpace>(IEnumerable<TSpace>? spaces, IInternalCondition? internalCondition, HourRange? hourRange, string? id = null) where TSpace : ISpace
         {
             if (internalCondition == null || spaces == null)
             {
@@ -236,166 +257,166 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public T GetComponent<T>(IOpening opening) where T : IComponent
+        public TComponent? GetComponent<TComponent>(IOpening? opening) where TComponent : IComponent
         {
             if (opening == null)
             {
                 return default;
             }
 
-            OpeningRelation openingRelation = GetRelation<OpeningRelation>(opening);
+            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(opening);
             if (opening == null)
             {
                 return default;
             }
 
-            IComponent component = buildingRelationCluster?.GetComponent(openingRelation);
+            IComponent? component = buildingRelationCluster?.GetComponent(openingRelation);
             if (component == null)
             {
                 return default;
             }
 
-            if (component is T)
+            if (component is TComponent component_Temp)
             {
-                return ((T)component).Clone<T>();
+                return component_Temp.Clone<TComponent>();
             }
 
             return default;
         }
 
-        public List<T> GetComponents<T>(IComponentConstruction componentConstruction) where T : IComponent
+        public List<TComponent>? GetComponents<TComponent>(IComponentConstruction? componentConstruction) where TComponent : IComponent
         {
             if (buildingRelationCluster == null || componentConstruction == null)
             {
                 return null;
             }
 
-            List<ComponentConstructionRelation> componentConstructionRelations = GetRelations<ComponentConstructionRelation>(componentConstruction);
+            List<ComponentConstructionRelation>? componentConstructionRelations = GetRelations<ComponentConstructionRelation>(componentConstruction);
             if (componentConstructionRelations == null)
             {
                 return default;
             }
 
-            List<T> result = new List<T>();
+            List<TComponent> result = [];
             foreach (ComponentConstructionRelation constructionRelation in componentConstructionRelations)
             {
-                IComponent component = buildingRelationCluster.GetComponent(constructionRelation);
-                if (component is T)
+                IComponent? component = buildingRelationCluster.GetComponent(constructionRelation);
+                if (component is TComponent component_Temp)
                 {
-                    result.Add((T)component);
+                    result.Add(component_Temp);
                 }
             }
 
-            return result.ConvertAll(x => x.Clone<T>());
+            return result.CloneAndFilterNulls();
         }
 
-        public List<T> GetComponents<T>(ISpace space) where T : IComponent
+        public List<TComponent>? GetComponents<TComponent>(ISpace? space) where TComponent : IComponent
         {
             if (buildingRelationCluster == null || space == null)
             {
                 return null;
             }
 
-            List<SpaceRelation> spaceRelations = GetRelations<SpaceRelation>(space);
+            List<SpaceRelation>? spaceRelations = GetRelations<SpaceRelation>(space);
             if (spaceRelations == null)
             {
                 return default;
             }
 
-            List<T> result = new List<T>();
+            List<TComponent> result = [];
             foreach (SpaceRelation spaceRelation in spaceRelations)
             {
-                IComponent component = buildingRelationCluster.GetComponent(spaceRelation);
-                if (component is T)
+                IComponent? component = buildingRelationCluster.GetComponent(spaceRelation);
+                if (component is TComponent component_Temp)
                 {
-                    result.Add((T)component);
+                    result.Add(component_Temp);
                 }
             }
 
-            return result.ConvertAll(x => x.Clone<T>());
+            return result.CloneAndFilterNulls();
         }
 
-        public List<T> GetComponents<T>(ISpace space_1, ISpace space_2) where T : IComponent
+        public List<TComponent>? GetComponents<TComponent>(ISpace? space_1, ISpace? space_2) where TComponent : IComponent
         {
             if (buildingRelationCluster == null || space_1 == null || space_2 == null)
             {
                 return null;
             }
 
-            GuidReference guidReference = new GuidReference(space_2);
+            GuidReference guidReference = new(space_2);
 
-            List<SpaceRelation> spaceRelations = GetRelations(space_1, (SpaceRelation x) => x.UniqueReferences_To.Contains(guidReference));
+            List<SpaceRelation>? spaceRelations = GetRelations(space_1, (SpaceRelation? x) =>  x?.UniqueReferences_To is not null && x.UniqueReferences_To.Contains(guidReference));
             if (spaceRelations == null)
             {
                 return default;
             }
 
-            List<T> result = new List<T>();
+            List<TComponent> result = [];
             foreach (SpaceRelation spaceRelation in spaceRelations)
             {
-                IComponent component = buildingRelationCluster.GetComponent(spaceRelation);
-                if (component is T)
+                IComponent? component = buildingRelationCluster.GetComponent(spaceRelation);
+                if (component is TComponent component_Temp)
                 {
-                    result.Add((T)component);
+                    result.Add(component_Temp);
                 }
             }
 
-            return result.ConvertAll(x => x.Clone<T>());
+            return result.CloneAndFilterNulls();
         }
 
-        public List<TComponent> GetComponents<TComponent>() where TComponent : IComponent
+        public List<TComponent>? GetComponents<TComponent>() where TComponent : IComponent
         {
-            return buildingRelationCluster.GetComponents<TComponent>().ConvertAll(x => x.Clone<TComponent>());
+            return buildingRelationCluster.GetComponents<TComponent>().CloneAndFilterNulls();
         }
 
-        public IWallConstruction GetConstruction(IWall wall)
+        public IWallConstruction? GetConstruction(IWall? wall)
         {
             return GetConstruction<IWallConstruction>(wall);
         }
 
-        public IFloorConstruction GetConstruction(IFloor wall)
+        public IFloorConstruction? GetConstruction(IFloor? wall)
         {
             return GetConstruction<IFloorConstruction>(wall);
         }
 
-        public IRoofConstruction GetConstruction(IRoof roof)
+        public IRoofConstruction? GetConstruction(IRoof? roof)
         {
             return GetConstruction<IRoofConstruction>(roof);
         }
 
-        public IWindowConstruction GetConstruction(IWindow window)
+        public IWindowConstruction? GetConstruction(IWindow? window)
         {
             return GetConstruction<IWindowConstruction>(window);
         }
 
-        public IDoorConstruction GetConstruction(IDoor door)
+        public IDoorConstruction? GetConstruction(IDoor? door)
         {
             return GetConstruction<IDoorConstruction>(door);
         }
 
-        public List<TInternalCondition> GetInternalConditions<TInternalCondition>(ISpace space) where TInternalCondition : IInternalCondition
+        public List<TInternalCondition>? GetInternalConditions<TInternalCondition>(ISpace? space) where TInternalCondition : IInternalCondition
         {
             if (buildingRelationCluster == null || space == null)
             {
                 return default;
             }
 
-            List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
+            List<SpaceInternalConditionRelation>? spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
             if (spaceInternalConditionRelations == null)
             {
                 return default;
             }
 
-            List<TInternalCondition> result = new List<TInternalCondition>();
+            List<TInternalCondition> result = [];
             foreach(SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
-                IInternalCondition internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
-                if (internalCondition is TInternalCondition)
+                IInternalCondition? internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
+                if (internalCondition is TInternalCondition internalCondition_Temp)
                 {
-                    TInternalCondition internalCondition_Temp = ((TInternalCondition)internalCondition).Clone<TInternalCondition>();
-                    if(internalCondition_Temp != null)
+                    TInternalCondition? internalCondition_Temp_Temp = internalCondition_Temp.Clone<TInternalCondition>();
+                    if(internalCondition_Temp_Temp != null)
                     {
-                        result.Add(internalCondition_Temp);
+                        result.Add(internalCondition_Temp_Temp);
                     }
                 }
             }
@@ -403,9 +424,9 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public T GetObject<T>(GuidReference uniqueReference) where T : IBuildingGuidObject
+        public TBuildingGuidObject? GetObject<TBuildingGuidObject>(GuidReference? uniqueReference) where TBuildingGuidObject : IBuildingGuidObject
         {
-            if (!TryGetObject(uniqueReference, out T result))
+            if (!TryGetObject(uniqueReference, out TBuildingGuidObject? result))
             {
                 return result;
             }
@@ -413,14 +434,14 @@ namespace DiGi.Analytical.Building.Classes
             return default;
         }
 
-        public T GetObject<T>(IBuildingRelation buildingRelation) where T : IBuildingGuidObject
+        public TBuildingGuidObject? GetObject<TBuildingGuidObject>(IBuildingRelation? buildingRelation) where TBuildingGuidObject : IBuildingGuidObject
         {
             if (buildingRelation == null || buildingRelationCluster == null)
             {
                 return default;
             }
 
-            List<IUniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
+            List<IUniqueReference>? uniqueReferences = buildingRelation?.UniqueReferences;
             if (uniqueReferences == null)
             {
                 return default;
@@ -428,62 +449,61 @@ namespace DiGi.Analytical.Building.Classes
 
             foreach (IUniqueReference uniqueReference in uniqueReferences)
             {
-                GuidReference guidReference = uniqueReference as GuidReference;
-                if (guidReference == null)
+                if (uniqueReference is not GuidReference guidReference)
                 {
                     continue;
                 }
 
-                if (!buildingRelationCluster.TryGetValue(guidReference, out T result))
+                if (!buildingRelationCluster.TryGetValue(guidReference, out TBuildingGuidObject? result))
                 {
-                    return result.Clone<T>();
+                    return result.Clone<TBuildingGuidObject>();
                 }
             }
 
             return default;
         }
 
-        public List<T> GetObjects<T>(IBuildingRelation buildingRelation) where T : IBuildingGuidObject
+        public List<TBuildingGuidObject>? GetObjects<TBuildingGuidObject>(IBuildingRelation? buildingRelation) where TBuildingGuidObject : IBuildingGuidObject
         {
             if (buildingRelation == null || buildingRelationCluster == null)
             {
                 return null;
             }
 
-            List<IUniqueReference> uniqueReferences = buildingRelation?.UniqueReferences;
+            List<IUniqueReference>? uniqueReferences = buildingRelation?.UniqueReferences;
             if (uniqueReferences == null)
             {
                 return null;
             }
 
-            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<T> result))
+            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<TBuildingGuidObject>? result))
             {
                 return null;
             }
 
-            return result.ConvertAll(x => x.Clone<T>());
+            return result.CloneAndFilterNulls();
         }
 
-        public List<T> GetOpenings<T>(IComponent component) where T : IOpening
+        public List<TOpening>? GetOpenings<TOpening>(IComponent? component) where TOpening : IOpening
         {
             if (buildingRelationCluster == null || component == null)
             {
                 return null;
             }
 
-            OpeningRelation openingRelation = GetRelation<OpeningRelation>(component);
+            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(component);
             if (openingRelation == null)
             {
                 return null;
             }
 
-            List<IUniqueReference> uniqueReferences = openingRelation.UniqueReferences_To;
+            List<IUniqueReference>? uniqueReferences = openingRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 return null;
             }
 
-            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<T> result))
+            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<TOpening>? result))
             {
                 return null;
             }
@@ -491,51 +511,51 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public List<T> GetOpenings<T>(Func<T, bool> func = null) where T : IOpening
+        public List<TOpening>? GetOpenings<TOpening>(Func<TOpening?, bool>? func = null) where TOpening : IOpening
         {
             if (buildingRelationCluster == null)
             {
                 return null;
             }
 
-            return buildingRelationCluster?.GetValues(func)?.ConvertAll(x => x.Clone<T>());
+            return buildingRelationCluster?.GetValues(func)?.CloneAndFilterNulls();
         }
 
-        public List<T> GetOpenings<T>(IOpeningConstruction openingConstruction) where T : IOpening
+        public List<TOpening>? GetOpenings<TOpening>(IOpeningConstruction? openingConstruction) where TOpening : IOpening
         {
             if (buildingRelationCluster == null || openingConstruction == null)
             {
                 return null;
             }
 
-            List<OpeningConstructionRelation> openingConstructionRelations = GetRelations<OpeningConstructionRelation>(openingConstruction);
+            List<OpeningConstructionRelation>? openingConstructionRelations = GetRelations<OpeningConstructionRelation>(openingConstruction);
             if (openingConstructionRelations == null)
             {
                 return default;
             }
 
-            List<T> result = new List<T>();
+            List<TOpening> result = [];
             foreach (OpeningConstructionRelation openingConstructionRelation in openingConstructionRelations)
             {
-                IOpening opening = buildingRelationCluster.GetOpening(openingConstructionRelation);
-                if (opening is T)
+                IOpening? opening = buildingRelationCluster.GetOpening(openingConstructionRelation);
+                if (opening is TOpening opening_Temp)
                 {
-                    result.Add((T)opening);
+                    result.Add(opening_Temp);
                 }
             }
 
-            return result.ConvertAll(x => x.Clone<T>());
+            return result.CloneAndFilterNulls();
         }
 
-        public T GetRelation<T>(IBuildingGuidObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
+        public TBuildingRelation? GetRelation<TBuildingRelation>(IBuildingGuidObject? buildingUniqueObject, Func<TBuildingRelation?, bool>? func = null) where TBuildingRelation : IBuildingRelation
         {
             if (buildingUniqueObject == null || buildingRelationCluster == null)
             {
                 return default;
             }
 
-            GuidReference guidReference = new GuidReference(buildingUniqueObject);
-            if (guidReference == null)
+            GuidReference guidReference = new(buildingUniqueObject);
+            if (guidReference is null)
             {
                 return default;
             }
@@ -545,20 +565,20 @@ namespace DiGi.Analytical.Building.Classes
                 return default;
             }
 
-            T result = buildingRelationCluster.GetRelation(guidReference, func);
+            TBuildingRelation? result = buildingRelationCluster.GetRelation(guidReference, func);
 
-            return result == null ? default : result.Clone<T>();
+            return result == null ? default : result.Clone<TBuildingRelation>();
         }
 
-        public List<T> GetRelations<T>(IBuildingGuidObject buildingUniqueObject, Func<T, bool> func = null) where T : IBuildingRelation
+        public List<TBuildingRelation>? GetRelations<TBuildingRelation>(IBuildingGuidObject? buildingUniqueObject, Func<TBuildingRelation?, bool>? func = null) where TBuildingRelation : IBuildingRelation
         {
             if (buildingUniqueObject == null || buildingRelationCluster == null)
             {
                 return null;
             }
 
-            GuidReference guidReference = new GuidReference(buildingUniqueObject);
-            if (guidReference == null)
+            GuidReference? guidReference = new(buildingUniqueObject);
+            if (guidReference is null)
             {
                 return null;
             }
@@ -568,26 +588,26 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            return buildingRelationCluster.GetRelations(guidReference, func)?.ConvertAll(x => x.Clone<T>());
+            return buildingRelationCluster.GetRelations(guidReference, func)?.CloneAndFilterNulls();
         }
 
-        public List<SpaceInternalCondition> GetSpaceInternalConditions(ISpace space)
+        public List<SpaceInternalCondition>? GetSpaceInternalConditions(ISpace? space)
         {
             if (buildingRelationCluster == null || space == null)
             {
                 return default;
             }
 
-            List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
+            List<SpaceInternalConditionRelation>? spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(space);
             if (spaceInternalConditionRelations == null)
             {
                 return default;
             }
 
-            List<SpaceInternalCondition> result = new List<SpaceInternalCondition>();
+            List<SpaceInternalCondition> result = [];
             foreach (SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
-                IInternalCondition internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
+                IInternalCondition? internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
                 if (internalCondition == null)
                 {
                     continue;
@@ -599,53 +619,53 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
         
-        public List<ISpace> GetSpaces(IZone zone)
+        public List<ISpace>? GetSpaces(IZone? zone)
         {
             if(zone == null)
             {
                 return null;
             }
 
-            ZoneRelation zoneRelation = GetRelation<ZoneRelation>(zone);
+            ZoneRelation? zoneRelation = GetRelation<ZoneRelation>(zone);
             if(zoneRelation == null)
             {
                 return null;
             }
 
-            List<ISpace> spaces = buildingRelationCluster?.GetSpaces(zoneRelation);
+            List<ISpace>? spaces = buildingRelationCluster?.GetSpaces(zoneRelation);
             if(spaces == null)
             {
                 return null;
             }
 
-            return spaces?.ConvertAll(x => x.Clone<ISpace>());
+            return spaces?.CloneAndFilterNulls();
         }
 
-        public List<ISpace> GetSpaces(IComponent component)
+        public List<ISpace>? GetSpaces(IComponent? component)
         {
             if (component == null)
             {
                 return null;
             }
 
-            SpaceRelation spaceRelation = GetRelation<SpaceRelation>(component);
+            SpaceRelation? spaceRelation = GetRelation<SpaceRelation>(component);
             if (spaceRelation == null)
             {
                 return null;
             }
 
-            List<ISpace> spaces = buildingRelationCluster?.GetSpaces(spaceRelation);
+            List<ISpace>? spaces = buildingRelationCluster?.GetSpaces(spaceRelation);
             if (spaces == null)
             {
                 return null;
             }
 
-            return spaces?.ConvertAll(x => x.Clone<ISpace>());
+            return spaces?.CloneAndFilterNulls();
         }
 
-        public List<ISpace> GetSpaces(IOpening opening)
+        public List<ISpace>? GetSpaces(IOpening? opening)
         {
-            IComponent component = GetComponent<IComponent>(opening);
+            IComponent? component = GetComponent<IComponent>(opening);
             if(component == null)
             {
                 return null;
@@ -654,18 +674,18 @@ namespace DiGi.Analytical.Building.Classes
             return GetSpaces(component);
         }
 
-        public List<TSpace> GetSpaces<TSpace>(IInternalCondition internalCondition) where TSpace : ISpace
+        public List<TSpace>? GetSpaces<TSpace>(IInternalCondition? internalCondition) where TSpace : ISpace
         {
-            List<SpaceInternalConditionRelation> spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(internalCondition);
+            List<SpaceInternalConditionRelation>? spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(internalCondition);
             if(spaceInternalConditionRelations == null)
             {
                 return null;
             }
 
-            List<TSpace> result = new List<TSpace>();
+            List<TSpace> result = [];
             foreach(SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
-                TSpace space = Core.Query.Clone(buildingRelationCluster.GetSpace<TSpace>(spaceInternalConditionRelation));
+                TSpace? space = Core.Query.Clone(buildingRelationCluster.GetSpace<TSpace>(spaceInternalConditionRelation));
                 if (space == null)
                 {
                     continue;
@@ -677,19 +697,19 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public List<TSpace> GetSpaces<TSpace>() where TSpace : ISpace
+        public List<TSpace>? GetSpaces<TSpace>() where TSpace : ISpace
         {
-            return buildingRelationCluster.GetSpaces<TSpace>().ConvertAll(x => x.Clone<TSpace>());
+            return buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
         }
 
-        public bool Inside(Geometry.Spatial.Classes.Sphere sphere, double tolerance = Core.Constans.Tolerance.Distance)
+        public bool Inside(Geometry.Spatial.Classes.Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if(sphere == null)
             {
                 return false;
             }
 
-            List<IComponent> components = buildingRelationCluster.GetValues<IComponent>();
+            List<IComponent>? components = buildingRelationCluster.GetValues<IComponent>();
             if(components == null || components.Count() == 0)
             {
                 return false;
@@ -706,44 +726,44 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        public bool Remove(IConstruction construction)
+        public bool Remove(IConstruction? construction)
         {
             return Remove(construction == null ? null : new GuidReference(construction));
         }
 
-        public bool Remove(ISpace space)
+        public bool Remove(ISpace? space)
         {
             return Remove(space == null ? null : new GuidReference(space));
         }
 
-        public bool Remove(IComponent component)
+        public bool Remove(IComponent? component)
         {
             return Remove(component == null ? null : new GuidReference(component));
         }
 
-        public bool Remove(IOpening opening)
+        public bool Remove(IOpening? opening)
         {
             return Remove(opening == null ? null : new GuidReference(opening));
         }
 
-        public bool Remove(IZone zone)
+        public bool Remove(IZone? zone)
         {
             return Remove(zone == null ? null : new GuidReference(zone));
         }
 
-        public bool Remove(IInternalCondition internalCondition)
+        public bool Remove(IInternalCondition? internalCondition)
         {
             return Remove(internalCondition == null ? null : new GuidReference(internalCondition));
         }
 
-        public bool Remove(IShade shade)
+        public bool Remove(IShade? shade)
         {
             return Remove(shade == null ? null : new GuidReference(shade));
         }
 
-        public bool Remove(GuidReference guidReference)
+        public bool Remove(GuidReference? guidReference)
         {
-            if (guidReference == null)
+            if (guidReference is null)
             {
                 return false;
             }
@@ -751,46 +771,46 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Remove(guidReference);
         }
 
-        public bool TryGetObject<T>(GuidReference guidReference, out T buildingUniqueObject) where T : IBuildingGuidObject
+        public bool TryGetObject<TBuildingGuidObject>(GuidReference? guidReference, out TBuildingGuidObject? buildingUniqueObject) where TBuildingGuidObject : IBuildingGuidObject
         {
             buildingUniqueObject = default;
 
-            if (guidReference == null || buildingRelationCluster == null)
+            if (guidReference is null || buildingRelationCluster is null)
             {
                 return false;
             }
 
-            bool result = buildingRelationCluster.TryGetValue(guidReference, out T buildingUniqueObject_Temp);
+            bool result = buildingRelationCluster.TryGetValue(guidReference, out TBuildingGuidObject? buildingUniqueObject_Temp);
 
             if (result && buildingUniqueObject_Temp != null)
             {
-                buildingUniqueObject = buildingUniqueObject_Temp.Clone<T>();
+                buildingUniqueObject = buildingUniqueObject_Temp.Clone<TBuildingGuidObject>();
             }
 
             return result;
         }
 
-        public bool Unassign(IComponent component, ISpace space)
+        public bool Unassign(IComponent? component, ISpace? space)
         {
             if (component == null || space == null)
             {
                 return false;
             }
 
-            SpaceRelation spaceRelation = GetRelation<SpaceRelation>(component);
+            SpaceRelation? spaceRelation = GetRelation<SpaceRelation>(component);
             if (spaceRelation == null)
             {
                 return false;
             }
 
-            GuidReference guidReference = new GuidReference(space);
+            GuidReference guidReference = new(space);
 
             if (!spaceRelation.Remove(RelationSide.To, guidReference))
             {
                 return false;
             }
 
-            List<IUniqueReference> uniqueReferences = spaceRelation.UniqueReferences_To;
+            List<IUniqueReference>? uniqueReferences = spaceRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 buildingRelationCluster.Remove(spaceRelation);
@@ -799,27 +819,27 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        public bool Unassign(IZone zone, ISpace space)
+        public bool Unassign(IZone? zone, ISpace? space)
         {
             if (zone == null || space == null)
             {
                 return false;
             }
 
-            ZoneRelation zoneRelation = GetRelation<ZoneRelation>(zone);
+            ZoneRelation? zoneRelation = GetRelation<ZoneRelation>(zone);
             if (zoneRelation == null)
             {
                 return false;
             }
 
-            GuidReference guidReference = new GuidReference(space);
+            GuidReference guidReference = new(space);
 
             if (!zoneRelation.Remove(RelationSide.To, guidReference))
             {
                 return false;
             }
 
-            List<IUniqueReference> uniqueReferences = zoneRelation.UniqueReferences_To;
+            List<IUniqueReference>? uniqueReferences = zoneRelation.UniqueReferences_To;
             if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 buildingRelationCluster.Remove(zoneRelation);
@@ -828,32 +848,38 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        public bool Unassign(IComponent component, IOpening opening)
+        public bool Unassign(IComponent? component, IOpening? opening)
         {
             if (component == null || opening == null)
             {
                 return false;
             }
 
-            OpeningRelation openingRelation = GetRelation<OpeningRelation>(component);
+            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(component);
             if (openingRelation == null)
             {
                 return false;
             }
 
-            if (openingRelation.UniqueReferences_To.Count == 1)
+            List<IUniqueReference>? uniqueReferences = openingRelation?.UniqueReferences_To;
+            if (uniqueReferences == null)
+            {
+                return false;
+            }
+
+            if (uniqueReferences.Count == 1)
             {
                 buildingRelationCluster.Remove(openingRelation);
             }
             else
             {
-                openingRelation.Remove(RelationSide.To, new GuidReference(opening));
+                openingRelation!.Remove(RelationSide.To, new GuidReference(opening));
             }
 
             return true;
         }
 
-        public bool Update(IComponent component)
+        public bool Update(IComponent? component)
         {
             if (component == null)
             {
@@ -863,7 +889,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(component.Clone<IComponent>());
         }
 
-        public bool Update(IConstruction construction)
+        public bool Update(IConstruction? construction)
         {
             if (construction == null)
             {
@@ -873,7 +899,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(construction.Clone<IConstruction>());
         }
 
-        public bool Update(ISpace space)
+        public bool Update(ISpace? space)
         {
             if (space == null)
             {
@@ -883,7 +909,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(space.Clone<ISpace>());
         }
 
-        public bool Update(IInternalCondition internalCondition)
+        public bool Update(IInternalCondition? internalCondition)
         {
             if (internalCondition == null)
             {
@@ -893,7 +919,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(internalCondition.Clone<IInternalCondition>());
         }
 
-        public bool Update(IZone zone)
+        public bool Update(IZone? zone)
         {
             if (zone == null)
             {
@@ -903,7 +929,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(zone.Clone<IZone>());
         }
 
-        public bool Update(IOpening opening)
+        public bool Update(IOpening? opening)
         {
             if (opening == null)
             {
@@ -913,7 +939,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(opening.Clone<IOpening>());
         }
 
-        public bool Update(IShade shade)
+        public bool Update(IShade? shade)
         {
             if (shade == null)
             {
@@ -923,7 +949,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.Add(shade.Clone<IShade>());
         }
 
-        private bool Assign(IComponent component, IOpening opening)
+        private bool Assign(IComponent? component, IOpening? opening)
         {
             if(component == null || opening == null)
             {
@@ -941,22 +967,26 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            GuidReference guidReference = new GuidReference(opening);
+            GuidReference guidReference = new(opening);
 
-            OpeningRelation openingRelation = GetRelation<OpeningRelation>(opening);
+            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(opening);
             if(openingRelation != null)
             {
-                if(openingRelation.UniqueReferences_To.Count == 1)
+                List<IUniqueReference>? uniqueReferences = openingRelation.UniqueReferences_To;
+                if (uniqueReferences != null)
                 {
-                    buildingRelationCluster.Remove(openingRelation);
-                }
-                else
-                {
-                    openingRelation.Remove(RelationSide.To, guidReference);
+                    if (uniqueReferences.Count == 1)
+                    {
+                        buildingRelationCluster.Remove(openingRelation);
+                    }
+                    else
+                    {
+                        openingRelation.Remove(RelationSide.To, guidReference);
+                    }
                 }
             }
 
-            List<IOpening> openings = null;
+            List<IOpening>? openings = null;
 
             openingRelation = GetRelation<OpeningRelation>(component);
             if(openingRelation != null)
@@ -966,10 +996,7 @@ namespace DiGi.Analytical.Building.Classes
                 buildingRelationCluster.TryGetValues(openingRelation.UniqueReferences_To?.FindAll(x => x is GuidReference).Cast<GuidReference>(), out openings);
             }
 
-            if(openings == null)
-            {
-                openings = new List<IOpening>();
-            }
+            openings ??= [];
 
             openings.Add(opening);
 
@@ -978,45 +1005,45 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        private T GetConstruction<T>(IComponent component) where T : IConstruction
+        private TConstruction? GetConstruction<TConstruction>(IComponent? component) where TConstruction : IConstruction
         {
             if (buildingRelationCluster == null || component == null)
             {
                 return default;
             }
 
-            ComponentConstructionRelation componentConstructionRelation = GetRelation<ComponentConstructionRelation>(component);
+            ComponentConstructionRelation? componentConstructionRelation = GetRelation<ComponentConstructionRelation>(component);
             if (componentConstructionRelation == null)
             {
                 return default;
             }
 
-            IConstruction construction = buildingRelationCluster.GetConstruction(componentConstructionRelation);
-            if(construction is T)
+            IConstruction? construction = buildingRelationCluster.GetConstruction(componentConstructionRelation);
+            if(construction is TConstruction construction_Temp)
             {
-                return ((T)construction).Clone<T>();
+                return construction_Temp.Clone<TConstruction>();
             }
 
             return  default;
         }
 
-        private T GetConstruction<T>(IOpening opening) where T : IOpeningConstruction
+        private TOpeningConstruction? GetConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
         {
             if (buildingRelationCluster == null || opening == null)
             {
                 return default;
             }
 
-            OpeningConstructionRelation openingConstructionRelation = GetRelation<OpeningConstructionRelation>(opening);
+            OpeningConstructionRelation? openingConstructionRelation = GetRelation<OpeningConstructionRelation>(opening);
             if (openingConstructionRelation == null)
             {
                 return default;
             }
 
-            IOpeningConstruction openingConstruction = buildingRelationCluster.GetOpeningConstruction(openingConstructionRelation);
-            if (openingConstruction is T)
+            IOpeningConstruction? openingConstruction = buildingRelationCluster.GetOpeningConstruction(openingConstructionRelation);
+            if (openingConstruction is TOpeningConstruction openingConstruction_Temp)
             {
-                return ((T)openingConstruction).Clone<T>();
+                return openingConstruction_Temp.Clone<TOpeningConstruction>();
             }
 
             return default;

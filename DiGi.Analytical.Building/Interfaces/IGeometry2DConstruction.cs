@@ -14,6 +14,6 @@ namespace DiGi.Analytical.Building.Interfaces
 
     public interface IGeometry2DConstruction<TConstructable, TGeometry2D> : IGeometry2DConstruction<TConstructable>  where TGeometry2D : IGeometry2D where TConstructable : IConstructable
     {
-        TGeometry2D Geometry { get; }
+        TGeometry2D? Geometry { get; }
     }
 }

@@ -10,6 +10,6 @@ namespace DiGi.Analytical.Building.Interfaces
 
     public interface IBuildingGeometry2DObject<T> : IBuildingGeometryObject<T>, IBuildingGeometry2DObject, IGeometry2DObject<T> where T: IGeometry2D
     {
-        T Geometry { get; }
+
     }
 }

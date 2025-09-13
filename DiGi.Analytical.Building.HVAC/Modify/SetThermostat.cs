@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Modify
     {
-        public static bool SetThermostat(this InternalCondition internalCondition, Thermostat thermostat)
+        public static bool SetThermostat(this InternalCondition? internalCondition, Thermostat? thermostat)
         {
             if (internalCondition == null)
             {

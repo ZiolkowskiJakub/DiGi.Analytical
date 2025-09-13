@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Modify
     {
-        public static bool SetHeatingEmitter(this InternalCondition internalCondition, CoolingEmitter coolingEmitter)
+        public static bool SetHeatingEmitter(this InternalCondition? internalCondition, CoolingEmitter? coolingEmitter)
         {
             if (internalCondition == null)
             {

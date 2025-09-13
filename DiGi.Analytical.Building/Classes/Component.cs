@@ -10,16 +10,22 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class Component : BuildingGeometry3DObject, Interfaces.IComponent
     {
-        public Component(Component component)
+        public Component(Component? component)
             : base(component)
         {
-            component.StructurePosition = StructurePosition;
+            if (component is not null)
+            {
+                component.StructurePosition = StructurePosition;
+            }
         }
 
-        public Component(System.Guid guid, Component component)
+        public Component(System.Guid guid, Component? component)
             : base(guid, component)
         {
-            component.StructurePosition = StructurePosition;
+            if(component is not null)
+            {
+                component.StructurePosition = StructurePosition;
+            }
         }
 
         public Component()
@@ -28,7 +34,7 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public Component(JsonObject jsonObject)
+        public Component(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
@@ -47,9 +53,9 @@ namespace DiGi.Analytical.Building.Classes
     public abstract class Component<T> : Component, IComponent<T> where T : IGeometry3D
     {
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
-        private T geometry;
+        private readonly T? geometry;
 
-        public Component(T geometry)
+        public Component(T? geometry)
             : base()
         {
 
@@ -59,13 +65,13 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Component(JsonObject jsonObject)
+        public Component(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Component(Component<T> component)
+        public Component(Component<T>? component)
             : base(component)
         {
             if (component != null)
@@ -77,7 +83,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Component(System.Guid guid, Component<T> component)
+        public Component(System.Guid guid, Component<T>? component)
             : base(guid, component)
         {
             if (component != null)
@@ -90,7 +96,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public T Geometry
+        public T? Geometry
         {
             get
             {

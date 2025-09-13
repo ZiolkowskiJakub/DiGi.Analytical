@@ -8,10 +8,10 @@ namespace DiGi.Analytical.Building.Classes
     public class Zone : BuildingObject, IZone
     {
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        private string name;
+        private string? name;
 
         [JsonIgnore]
-        public string Name
+        public string? Name
         {
             get
             {
@@ -24,19 +24,19 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Zone(string name)
+        public Zone(string? name)
             :base()
         {
             this.name = name;
         }
 
-        public Zone(JsonObject jsonObject)
+        public Zone(JsonObject? jsonObject)
             : base(jsonObject)
         {
            
         }
 
-        public Zone(Zone zone)
+        public Zone(Zone? zone)
             : base(zone)
         {
             if(zone != null)
@@ -45,7 +45,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Zone(System.Guid guid, Zone zone)
+        public Zone(System.Guid guid, Zone? zone)
             : base(guid, zone)
         {
             if (zone != null)

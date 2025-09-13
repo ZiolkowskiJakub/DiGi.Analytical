@@ -5,25 +5,25 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class FloorConstruction : ComponentConstruction<IFloor>, IFloorConstruction
     {
-        public FloorConstruction(IStructure structure)
-            : base(structure)
+        public FloorConstruction()
+            : base()
         {
 
         }
 
-        public FloorConstruction(FloorConstruction floorConstruction)
+        public FloorConstruction(FloorConstruction? floorConstruction)
             : base(floorConstruction)
         {
 
         }
 
-        public FloorConstruction(System.Guid guid, FloorConstruction floorConstruction)
+        public FloorConstruction(System.Guid guid, FloorConstruction? floorConstruction)
             : base(guid, floorConstruction)
         {
 
         }
 
-        public FloorConstruction(JsonObject jsonObject)
+        public FloorConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

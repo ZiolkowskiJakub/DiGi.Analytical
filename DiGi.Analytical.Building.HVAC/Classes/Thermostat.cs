@@ -12,13 +12,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
     public class Thermostat : ParametrizedObject, IHVACNamedObject
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonInclude, JsonPropertyName("Profiles"), Description("Profiles")]
-        private Dictionary<ThermostatProfileType, IProfile> profiles;
+        private Dictionary<ThermostatProfileType, IProfile>? profiles;
 
         public Thermostat()
             : base()
@@ -26,13 +26,13 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         }
 
-        public Thermostat(JsonObject jsonObject)
+        public Thermostat(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Thermostat(Thermostat thermostat)
+        public Thermostat(Thermostat? thermostat)
             : base(thermostat)
         {
             if (thermostat != null)
@@ -42,16 +42,19 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
                 if (thermostat.profiles != null)
                 {
-                    profiles = new Dictionary<ThermostatProfileType, IProfile>();
+                    profiles = [];
                     foreach (KeyValuePair<ThermostatProfileType, IProfile> keyValuePair in profiles)
                     {
-                        profiles[keyValuePair.Key] = Core.Query.Clone(keyValuePair.Value);
+                        if(Core.Query.Clone(keyValuePair.Value) is IProfile profile)
+                        {
+                            profiles[keyValuePair.Key] = profile;
+                        }
                     }
                 }
             }
         }
 
-        public IProfile this[ThermostatProfileType thermostatProfileType]
+        public IProfile? this[ThermostatProfileType thermostatProfileType]
         {
             get
             {
@@ -70,10 +73,12 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
             set
             {
-                if(profiles == null)
+                if(value is null)
                 {
-                    profiles = new Dictionary<ThermostatProfileType, IProfile>();
+                    return;
                 }
+
+                profiles ??= [];
 
                 profiles[thermostatProfileType] = value;
             }

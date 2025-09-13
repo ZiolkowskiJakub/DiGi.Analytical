@@ -8,24 +8,24 @@ namespace DiGi.Analytical.Building.Classes
     public class InternalCondition : BuildingObject, IInternalCondition
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
-        private string description;
+        private string? description;
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
-        private string name;
+        private string? name;
         
-        public InternalCondition(string name)
+        public InternalCondition(string? name)
             : base()
         {
             this.name = name;
         }
 
-        public InternalCondition(JsonObject jsonObject)
+        public InternalCondition(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public InternalCondition(InternalCondition internalCondition)
+        public InternalCondition(InternalCondition? internalCondition)
             : base(internalCondition)
         {
             if (internalCondition != null)
@@ -35,7 +35,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public InternalCondition(System.Guid guid, InternalCondition internalCondition)
+        public InternalCondition(System.Guid guid, InternalCondition? internalCondition)
             : base(guid, internalCondition)
         {
             if (internalCondition != null)
@@ -46,7 +46,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public string Description
+        public string? Description
         {
             get
             {
@@ -60,7 +60,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public string Name
+        public string? Name
         {
             get
             {

@@ -6,18 +6,18 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
-        public static List<IProfile> Profiles(this IInternalCondition internalCondition)
+        public static List<IProfile>? Profiles(this IInternalCondition? internalCondition)
         {
             if (internalCondition == null)
             {
                 return null;
             }
 
-            List<IProfile> result = new List<IProfile>();
+            List<IProfile> result = [];
 
             foreach(InternalGainProfileType internalGainProfileType in System.Enum.GetValues(typeof(InternalGainProfileType)))
             {
-                IProfile profile = internalCondition.Profile(internalGainProfileType);
+                IProfile? profile = internalCondition.Profile(internalGainProfileType);
                 if(profile != null)
                 {
                     result.Add(profile);
@@ -26,7 +26,7 @@ namespace DiGi.Analytical.Building.HVAC
 
             foreach (ThermostatProfileType thermostatProfileType in System.Enum.GetValues(typeof(ThermostatProfileType)))
             {
-                IProfile profile = internalCondition.Profile(thermostatProfileType);
+                IProfile? profile = internalCondition.Profile(thermostatProfileType);
                 if (profile != null)
                 {
                     result.Add(profile);

@@ -3,12 +3,7 @@ using DiGi.Core.Relation.Classes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class OpeningConstructionRelation : OneToOneBidirectionalRelation<IOpening, IOpeningConstruction>, IBuildingRelation
+    public class OpeningConstructionRelation(IOpening? opening, IOpeningConstruction? openingConstruction) : OneToOneBidirectionalRelation<IOpening, IOpeningConstruction>(opening, openingConstruction), IBuildingRelation
     {
-        public OpeningConstructionRelation(IOpening opening, IOpeningConstruction openingConstruction)
-            : base(opening, openingConstruction)
-        {
-
-        }
     }
 }

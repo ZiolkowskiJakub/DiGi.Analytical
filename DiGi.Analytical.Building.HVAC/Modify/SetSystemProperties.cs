@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Modify
     {
-        public static bool SetSystemProperties(this InternalCondition internalCondition, SystemProperties systemProperties)
+        public static bool SetSystemProperties(this InternalCondition? internalCondition, SystemProperties? systemProperties)
         {
             if (internalCondition == null)
             {

@@ -6,6 +6,6 @@
 
         double this[int index] { get; }
 
-        double[] Values { get; }
+        double[]? Values { get; }
     }
 }

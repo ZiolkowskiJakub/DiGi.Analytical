@@ -1,4 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
 using System.ComponentModel;
 using System.Text.Json.Nodes;
@@ -9,41 +10,41 @@ namespace DiGi.Analytical.Building.Classes
     public class SpaceInternalCondition : SerializableObject, IBuildingObject
     {
         [JsonInclude, JsonPropertyName("Id"), Description("Id")]
-        private string id;
+        private readonly string? id;
 
         [JsonInclude, JsonPropertyName("InternalCondition"), Description("InternalCondition")]
-        private IInternalCondition internalCondition;
+        private readonly IInternalCondition? internalCondition;
 
-        [JsonInclude, JsonPropertyName("Range"), Description("Range")]
-        private Range<int> range;
+        [JsonInclude, JsonPropertyName("HourRange"), Description("HourRange")]
+        private readonly HourRange? hourRange;
         
-        public SpaceInternalCondition(IInternalCondition internalCondition, Range<int> range, string id = null)
+        public SpaceInternalCondition(IInternalCondition? internalCondition, HourRange? hourRange, string? id = null)
             : base()
         {
             this.internalCondition = Core.Query.Clone(internalCondition);
-            this.range = Core.Query.Clone(range);
+            this.hourRange = Core.Query.Clone(hourRange);
             this.id = id;
         }
 
-        public SpaceInternalCondition(JsonObject jsonObject)
+        public SpaceInternalCondition(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public SpaceInternalCondition(SpaceInternalCondition spaceInternalCondition)
+        public SpaceInternalCondition(SpaceInternalCondition? spaceInternalCondition)
             : base(spaceInternalCondition)
         {
             if (spaceInternalCondition != null)
             {
                 internalCondition = Core.Query.Clone(spaceInternalCondition.internalCondition);
-                range = Core.Query.Clone(spaceInternalCondition.range);
+                hourRange = Core.Query.Clone(spaceInternalCondition.hourRange);
                 id = spaceInternalCondition.id;
             }
         }
 
         [JsonIgnore]
-        public string Id
+        public string? Id
         {
             get
             {
@@ -52,7 +53,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         [JsonIgnore]
-        public IInternalCondition InternalCondition
+        public IInternalCondition? InternalCondition
         {
             get
             {
@@ -61,11 +62,11 @@ namespace DiGi.Analytical.Building.Classes
         }
         
         [JsonIgnore]
-        public Range<int> Range
+        public HourRange? HourRange
         {
             get
             {
-                return range;
+                return hourRange;
             }
         }
     }

@@ -6,13 +6,13 @@ namespace DiGi.Analytical.Building.Classes
 {
     public abstract class BuildingNamedObject : BuildingObject, IBuildingNamedObject
     {
-        public BuildingNamedObject(string name)
+        public BuildingNamedObject(string? name)
             : base()
         {
             Name = name;
         }
 
-        public BuildingNamedObject(BuildingNamedObject buildingNamedObject)
+        public BuildingNamedObject(BuildingNamedObject? buildingNamedObject)
             : base(buildingNamedObject)
         {
             if (buildingNamedObject != null)
@@ -21,7 +21,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public BuildingNamedObject(System.Guid guid, BuildingNamedObject buildingNamedObject)
+        public BuildingNamedObject(System.Guid guid, BuildingNamedObject? buildingNamedObject)
             : base(guid, buildingNamedObject)
         {
             if (buildingNamedObject != null)
@@ -36,19 +36,19 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public BuildingNamedObject(JsonObject jsonObject)
+        public BuildingNamedObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public BuildingNamedObject(System.Guid guid, string name)
+        public BuildingNamedObject(System.Guid guid, string? name)
             : base(guid)
         {
             Name = name;
         }
 
         [JsonInclude, JsonPropertyName("Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

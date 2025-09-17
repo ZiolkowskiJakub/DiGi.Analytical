@@ -11,8 +11,6 @@ using DiGi.Core.Relation.Enums;
 using System.Text.Json.Nodes;
 using DiGi.Analytical.Classes;
 using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Interfaces;
-using DiGi.Geometry.Core.Interfaces;
 
 namespace DiGi.Analytical.Building.Classes
 {

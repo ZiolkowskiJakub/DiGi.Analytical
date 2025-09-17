@@ -1,6 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Relation.Classes;
-using System.Collections.Generic;
 using System.Text.Json.Nodes;
 namespace DiGi.Analytical.Building.Classes
 {

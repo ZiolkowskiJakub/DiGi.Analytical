@@ -3,7 +3,6 @@ using DiGi.Analytical.Building.HVAC.Enums;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Classes;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DiGi.Analytical.Building.HVAC
 {

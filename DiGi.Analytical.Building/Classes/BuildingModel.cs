@@ -10,10 +10,13 @@ using System.Linq;
 using DiGi.Core.Relation.Enums;
 using System.Text.Json.Nodes;
 using DiGi.Analytical.Classes;
+using DiGi.Geometry.Spatial.Classes;
+using DiGi.Geometry.Spatial.Interfaces;
+using DiGi.Geometry.Core.Interfaces;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class BuildingModel : ParametrizedGuidObject, IBuildingGuidObject, IGuidModel
+    public class BuildingModel : ParametrizedGuidObject, IBuildingGuidObject, IGuidModel, IBuildingBoundable3D
     {
         [JsonInclude, JsonPropertyName("BuildingRelationCluster"), System.ComponentModel.Description("BuildingRelationCluster")]
         private readonly BuildingRelationCluster buildingRelationCluster = [];
@@ -947,6 +950,33 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return buildingRelationCluster.Add(shade.Clone<IShade>());
+        }
+
+        public BoundingBox3D? GetBoundingBox()
+        {
+            List<IComponent> components = buildingRelationCluster.GetComponents<IComponent>();
+            if(components == null || components.Count == 0)
+            {
+                return null;
+            }
+
+            List<BoundingBox3D> boundingBox3Ds = [];
+            foreach (IComponent component in components)
+            {
+                if(component.GetBoundingBox() is not BoundingBox3D boundingBox3D)
+                {
+                    continue;
+                }
+
+                boundingBox3Ds.Add(boundingBox3D);
+            }
+
+            if(boundingBox3Ds is null || boundingBox3Ds.Count == 0)
+            {
+                return null;
+            }
+
+            return Geometry.Spatial.Create.BoundingBox3D(boundingBox3Ds);
         }
 
         private bool Assign(IComponent? component, IOpening? opening)

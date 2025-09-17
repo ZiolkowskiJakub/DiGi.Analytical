@@ -63,6 +63,7 @@ namespace DiGi.Analytical.Building.Classes
                 Vector = value;
             }
         }
+        
         public ISurface3D? GetSurface3D()
         {
             if(vector == null)
@@ -104,6 +105,11 @@ namespace DiGi.Analytical.Building.Classes
             Plane plane = new(point3D_1, point3D_2, point3D_3);
 
             return new PolygonalFace3D(plane, DiGi.Geometry.Planar.Create.PolygonalFace2D(new Polygon2D([plane.Convert(point3D_1)!, plane.Convert(point3D_2)!, plane.Convert(point3D_3)!, plane.Convert(point3D_4)!])));
+        }
+
+        public override BoundingBox3D? GetBoundingBox()
+        {
+            return GetSurface3D()?.GetBoundingBox();
         }
     }
 

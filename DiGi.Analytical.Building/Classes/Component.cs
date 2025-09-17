@@ -1,6 +1,7 @@
 ﻿using DiGi.Analytical.Building.Enums;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core;
+using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.ComponentModel;
 using System.Text.Json.Nodes;
@@ -48,6 +49,8 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
         public StructurePosition StructurePosition { get; set; }
+
+        public abstract BoundingBox3D? GetBoundingBox();
     }
 
     public abstract class Component<T> : Component, IComponent<T> where T : IGeometry3D

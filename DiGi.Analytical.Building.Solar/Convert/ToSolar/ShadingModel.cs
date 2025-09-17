@@ -3,7 +3,6 @@ using DiGi.Solar.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Classes;
-using System;
 
 namespace DiGi.Analytical.Building.Solar
 {

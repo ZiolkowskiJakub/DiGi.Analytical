@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IComponent">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IComponent&lt;T&gt;">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IComponent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IFloor" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IFloor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IConstructable" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IConstructable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D">
+    <Position X="0.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBuildingBoundable3D.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IWall">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <InheritanceLine Type="DiGi.Analytical.Building.Interfaces.IComponent" ManuallyRouted="true">
+      <Path>
+        <Point X="4" Y="3.362" />
+        <Point X="4" Y="3.75" />
+        <Point X="9.25" Y="3.75" />
+        <Point X="9.25" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IWall.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IWall&lt;T&gt;">
+    <Position X="8.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IWall.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DiGi.Analytical.Building.Interfaces.IFaceFloor" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="2" />
+    <InheritanceLine Type="DiGi.Analytical.Building.Interfaces.IComponent&lt;T&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="4" Y="5" />
+        <Point X="4" Y="3.771" />
+        <Point X="9.25" Y="3.771" />
+        <Point X="9.25" Y="2.7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IFaceFloor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

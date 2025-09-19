@@ -7,7 +7,7 @@ namespace DiGi.Analytical.Building.Interfaces
 
     }
 
-    public interface IOpeningConstruction<TConstructable> : IOpeningConstruction, IGeometry2DConstruction<TConstructable, ISurface2D> where TConstructable : IConstructable
+    public interface IOpeningConstruction<TOpening> : IOpeningConstruction, IGeometry2DConstruction<TOpening, ISurface2D> where TOpening : IOpening
     {
 
     }

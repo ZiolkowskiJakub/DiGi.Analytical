@@ -1,16 +1,19 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Classes;
+using DiGi.Core;
+using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
 using DiGi.Core.Parameter.Classes;
-using System.Text.Json.Serialization;
-using DiGi.Core;
-using System.Collections.Generic;
-using DiGi.Core.Classes;
-using System;
-using System.Linq;
 using DiGi.Core.Relation.Enums;
-using System.Text.Json.Nodes;
-using DiGi.Analytical.Classes;
+using DiGi.Geometry.Core.Enums;
 using DiGi.Geometry.Spatial.Classes;
+using DiGi.Geometry.Spatial.Enums;
+using DiGi.Geometry.Spatial.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
@@ -256,6 +259,91 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return result;
+        }
+
+        public List<Shell>? GetShells<TSpace>(IEnumerable<TSpace> spaces, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
+        {
+            if (spaces is null)
+            {
+                return null;
+            }
+
+            List<Shell> result = []; 
+            foreach (TSpace space in spaces)
+            {
+                if (GetComponents<IComponent>(space) is not List<IComponent> components)
+                {
+                    continue;
+                }
+
+                List<Face> faces = [];
+                foreach (IComponent component in components)
+                {
+                    if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
+                    {
+                        continue;
+                    }
+
+                    faces.Add(new Face(new GuidReference(component), polygonalFace3D));
+                }
+
+                Shell? shell = new(new GuidReference(space), faces);
+
+                if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
+                {
+                    PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationSolver = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
+                    {
+                        Value = shell
+                    };
+                    polyhedronNormalizationSolver.Update();
+                }
+
+                if(shell is null)
+                {
+                    continue;
+                }
+
+                result.Add(shell);
+            }
+
+            return result;
+        }
+
+        public Shell? GetShell(ISpace? space, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance)
+        {
+            if(space is null)
+            {
+                return null;
+            }
+
+            return GetShells([space], normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)?.FirstOrDefault();
+        }
+
+        public BoundingBox3D? GetBoundingBox()
+        {
+            List<IComponent> components = buildingRelationCluster.GetComponents<IComponent>();
+            if (components == null || components.Count == 0)
+            {
+                return null;
+            }
+
+            List<BoundingBox3D> boundingBox3Ds = [];
+            foreach (IComponent component in components)
+            {
+                if (component.GetBoundingBox() is not BoundingBox3D boundingBox3D)
+                {
+                    continue;
+                }
+
+                boundingBox3Ds.Add(boundingBox3D);
+            }
+
+            if (boundingBox3Ds is null || boundingBox3Ds.Count == 0)
+            {
+                return null;
+            }
+
+            return Geometry.Spatial.Create.BoundingBox3D(boundingBox3Ds);
         }
 
         public TComponent? GetComponent<TComponent>(IOpening? opening) where TComponent : IComponent
@@ -703,7 +791,7 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
         }
 
-        public bool Inside(Geometry.Spatial.Classes.Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
+        public bool Inside(Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if(sphere == null)
             {
@@ -949,34 +1037,7 @@ namespace DiGi.Analytical.Building.Classes
 
             return buildingRelationCluster.Add(shade.Clone<IShade>());
         }
-
-        public BoundingBox3D? GetBoundingBox()
-        {
-            List<IComponent> components = buildingRelationCluster.GetComponents<IComponent>();
-            if(components == null || components.Count == 0)
-            {
-                return null;
-            }
-
-            List<BoundingBox3D> boundingBox3Ds = [];
-            foreach (IComponent component in components)
-            {
-                if(component.GetBoundingBox() is not BoundingBox3D boundingBox3D)
-                {
-                    continue;
-                }
-
-                boundingBox3Ds.Add(boundingBox3D);
-            }
-
-            if(boundingBox3Ds is null || boundingBox3Ds.Count == 0)
-            {
-                return null;
-            }
-
-            return Geometry.Spatial.Create.BoundingBox3D(boundingBox3Ds);
-        }
-
+        
         private bool Assign(IComponent? component, IOpening? opening)
         {
             if(component == null || opening == null)

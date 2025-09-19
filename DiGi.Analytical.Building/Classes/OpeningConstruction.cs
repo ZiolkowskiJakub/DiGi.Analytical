@@ -74,7 +74,7 @@ namespace DiGi.Analytical.Building.Classes
         }
     }
 
-    public abstract class OpeningConstruction<TConstructable> : OpeningConstruction, IOpeningConstruction<TConstructable> where TConstructable : IConstructable
+    public abstract class OpeningConstruction<TOpening> : OpeningConstruction, IOpeningConstruction<TOpening> where TOpening : IOpening
     {
         public OpeningConstruction(string? name, ISurface2D? surface2D)
             : base(name, surface2D)

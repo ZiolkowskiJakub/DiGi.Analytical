@@ -48,6 +48,17 @@ namespace DiGi.Analytical
                 polygonalFace3Ds.Add(polygonalFace3Ds_Polyhedron);
             }
 
+            List<Tuple<BoundingBox3D, Face>> tuples = [];
+            foreach(Face face in faces)
+            {
+                if(face?.GetBoundingBox() is not BoundingBox3D boundingBox3D)
+                {
+                    continue;
+                }
+
+                tuples.Add(new Tuple<BoundingBox3D, Face>(boundingBox3D, face));
+            }
+
             List<Shell> result = [];
             foreach(List<IPolygonalFace3D> polygonalFace3Ds_Shell in polygonalFace3Ds)
             {
@@ -70,10 +81,20 @@ namespace DiGi.Analytical
                         continue;
                     }
 
-                    Geometry.Spatial.Query.ClosestPoint(internalPoint, faces, out Face? closestFace, out _, tolerance);
-                    if(closestFace != null)
+                    Face? closestFace = null;
+
+                    List<Tuple<BoundingBox3D, Face>> tuples_Temp = tuples.FindAll(x => x.Item1.InRange(internalPoint, tolerance));
+                    if (tuples_Temp.Count == 1)
                     {
-                        continue;
+                        closestFace = tuples_Temp[0].Item2;
+                    }
+                    if (tuples_Temp.Count > 1)
+                    {
+                        Geometry.Spatial.Query.ClosestPoint(internalPoint, tuples_Temp.ConvertAll(x => x.Item2), out closestFace, out _, tolerance);
+                    }
+                    else
+                    {
+                        Geometry.Spatial.Query.ClosestPoint(internalPoint, faces, out closestFace, out _, tolerance);
                     }
 
                     Face face_Shell = closestFace == null ? new Face(polygonalFace3D_Temp) : new Face(closestFace.UniqueReference, polygonalFace3D_Temp);

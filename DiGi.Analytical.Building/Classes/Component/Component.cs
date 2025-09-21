@@ -1,0 +1,106 @@
+﻿using DiGi.Analytical.Building.Enums;
+using DiGi.Analytical.Building.Interfaces;
+using DiGi.Core;
+using DiGi.Geometry.Spatial.Classes;
+using DiGi.Geometry.Spatial.Interfaces;
+using System.ComponentModel;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
+
+namespace DiGi.Analytical.Building.Classes
+{
+    public abstract class Component : BuildingGeometry3DObject, Interfaces.IComponent
+    {
+        public Component(Component? component)
+            : base(component)
+        {
+
+        }
+
+        public Component(System.Guid guid, Component? component)
+            : base(guid, component)
+        {
+
+        }
+
+        public Component()
+            : base()
+        {
+
+        }
+
+        public Component(JsonObject? jsonObject)
+            : base(jsonObject)
+        {
+
+        }
+
+        public Component(System.Guid guid)
+            : base(guid)
+        {
+
+        }
+
+        public abstract BoundingBox3D? GetBoundingBox();
+    }
+
+    public abstract class Component<T> : Component, IComponent<T> where T : IGeometry3D
+    {
+        [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
+        private readonly T? geometry;
+
+        public Component(T? geometry)
+            : base()
+        {
+
+            if (geometry != null)
+            {
+                this.geometry = geometry.Clone<T>();
+            }
+        }
+
+        public Component(JsonObject? jsonObject)
+            : base(jsonObject)
+        {
+
+        }
+
+        public Component(Component<T>? component)
+            : base(component)
+        {
+            if (component != null)
+            {
+                if (component.geometry != null)
+                {
+                    geometry = component.geometry.Clone<T>();
+                }
+            }
+        }
+
+        public Component(System.Guid guid, Component<T>? component)
+            : base(guid, component)
+        {
+            if (component != null)
+            {
+                if (component.geometry != null)
+                {
+                    geometry = component.geometry.Clone<T>();
+                }
+            }
+        }
+
+        [JsonIgnore]
+        public T? Geometry
+        {
+            get
+            {
+                if(geometry == null)
+                {
+                    return default;
+                }
+
+                return geometry.Clone<T>();
+            }
+        }
+    }
+}

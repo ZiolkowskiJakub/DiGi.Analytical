@@ -1,7 +1,6 @@
 ﻿using DiGi.Analytical.Building.Enums;
 using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core;
-using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.ComponentModel;
 using System.Text.Json.Nodes;
@@ -9,39 +8,33 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class Component : BuildingGeometry3DObject, Interfaces.IComponent
+    public abstract class AbstractComponent : Component, IPhysicalComponent
     {
-        public Component(Component? component)
-            : base(component)
+        public AbstractComponent(AbstractComponent? abstractComponent)
+            : base(abstractComponent)
         {
-            if (component is not null)
-            {
-                component.StructurePosition = StructurePosition;
-            }
+
         }
 
-        public Component(System.Guid guid, Component? component)
-            : base(guid, component)
+        public AbstractComponent(System.Guid guid, AbstractComponent? abstractComponent)
+            : base(guid, abstractComponent)
         {
-            if(component is not null)
-            {
-                component.StructurePosition = StructurePosition;
-            }
+
         }
 
-        public Component()
+        public AbstractComponent()
             : base()
         {
 
         }
 
-        public Component(JsonObject? jsonObject)
+        public AbstractComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Component(System.Guid guid)
+        public AbstractComponent(System.Guid guid)
             : base(guid)
         {
 
@@ -49,16 +42,14 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
         public StructurePosition StructurePosition { get; set; }
-
-        public abstract BoundingBox3D? GetBoundingBox();
     }
 
-    public abstract class Component<T> : Component, IComponent<T> where T : IGeometry3D
+    public abstract class AbstractComponent<T> : AbstractComponent, IAbstractComponent<T> where T : IGeometry3D
     {
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
         private readonly T? geometry;
 
-        public Component(T? geometry)
+        public AbstractComponent(T? geometry)
             : base()
         {
 
@@ -68,32 +59,32 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public Component(JsonObject? jsonObject)
+        public AbstractComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Component(Component<T>? component)
-            : base(component)
+        public AbstractComponent(AbstractComponent<T>? abstractComponent)
+            : base(abstractComponent)
         {
-            if (component != null)
+            if (abstractComponent != null)
             {
-                if (component.geometry != null)
+                if (abstractComponent.geometry != null)
                 {
-                    geometry = component.geometry.Clone<T>();
+                    geometry = abstractComponent.geometry.Clone<T>();
                 }
             }
         }
 
-        public Component(System.Guid guid, Component<T>? component)
-            : base(guid, component)
+        public AbstractComponent(System.Guid guid, AbstractComponent<T>? abstractComponent)
+            : base(guid, abstractComponent)
         {
-            if (component != null)
+            if (abstractComponent != null)
             {
-                if (component.geometry != null)
+                if (abstractComponent.geometry != null)
                 {
-                    geometry = component.geometry.Clone<T>();
+                    geometry = abstractComponent.geometry.Clone<T>();
                 }
             }
         }

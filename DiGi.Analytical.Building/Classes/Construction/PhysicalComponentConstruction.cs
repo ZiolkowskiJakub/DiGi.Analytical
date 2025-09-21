@@ -5,17 +5,17 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class ComponentConstruction : BuildingNamedObject, IComponentConstruction
+    public abstract class PhysicalComponentConstruction : BuildingNamedObject, IPhysicalComponentConstruction
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
         private string? description;
         
-        public ComponentConstruction()
+        public PhysicalComponentConstruction()
             : base()
         {
         }
 
-        public ComponentConstruction(ComponentConstruction? componentConstruction)
+        public PhysicalComponentConstruction(PhysicalComponentConstruction? componentConstruction)
             : base(componentConstruction)
         {
             if (componentConstruction is not null)
@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public ComponentConstruction(System.Guid guid, ComponentConstruction? componentConstruction)
+        public PhysicalComponentConstruction(System.Guid guid, PhysicalComponentConstruction? componentConstruction)
             : base(guid, componentConstruction)
         {
             if (componentConstruction is not null)
@@ -33,7 +33,7 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
-        public ComponentConstruction(JsonObject? jsonObject)
+        public PhysicalComponentConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
@@ -54,7 +54,7 @@ namespace DiGi.Analytical.Building.Classes
         }
     }
 
-    public abstract class ComponentConstruction<TConstructable> : ComponentConstruction, IComponentConstruction<TConstructable> where TConstructable : IConstructable
+    public abstract class ComponentConstruction<TConstructable> : PhysicalComponentConstruction, IPhysicalComponentConstruction<TConstructable> where TConstructable : IConstructable
     {
         public ComponentConstruction()
             : base()

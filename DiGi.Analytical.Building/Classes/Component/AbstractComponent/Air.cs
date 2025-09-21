@@ -4,27 +4,27 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class Floor<T> : Component<T>, IFloor where T : IGeometry3D
+    public abstract class Air<T> : AbstractComponent<T>, IAir<T> where T : IGeometry3D
     {
-        public Floor(T? geometry)
+        public Air(T? geometry)
             :base(geometry)
         {
 
         }
 
-        public Floor(Floor<T>? wall)
-            : base(wall)
+        public Air(Air<T>? air)
+            : base(air)
         {
 
         }
 
-        public Floor(System.Guid guid, Floor<T>? floor)
-            : base(guid, floor)
+        public Air(System.Guid guid, Air<T>? air)
+            : base(guid, air)
         {
 
         }
 
-        public Floor(JsonObject? jsonObject)
+        public Air(JsonObject? jsonObject)
             : base(jsonObject)
         {
 

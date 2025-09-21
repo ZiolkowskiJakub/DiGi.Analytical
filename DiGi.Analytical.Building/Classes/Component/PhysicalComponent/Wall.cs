@@ -4,7 +4,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class Wall<T> : Component<T>, IWall<T> where T : IGeometry3D
+    public abstract class Wall<T> : PhysicalComponent<T>, IWall<T> where T : IGeometry3D
     {
         public Wall(T? geometry)
             :base(geometry)

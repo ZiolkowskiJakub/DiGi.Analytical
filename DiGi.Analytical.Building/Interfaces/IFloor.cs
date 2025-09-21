@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IFloor : IComponent
+    public interface IFloor : IPhysicalComponent
     {
 
     }

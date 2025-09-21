@@ -9,14 +9,14 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static int NextStructureLayerIndex(this ConstructionRelationCluster? constructionRelationCluster, IComponentConstruction? componentConstruction)
+        public static int NextStructureLayerIndex(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction)
         {
-            if(constructionRelationCluster is null || componentConstruction is null)
+            if(constructionRelationCluster is null || physicalComponentConstruction is null)
             {
                 return -1;
             }
 
-            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.GetRelation<ComponentConstructionStructureLayersRelation>(componentConstruction);
+            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.GetRelation<ComponentConstructionStructureLayersRelation>(physicalComponentConstruction);
             if(componentConstructionStructureLayersRelation is null)
             {
                 return 0;

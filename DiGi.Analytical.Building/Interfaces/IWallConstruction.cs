@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IWallConstruction : IComponentConstruction<IWall>
+    public interface IWallConstruction : IPhysicalComponentConstruction<IWall>
     {
     }
 }

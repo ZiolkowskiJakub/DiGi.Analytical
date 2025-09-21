@@ -1,6 +1,6 @@
 ﻿namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IRoofConstruction : IComponentConstruction<IRoof>
+    public interface IRoofConstruction : IPhysicalComponentConstruction<IRoof>
     {
     }
 }

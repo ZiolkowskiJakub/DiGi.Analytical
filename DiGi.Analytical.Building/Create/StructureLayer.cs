@@ -8,19 +8,19 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Create
     {
-        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IComponentConstruction? componentConstruction, IMaterial? material, double thickness)
+        public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction, IMaterial? material, double thickness)
         {
-            if(constructionRelationCluster is null || componentConstruction is null || material is null || double.IsNaN(thickness))
+            if(constructionRelationCluster is null || physicalComponentConstruction is null || material is null || double.IsNaN(thickness))
             {
                 return null;
             }
 
-            if(!constructionRelationCluster.Contains(new Core.Classes.GuidReference(componentConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
+            if(!constructionRelationCluster.Contains(new Core.Classes.GuidReference(physicalComponentConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
             {
                 return null;
             }
 
-            int index = Query.NextStructureLayerIndex(constructionRelationCluster, componentConstruction);
+            int index = Query.NextStructureLayerIndex(constructionRelationCluster, physicalComponentConstruction);
             if(index == -1)
             {
                 return null;
@@ -32,7 +32,7 @@ namespace DiGi.Analytical.Building
                 return null;
             }
 
-            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(componentConstruction, result);
+            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(physicalComponentConstruction, result);
             if(componentConstructionStructureLayersRelation is null)
             {
                 return null;

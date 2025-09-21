@@ -2,12 +2,12 @@
 
 namespace DiGi.Analytical.Building.Interfaces
 {
-    public interface IWall : IComponent
+    public interface IWall : IPhysicalComponent
     {
 
     }
 
-    public interface IWall<T> : IWall, IComponent<T> where T : IGeometry3D
+    public interface IWall<T> : IWall, IPhysicalComponent<T> where T : IGeometry3D
     {
 
     }

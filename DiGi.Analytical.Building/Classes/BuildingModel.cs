@@ -373,23 +373,23 @@ namespace DiGi.Analytical.Building.Classes
             return default;
         }
 
-        public List<TComponent>? GetComponents<TComponent>(IComponentConstruction? componentConstruction) where TComponent : IComponent
+        public List<TComponent>? GetComponents<TComponent>(IPhysicalComponentConstruction? physicalComponentConstruction) where TComponent : IComponent
         {
-            if (buildingRelationCluster == null || componentConstruction == null)
+            if (buildingRelationCluster == null || physicalComponentConstruction == null)
             {
                 return null;
             }
 
-            List<ComponentConstructionRelation>? componentConstructionRelations = GetRelations<ComponentConstructionRelation>(componentConstruction);
-            if (componentConstructionRelations == null)
+            List<PhysicalComponentConstructionRelation>? physicalComponentConstructionRelations = GetRelations<PhysicalComponentConstructionRelation>(physicalComponentConstruction);
+            if (physicalComponentConstructionRelations == null)
             {
                 return default;
             }
 
             List<TComponent> result = [];
-            foreach (ComponentConstructionRelation constructionRelation in componentConstructionRelations)
+            foreach (PhysicalComponentConstructionRelation physicalConstructionRelation in physicalComponentConstructionRelations)
             {
-                IComponent? component = buildingRelationCluster.GetComponent(constructionRelation);
+                IComponent? component = buildingRelationCluster.GetPhysicalComponent(physicalConstructionRelation);
                 if (component is TComponent component_Temp)
                 {
                     result.Add(component_Temp);
@@ -458,29 +458,29 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetComponents<TComponent>().CloneAndFilterNulls();
         }
 
-        public IWallConstruction? GetConstruction(IWall? wall)
+        public IWallConstruction? GetWallConstruction(IWall? wall)
         {
-            return GetConstruction<IWallConstruction>(wall);
+            return GetPhysicalComponentConstruction<IWallConstruction>(wall);
         }
 
-        public IFloorConstruction? GetConstruction(IFloor? wall)
+        public IFloorConstruction? GetFloorConstruction(IFloor? floor)
         {
-            return GetConstruction<IFloorConstruction>(wall);
+            return GetPhysicalComponentConstruction<IFloorConstruction>(floor);
         }
 
-        public IRoofConstruction? GetConstruction(IRoof? roof)
+        public IRoofConstruction? GetRoofConstruction(IRoof? roof)
         {
-            return GetConstruction<IRoofConstruction>(roof);
+            return GetPhysicalComponentConstruction<IRoofConstruction>(roof);
         }
 
-        public IWindowConstruction? GetConstruction(IWindow? window)
+        public IWindowConstruction? GetWindowConstruction(IWindow? window)
         {
-            return GetConstruction<IWindowConstruction>(window);
+            return GetOpeningConstruction<IWindowConstruction>(window);
         }
 
-        public IDoorConstruction? GetConstruction(IDoor? door)
+        public IDoorConstruction? GetDoorConstruction(IDoor? door)
         {
-            return GetConstruction<IDoorConstruction>(door);
+            return GetOpeningConstruction<IDoorConstruction>(door);
         }
 
         public List<TInternalCondition>? GetInternalConditions<TInternalCondition>(ISpace? space) where TInternalCondition : IInternalCondition
@@ -1094,29 +1094,29 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        private TConstruction? GetConstruction<TConstruction>(IComponent? component) where TConstruction : IConstruction
+        private TPhysicalComponentConstruction? GetPhysicalComponentConstruction<TPhysicalComponentConstruction>(IPhysicalComponent? physicalComponent) where TPhysicalComponentConstruction : IPhysicalComponentConstruction
         {
-            if (buildingRelationCluster == null || component == null)
+            if (buildingRelationCluster == null || physicalComponent == null)
             {
                 return default;
             }
 
-            ComponentConstructionRelation? componentConstructionRelation = GetRelation<ComponentConstructionRelation>(component);
-            if (componentConstructionRelation == null)
+            PhysicalComponentConstructionRelation? physicalComponentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(physicalComponent);
+            if (physicalComponentConstructionRelation == null)
             {
                 return default;
             }
 
-            IConstruction? construction = buildingRelationCluster.GetConstruction(componentConstructionRelation);
-            if(construction is TConstruction construction_Temp)
+            IPhysicalComponent? physicalConstruction = buildingRelationCluster.GetPhysicalComponent(physicalComponentConstructionRelation);
+            if(physicalConstruction is TPhysicalComponentConstruction result)
             {
-                return construction_Temp.Clone<TConstruction>();
+                return result.Clone<TPhysicalComponentConstruction>();
             }
 
             return  default;
         }
 
-        private TOpeningConstruction? GetConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
+        private TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
         {
             if (buildingRelationCluster == null || opening == null)
             {

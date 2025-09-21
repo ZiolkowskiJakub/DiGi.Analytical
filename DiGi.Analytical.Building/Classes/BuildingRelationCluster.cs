@@ -78,52 +78,52 @@ namespace DiGi.Analytical.Building.Classes
             return AddRelation(new SpaceInternalConditionRelation(space, internalCondition, hourRange, id));
         }
 
-        public ComponentConstructionRelation? AddRelation(IWall? wall, IWallConstruction? wallConstruction)
+        public PhysicalComponentConstructionRelation? AddRelation(IWall? wall, IWallConstruction? wallConstruction)
         {
             if (wall == null || wallConstruction == null)
             {
                 return null;
             }
 
-            ComponentConstructionRelation? componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(wall));
-            if (componentConstructionRelation != null)
+            PhysicalComponentConstructionRelation? physicalComponentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(new GuidReference(wall));
+            if (physicalComponentConstructionRelation != null)
             {
-                Remove(componentConstructionRelation);
+                Remove(physicalComponentConstructionRelation);
             }
 
-            return AddRelation(new ComponentConstructionRelation(wall, wallConstruction));
+            return AddRelation(new PhysicalComponentConstructionRelation(wall, wallConstruction));
         }
 
-        public ComponentConstructionRelation? AddRelation(IRoof? roof, IRoofConstruction? roofConstruction)
+        public PhysicalComponentConstructionRelation? AddRelation(IRoof? roof, IRoofConstruction? roofConstruction)
         {
             if (roof == null || roofConstruction == null)
             {
                 return null;
             }
 
-            ComponentConstructionRelation? componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(roof));
+            PhysicalComponentConstructionRelation? componentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(new GuidReference(roof));
             if (componentConstructionRelation != null)
             {
                 Remove(componentConstructionRelation);
             }
 
-            return AddRelation(new ComponentConstructionRelation(roof, roofConstruction));
+            return AddRelation(new PhysicalComponentConstructionRelation(roof, roofConstruction));
         }
 
-        public ComponentConstructionRelation? AddRelation(IFloor? floor, IFloorConstruction? floorConstruction)
+        public PhysicalComponentConstructionRelation? AddRelation(IFloor? floor, IFloorConstruction? floorConstruction)
         {
             if (floor == null || floorConstruction == null)
             {
                 return null;
             }
 
-            ComponentConstructionRelation? componentConstructionRelation = GetRelation<ComponentConstructionRelation>(new GuidReference(floor));
-            if (componentConstructionRelation != null)
+            PhysicalComponentConstructionRelation? physicalComponentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(new GuidReference(floor));
+            if (physicalComponentConstructionRelation != null)
             {
-                Remove(componentConstructionRelation);
+                Remove(physicalComponentConstructionRelation);
             }
 
-            return AddRelation(new ComponentConstructionRelation(floor, floorConstruction));
+            return AddRelation(new PhysicalComponentConstructionRelation(floor, floorConstruction));
         }
 
         public OpeningConstructionRelation? AddRelation(IWindow? window, IWindowConstruction? windowConstruction)
@@ -188,14 +188,14 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public IComponent? GetComponent(ComponentConstructionRelation? componentConstructionRelation)
+        public IPhysicalComponent? GetPhysicalComponent(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
         {
-            if (componentConstructionRelation?.UniqueReference_From is not GuidReference guidReference)
+            if (physicalComponentConstructionRelation?.UniqueReference_From is not GuidReference guidReference)
             {
                 return null;
             }
 
-            if (!TryGetValue(guidReference, out IComponent? result))
+            if (!TryGetValue(guidReference, out IPhysicalComponent? result))
             {
                 return null;
             }
@@ -208,14 +208,14 @@ namespace DiGi.Analytical.Building.Classes
             return GetValues<TComponent>();
         }
 
-        public IConstruction? GetConstruction(ComponentConstructionRelation? componentConstructionRelation)
+        public IPhysicalComponentConstruction? GetPhysicalComponentConstruction(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
         {
-            if (componentConstructionRelation?.UniqueReference_To is not GuidReference guidReference)
+            if (physicalComponentConstructionRelation?.UniqueReference_To is not GuidReference guidReference)
             {
                 return null;
             }
 
-            if (!TryGetValue(guidReference, out IConstruction? result))
+            if (!TryGetValue(guidReference, out IPhysicalComponentConstruction? result))
             {
                 return null;
             }

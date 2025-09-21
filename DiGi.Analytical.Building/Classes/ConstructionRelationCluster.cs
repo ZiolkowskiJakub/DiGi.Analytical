@@ -31,14 +31,14 @@ namespace DiGi.Analytical.Building.Classes
         {
         }
 
-        public ComponentConstructionStructureLayersRelation? AddRelation(IComponentConstruction? componentConstruction, IStructureLayer? structureLayer)
+        public ComponentConstructionStructureLayersRelation? AddRelation(IPhysicalComponentConstruction? physicalComponentConstruction, IStructureLayer? structureLayer)
         {
-            if (componentConstruction is null || structureLayer is null)
+            if (physicalComponentConstruction is null || structureLayer is null)
             {
                 return null;
             }
 
-            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<ComponentConstructionStructureLayersRelation>(new GuidReference(componentConstruction));
+            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<ComponentConstructionStructureLayersRelation>(new GuidReference(physicalComponentConstruction));
             if (componentConstructionStructureLayersRelation != null)
             {
                 Remove(componentConstructionStructureLayersRelation);
@@ -46,7 +46,7 @@ namespace DiGi.Analytical.Building.Classes
             }
             else
             {
-                componentConstructionStructureLayersRelation = new ComponentConstructionStructureLayersRelation(componentConstruction, structureLayer);
+                componentConstructionStructureLayersRelation = new ComponentConstructionStructureLayersRelation(physicalComponentConstruction, structureLayer);
             }
 
             return AddRelation(componentConstructionStructureLayersRelation);
@@ -125,14 +125,14 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public List<IStructureLayer>? GetStructureLayers(IComponentConstruction? componentConstruction)
+        public List<IStructureLayer>? GetStructureLayers(IPhysicalComponentConstruction? physicalComponentConstruction)
         {
-            if(componentConstruction is null)
+            if(physicalComponentConstruction is null)
             {
                 return null;
             }
 
-            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<ComponentConstructionStructureLayersRelation>(new GuidReference(componentConstruction));
+            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<ComponentConstructionStructureLayersRelation>(new GuidReference(physicalComponentConstruction));
             if(componentConstructionStructureLayersRelation is null)
             {
                 return null;

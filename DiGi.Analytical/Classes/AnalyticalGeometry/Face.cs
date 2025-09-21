@@ -1,50 +1,56 @@
 ﻿using DiGi.Analytical.Interfaces;
 using DiGi.Core.Interfaces;
+using DiGi.Geometry.Spatial.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Classes
 {
-    public class Shell : Geometry.Spatial.Classes.Polyhedron<Face>, IAnalyticalGuidObject
+    public class Face : Geometry.Spatial.Classes.PolygonalFace3D, IAnalyticalGeometry
     {
         [JsonInclude, JsonPropertyName("Guid")]
         private readonly Guid guid = Guid.NewGuid();
 
         [JsonInclude, JsonPropertyName("UniqueReference")]
         private readonly IUniqueReference? uniqueReference;
-        public Shell(Shell shell)
-            : base(shell)
+        public Face(Geometry.Spatial.Classes.PolygonalFace3D? polygonalFace3D)
+            : base(polygonalFace3D)
         {
-            if(shell is not null)
-            {
-                guid = shell.guid;
-                uniqueReference = Core.Query.Clone(shell.UniqueReference);
-            }
+
         }
 
-        public Shell(JsonObject? jsonObject)
+        public Face(JsonObject? jsonObject)
             : base(jsonObject)
         {
 
         }
 
-        public Shell(IUniqueReference? uniqueReference, IEnumerable<Face> faces)
-            : base(faces)
+        public Face(Face? face)
+            : base(face)
         {
-            this.uniqueReference = Core.Query.Clone(uniqueReference);
+            if (face != null)
+            {
+                guid = face.Guid;
+                uniqueReference = Core.Query.Clone(face.uniqueReference);
+            }
         }
 
-        public Shell(Guid guid, Shell? shell)
-            : base(shell)
+        public Face(Guid guid, Face? face)
+            : base(face)
         {
             this.guid = guid;
 
-            if (shell != null)
+            if (face != null)
             {
-                uniqueReference = Core.Query.Clone(shell.uniqueReference);
+                uniqueReference = Core.Query.Clone(face.uniqueReference);
             }
+        }
+
+        public Face(IUniqueReference? uniqueReference, Geometry.Spatial.Classes.PolygonalFace3D? polygonalFace3D)
+            : base(polygonalFace3D)
+        {
+            this.uniqueReference = Core.Query.Clone(uniqueReference);
         }
 
         [JsonIgnore]
@@ -78,10 +84,10 @@ namespace DiGi.Analytical.Classes
         {
             if (guid is null)
             {
-                return new Shell(this);
+                return new Face(this);
             }
 
-            return new Shell(guid.Value, this);
+            return new Face(guid.Value, this);
         }
     }
 }

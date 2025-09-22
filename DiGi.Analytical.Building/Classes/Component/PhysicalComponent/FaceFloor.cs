@@ -13,14 +13,20 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public FaceFloor(IFace3D? face3D)
-            : base(face3D)
+        public FaceFloor(IFace3D? geometry)
+            : base(geometry)
         {
 
         }
 
         public FaceFloor(System.Guid guid, FaceFloor? faceFloor)
             : base(guid, faceFloor)
+        {
+
+        }
+
+        public FaceFloor(IFloor? floor, IFace3D? geometry)
+            : base(floor, geometry)
         {
 
         }

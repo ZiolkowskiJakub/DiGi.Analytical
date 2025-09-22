@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public abstract class AbstractComponent : Component, IPhysicalComponent
+    public abstract class AbstractComponent : Component, Interfaces.IComponent
     {
         public AbstractComponent(AbstractComponent? abstractComponent)
             : base(abstractComponent)
@@ -77,6 +77,12 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
+        public AbstractComponent(AbstractComponent? abstractComponent, T? geometry)
+            : base(abstractComponent)
+        {
+            this.geometry = geometry.Clone<T>();
+        }
+
         public AbstractComponent(System.Guid guid, AbstractComponent<T>? abstractComponent)
             : base(guid, abstractComponent)
         {
@@ -87,6 +93,16 @@ namespace DiGi.Analytical.Building.Classes
                     geometry = abstractComponent.geometry.Clone<T>();
                 }
             }
+        }
+
+        public AbstractComponent(System.Guid guid, T? geometry)
+            : base(guid)
+        {
+            if(geometry is not null)
+            {
+                geometry = geometry.Clone<T>();
+            }
+
         }
 
         [JsonIgnore]

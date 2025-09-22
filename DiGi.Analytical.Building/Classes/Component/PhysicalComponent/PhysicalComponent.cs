@@ -58,7 +58,6 @@ namespace DiGi.Analytical.Building.Classes
         public PhysicalComponent(T? geometry)
             : base()
         {
-
             if (geometry != null)
             {
                 this.geometry = geometry.Clone<T>();
@@ -80,6 +79,15 @@ namespace DiGi.Analytical.Building.Classes
                 {
                     geometry = physicalComponent.geometry.Clone<T>();
                 }
+            }
+        }
+
+        public PhysicalComponent(PhysicalComponent? physicalComponent, T? geometry)
+            : base(physicalComponent)
+        {
+            if (geometry != null)
+            {
+                this.geometry = geometry.Clone<T>();
             }
         }
 

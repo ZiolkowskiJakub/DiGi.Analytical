@@ -13,14 +13,20 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public SurfaceRoof(ISurface3D? surface3D)
-            : base(surface3D)
+        public SurfaceRoof(ISurface3D? geometry)
+            : base(geometry)
         {
 
         }
 
         public SurfaceRoof(System.Guid guid, SurfaceRoof? surfaceRoof)
             : base(guid, surfaceRoof)
+        {
+
+        }
+
+        public SurfaceRoof(IRoof? roof, ISurface3D? geometry)
+            : base(roof, geometry)
         {
 
         }

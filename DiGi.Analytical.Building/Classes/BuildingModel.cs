@@ -12,6 +12,7 @@ using DiGi.Geometry.Spatial.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
@@ -261,64 +262,6 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public List<Shell>? GetShells<TSpace>(IEnumerable<TSpace> spaces, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
-        {
-            if (spaces is null)
-            {
-                return null;
-            }
-
-            List<Shell> result = []; 
-            foreach (TSpace space in spaces)
-            {
-                if (GetComponents<IComponent>(space) is not List<IComponent> components)
-                {
-                    continue;
-                }
-
-                List<Face> faces = [];
-                foreach (IComponent component in components)
-                {
-                    if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
-                    {
-                        continue;
-                    }
-
-                    faces.Add(new Face(new GuidReference(component), polygonalFace3D));
-                }
-
-                Shell? shell = new(new GuidReference(space), faces);
-
-                if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
-                {
-                    PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationSolver = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
-                    {
-                        Value = shell
-                    };
-                    polyhedronNormalizationSolver.Update();
-                }
-
-                if(shell is null)
-                {
-                    continue;
-                }
-
-                result.Add(shell);
-            }
-
-            return result;
-        }
-
-        public Shell? GetShell(ISpace? space, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance)
-        {
-            if(space is null)
-            {
-                return null;
-            }
-
-            return GetShells([space], normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)?.FirstOrDefault();
-        }
-
         public BoundingBox3D? GetBoundingBox()
         {
             List<IComponent> components = buildingRelationCluster.GetComponents<IComponent>();
@@ -434,7 +377,7 @@ namespace DiGi.Analytical.Building.Classes
 
             GuidReference guidReference = new(space_2);
 
-            List<SpaceRelation>? spaceRelations = GetRelations(space_1, (SpaceRelation? x) =>  x?.UniqueReferences_To is not null && x.UniqueReferences_To.Contains(guidReference));
+            List<SpaceRelation>? spaceRelations = GetRelations(space_1, (SpaceRelation? x) => x?.UniqueReferences_To is not null && x.UniqueReferences_To.Contains(guidReference));
             if (spaceRelations == null)
             {
                 return default;
@@ -458,29 +401,14 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetComponents<TComponent>().CloneAndFilterNulls();
         }
 
-        public IWallConstruction? GetWallConstruction(IWall? wall)
+        public IDoorConstruction? GetDoorConstruction(IDoor? door)
         {
-            return GetPhysicalComponentConstruction<IWallConstruction>(wall);
+            return GetOpeningConstruction<IDoorConstruction>(door);
         }
 
         public IFloorConstruction? GetFloorConstruction(IFloor? floor)
         {
             return GetPhysicalComponentConstruction<IFloorConstruction>(floor);
-        }
-
-        public IRoofConstruction? GetRoofConstruction(IRoof? roof)
-        {
-            return GetPhysicalComponentConstruction<IRoofConstruction>(roof);
-        }
-
-        public IWindowConstruction? GetWindowConstruction(IWindow? window)
-        {
-            return GetOpeningConstruction<IWindowConstruction>(window);
-        }
-
-        public IDoorConstruction? GetDoorConstruction(IDoor? door)
-        {
-            return GetOpeningConstruction<IDoorConstruction>(door);
         }
 
         public List<TInternalCondition>? GetInternalConditions<TInternalCondition>(ISpace? space) where TInternalCondition : IInternalCondition
@@ -497,13 +425,13 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             List<TInternalCondition> result = [];
-            foreach(SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
+            foreach (SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
                 IInternalCondition? internalCondition = buildingRelationCluster.GetInternalCondition(spaceInternalConditionRelation);
                 if (internalCondition is TInternalCondition internalCondition_Temp)
                 {
                     TInternalCondition? internalCondition_Temp_Temp = internalCondition_Temp.Clone<TInternalCondition>();
-                    if(internalCondition_Temp_Temp != null)
+                    if (internalCondition_Temp_Temp != null)
                     {
                         result.Add(internalCondition_Temp_Temp);
                     }
@@ -680,6 +608,69 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetRelations(guidReference, func)?.CloneAndFilterNulls();
         }
 
+        public IRoofConstruction? GetRoofConstruction(IRoof? roof)
+        {
+            return GetPhysicalComponentConstruction<IRoofConstruction>(roof);
+        }
+
+        public Shell? GetShell(ISpace? space, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance)
+        {
+            if (space is null)
+            {
+                return null;
+            }
+
+            return GetShells([space], normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)?.FirstOrDefault();
+        }
+
+        public List<Shell>? GetShells<TSpace>(IEnumerable<TSpace> spaces, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
+        {
+            if (spaces is null)
+            {
+                return null;
+            }
+
+            List<Shell> result = []; 
+            foreach (TSpace space in spaces)
+            {
+                if (GetComponents<IComponent>(space) is not List<IComponent> components)
+                {
+                    continue;
+                }
+
+                List<Face> faces = [];
+                foreach (IComponent component in components)
+                {
+                    if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
+                    {
+                        continue;
+                    }
+
+                    faces.Add(new Face(new GuidReference(component), polygonalFace3D));
+                }
+
+                Shell? shell = new(new GuidReference(space), faces);
+
+                if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
+                {
+                    PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationSolver = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
+                    {
+                        Value = shell
+                    };
+                    polyhedronNormalizationSolver.Update();
+                }
+
+                if(shell is null)
+                {
+                    continue;
+                }
+
+                result.Add(shell);
+            }
+
+            return result;
+        }
+        
         public List<SpaceInternalCondition>? GetSpaceInternalConditions(ISpace? space)
         {
             if (buildingRelationCluster == null || space == null)
@@ -707,22 +698,22 @@ namespace DiGi.Analytical.Building.Classes
 
             return result;
         }
-        
+
         public List<ISpace>? GetSpaces(IZone? zone)
         {
-            if(zone == null)
+            if (zone == null)
             {
                 return null;
             }
 
             ZoneRelation? zoneRelation = GetRelation<ZoneRelation>(zone);
-            if(zoneRelation == null)
+            if (zoneRelation == null)
             {
                 return null;
             }
 
             List<ISpace>? spaces = buildingRelationCluster?.GetSpaces(zoneRelation);
-            if(spaces == null)
+            if (spaces == null)
             {
                 return null;
             }
@@ -755,7 +746,7 @@ namespace DiGi.Analytical.Building.Classes
         public List<ISpace>? GetSpaces(IOpening? opening)
         {
             IComponent? component = GetComponent<IComponent>(opening);
-            if(component == null)
+            if (component == null)
             {
                 return null;
             }
@@ -766,13 +757,13 @@ namespace DiGi.Analytical.Building.Classes
         public List<TSpace>? GetSpaces<TSpace>(IInternalCondition? internalCondition) where TSpace : ISpace
         {
             List<SpaceInternalConditionRelation>? spaceInternalConditionRelations = GetRelations<SpaceInternalConditionRelation>(internalCondition);
-            if(spaceInternalConditionRelations == null)
+            if (spaceInternalConditionRelations == null)
             {
                 return null;
             }
 
             List<TSpace> result = [];
-            foreach(SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
+            foreach (SpaceInternalConditionRelation spaceInternalConditionRelation in spaceInternalConditionRelations)
             {
                 TSpace? space = Core.Query.Clone(buildingRelationCluster.GetSpace<TSpace>(spaceInternalConditionRelation));
                 if (space == null)
@@ -791,6 +782,16 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
         }
 
+        public IWallConstruction? GetWallConstruction(IWall? wall)
+        {
+            return GetPhysicalComponentConstruction<IWallConstruction>(wall);
+        }
+        
+        public IWindowConstruction? GetWindowConstruction(IWindow? window)
+        {
+            return GetOpeningConstruction<IWindowConstruction>(window);
+        }
+        
         public bool Inside(Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if(sphere == null)
@@ -1094,28 +1095,6 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        private TPhysicalComponentConstruction? GetPhysicalComponentConstruction<TPhysicalComponentConstruction>(IPhysicalComponent? physicalComponent) where TPhysicalComponentConstruction : IPhysicalComponentConstruction
-        {
-            if (buildingRelationCluster == null || physicalComponent == null)
-            {
-                return default;
-            }
-
-            PhysicalComponentConstructionRelation? physicalComponentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(physicalComponent);
-            if (physicalComponentConstructionRelation == null)
-            {
-                return default;
-            }
-
-            IPhysicalComponent? physicalConstruction = buildingRelationCluster.GetPhysicalComponent(physicalComponentConstructionRelation);
-            if(physicalConstruction is TPhysicalComponentConstruction result)
-            {
-                return result.Clone<TPhysicalComponentConstruction>();
-            }
-
-            return  default;
-        }
-
         private TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
         {
             if (buildingRelationCluster == null || opening == null)
@@ -1136,6 +1115,28 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return default;
+        }
+
+        private TPhysicalComponentConstruction? GetPhysicalComponentConstruction<TPhysicalComponentConstruction>(IPhysicalComponent? physicalComponent) where TPhysicalComponentConstruction : IPhysicalComponentConstruction
+        {
+            if (buildingRelationCluster == null || physicalComponent == null)
+            {
+                return default;
+            }
+
+            PhysicalComponentConstructionRelation? physicalComponentConstructionRelation = GetRelation<PhysicalComponentConstructionRelation>(physicalComponent);
+            if (physicalComponentConstructionRelation == null)
+            {
+                return default;
+            }
+
+            IPhysicalComponent? physicalConstruction = buildingRelationCluster.GetPhysicalComponent(physicalComponentConstructionRelation);
+            if(physicalConstruction is TPhysicalComponentConstruction result)
+            {
+                return result.Clone<TPhysicalComponentConstruction>();
+            }
+
+            return  default;
         }
     }
 }

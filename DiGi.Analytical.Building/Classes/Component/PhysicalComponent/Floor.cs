@@ -12,14 +12,20 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public Floor(Floor<T>? wall)
-            : base(wall)
+        public Floor(Floor<T>? floor)
+            : base(floor)
         {
 
         }
 
         public Floor(System.Guid guid, Floor<T>? floor)
             : base(guid, floor)
+        {
+
+        }
+
+        public Floor(IFloor? floor, T? geometry)
+            : base(floor as PhysicalComponent, geometry)
         {
 
         }

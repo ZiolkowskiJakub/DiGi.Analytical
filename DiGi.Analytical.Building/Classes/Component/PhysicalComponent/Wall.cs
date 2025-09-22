@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
+using System;
 using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
@@ -23,7 +24,17 @@ namespace DiGi.Analytical.Building.Classes
         {
             if(wall is not null)
             {
-                wall.StructurePosition = StructurePosition;
+                StructurePosition = wall.StructurePosition;
+            }
+
+        }
+
+        public Wall(IWall? wall, T? geometry)
+            : base(wall as PhysicalComponent, geometry)
+        {
+            if (wall is not null)
+            {
+                StructurePosition = wall.StructurePosition;
             }
 
         }

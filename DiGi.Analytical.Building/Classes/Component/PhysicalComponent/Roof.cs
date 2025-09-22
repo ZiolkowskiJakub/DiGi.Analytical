@@ -24,6 +24,12 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
+        public Roof(IRoof? roof, T? geometry)
+            : base(roof as PhysicalComponent, geometry)
+        {
+
+        }
+
         public Roof(JsonObject? jsonObject)
             : base(jsonObject)
         {

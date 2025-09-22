@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
+using System;
 using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
@@ -20,6 +21,18 @@ namespace DiGi.Analytical.Building.Classes
 
         public Air(System.Guid guid, Air<T>? air)
             : base(guid, air)
+        {
+
+        }
+
+        public Air(IAir? air, T? geometry)
+            : base(air as AbstractComponent, geometry)
+        {
+
+        }
+
+        public Air(Guid guid, T? geometry)
+            : base(guid, geometry)
         {
 
         }

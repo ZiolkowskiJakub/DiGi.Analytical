@@ -6,6 +6,11 @@ namespace DiGi.Analytical.Building.Classes
     {
         public BuildingModel? Value { get; set; }
 
+        public BuildingModelUpdater(BuildingModel? value)
+        {
+            Value = value;
+        }
+
         public abstract bool Update();
     }
 }

@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    public class SurfaceAir : Air<ISurface3D>, ISurfaceShade
+    public class SurfaceAir : Air<ISurface3D>, ISurfaceAir
     {
         public SurfaceAir(SurfaceAir? surfaceAir)
             : base(surfaceAir)
@@ -13,8 +13,8 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public SurfaceAir(ISurface3D? surface3D)
-            : base(surface3D)
+        public SurfaceAir(ISurface3D? geometry)
+            : base(geometry)
         {
 
         }
@@ -23,6 +23,12 @@ namespace DiGi.Analytical.Building.Classes
             : base(guid, surfaceAir)
         {
 
+        }
+
+        public SurfaceAir(IAir? air, ISurface3D? geometry)
+            : base(air, geometry)
+        {
+            
         }
 
         public SurfaceAir(JsonObject? jsonObject)

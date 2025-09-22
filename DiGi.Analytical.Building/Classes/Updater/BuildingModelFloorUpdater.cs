@@ -4,9 +4,15 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    internal class BuildingModelFloorSolver : BuildingModelUpdater
+    internal class BuildingModelFloorUpdater : BuildingModelUpdater
     {
         public BuildingModelFloorUpdaterOptions? BuildingModelFloorUpdaterOptions { get; set; }
+
+        public BuildingModelFloorUpdater(BuildingModel? value)
+            : base(value)
+        {
+
+        }
 
         public override bool Update()
         {

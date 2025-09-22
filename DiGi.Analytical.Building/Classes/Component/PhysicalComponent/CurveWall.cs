@@ -44,6 +44,18 @@ namespace DiGi.Analytical.Building.Classes
             }
         }
 
+        public CurveWall(IWall wall, TCurve3D? curve3D, double height, Vector3D? direction)
+            :base(wall, curve3D)
+        {
+            vector = direction?.Unit * height;
+        }
+
+        public CurveWall(IWall wall, TCurve3D? curve3D, double height)
+            : base(wall, curve3D)
+        {
+            vector = DiGi.Geometry.Spatial.Constans.Vector3D.WorldZ * height;
+        }
+
         public CurveWall(JsonObject? jsonObject)
             : base(jsonObject)
         {
@@ -63,7 +75,12 @@ namespace DiGi.Analytical.Building.Classes
                 Vector = value;
             }
         }
-        
+
+        public override BoundingBox3D? GetBoundingBox()
+        {
+            return GetSurface3D()?.GetBoundingBox();
+        }
+
         public ISurface3D? GetSurface3D()
         {
             if(vector == null)
@@ -106,11 +123,6 @@ namespace DiGi.Analytical.Building.Classes
 
             return new PolygonalFace3D(plane, DiGi.Geometry.Planar.Create.PolygonalFace2D(new Polygon2D([plane.Convert(point3D_1)!, plane.Convert(point3D_2)!, plane.Convert(point3D_3)!, plane.Convert(point3D_4)!])));
         }
-
-        public override BoundingBox3D? GetBoundingBox()
-        {
-            return GetSurface3D()?.GetBoundingBox();
-        }
     }
 
     public class CurveWall : CurveWall<ICurve3D>
@@ -123,6 +135,18 @@ namespace DiGi.Analytical.Building.Classes
 
         public CurveWall(ICurve3D? curve3D, double height)
             : base(curve3D, height)
+        {
+
+        }
+
+        public CurveWall(IWall wall, ICurve3D? curve3D, double height, Vector3D? direction)
+            : base(wall, curve3D, height, direction)
+        {
+
+        }
+
+        public CurveWall(IWall wall, ICurve3D? curve3D, double height)
+            : base(wall, curve3D, height)
         {
 
         }

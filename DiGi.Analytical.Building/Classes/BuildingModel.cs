@@ -1,4 +1,5 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+﻿using DiGi.Analytical.Building.Classes.Updater;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core;
 using DiGi.Core.Classes;
@@ -11,6 +12,7 @@ using DiGi.Geometry.Spatial.Enums;
 using DiGi.Geometry.Spatial.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text.Json.Nodes;
@@ -37,6 +39,7 @@ namespace DiGi.Analytical.Building.Classes
             if(buildingModel != null)
             {
                 buildingRelationCluster = Core.Query.Clone(buildingModel.buildingRelationCluster) ?? [];
+                buildingInformation = Core.Query.Clone(buildingModel.buildingInformation) ?? new ();
             }
         }
 
@@ -441,9 +444,9 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public TBuildingGuidObject? GetObject<TBuildingGuidObject>(GuidReference? uniqueReference) where TBuildingGuidObject : IBuildingGuidObject
+        public TBuildingGuidObject? GetObject<TBuildingGuidObject>(GuidReference? guidReference) where TBuildingGuidObject : IBuildingGuidObject
         {
-            if (!TryGetObject(uniqueReference, out TBuildingGuidObject? result))
+            if (TryGetObject(guidReference, out TBuildingGuidObject? result))
             {
                 return result;
             }
@@ -671,6 +674,17 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
         
+        public List<Shell>? GetShells<TSpace>(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
+        {
+            IEnumerable<TSpace>? spaces = buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
+            if(spaces is null)
+            {
+                return null;
+            }
+
+            return GetShells(spaces, normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance);
+        }
+
         public List<SpaceInternalCondition>? GetSpaceInternalConditions(ISpace? space)
         {
             if (buildingRelationCluster == null || space == null)

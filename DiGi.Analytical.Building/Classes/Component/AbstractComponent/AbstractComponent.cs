@@ -100,7 +100,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             if(geometry is not null)
             {
-                geometry = geometry.Clone<T>();
+                this.geometry = geometry.Clone<T>();
             }
 
         }

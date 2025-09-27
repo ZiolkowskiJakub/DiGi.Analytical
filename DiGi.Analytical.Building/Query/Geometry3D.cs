@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
+using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building
 {
@@ -12,51 +13,68 @@ namespace DiGi.Analytical.Building
                 return default;
             }
 
-            IGeometry3D? geometry3D = null;
-
-            if (buildingGeometry3DObject is IBuildingGeometry3DObject<ISurface3D>)
+            IGeometry3D? geometry3D = (buildingGeometry3DObject as dynamic).Geometry;
+            if(geometry3D is null)
             {
-                if (((IBuildingGeometryObject<ISurface3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
-                {
-                    throw new System.NotImplementedException();
-                }
-
-                geometry3D = polygonalFace3D;
-            }
-            else if (buildingGeometry3DObject is IBuildingGeometry3DObject<IFace3D>)
-            {
-                if (((IBuildingGeometryObject<IFace3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
-                {
-                    throw new System.NotImplementedException();
-                }
-
-
-                geometry3D = polygonalFace3D;
-            }
-            else if (buildingGeometry3DObject is IBuildingGeometry3DObject<ICurve3D>)
-            {
-                if (((IBuildingGeometryObject<ICurve3D>)buildingGeometry3DObject).Geometry is not ISegmentable3D)
-                {
-                    throw new System.NotImplementedException();
-                }
-
-                if (buildingGeometry3DObject is Classes.CurveWall wall)
-                {
-                    if (wall.GetSurface3D() is not IPolygonalFace3D polygonalFace3D)
-                    {
-                        throw new System.NotImplementedException();
-                    }
-
-                    geometry3D = polygonalFace3D;
-                }
+                return default;
             }
 
-            if(geometry3D is TGeometry3D geometry3D_Temp)
+            List<TGeometry3D>? geometries = Geometry.Spatial.Query.Convert<TGeometry3D>(geometry3D);
+            if(geometries is null)
             {
-                return geometry3D_Temp;
+                return default;
             }
 
-            return default;
+            if(geometries.Count > 1)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            return geometries[0];
+
+            //if (buildingGeometry3DObject is IBuildingGeometry3DObject<ISurface3D>)
+            //{
+            //    if (((IBuildingGeometryObject<ISurface3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
+            //    {
+            //        throw new System.NotImplementedException();
+            //    }
+
+            //    geometry3D = polygonalFace3D;
+            //}
+            //else if (buildingGeometry3DObject is IBuildingGeometry3DObject<IFace3D>)
+            //{
+            //    if (((IBuildingGeometryObject<IFace3D>)buildingGeometry3DObject).Geometry is not IPolygonalFace3D polygonalFace3D)
+            //    {
+            //        throw new System.NotImplementedException();
+            //    }
+
+
+            //    geometry3D = polygonalFace3D;
+            //}
+            //else if (buildingGeometry3DObject is IBuildingGeometry3DObject<ICurve3D>)
+            //{
+            //    if (((IBuildingGeometryObject<ICurve3D>)buildingGeometry3DObject).Geometry is not ISegmentable3D)
+            //    {
+            //        throw new System.NotImplementedException();
+            //    }
+
+            //    if (buildingGeometry3DObject is Classes.CurveWall wall)
+            //    {
+            //        if (wall.GetSurface3D() is not IPolygonalFace3D polygonalFace3D)
+            //        {
+            //            throw new System.NotImplementedException();
+            //        }
+
+            //        geometry3D = polygonalFace3D;
+            //    }
+            //}
+
+            //if(geometry3D is TGeometry3D geometry3D_Temp)
+            //{
+            //    return geometry3D_Temp;
+            //}
+
+            //return default;
         }
     }
 }

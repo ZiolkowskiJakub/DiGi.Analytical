@@ -19,10 +19,10 @@ namespace DiGi.Analytical.Classes
         private double vapourDiffusionFactor;
 
         [JsonInclude, JsonPropertyName("SolarReflectance"), Description("Solar Reflectance")]
-        private SurfaceValue? solarReflectance;
+        private readonly SurfaceValue? solarReflectance;
 
         [JsonInclude, JsonPropertyName("LightReflectance"), Description("Light Reflectance")]
-        private SurfaceValue? lightReflectance;
+        private readonly SurfaceValue? lightReflectance;
 
         [JsonInclude, JsonPropertyName("Emissivity"), Description("Emissivity")]
         private SurfaceValue? emissivity;

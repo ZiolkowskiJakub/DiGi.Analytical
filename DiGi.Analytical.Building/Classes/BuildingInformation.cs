@@ -13,6 +13,8 @@ namespace DiGi.Analytical.Building.Classes
             if (buildingInformation != null)
             {
                 Address = Core.Query.Clone(buildingInformation.Address);
+                Coordinates = Core.Query.Clone(buildingInformation.Coordinates);
+                UTC = buildingInformation.UTC;
             }
         }
 

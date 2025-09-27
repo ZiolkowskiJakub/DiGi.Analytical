@@ -1,25 +1,27 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
+using DiGi.Core.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
+using System;
 using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
     public class BuildingModelShellUpdater : BuildingModelUpdater
     {
-        public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
-        
-        public Shell? Shell { get; set; }
-
-        public string? Name { get; set; }
-
         public BuildingModelShellUpdater(BuildingModel value)
-            :base(value)
+            : base(value)
         {
 
         }
-
+        
+        public Shell? Shell { get; set; }
+        
+        public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
+        
+        public HashSet<IUniqueReference>? UpdatedComponentUniqueReferences { get; set; } = null;
+        
         public override bool Update()
         {
             return Update(out _);
@@ -47,25 +49,42 @@ namespace DiGi.Analytical.Building.Classes
                     return false;
                 }
 
-                space = new Space(internalPoint, Name);
+                space = new Space(internalPoint, null);
             }
 
             BuildingModelFaceUpdater buildingModelFaceUpdater = new(Value);
 
             List<IComponent> components = [];
 
+            UpdatedComponentUniqueReferences ??= [];
+
             while (faces.Count > 0)
             {
-                List<Face> faces_Temp = faces.FindAll(x => x.UniqueReference == faces[0].UniqueReference);
+                Face? face = faces[0];
+                IUniqueReference? uniqueReference = face?.UniqueReference;
+
+                List<Face> faces_Temp = faces.FindAll(x => x?.UniqueReference == uniqueReference);
                 faces.RemoveAll(faces_Temp.Contains);
 
-                buildingModelFaceUpdater.Face = faces_Temp[0];
-                if (buildingModelFaceUpdater.Update(out IComponent? component) && component != null)
+                int startIndex = 0;
+
+                if(uniqueReference is null || !UpdatedComponentUniqueReferences.Contains(uniqueReference))
                 {
-                    components.Add(component);
+                    buildingModelFaceUpdater.Face = face;
+                    if (buildingModelFaceUpdater.Update(out IComponent? component) && component != null)
+                    {
+                        components.Add(component);
+                    }
+
+                    startIndex = 1;
+
+                    if(uniqueReference is not null)
+                    {
+                        UpdatedComponentUniqueReferences.Add(uniqueReference);
+                    }
                 }
 
-                for (int i = 1; i < faces_Temp.Count; i++)
+                for (int i = startIndex; i < faces_Temp.Count; i++)
                 {
                     PolygonalFace3D? polygonalFace3D = Geometry.Spatial.Create.PolygonalFace3D(faces_Temp[i]);
                     if (polygonalFace3D is null)
@@ -73,17 +92,17 @@ namespace DiGi.Analytical.Building.Classes
                         continue;
                     }
 
-                    Face face = new(null, polygonalFace3D);
+                    face = new(null, polygonalFace3D);
 
                     buildingModelFaceUpdater.Face = face;
-                    if (buildingModelFaceUpdater.Update(out component) && component != null)
+                    if (buildingModelFaceUpdater.Update(out IComponent? component) && component != null)
                     {
                         components.Add(component);
                     }
                 }
             }
 
-            System.Guid guid = space.Guid;
+            Guid guid = space.Guid;
 
             foreach (IComponent component_Temp in components)
             {

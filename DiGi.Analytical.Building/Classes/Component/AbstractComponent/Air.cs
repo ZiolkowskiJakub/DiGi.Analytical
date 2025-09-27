@@ -19,7 +19,7 @@ namespace DiGi.Analytical.Building.Classes
 
         }
 
-        public Air(System.Guid guid, Air<T>? air)
+        public Air(Guid guid, Air<T>? air)
             : base(guid, air)
         {
 

@@ -29,6 +29,6 @@ namespace DiGi.Analytical.Urban.Classes
         }
 
         [JsonInclude, JsonPropertyName("Coordinates")]
-        public Coordinates? Coordinates { get; set; }
+        public Coordinates? Coordinates { get; set; } = new Coordinates(0, 0);
     }
 }

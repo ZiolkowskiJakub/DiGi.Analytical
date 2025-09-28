@@ -32,7 +32,7 @@ namespace DiGi.Analytical.Building
                 return null;
             }
 
-            ComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(physicalComponentConstruction, result);
+            PhysicalComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(physicalComponentConstruction, result);
             if(componentConstructionStructureLayersRelation is null)
             {
                 return null;

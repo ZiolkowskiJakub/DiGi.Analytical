@@ -34,7 +34,7 @@ namespace DiGi.Analytical.Building.Classes
         public Address? Address { get; set; }
 
         [JsonInclude, JsonPropertyName("Coordinates")]
-        public Coordinates? Coordinates { get; set; }
+        public Coordinates? Coordinates { get; set; } = new Coordinates(0, 0);
 
         [JsonInclude, JsonPropertyName("UTC")]
         public Core.Enums.UTC UTC { get; set; }

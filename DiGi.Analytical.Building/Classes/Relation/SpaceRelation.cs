@@ -1,7 +1,8 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core.Relation.Classes;
 using System.Text.Json.Nodes;
-namespace DiGi.Analytical.Building.Classes.Updater
+
+namespace DiGi.Analytical.Building.Classes
 {
     public class SpaceRelation : OneToManyBidirectionalRelation<IComponent, ISpace>, IBuildingRelation
     {

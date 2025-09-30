@@ -1,5 +1,4 @@
-﻿using DiGi.Analytical.Building.Classes.Updater;
-using DiGi.Analytical.Building.Interfaces;
+﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core;
 using DiGi.Core.Classes;
@@ -12,9 +11,7 @@ using DiGi.Geometry.Spatial.Enums;
 using DiGi.Geometry.Spatial.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 

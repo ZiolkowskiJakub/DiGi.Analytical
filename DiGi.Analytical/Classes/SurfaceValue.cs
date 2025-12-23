@@ -64,7 +64,5 @@ namespace DiGi.Analytical.Classes
                 @internal = value;
             }
         }
-
-
     }
 }

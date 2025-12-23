@@ -7,7 +7,6 @@ using DiGi.Core.Parameter.Classes;
 using DiGi.Core.Relation.Enums;
 using DiGi.Geometry.Core.Enums;
 using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Enums;
 using DiGi.Geometry.Spatial.Interfaces;
 using System;
 using System.Collections.Generic;

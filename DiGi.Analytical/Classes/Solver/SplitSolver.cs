@@ -1,5 +1,4 @@
-﻿using DiGi.Analytical.Delegates;
-using DiGi.Analytical.Interfaces;
+﻿using DiGi.Analytical.Interfaces;
 using DiGi.Core;
 using DiGi.Core.Interfaces;
 using System.Collections.Generic;

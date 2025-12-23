@@ -1,5 +1,4 @@
-﻿using DiGi.Analytical.Delegates;
-using DiGi.Geometry.Spatial.Classes;
+﻿using DiGi.Geometry.Spatial.Classes;
 
 namespace DiGi.Analytical.Classes
 {

@@ -1,7 +1,4 @@
-﻿using DiGi.Core.Interfaces;
-using DiGi.Geometry.Spatial.Classes;
-using System;
-using System.Collections.Generic;
+﻿using DiGi.Geometry.Spatial.Classes;
 
 namespace DiGi.Analytical.Classes
 {

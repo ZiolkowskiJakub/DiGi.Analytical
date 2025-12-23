@@ -2,7 +2,6 @@
 using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace DiGi.Analytical.Building.Classes
 {

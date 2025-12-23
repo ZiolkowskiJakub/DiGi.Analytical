@@ -188,39 +188,9 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public IPhysicalComponent? GetPhysicalComponent(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
-        {
-            if (physicalComponentConstructionRelation?.UniqueReference_From is not GuidReference guidReference)
-            {
-                return null;
-            }
-
-            if (!TryGetValue(guidReference, out IPhysicalComponent? result))
-            {
-                return null;
-            }
-
-            return result;
-        }
-
         public List<TComponent> GetComponents<TComponent>() where TComponent : IComponent
         {
             return GetValues<TComponent>();
-        }
-
-        public IPhysicalComponentConstruction? GetPhysicalComponentConstruction(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
-        {
-            if (physicalComponentConstructionRelation?.UniqueReference_To is not GuidReference guidReference)
-            {
-                return null;
-            }
-
-            if (!TryGetValue(guidReference, out IPhysicalComponentConstruction? result))
-            {
-                return null;
-            }
-
-            return result;
         }
 
         public IInternalCondition? GetInternalCondition(SpaceInternalConditionRelation? spaceInternalConditionRelation)
@@ -277,6 +247,36 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             if (!TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<IOpening>? result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+
+        public IPhysicalComponent? GetPhysicalComponent(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
+        {
+            if (physicalComponentConstructionRelation?.UniqueReference_From is not GuidReference guidReference)
+            {
+                return null;
+            }
+
+            if (!TryGetValue(guidReference, out IPhysicalComponent? result))
+            {
+                return null;
+            }
+
+            return result;
+        }
+        
+        public IPhysicalComponentConstruction? GetPhysicalComponentConstruction(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
+        {
+            if (physicalComponentConstructionRelation?.UniqueReference_To is not GuidReference guidReference)
+            {
+                return null;
+            }
+
+            if (!TryGetValue(guidReference, out IPhysicalComponentConstruction? result))
             {
                 return null;
             }

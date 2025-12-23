@@ -1,11 +1,5 @@
-﻿using DiGi.Analytical.Building.Enums;
-using DiGi.Analytical.Building.Interfaces;
-using DiGi.Core;
-using DiGi.Geometry.Spatial.Classes;
-using DiGi.Geometry.Spatial.Interfaces;
-using System.ComponentModel;
+﻿using DiGi.Geometry.Spatial.Classes;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {

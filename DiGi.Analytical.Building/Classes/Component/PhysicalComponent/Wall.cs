@@ -1,6 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
-using System;
 using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Building.Classes

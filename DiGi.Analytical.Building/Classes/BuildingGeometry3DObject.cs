@@ -45,25 +45,11 @@ namespace DiGi.Analytical.Building.Classes
         [JsonInclude, JsonPropertyName("Geometry"), Description("Geometry")]
         private readonly T? geometry;
 
-        [JsonIgnore]
-        public T? Geometry
-        {
-            get
-            {
-                if(geometry == null)
-                {
-                    return default;
-                }
-
-                return geometry.Clone<T>();
-            }
-        }
-
         public BuildingGeometry3DObject(T? geometry)
             : base()
         {
 
-            if(geometry != null)
+            if (geometry != null)
             {
                 this.geometry = geometry.Clone<T>();
             }
@@ -78,9 +64,9 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingGeometry3DObject(BuildingGeometry3DObject<T>? buildingGeometry3DObject)
             : base(buildingGeometry3DObject)
         {
-            if(buildingGeometry3DObject != null)
+            if (buildingGeometry3DObject != null)
             {
-                if(buildingGeometry3DObject.geometry != null)
+                if (buildingGeometry3DObject.geometry != null)
                 {
                     geometry = buildingGeometry3DObject.geometry.Clone<T>();
                 }
@@ -96,6 +82,20 @@ namespace DiGi.Analytical.Building.Classes
                 {
                     geometry = buildingGeometry3DObject.geometry.Clone<T>();
                 }
+            }
+        }
+
+        [JsonIgnore]
+        public T? Geometry
+        {
+            get
+            {
+                if(geometry == null)
+                {
+                    return default;
+                }
+
+                return geometry.Clone<T>();
             }
         }
     }

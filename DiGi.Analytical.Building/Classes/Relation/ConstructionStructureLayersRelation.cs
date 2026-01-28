@@ -10,25 +10,21 @@ namespace DiGi.Analytical.Building.Classes
         public ConstructionStructureLayersRelation(TConstruction? construction, IStructureLayer? structureLayer)
             : base(construction, Core.Query.CloneAndFilterNulls([structureLayer]))
         {
-
         }
 
         public ConstructionStructureLayersRelation(TConstruction? construction, IEnumerable<IStructureLayer>? structureLayers)
             : base(construction, structureLayers)
         {
-
         }
 
         public ConstructionStructureLayersRelation(ConstructionStructureLayersRelation<TConstruction>? constructionStructureLayersRelation)
             : base(constructionStructureLayersRelation)
         {
-
         }
 
         public ConstructionStructureLayersRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

@@ -13,13 +13,12 @@ namespace DiGi.Analytical.Classes
         public ShellByPlaneSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
-
         }
 
         public event FaceSplitEventHandler? FaceSplit;
 
         public event ShellSplitEventHandler? ShellSplit;
-        
+
         public Plane? Plane
         {
             get
@@ -42,7 +41,7 @@ namespace DiGi.Analytical.Classes
                 return false;
             }
 
-            if(input?.PolygonalFaces is not List<Face> faces)
+            if (input?.PolygonalFaces is not List<Face> faces)
             {
                 return false;
             }
@@ -91,10 +90,10 @@ namespace DiGi.Analytical.Classes
 
             void shellSplit(object s, ShellSplitEventArgs e) { e.UniqueReference = e.Input?.UniqueReference; e.Handled = true; }
 
-            for (int i =0; i < polygonalFace3Ds.Count; i++)
+            for (int i = 0; i < polygonalFace3Ds.Count; i++)
             {
                 List<IPolygonalFace3D>? polygonalFace3Ds_Shell = polygonalFace3Ds[i];
-                if(polygonalFace3Ds_Shell is null)
+                if (polygonalFace3Ds_Shell is null)
                 {
                     continue;
                 }

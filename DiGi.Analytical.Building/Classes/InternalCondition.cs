@@ -12,7 +12,7 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
         private string? name;
-        
+
         public InternalCondition(string? name)
             : base()
         {
@@ -22,7 +22,6 @@ namespace DiGi.Analytical.Building.Classes
         public InternalCondition(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public InternalCondition(InternalCondition? internalCondition)

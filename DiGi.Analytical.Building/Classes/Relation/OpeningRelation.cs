@@ -10,25 +10,21 @@ namespace DiGi.Analytical.Building.Classes
         public OpeningRelation(IComponent? component, IOpening? opening)
             : base(component, Core.Query.CloneAndFilterNulls([opening]))
         {
-
         }
 
         public OpeningRelation(IComponent? component, IEnumerable<IOpening>? openings)
             : base(component, openings)
         {
-
         }
 
         public OpeningRelation(OpeningRelation? openingRelation)
             : base(openingRelation)
         {
-
         }
 
         public OpeningRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

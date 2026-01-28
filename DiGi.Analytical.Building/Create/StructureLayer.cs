@@ -10,30 +10,30 @@ namespace DiGi.Analytical.Building
     {
         public static StructureLayer? StructureLayer(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction, IMaterial? material, double thickness)
         {
-            if(constructionRelationCluster is null || physicalComponentConstruction is null || material is null || double.IsNaN(thickness))
+            if (constructionRelationCluster is null || physicalComponentConstruction is null || material is null || double.IsNaN(thickness))
             {
                 return null;
             }
 
-            if(!constructionRelationCluster.Contains(new Core.Classes.GuidReference(physicalComponentConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
+            if (!constructionRelationCluster.Contains(new Core.Classes.GuidReference(physicalComponentConstruction)) || !constructionRelationCluster.Contains(new Core.Classes.GuidReference(material)))
             {
                 return null;
             }
 
             int index = Query.NextStructureLayerIndex(constructionRelationCluster, physicalComponentConstruction);
-            if(index == -1)
+            if (index == -1)
             {
                 return null;
             }
 
-            StructureLayer result = new (index, thickness);
-            if(!constructionRelationCluster.Add(result))
+            StructureLayer result = new(index, thickness);
+            if (!constructionRelationCluster.Add(result))
             {
                 return null;
             }
 
             PhysicalComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.AddRelation(physicalComponentConstruction, result);
-            if(componentConstructionStructureLayersRelation is null)
+            if (componentConstructionStructureLayersRelation is null)
             {
                 return null;
             }
@@ -43,8 +43,6 @@ namespace DiGi.Analytical.Building
             {
                 return null;
             }
-
-            
 
             return result;
         }

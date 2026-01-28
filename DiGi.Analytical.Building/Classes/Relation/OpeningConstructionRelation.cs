@@ -9,19 +9,16 @@ namespace DiGi.Analytical.Building.Classes
         public OpeningConstructionRelation(IOpening? opening, IOpeningConstruction? openingConstruction)
             : base(opening, openingConstruction)
         {
-
         }
 
         public OpeningConstructionRelation(OpeningConstructionRelation? openingConstructionRelation)
             : base(openingConstructionRelation)
         {
-
         }
 
         public OpeningConstructionRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

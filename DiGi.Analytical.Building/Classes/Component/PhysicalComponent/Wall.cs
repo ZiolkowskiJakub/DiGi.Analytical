@@ -7,25 +7,22 @@ namespace DiGi.Analytical.Building.Classes
     public abstract class Wall<T> : PhysicalComponent<T>, IWall<T> where T : IGeometry3D
     {
         public Wall(T? geometry)
-            :base(geometry)
+            : base(geometry)
         {
-
         }
 
         public Wall(Wall<T>? wall)
             : base(wall)
         {
-
         }
 
         public Wall(System.Guid guid, Wall<T>? wall)
             : base(guid, wall)
         {
-            if(wall is not null)
+            if (wall is not null)
             {
                 StructurePosition = wall.StructurePosition;
             }
-
         }
 
         public Wall(IWall? wall, T? geometry)
@@ -35,13 +32,11 @@ namespace DiGi.Analytical.Building.Classes
             {
                 StructurePosition = wall.StructurePosition;
             }
-
         }
 
         public Wall(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

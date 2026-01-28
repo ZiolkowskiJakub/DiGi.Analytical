@@ -9,7 +9,6 @@ namespace DiGi.Analytical.Classes
         public StructureLayer(StructureLayer? structureLayer)
             : base(structureLayer)
         {
-
         }
 
         public StructureLayer(int index, double thickness)
@@ -22,7 +21,6 @@ namespace DiGi.Analytical.Classes
         public StructureLayer(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public int Index { get; set; }

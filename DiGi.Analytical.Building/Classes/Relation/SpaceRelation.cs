@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building.Classes
 {
     public class SpaceRelation : OneToManyBidirectionalRelation<IComponent, ISpace>, IBuildingRelation
     {
-        public SpaceRelation(JsonObject? jsonObject) 
+        public SpaceRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
         }
@@ -14,21 +14,16 @@ namespace DiGi.Analytical.Building.Classes
         public SpaceRelation(IComponent? component, ISpace? space)
             : base(component, Core.Query.CloneAndFilterNulls([space]))
         {
-
         }
 
         public SpaceRelation(IComponent? component, ISpace? space_1, ISpace? space_2)
             : base(component, Core.Query.CloneAndFilterNulls([space_1, space_2]))
         {
-
         }
 
         public SpaceRelation(SpaceRelation? spaceRelation)
             : base(spaceRelation)
         {
-
         }
-
-
     }
 }

@@ -2,6 +2,5 @@
 {
     public interface IZone : IBuildingGuidObject, IBuildingNamedObject
     {
-
     }
 }

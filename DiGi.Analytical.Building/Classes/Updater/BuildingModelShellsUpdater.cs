@@ -10,15 +10,14 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingModelShellsUpdater(BuildingModel value)
             : base(value)
         {
-
         }
-        
+
         public List<Shell>? Shells { get; set; }
-        
+
         public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
-        
+
         public HashSet<IUniqueReference>? UpdatedComponentUniqueReferences { get; set; } = null;
-        
+
         public override bool Update()
         {
             return Update(out _);
@@ -33,7 +32,7 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            BuildingModelShellUpdater buildingModelShellUpdater = new (Value);
+            BuildingModelShellUpdater buildingModelShellUpdater = new(Value);
 
             UpdatedComponentUniqueReferences ??= [];
 
@@ -41,7 +40,7 @@ namespace DiGi.Analytical.Building.Classes
 
             foreach (Shell shell in Shells)
             {
-                if(shell is null)
+                if (shell is null)
                 {
                     continue;
                 }

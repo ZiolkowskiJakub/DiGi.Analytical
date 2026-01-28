@@ -4,6 +4,5 @@ namespace DiGi.Analytical.Building.Interfaces
 {
     public interface ISurfaceShade : IShade<ISurface3D>, IBuildingSurfaceObject
     {
-
     }
 }

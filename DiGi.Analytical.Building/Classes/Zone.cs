@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         public Zone(string? name)
-            :base()
+            : base()
         {
             this.name = name;
         }
@@ -33,13 +33,12 @@ namespace DiGi.Analytical.Building.Classes
         public Zone(JsonObject? jsonObject)
             : base(jsonObject)
         {
-           
         }
 
         public Zone(Zone? zone)
             : base(zone)
         {
-            if(zone != null)
+            if (zone != null)
             {
                 name = zone.name;
             }

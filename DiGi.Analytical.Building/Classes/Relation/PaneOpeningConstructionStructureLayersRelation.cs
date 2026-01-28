@@ -9,25 +9,21 @@ namespace DiGi.Analytical.Building.Classes
         public PaneOpeningConstructionStructureLayersRelation(IOpeningConstruction? openingConstruction, IStructureLayer? structureLayer)
             : base(openingConstruction, Core.Query.CloneAndFilterNulls([structureLayer]))
         {
-
         }
 
         public PaneOpeningConstructionStructureLayersRelation(IOpeningConstruction? openingConstruction, IEnumerable<IStructureLayer>? structureLayers)
             : base(openingConstruction, structureLayers)
         {
-
         }
 
         public PaneOpeningConstructionStructureLayersRelation(PaneOpeningConstructionStructureLayersRelation? paneOpeningConstructionStructureLayersRelation)
             : base(paneOpeningConstructionStructureLayersRelation)
         {
-
         }
 
         public PaneOpeningConstructionStructureLayersRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

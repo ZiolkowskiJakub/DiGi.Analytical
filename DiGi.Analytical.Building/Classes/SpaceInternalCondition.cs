@@ -17,7 +17,7 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("HourRange"), Description("HourRange")]
         private readonly HourRange? hourRange;
-        
+
         public SpaceInternalCondition(IInternalCondition? internalCondition, HourRange? hourRange, string? id = null)
             : base()
         {
@@ -29,7 +29,6 @@ namespace DiGi.Analytical.Building.Classes
         public SpaceInternalCondition(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public SpaceInternalCondition(SpaceInternalCondition? spaceInternalCondition)
@@ -60,7 +59,7 @@ namespace DiGi.Analytical.Building.Classes
                 return Core.Query.Clone(internalCondition);
             }
         }
-        
+
         [JsonIgnore]
         public HourRange? HourRange
         {

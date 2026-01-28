@@ -15,16 +15,16 @@ namespace DiGi.Analytical.Classes
         private double external;
 
         public SurfaceValue(double @internal, double external)
-            :base()
+            : base()
         {
             this.@internal = @internal;
             this.external = external;
         }
 
         public SurfaceValue(SurfaceValue? surfaceValue)
-            :base(surfaceValue)
+            : base(surfaceValue)
         {
-            if(surfaceValue is not null)
+            if (surfaceValue is not null)
             {
                 @internal = surfaceValue.@internal;
                 external = surfaceValue.external;
@@ -34,7 +34,6 @@ namespace DiGi.Analytical.Classes
         public SurfaceValue(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("External"), Description("External")]
@@ -45,7 +44,7 @@ namespace DiGi.Analytical.Classes
                 return external;
             }
 
-            set 
+            set
             {
                 external = value;
             }

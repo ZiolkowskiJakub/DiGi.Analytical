@@ -23,13 +23,11 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public Thermostat()
             : base()
         {
-
         }
 
         public Thermostat(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Thermostat(Thermostat? thermostat)
@@ -45,7 +43,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                     profiles = [];
                     foreach (KeyValuePair<ThermostatProfileType, IProfile> keyValuePair in profiles)
                     {
-                        if(Core.Query.Clone(keyValuePair.Value) is IProfile profile)
+                        if (Core.Query.Clone(keyValuePair.Value) is IProfile profile)
                         {
                             profiles[keyValuePair.Key] = profile;
                         }
@@ -58,7 +56,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         {
             get
             {
-                if(profiles == null)
+                if (profiles == null)
                 {
                     return null;
                 }
@@ -73,7 +71,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
             set
             {
-                if(value is null)
+                if (value is null)
                 {
                     return;
                 }

@@ -8,25 +8,21 @@ namespace DiGi.Analytical.Building.Classes
         public WallConstruction()
             : base()
         {
-
         }
 
         public WallConstruction(WallConstruction? wallConstruction)
             : base(wallConstruction)
         {
-
         }
 
         public WallConstruction(System.Guid guid, WallConstruction? wallConstruction)
             : base(guid, wallConstruction)
         {
-
         }
 
         public WallConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

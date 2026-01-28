@@ -15,10 +15,10 @@ namespace DiGi.Analytical.Building.HVAC
 
             List<IProfile> result = [];
 
-            foreach(InternalGainProfileType internalGainProfileType in System.Enum.GetValues(typeof(InternalGainProfileType)))
+            foreach (InternalGainProfileType internalGainProfileType in System.Enum.GetValues(typeof(InternalGainProfileType)))
             {
                 IProfile? profile = internalCondition.Profile(internalGainProfileType);
-                if(profile != null)
+                if (profile != null)
                 {
                     result.Add(profile);
                 }

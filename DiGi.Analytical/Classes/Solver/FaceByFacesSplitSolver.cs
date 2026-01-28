@@ -13,13 +13,12 @@ namespace DiGi.Analytical.Classes
         public FaceByFacesSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
-
         }
 
         public event CoplanarFaceSplitEventHandler? CoplanarFaceSplit;
 
         public event NonCoplanarFaceSplitEventHandler? NonCoplanarFaceSplit;
-        
+
         public List<Face>? Faces
         {
             get
@@ -32,7 +31,7 @@ namespace DiGi.Analytical.Classes
                 faces = Core.Query.Clone(value)?.FilterNulls();
             }
         }
-        
+
         public override bool Solve()
         {
             outputs = null;
@@ -85,13 +84,13 @@ namespace DiGi.Analytical.Classes
             List<Tuple<BoundingBox3D, Face>> tuples_Coplanar = tuples.FindAll(x => plane.Coplanar(x.Item2.Plane, Tolerance));
             if (tuples_Coplanar.Count == 0)
             {
-                foreach(PolygonalFace3D polygonalFace3D in polygonalFace3Ds)
+                foreach (PolygonalFace3D polygonalFace3D in polygonalFace3Ds)
                 {
                     NonCoplanarFaceSplitEventArgs nonCoplanarFaceSplitEventArgs = new(input, polygonalFace3D);
 
                     NonCoplanarFaceSplit?.Invoke(this, nonCoplanarFaceSplitEventArgs);
 
-                    if(!nonCoplanarFaceSplitEventArgs.Handled)
+                    if (!nonCoplanarFaceSplitEventArgs.Handled)
                     {
                         nonCoplanarFaceSplit(this, nonCoplanarFaceSplitEventArgs);
                     }
@@ -127,7 +126,7 @@ namespace DiGi.Analytical.Classes
                     continue;
                 }
 
-                CoplanarFaceSplitEventArgs coplanarFaceSplitEventArgs = new (input, faces_Coplanar, polygonalFace3D);
+                CoplanarFaceSplitEventArgs coplanarFaceSplitEventArgs = new(input, faces_Coplanar, polygonalFace3D);
                 CoplanarFaceSplit?.Invoke(this, coplanarFaceSplitEventArgs);
 
                 if (!coplanarFaceSplitEventArgs.Handled)
@@ -137,7 +136,6 @@ namespace DiGi.Analytical.Classes
 
                 outputs.Add(new Face(coplanarFaceSplitEventArgs.UniqueReference, polygonalFace3D));
                 continue;
-
             }
 
             return outputs.Count != 0;

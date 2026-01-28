@@ -14,10 +14,11 @@ namespace DiGi.Analytical.Classes
 
         [JsonInclude, JsonPropertyName("UniqueReference")]
         private readonly IUniqueReference? uniqueReference;
+
         public Shell(Shell shell)
             : base(shell)
         {
-            if(shell is not null)
+            if (shell is not null)
             {
                 guid = shell.guid;
                 uniqueReference = Core.Query.Clone(shell.UniqueReference);
@@ -27,7 +28,6 @@ namespace DiGi.Analytical.Classes
         public Shell(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Shell(IUniqueReference? uniqueReference, IEnumerable<Face> faces)
@@ -73,7 +73,7 @@ namespace DiGi.Analytical.Classes
                 return Core.Query.Clone(uniqueReference);
             }
         }
-        
+
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

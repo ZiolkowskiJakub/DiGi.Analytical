@@ -9,7 +9,7 @@ namespace DiGi.Analytical.Building.Classes
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
         private string? description;
-        
+
         public PhysicalComponentConstruction()
             : base()
         {
@@ -20,7 +20,6 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (componentConstruction is not null)
             {
-
             }
         }
 
@@ -29,14 +28,12 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (componentConstruction is not null)
             {
-
             }
         }
 
         public PhysicalComponentConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -59,7 +56,6 @@ namespace DiGi.Analytical.Building.Classes
         public ComponentConstruction()
             : base()
         {
-
         }
 
         public ComponentConstruction(ComponentConstruction<TConstructable>? componentConstruction)
@@ -70,13 +66,11 @@ namespace DiGi.Analytical.Building.Classes
         public ComponentConstruction(System.Guid guid, ComponentConstruction<TConstructable>? componentConstruction)
             : base(guid, componentConstruction)
         {
-
         }
 
         public ComponentConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

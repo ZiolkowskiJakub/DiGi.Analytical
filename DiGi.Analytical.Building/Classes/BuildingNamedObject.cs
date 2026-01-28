@@ -8,31 +8,26 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingObject(BuildingObject? buildingObject)
             : base(buildingObject)
         {
-
         }
 
         public BuildingObject(System.Guid guid, BuildingObject? buildingObject)
             : base(guid, buildingObject)
         {
-
         }
 
         public BuildingObject()
             : base()
         {
-
         }
 
         public BuildingObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public BuildingObject(System.Guid guid)
             : base(guid)
         {
-
         }
     }
 }

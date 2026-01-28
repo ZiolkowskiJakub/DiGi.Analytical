@@ -10,31 +10,26 @@ namespace DiGi.Analytical.Building.Classes
         public FaceFloor(FaceFloor? faceFloor)
             : base(faceFloor)
         {
-
         }
 
         public FaceFloor(IFace3D? geometry)
             : base(geometry)
         {
-
         }
 
         public FaceFloor(System.Guid guid, FaceFloor? faceFloor)
             : base(guid, faceFloor)
         {
-
         }
 
         public FaceFloor(IFloor? floor, IFace3D? geometry)
             : base(floor, geometry)
         {
-
         }
 
         public FaceFloor(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public override BoundingBox3D? GetBoundingBox()

@@ -12,28 +12,27 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingModelFloorUpdater(BuildingModel? value)
             : base(value)
         {
-
         }
 
         public int FloorCount { get; set; } = -1;
-        
+
         public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
-        
+
         public override bool Update()
         {
-            if(FloorCount < 2 || Value is null)
+            if (FloorCount < 2 || Value is null)
             {
                 return false;
             }
 
             List<Shell>? shells = Value.GetShells<ISpace>();
-            if(shells == null || shells.Count == 0)
+            if (shells == null || shells.Count == 0)
             {
                 return false;
             }
 
             BoundingBox3D? boundingBox3D = Geometry.Spatial.Create.BoundingBox3D(shells.ConvertAll(x => x.GetBoundingBox()).FilterNulls());
-            if(boundingBox3D is null)
+            if (boundingBox3D is null)
             {
                 return false;
             }
@@ -47,19 +46,19 @@ namespace DiGi.Analytical.Building.Classes
             double floorHeight = System.Math.Round(height / FloorCount, 1);
 
             ShellByPlaneSplitSolver shellByPlaneSplitSolver = new(Tolerance);
-            shellByPlaneSplitSolver.FaceSplit += (s, e) => 
-            { 
-                e.UniqueReference = e.Input?.UniqueReference ?? new GuidReference(typeof(SurfaceAir), System.Guid.NewGuid()); 
-                e.Handled = true; 
+            shellByPlaneSplitSolver.FaceSplit += (s, e) =>
+            {
+                e.UniqueReference = e.Input?.UniqueReference ?? new GuidReference(typeof(SurfaceAir), System.Guid.NewGuid());
+                e.Handled = true;
             };
 
             bool split = false;
 
             double currentElevation = minElevation;
-            while(currentElevation < maxElevation)
+            while (currentElevation < maxElevation)
             {
                 Plane? plane = Geometry.Spatial.Create.Plane(currentElevation);
-                if(plane is null)
+                if (plane is null)
                 {
                     break;
                 }
@@ -75,7 +74,7 @@ namespace DiGi.Analytical.Building.Classes
                     }
 
                     List<Shell>? shells_Split = shellByPlaneSplitSolver.Outputs;
-                    if(shells_Split is null || shells_Split.Count == 0)
+                    if (shells_Split is null || shells_Split.Count == 0)
                     {
                         continue;
                     }
@@ -90,7 +89,7 @@ namespace DiGi.Analytical.Building.Classes
                 currentElevation += floorHeight;
             }
 
-            if(!split)
+            if (!split)
             {
                 return false;
             }

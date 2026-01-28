@@ -30,13 +30,11 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public Emitter()
             : base()
         {
-
         }
 
         public Emitter(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Emitter(Emitter? emitter)

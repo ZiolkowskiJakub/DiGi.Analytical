@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building
             }
 
             IPolygonalFace3D? polygonalFace3D = Geometry3D<IPolygonalFace3D>(buildingGeometry3DObject);
-            if(polygonalFace3D == null)
+            if (polygonalFace3D == null)
             {
                 return null;
             }

@@ -1,9 +1,9 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Core;
-using System.Text.Json.Nodes;
-using System.ComponentModel;
-using System.Text.Json.Serialization;
 using DiGi.Geometry.Spatial.Interfaces;
+using System.ComponentModel;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
@@ -12,31 +12,26 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingGeometry3DObject(BuildingGeometry3DObject? buildingGeometry3DObject)
             : base(buildingGeometry3DObject)
         {
-
         }
 
         public BuildingGeometry3DObject(System.Guid guid, BuildingGeometry3DObject? buildingGeometry3DObject)
             : base(guid, buildingGeometry3DObject)
         {
-
         }
 
         public BuildingGeometry3DObject()
             : base()
         {
-
         }
 
         public BuildingGeometry3DObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public BuildingGeometry3DObject(System.Guid guid)
             : base(guid)
         {
-
         }
     }
 
@@ -48,7 +43,6 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingGeometry3DObject(T? geometry)
             : base()
         {
-
             if (geometry != null)
             {
                 this.geometry = geometry.Clone<T>();
@@ -58,7 +52,6 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingGeometry3DObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public BuildingGeometry3DObject(BuildingGeometry3DObject<T>? buildingGeometry3DObject)
@@ -90,7 +83,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             get
             {
-                if(geometry == null)
+                if (geometry == null)
                 {
                     return default;
                 }

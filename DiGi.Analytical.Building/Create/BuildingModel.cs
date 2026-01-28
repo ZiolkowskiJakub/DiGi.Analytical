@@ -8,7 +8,7 @@ namespace DiGi.Analytical.Building
     {
         public static BuildingModel? BuildingModel(this IEnumerable<IPolyhedron> polyhedrons)
         {
-            if(polyhedrons is null)
+            if (polyhedrons is null)
             {
                 return null;
             }

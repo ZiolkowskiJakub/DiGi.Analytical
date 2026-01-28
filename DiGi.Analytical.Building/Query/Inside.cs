@@ -14,14 +14,14 @@ namespace DiGi.Analytical.Building
             }
 
             List<Triangle3D>? triagle3Ds = buildingGeometry3DObject.Triangulate(tolerance);
-            if(triagle3Ds == null || triagle3Ds.Count == 0)
+            if (triagle3Ds == null || triagle3Ds.Count == 0)
             {
                 return false;
             }
 
-            foreach(Triangle3D triangle3D in triagle3Ds)
+            foreach (Triangle3D triangle3D in triagle3Ds)
             {
-                if(!sphere.Inside(triangle3D, tolerance))
+                if (!sphere.Inside(triangle3D, tolerance))
                 {
                     return false;
                 }

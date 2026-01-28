@@ -33,13 +33,11 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingNamedObject()
             : base()
         {
-
         }
 
         public BuildingNamedObject(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public BuildingNamedObject(System.Guid guid, string? name)

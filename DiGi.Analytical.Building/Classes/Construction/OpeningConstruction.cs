@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Building.Classes
 {
-
     public abstract class OpeningConstruction : BuildingGeometry2DObject<ISurface2D>, IOpeningConstruction
     {
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
@@ -14,7 +13,7 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("Name")]
         private string? name;
-        
+
         public OpeningConstruction(string? name, ISurface2D? surface2D)
             : base(surface2D)
         {
@@ -26,7 +25,6 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (openingConstruction != null)
             {
-
             }
         }
 
@@ -35,14 +33,12 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (openingConstruction != null)
             {
-
             }
         }
 
         public OpeningConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -79,25 +75,21 @@ namespace DiGi.Analytical.Building.Classes
         public OpeningConstruction(string? name, ISurface2D? surface2D)
             : base(name, surface2D)
         {
-
         }
 
         public OpeningConstruction(OpeningConstruction? openingConstruction)
             : base(openingConstruction)
         {
-
         }
 
         public OpeningConstruction(System.Guid guid, OpeningConstruction? openingConstruction)
             : base(guid, openingConstruction)
         {
-
         }
 
         public OpeningConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

@@ -22,7 +22,7 @@ namespace DiGi.Analytical.Building.Classes
         public PhysicalComponent(System.Guid guid, PhysicalComponent? physicalComponent)
             : base(guid, physicalComponent)
         {
-            if(physicalComponent is not null)
+            if (physicalComponent is not null)
             {
                 physicalComponent.StructurePosition = StructurePosition;
             }
@@ -31,19 +31,16 @@ namespace DiGi.Analytical.Building.Classes
         public PhysicalComponent()
             : base()
         {
-
         }
 
         public PhysicalComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public PhysicalComponent(System.Guid guid)
             : base(guid)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
@@ -67,7 +64,6 @@ namespace DiGi.Analytical.Building.Classes
         public PhysicalComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public PhysicalComponent(PhysicalComponent<T>? physicalComponent)
@@ -108,7 +104,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             get
             {
-                if(geometry == null)
+                if (geometry == null)
                 {
                     return default;
                 }

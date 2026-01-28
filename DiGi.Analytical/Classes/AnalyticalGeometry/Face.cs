@@ -13,16 +13,15 @@ namespace DiGi.Analytical.Classes
 
         [JsonInclude, JsonPropertyName("UniqueReference")]
         private readonly IUniqueReference? uniqueReference;
+
         public Face(Geometry.Spatial.Classes.PolygonalFace3D? polygonalFace3D)
             : base(polygonalFace3D)
         {
-
         }
 
         public Face(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Face(Face? face)
@@ -78,7 +77,7 @@ namespace DiGi.Analytical.Classes
                 return Core.Query.Clone(uniqueReference);
             }
         }
-        
+
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

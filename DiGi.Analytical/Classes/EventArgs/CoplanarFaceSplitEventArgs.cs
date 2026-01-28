@@ -8,7 +8,7 @@ namespace DiGi.Analytical.Classes
         private readonly List<Face>? outputs;
 
         public CoplanarFaceSplitEventArgs(Face? input, IEnumerable<Face>? outputs, PolygonalFace3D? polygonalFace3D)
-            :base(input, polygonalFace3D)
+            : base(input, polygonalFace3D)
         {
             this.outputs = outputs is null ? null : [.. outputs];
         }

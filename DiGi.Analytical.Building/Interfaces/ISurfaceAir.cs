@@ -4,6 +4,5 @@ namespace DiGi.Analytical.Building.Interfaces
 {
     public interface ISurfaceAir : IAir<ISurface3D>, IBuildingSurfaceObject
     {
-
     }
 }

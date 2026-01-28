@@ -8,25 +8,21 @@ namespace DiGi.Analytical.Building.Classes
         public RoofConstruction()
             : base()
         {
-
         }
 
         public RoofConstruction(RoofConstruction? roofConstruction)
             : base(roofConstruction)
         {
-
         }
-        
+
         public RoofConstruction(System.Guid guid, RoofConstruction? roofConstruction)
             : base(guid, roofConstruction)
         {
-
         }
 
         public RoofConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

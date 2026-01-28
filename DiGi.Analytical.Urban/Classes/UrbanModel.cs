@@ -1,5 +1,4 @@
 ﻿using DiGi.Analytical.Building.Classes;
-using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Analytical.Urban.Interfaces;
 using DiGi.Core;
@@ -22,7 +21,7 @@ namespace DiGi.Analytical.Urban.Classes
         private UrbanInformation urbanInformation = new();
 
         public UrbanModel(UrbanModel? urbanModel)
-            :base(urbanModel)
+            : base(urbanModel)
         {
             if (urbanModel != null)
             {
@@ -34,7 +33,6 @@ namespace DiGi.Analytical.Urban.Classes
         public UrbanModel(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -103,8 +101,8 @@ namespace DiGi.Analytical.Urban.Classes
 
             BoundingBox3D? result = buildingModel.GetBoundingBox();
 
-            boundingBox = new (buildingModel.UniqueReference(), result);
-            if(urbanRelationCluster.Add(boundingBox))
+            boundingBox = new(buildingModel.UniqueReference(), result);
+            if (urbanRelationCluster.Add(boundingBox))
             {
                 buildingModelBoundingBoxRelation = new BuildingModelBoundingBoxRelation(buildingModel, boundingBox);
                 urbanRelationCluster.AddRelation(buildingModelBoundingBoxRelation);

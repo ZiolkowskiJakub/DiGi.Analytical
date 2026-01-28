@@ -10,31 +10,26 @@ namespace DiGi.Analytical.Building.Classes
         public SurfaceWall(SurfaceWall? surfaceWall)
             : base(surfaceWall)
         {
-
         }
 
         public SurfaceWall(ISurface3D? geometry)
             : base(geometry)
         {
-
         }
 
         public SurfaceWall(System.Guid guid, SurfaceWall? surfaceWall)
             : base(guid, surfaceWall)
         {
-
         }
 
         public SurfaceWall(IWall? wall, ISurface3D? geometry)
             : base(wall, geometry)
         {
-
         }
 
         public SurfaceWall(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public override BoundingBox3D? GetBoundingBox()

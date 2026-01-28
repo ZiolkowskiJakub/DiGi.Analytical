@@ -1,6 +1,6 @@
 ﻿using DiGi.Analytical.Building.Classes;
-using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial;
+using DiGi.Geometry.Spatial.Classes;
 
 namespace DiGi.Analytical.Building
 {
@@ -33,4 +33,3 @@ namespace DiGi.Analytical.Building
         }
     }
 }
-

@@ -24,13 +24,12 @@ namespace DiGi.Analytical.Building.Classes
         public SpaceInternalConditionRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public SpaceInternalConditionRelation(SpaceInternalConditionRelation? spaceInternalConditionRelation)
-            :base(spaceInternalConditionRelation)
+            : base(spaceInternalConditionRelation)
         {
-            if(spaceInternalConditionRelation != null)
+            if (spaceInternalConditionRelation != null)
             {
                 hourRange = Core.Query.Clone(spaceInternalConditionRelation.hourRange);
                 id = spaceInternalConditionRelation.id;

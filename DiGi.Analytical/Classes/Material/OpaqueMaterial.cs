@@ -14,7 +14,7 @@ namespace DiGi.Analytical.Classes
 
         [JsonInclude, JsonPropertyName("SpecificHeat"), Description("Specific Heat")]
         private double specificHeat;
-        
+
         [JsonInclude, JsonPropertyName("VapourDiffusionFactor"), Description("Vapour Diffusion Factor")]
         private double vapourDiffusionFactor;
 
@@ -30,13 +30,12 @@ namespace DiGi.Analytical.Classes
         public OpaqueMaterial(string? name)
             : base(name)
         {
-
         }
 
         public OpaqueMaterial(OpaqueMaterial? opaqueMaterial)
-            :base(opaqueMaterial)
+            : base(opaqueMaterial)
         {
-            if(opaqueMaterial is not null)
+            if (opaqueMaterial is not null)
             {
                 conductivity = opaqueMaterial.conductivity;
                 specificHeat = opaqueMaterial.specificHeat;
@@ -51,7 +50,6 @@ namespace DiGi.Analytical.Classes
         public OpaqueMaterial(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -62,8 +60,8 @@ namespace DiGi.Analytical.Classes
                 return conductivity;
             }
 
-            set 
-            { 
+            set
+            {
                 conductivity = value;
             }
         }
@@ -95,7 +93,7 @@ namespace DiGi.Analytical.Classes
                 specificHeat = value;
             }
         }
-        
+
         [JsonIgnore]
         public double VapourDiffusionFactor
         {

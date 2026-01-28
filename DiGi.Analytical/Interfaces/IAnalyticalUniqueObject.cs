@@ -1,5 +1,4 @@
-﻿
-using DiGi.Core.Interfaces;
+﻿using DiGi.Core.Interfaces;
 
 namespace DiGi.Analytical.Interfaces
 {

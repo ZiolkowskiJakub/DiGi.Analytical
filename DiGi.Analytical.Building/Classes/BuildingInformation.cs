@@ -21,13 +21,11 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingInformation()
             : base()
         {
-
         }
 
         public BuildingInformation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("Address")]

@@ -10,31 +10,26 @@ namespace DiGi.Analytical.Building.Classes
         public SurfaceRoof(SurfaceRoof? surfaceRoof)
             : base(surfaceRoof)
         {
-
         }
 
         public SurfaceRoof(ISurface3D? geometry)
             : base(geometry)
         {
-
         }
 
         public SurfaceRoof(System.Guid guid, SurfaceRoof? surfaceRoof)
             : base(guid, surfaceRoof)
         {
-
         }
 
         public SurfaceRoof(IRoof? roof, ISurface3D? geometry)
             : base(roof, geometry)
         {
-
         }
 
         public SurfaceRoof(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public override BoundingBox3D? GetBoundingBox()

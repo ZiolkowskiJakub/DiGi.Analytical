@@ -4,6 +4,5 @@ namespace DiGi.Analytical.Building.Interfaces
 {
     public interface IBuildingSerializableObject : IBuildingObject, ISerializableObject
     {
-
     }
 }

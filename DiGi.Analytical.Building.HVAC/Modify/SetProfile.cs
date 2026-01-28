@@ -15,9 +15,9 @@ namespace DiGi.Analytical.Building.HVAC
             }
 
             InternalGain? internalGain = internalCondition.InternalGain();
-            if(internalGain == null)
+            if (internalGain == null)
             {
-                if(profile == null)
+                if (profile == null)
                 {
                     return false;
                 }

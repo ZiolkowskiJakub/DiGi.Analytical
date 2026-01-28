@@ -13,11 +13,11 @@ namespace DiGi.Analytical.Classes
         }
 
         public bool Handled { get; set; } = false;
-        
+
         public Face? Input { get; }
 
         public PolygonalFace3D? PolygonalFace3D { get; }
-        
+
         public IUniqueReference? UniqueReference { get; set; }
     }
 }

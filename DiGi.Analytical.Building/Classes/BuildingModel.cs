@@ -22,27 +22,26 @@ namespace DiGi.Analytical.Building.Classes
         private readonly BuildingRelationCluster buildingRelationCluster = [];
 
         [JsonInclude, JsonPropertyName("BuildingInformation"), System.ComponentModel.Description("BuildingInformation")]
-        private BuildingInformation buildingInformation = new ();
-        public BuildingModel() 
+        private BuildingInformation buildingInformation = new();
+
+        public BuildingModel()
             : base()
         {
-            
         }
 
         public BuildingModel(BuildingModel? buildingModel)
             : base(buildingModel)
         {
-            if(buildingModel != null)
+            if (buildingModel != null)
             {
                 buildingRelationCluster = Core.Query.Clone(buildingModel.buildingRelationCluster) ?? [];
-                buildingInformation = Core.Query.Clone(buildingModel.buildingInformation) ?? new ();
+                buildingInformation = Core.Query.Clone(buildingModel.buildingInformation) ?? new();
             }
         }
 
         public BuildingModel(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -76,7 +75,6 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-
             if (!Update(wallConstruction))
             {
                 return false;
@@ -96,7 +94,6 @@ namespace DiGi.Analytical.Building.Classes
             {
                 return false;
             }
-
 
             if (!Update(roofConstruction))
             {
@@ -118,7 +115,6 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-
             if (!Update(floorConstruction))
             {
                 return false;
@@ -139,7 +135,6 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-
             if (!Update(windowConstruction))
             {
                 return false;
@@ -159,7 +154,6 @@ namespace DiGi.Analytical.Building.Classes
             {
                 return false;
             }
-
 
             if (!Update(doorConstruction))
             {
@@ -194,7 +188,6 @@ namespace DiGi.Analytical.Building.Classes
                 }
             }
 
-
             return buildingRelationCluster.AddRelation(component, space_1, space_2) != null;
         }
 
@@ -211,7 +204,7 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             List<ISpace> spaces_Temp = [];
-            foreach(ISpace space in spaces)
+            foreach (ISpace space in spaces)
             {
                 if (Update(space))
                 {
@@ -250,9 +243,9 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             bool result = false;
-            foreach(TSpace space in spaces)
+            foreach (TSpace space in spaces)
             {
-                if(Assign(space, internalCondition, hourRange, id))
+                if (Assign(space, internalCondition, hourRange, id))
                 {
                     result = true;
                 }
@@ -629,7 +622,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            List<Shell> result = []; 
+            List<Shell> result = [];
             foreach (TSpace space in spaces)
             {
                 if (GetComponents<IComponent>(space) is not List<IComponent> components)
@@ -659,7 +652,7 @@ namespace DiGi.Analytical.Building.Classes
                     polyhedronNormalizationSolver.Update();
                 }
 
-                if(shell is null)
+                if (shell is null)
                 {
                     continue;
                 }
@@ -669,11 +662,11 @@ namespace DiGi.Analytical.Building.Classes
 
             return result;
         }
-        
+
         public List<Shell>? GetShells<TSpace>(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
         {
             IEnumerable<TSpace>? spaces = buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
-            if(spaces is null)
+            if (spaces is null)
             {
                 return null;
             }
@@ -796,28 +789,28 @@ namespace DiGi.Analytical.Building.Classes
         {
             return GetPhysicalComponentConstruction<IWallConstruction>(wall);
         }
-        
+
         public IWindowConstruction? GetWindowConstruction(IWindow? window)
         {
             return GetOpeningConstruction<IWindowConstruction>(window);
         }
-        
+
         public bool Inside(Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            if(sphere == null)
+            if (sphere == null)
             {
                 return false;
             }
 
             List<IComponent>? components = buildingRelationCluster.GetValues<IComponent>();
-            if(components == null || components.Count() == 0)
+            if (components == null || components.Count() == 0)
             {
                 return false;
             }
 
-            foreach(IComponent component in components)
+            foreach (IComponent component in components)
             {
-                if(!Query.Inside(sphere, component, tolerance))
+                if (!Query.Inside(sphere, component, tolerance))
                 {
                     return false;
                 }
@@ -1048,10 +1041,10 @@ namespace DiGi.Analytical.Building.Classes
 
             return buildingRelationCluster.Add(shade.Clone<IShade>());
         }
-        
+
         private bool Assign(IComponent? component, IOpening? opening)
         {
-            if(component == null || opening == null)
+            if (component == null || opening == null)
             {
                 return false;
             }
@@ -1061,7 +1054,6 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-
             if (!Update(opening))
             {
                 return false;
@@ -1070,7 +1062,7 @@ namespace DiGi.Analytical.Building.Classes
             GuidReference guidReference = new(opening);
 
             OpeningRelation? openingRelation = GetRelation<OpeningRelation>(opening);
-            if(openingRelation != null)
+            if (openingRelation != null)
             {
                 List<IUniqueReference>? uniqueReferences = openingRelation.UniqueReferences_To;
                 if (uniqueReferences != null)
@@ -1089,7 +1081,7 @@ namespace DiGi.Analytical.Building.Classes
             List<IOpening>? openings = null;
 
             openingRelation = GetRelation<OpeningRelation>(component);
-            if(openingRelation != null)
+            if (openingRelation != null)
             {
                 buildingRelationCluster.Remove(openingRelation);
 
@@ -1141,12 +1133,12 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             IPhysicalComponent? physicalConstruction = buildingRelationCluster.GetPhysicalComponent(physicalComponentConstructionRelation);
-            if(physicalConstruction is TPhysicalComponentConstruction result)
+            if (physicalConstruction is TPhysicalComponentConstruction result)
             {
                 return result.Clone<TPhysicalComponentConstruction>();
             }
 
-            return  default;
+            return default;
         }
     }
 }

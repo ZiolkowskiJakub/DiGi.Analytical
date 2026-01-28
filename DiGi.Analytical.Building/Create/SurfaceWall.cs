@@ -7,13 +7,13 @@ namespace DiGi.Analytical.Building
     {
         public static SurfaceWall? SurfaceWall(this IPolygonalFace3D? polygonalFace3D, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            if(polygonalFace3D == null)
+            if (polygonalFace3D == null)
             {
                 return null;
             }
 
             double area = polygonalFace3D.GetArea();
-            if(double.IsNaN(area) || area < tolerance)
+            if (double.IsNaN(area) || area < tolerance)
             {
                 return null;
             }

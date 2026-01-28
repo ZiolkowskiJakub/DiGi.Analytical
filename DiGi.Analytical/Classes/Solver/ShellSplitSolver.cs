@@ -5,7 +5,6 @@
         public ShellSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
-
         }
     }
 }

@@ -8,25 +8,21 @@ namespace DiGi.Analytical.Building.Classes
         public FloorConstruction()
             : base()
         {
-
         }
 
         public FloorConstruction(FloorConstruction? floorConstruction)
             : base(floorConstruction)
         {
-
         }
 
         public FloorConstruction(System.Guid guid, FloorConstruction? floorConstruction)
             : base(guid, floorConstruction)
         {
-
         }
 
         public FloorConstruction(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

@@ -9,12 +9,12 @@ namespace DiGi.Analytical.Building.HVAC
     {
         public static HeatingEmitter? HeatingEmitter(this IInternalCondition? internalCondition)
         {
-            if(internalCondition == null)
+            if (internalCondition == null)
             {
                 return null;
             }
 
-            if(!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.HeatingEmitter), out HeatingEmitter? result, new GetValueSettings(true, false)))
+            if (!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.HeatingEmitter), out HeatingEmitter? result, new GetValueSettings(true, false)))
             {
                 return null;
             }

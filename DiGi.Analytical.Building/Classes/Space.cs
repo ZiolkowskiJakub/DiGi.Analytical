@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Building.Classes
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
         private string? name;
-        
+
         public Space(Point3D? geometry, string? name)
             : base(geometry)
         {
@@ -23,7 +23,6 @@ namespace DiGi.Analytical.Building.Classes
         public Space(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Space(System.Guid guid, Space? space)

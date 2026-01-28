@@ -13,16 +13,15 @@ namespace DiGi.Analytical.Classes
 
         [JsonInclude, JsonPropertyName("UniqueReference")]
         private readonly IUniqueReference? uniqueReference;
+
         public BoundingBox(Geometry.Spatial.Classes.BoundingBox3D? boundingBox3D)
             : base(boundingBox3D)
         {
-
         }
 
         public BoundingBox(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public BoundingBox(BoundingBox? boundingBox)
@@ -78,7 +77,7 @@ namespace DiGi.Analytical.Classes
                 return Core.Query.Clone(uniqueReference);
             }
         }
-        
+
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

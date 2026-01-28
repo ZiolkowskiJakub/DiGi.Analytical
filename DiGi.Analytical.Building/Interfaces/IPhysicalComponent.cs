@@ -8,8 +8,7 @@ namespace DiGi.Analytical.Building.Interfaces
         StructurePosition StructurePosition { get; }
     }
 
-    public interface IPhysicalComponent<T> : IPhysicalComponent, IBuildingGeometryObject<T> where T: IGeometry3D
+    public interface IPhysicalComponent<T> : IPhysicalComponent, IBuildingGeometryObject<T> where T : IGeometry3D
     {
-
     }
 }

@@ -5,7 +5,6 @@
         public FaceSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
-
         }
     }
 }

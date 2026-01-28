@@ -13,15 +13,14 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingModelShellUpdater(BuildingModel value)
             : base(value)
         {
-
         }
-        
+
         public Shell? Shell { get; set; }
-        
+
         public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
-        
+
         public HashSet<IUniqueReference>? UpdatedComponentUniqueReferences { get; set; } = null;
-        
+
         public override bool Update()
         {
             return Update(out _);
@@ -68,7 +67,7 @@ namespace DiGi.Analytical.Building.Classes
 
                 int startIndex = 0;
 
-                if(uniqueReference is null || !UpdatedComponentUniqueReferences.Contains(uniqueReference))
+                if (uniqueReference is null || !UpdatedComponentUniqueReferences.Contains(uniqueReference))
                 {
                     buildingModelFaceUpdater.Face = face;
                     if (buildingModelFaceUpdater.Update(out IComponent? component) && component != null)
@@ -78,7 +77,7 @@ namespace DiGi.Analytical.Building.Classes
 
                     startIndex = 1;
 
-                    if(uniqueReference is not null)
+                    if (uniqueReference is not null)
                     {
                         UpdatedComponentUniqueReferences.Add(uniqueReference);
                     }

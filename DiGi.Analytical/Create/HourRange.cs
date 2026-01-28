@@ -11,7 +11,5 @@ namespace DiGi.Analytical
 
             return new HourRange(index, index + hours);
         }
-
     }
 }
-

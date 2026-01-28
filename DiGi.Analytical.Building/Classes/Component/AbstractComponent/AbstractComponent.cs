@@ -13,31 +13,26 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(AbstractComponent? abstractComponent)
             : base(abstractComponent)
         {
-
         }
 
         public AbstractComponent(System.Guid guid, AbstractComponent? abstractComponent)
             : base(guid, abstractComponent)
         {
-
         }
 
         public AbstractComponent()
             : base()
         {
-
         }
 
         public AbstractComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public AbstractComponent(System.Guid guid)
             : base(guid)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("StructurePosition"), Description("Structure Position")]
@@ -52,7 +47,6 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(T? geometry)
             : base()
         {
-
             if (geometry != null)
             {
                 this.geometry = geometry.Clone<T>();
@@ -62,7 +56,6 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public AbstractComponent(AbstractComponent<T>? abstractComponent)
@@ -98,11 +91,10 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(System.Guid guid, T? geometry)
             : base(guid)
         {
-            if(geometry is not null)
+            if (geometry is not null)
             {
                 this.geometry = geometry.Clone<T>();
             }
-
         }
 
         [JsonIgnore]
@@ -110,7 +102,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             get
             {
-                if(geometry == null)
+                if (geometry == null)
                 {
                     return default;
                 }

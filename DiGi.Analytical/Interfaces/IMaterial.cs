@@ -4,6 +4,5 @@ namespace DiGi.Analytical.Interfaces
 {
     public interface IMaterial : IAnalyticalGuidObject, INamedObject, IDescribableObject
     {
-
     }
 }

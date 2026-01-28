@@ -1,8 +1,8 @@
-﻿using DiGi.Core.Relation.Classes;
-using System.Text.Json.Nodes;
-using DiGi.Analytical.Building.Classes;
-using DiGi.Analytical.Urban.Interfaces;
+﻿using DiGi.Analytical.Building.Classes;
 using DiGi.Analytical.Classes;
+using DiGi.Analytical.Urban.Interfaces;
+using DiGi.Core.Relation.Classes;
+using System.Text.Json.Nodes;
 
 namespace DiGi.Analytical.Urban.Classes
 {
@@ -11,19 +11,16 @@ namespace DiGi.Analytical.Urban.Classes
         public BuildingModelBoundingBoxRelation(BuildingModel? buildingModel, BoundingBox? boundingBox3D)
             : base(buildingModel, boundingBox3D)
         {
-
         }
 
         public BuildingModelBoundingBoxRelation(BuildingModelBoundingBoxRelation? buildingModelBoundingBoxRelation)
             : base(buildingModelBoundingBoxRelation)
         {
-
         }
 
         public BuildingModelBoundingBoxRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

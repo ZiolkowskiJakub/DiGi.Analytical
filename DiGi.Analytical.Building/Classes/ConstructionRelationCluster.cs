@@ -116,7 +116,6 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-
             if (materialStructureLayerRelation.UniqueReference_From is not GuidReference guidReference || !TryGetValue(guidReference, out IMaterial? result))
             {
                 return null;
@@ -127,24 +126,24 @@ namespace DiGi.Analytical.Building.Classes
 
         public List<IStructureLayer>? GetStructureLayers(IPhysicalComponentConstruction? physicalComponentConstruction)
         {
-            if(physicalComponentConstruction is null)
+            if (physicalComponentConstruction is null)
             {
                 return null;
             }
 
             PhysicalComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = GetRelation<PhysicalComponentConstructionStructureLayersRelation>(new GuidReference(physicalComponentConstruction));
-            if(componentConstructionStructureLayersRelation is null)
+            if (componentConstructionStructureLayersRelation is null)
             {
                 return null;
             }
 
-            if(componentConstructionStructureLayersRelation.UniqueReferences_To is not List<IUniqueReference> uniqueReferences)
+            if (componentConstructionStructureLayersRelation.UniqueReferences_To is not List<IUniqueReference> uniqueReferences)
             {
                 return null;
             }
 
             List<IStructureLayer> result = [];
-            foreach(IUniqueReference uniqueReference in uniqueReferences)
+            foreach (IUniqueReference uniqueReference in uniqueReferences)
             {
                 if (uniqueReference is not GuidReference guidReference || !TryGetValue(guidReference, out IStructureLayer? structureLayer) || structureLayer is null)
                 {

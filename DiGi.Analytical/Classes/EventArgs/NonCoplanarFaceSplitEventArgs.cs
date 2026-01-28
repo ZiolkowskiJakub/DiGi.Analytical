@@ -7,7 +7,6 @@ namespace DiGi.Analytical.Classes
         public NonCoplanarFaceSplitEventArgs(Face? input, PolygonalFace3D? polygonalFace3D)
             : base(input, polygonalFace3D)
         {
-
         }
     }
 }

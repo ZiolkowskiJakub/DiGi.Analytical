@@ -45,7 +45,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         public CurveWall(IWall wall, TCurve3D? curve3D, double height, Vector3D? direction)
-            :base(wall, curve3D)
+            : base(wall, curve3D)
         {
             vector = direction?.Unit * height;
         }
@@ -59,7 +59,6 @@ namespace DiGi.Analytical.Building.Classes
         public CurveWall(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonIgnore]
@@ -83,7 +82,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public ISurface3D? GetSurface3D()
         {
-            if(vector == null)
+            if (vector == null)
             {
                 return null;
             }
@@ -130,43 +129,36 @@ namespace DiGi.Analytical.Building.Classes
         public CurveWall(ICurve3D? curve3D, double height, Vector3D? direction)
             : base(curve3D, height, direction)
         {
-
         }
 
         public CurveWall(ICurve3D? curve3D, double height)
             : base(curve3D, height)
         {
-
         }
 
         public CurveWall(IWall wall, ICurve3D? curve3D, double height, Vector3D? direction)
             : base(wall, curve3D, height, direction)
         {
-
         }
 
         public CurveWall(IWall wall, ICurve3D? curve3D, double height)
             : base(wall, curve3D, height)
         {
-
         }
 
         public CurveWall(CurveWall? curveWall)
             : base(curveWall)
         {
-
         }
 
-        public CurveWall(System.Guid guid, CurveWall<ICurve3D>?curveWall)
+        public CurveWall(System.Guid guid, CurveWall<ICurve3D>? curveWall)
             : base(guid, curveWall)
         {
-
         }
 
         public CurveWall(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

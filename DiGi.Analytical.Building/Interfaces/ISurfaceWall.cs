@@ -4,6 +4,5 @@ namespace DiGi.Analytical.Building.Interfaces
 {
     public interface ISurfaceWall : IWall, IBuildingSurfaceObject, IComponent<ISurface3D>
     {
-
     }
 }

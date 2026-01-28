@@ -9,7 +9,6 @@ namespace DiGi.Analytical.Classes
         public FaceByPlaneSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
-
         }
 
         public Plane? Plane
@@ -29,7 +28,7 @@ namespace DiGi.Analytical.Classes
         {
             outputs = null;
 
-            if(plane is null)
+            if (plane is null)
             {
                 return false;
             }

@@ -8,7 +8,5 @@ namespace DiGi.Analytical
         {
             return new DateTime(year, 1, 1).AddHours(hourOfYear);
         }
-
     }
 }
-

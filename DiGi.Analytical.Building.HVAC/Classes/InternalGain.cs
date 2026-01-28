@@ -42,13 +42,11 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public InternalGain()
             : base()
         {
-
         }
 
         public InternalGain(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public InternalGain(InternalGain? internalGain)
@@ -59,12 +57,12 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                 Name = internalGain.Name;
                 Description = internalGain.Description;
 
-                if(internalGain.profiles != null)
+                if (internalGain.profiles != null)
                 {
                     profiles = [];
-                    foreach(KeyValuePair<InternalGainProfileType, IProfile> keyValuePair in profiles)
+                    foreach (KeyValuePair<InternalGainProfileType, IProfile> keyValuePair in profiles)
                     {
-                        if(Core.Query.Clone(keyValuePair.Value) is IProfile profile)
+                        if (Core.Query.Clone(keyValuePair.Value) is IProfile profile)
                         {
                             profiles[keyValuePair.Key] = profile;
                         }
@@ -77,12 +75,12 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         {
             get
             {
-                if(profiles == null)
+                if (profiles == null)
                 {
                     return null;
                 }
 
-                if(profiles.TryGetValue(internalGainProfileType, out IProfile result))
+                if (profiles.TryGetValue(internalGainProfileType, out IProfile result))
                 {
                     return result;
                 }
@@ -94,7 +92,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             {
                 profiles ??= [];
 
-                if(value == null)
+                if (value == null)
                 {
                     return;
                 }

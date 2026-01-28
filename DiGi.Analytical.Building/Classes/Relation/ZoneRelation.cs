@@ -10,25 +10,21 @@ namespace DiGi.Analytical.Building.Classes
         public ZoneRelation(IZone? zone, ISpace? space)
             : base(zone, Core.Query.CloneAndFilterNulls([space]))
         {
-
         }
 
         public ZoneRelation(IZone? zone, IEnumerable<ISpace>? spaces)
             : base(zone, spaces)
         {
-
         }
 
         public ZoneRelation(ZoneRelation? zoneRelation)
             : base(zoneRelation)
         {
-
         }
 
         public ZoneRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

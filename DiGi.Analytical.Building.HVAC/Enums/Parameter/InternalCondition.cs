@@ -2,7 +2,6 @@
 using DiGi.Core.Parameter.Classes;
 using System.ComponentModel;
 
-
 namespace DiGi.Analytical.Building.HVAC.Enums
 {
     [AssociatedTypes(typeof(IInternalCondition)), Description("Internal condition parameter")]

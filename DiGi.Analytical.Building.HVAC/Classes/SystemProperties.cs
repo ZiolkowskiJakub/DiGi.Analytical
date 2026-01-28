@@ -23,19 +23,17 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public SystemProperties()
             : base()
         {
-
         }
 
         public SystemProperties(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public SystemProperties(SystemProperties? systemProperties)
             : base(systemProperties)
         {
-            if(systemProperties != null)
+            if (systemProperties != null)
             {
                 MetabolicRate = systemProperties.MetabolicRate;
                 DomesticHotWater = systemProperties.DomesticHotWater;

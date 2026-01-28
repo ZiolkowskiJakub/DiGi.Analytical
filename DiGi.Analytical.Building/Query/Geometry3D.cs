@@ -14,18 +14,18 @@ namespace DiGi.Analytical.Building
             }
 
             IGeometry3D? geometry3D = (buildingGeometry3DObject as dynamic).Geometry;
-            if(geometry3D is null)
+            if (geometry3D is null)
             {
                 return default;
             }
 
             List<TGeometry3D>? geometries = Geometry.Spatial.Query.Convert<TGeometry3D>(geometry3D);
-            if(geometries is null)
+            if (geometries is null)
             {
                 return default;
             }
 
-            if(geometries.Count > 1)
+            if (geometries.Count > 1)
             {
                 throw new System.NotImplementedException();
             }
@@ -47,7 +47,6 @@ namespace DiGi.Analytical.Building
             //    {
             //        throw new System.NotImplementedException();
             //    }
-
 
             //    geometry3D = polygonalFace3D;
             //}

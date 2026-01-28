@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Classes
 
         [JsonInclude, JsonPropertyName("Name"), Description("Name")]
         private string? name;
-        
+
         public Material(string? name)
             : base()
         {
@@ -21,9 +21,9 @@ namespace DiGi.Analytical.Classes
         }
 
         public Material(Material? material)
-            :base(material)
+            : base(material)
         {
-            if(material != null)
+            if (material != null)
             {
                 name = material.name;
             }
@@ -32,7 +32,6 @@ namespace DiGi.Analytical.Classes
         public Material(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("Description"), Description("Description")]
@@ -54,7 +53,7 @@ namespace DiGi.Analytical.Classes
         {
             get
             {
-                return name; 
+                return name;
             }
 
             set

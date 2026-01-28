@@ -11,29 +11,29 @@ namespace DiGi.Analytical.Building
     {
         public static int NextStructureLayerIndex(this ConstructionRelationCluster? constructionRelationCluster, IPhysicalComponentConstruction? physicalComponentConstruction)
         {
-            if(constructionRelationCluster is null || physicalComponentConstruction is null)
+            if (constructionRelationCluster is null || physicalComponentConstruction is null)
             {
                 return -1;
             }
 
             PhysicalComponentConstructionStructureLayersRelation? componentConstructionStructureLayersRelation = constructionRelationCluster.GetRelation<PhysicalComponentConstructionStructureLayersRelation>(physicalComponentConstruction);
-            if(componentConstructionStructureLayersRelation is null)
+            if (componentConstructionStructureLayersRelation is null)
             {
                 return 0;
             }
 
-            if (componentConstructionStructureLayersRelation.UniqueReferences_To is not List<IUniqueReference> uniqueReferences || uniqueReferences.Count == 0) 
+            if (componentConstructionStructureLayersRelation.UniqueReferences_To is not List<IUniqueReference> uniqueReferences || uniqueReferences.Count == 0)
             {
                 return 0;
             }
 
             int result = 0;
 
-            foreach (IUniqueReference uniqueReference in uniqueReferences) 
-            { 
-                if(uniqueReference is GuidReference guidReference && constructionRelationCluster.TryGetValue(guidReference, out IStructureLayer? structureLayer) && structureLayer is not null)
+            foreach (IUniqueReference uniqueReference in uniqueReferences)
+            {
+                if (uniqueReference is GuidReference guidReference && constructionRelationCluster.TryGetValue(guidReference, out IStructureLayer? structureLayer) && structureLayer is not null)
                 {
-                    if(structureLayer.Index > result)
+                    if (structureLayer.Index > result)
                     {
                         result = structureLayer.Index;
                     }
@@ -54,11 +54,11 @@ namespace DiGi.Analytical.Building
 
             OpeningConstructionStructureLayersRelation? openingConstructionStructureLayersRelation = null;
 
-            if(openingConstructionPart == OpeningConstructionPart.Pane)
+            if (openingConstructionPart == OpeningConstructionPart.Pane)
             {
                 openingConstructionStructureLayersRelation = constructionRelationCluster.GetRelation<PaneOpeningConstructionStructureLayersRelation>(openingConstruction);
             }
-            else if(openingConstructionPart == OpeningConstructionPart.Frame)
+            else if (openingConstructionPart == OpeningConstructionPart.Frame)
             {
                 openingConstructionStructureLayersRelation = constructionRelationCluster.GetRelation<FrameOpeningConstructionStructureLayersRelation>(openingConstruction);
             }
@@ -66,7 +66,7 @@ namespace DiGi.Analytical.Building
             {
                 return -1;
             }
-  
+
             if (openingConstructionStructureLayersRelation is null)
             {
                 return 0;

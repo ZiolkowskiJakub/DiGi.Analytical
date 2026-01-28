@@ -2,6 +2,5 @@
 {
     public interface IDoorConstruction : IOpeningConstruction<IDoor>
     {
-
     }
 }

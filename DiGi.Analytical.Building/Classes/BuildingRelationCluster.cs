@@ -268,7 +268,7 @@ namespace DiGi.Analytical.Building.Classes
 
             return result;
         }
-        
+
         public IPhysicalComponentConstruction? GetPhysicalComponentConstruction(PhysicalComponentConstructionRelation? physicalComponentConstructionRelation)
         {
             if (physicalComponentConstructionRelation?.UniqueReference_To is not GuidReference guidReference)
@@ -283,7 +283,7 @@ namespace DiGi.Analytical.Building.Classes
 
             return result;
         }
-        
+
         public TSpace? GetSpace<TSpace>(SpaceInternalConditionRelation? spaceInternalConditionRelation) where TSpace : ISpace
         {
             if (spaceInternalConditionRelation?.UniqueReference_From is not GuidReference guidReference)
@@ -298,7 +298,7 @@ namespace DiGi.Analytical.Building.Classes
 
             return result;
         }
-        
+
         public List<ISpace>? GetSpaces(SpaceRelation? spaceRelation)
         {
             List<IUniqueReference>? uniqueReferences = spaceRelation?.UniqueReferences_To;

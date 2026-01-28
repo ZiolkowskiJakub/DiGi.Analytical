@@ -10,19 +10,16 @@ namespace DiGi.Analytical.Building.Classes
         public MaterialStructureLayerRelation(IMaterial? material, IStructureLayer? structureLayer)
             : base(material, structureLayer)
         {
-
         }
 
         public MaterialStructureLayerRelation(MaterialStructureLayerRelation? materialStructureLayerRelation)
             : base(materialStructureLayerRelation)
         {
-
         }
 
         public MaterialStructureLayerRelation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

@@ -19,13 +19,11 @@ namespace DiGi.Analytical.Urban.Classes
         public UrbanInformation()
             : base()
         {
-
         }
 
         public UrbanInformation(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         [JsonInclude, JsonPropertyName("Coordinates")]

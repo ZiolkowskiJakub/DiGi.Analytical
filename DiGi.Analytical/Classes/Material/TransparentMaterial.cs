@@ -7,19 +7,16 @@ namespace DiGi.Analytical.Classes
         public TransparentMaterial(string? name)
             : base(name)
         {
-
         }
 
         public TransparentMaterial(TransparentMaterial? transparentMaterial)
-            :base(transparentMaterial)
+            : base(transparentMaterial)
         {
-
         }
 
         public TransparentMaterial(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
     }
 }

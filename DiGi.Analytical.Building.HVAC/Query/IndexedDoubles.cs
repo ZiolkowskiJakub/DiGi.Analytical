@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building.HVAC
                 return null;
             }
 
-            if(!(@enum is ThermostatProfileType || @enum is InternalGainProfileType))
+            if (!(@enum is ThermostatProfileType || @enum is InternalGainProfileType))
             {
                 return null;
             }
@@ -138,7 +138,7 @@ namespace DiGi.Analytical.Building.HVAC
 
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, ThermostatProfileType thermostatProfileType, string? id = null)
         {
-            if(buildingModel == null || space == null || range == null || thermostatProfileType == ThermostatProfileType.Undefined)
+            if (buildingModel == null || space == null || range == null || thermostatProfileType == ThermostatProfileType.Undefined)
             {
                 return null;
             }

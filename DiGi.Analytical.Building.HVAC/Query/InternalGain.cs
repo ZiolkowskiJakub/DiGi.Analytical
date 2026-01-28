@@ -9,12 +9,12 @@ namespace DiGi.Analytical.Building.HVAC
     {
         public static InternalGain? InternalGain(this IInternalCondition? internalCondition)
         {
-            if(internalCondition == null)
+            if (internalCondition == null)
             {
                 return null;
             }
 
-            if(!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.InternalGain), out InternalGain? result, new GetValueSettings(true, false)))
+            if (!internalCondition.TryGetValue(new EnumParameterDefinition(InternalConditionParameter.InternalGain), out InternalGain? result, new GetValueSettings(true, false)))
             {
                 return null;
             }

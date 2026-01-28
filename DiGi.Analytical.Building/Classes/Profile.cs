@@ -20,7 +20,6 @@ namespace DiGi.Analytical.Building.Classes
         public Profile(JsonObject? jsonObject)
             : base(jsonObject)
         {
-
         }
 
         public Profile(Profile? profile)

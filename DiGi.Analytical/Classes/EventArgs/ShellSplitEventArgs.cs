@@ -13,11 +13,11 @@ namespace DiGi.Analytical.Classes
         }
 
         public bool Handled { get; set; } = false;
-        
+
         public Shell? Input { get; }
 
         public Polyhedron? Polyhedron { get; }
-        
+
         public IUniqueReference? UniqueReference { get; set; }
     }
 }

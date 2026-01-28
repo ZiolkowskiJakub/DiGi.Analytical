@@ -12,7 +12,6 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingModelFaceUpdater(BuildingModel? value)
             : base(value)
         {
-
         }
 
         public BuildingModelFaceUpdater(BuildingModel? value, Face? Face)
@@ -250,7 +249,7 @@ namespace DiGi.Analytical.Building.Classes
                 wallConstruction = Value.GetWallConstruction(wall);
                 surfaceWall = new(wall, polygonalFace3D);
 
-                if(surfaceWall.Guid != wall.Guid)
+                if (surfaceWall.Guid != wall.Guid)
                 {
                     throw new System.NotImplementedException();
                 }

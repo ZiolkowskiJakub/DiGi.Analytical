@@ -38,7 +38,7 @@ namespace DiGi.Analytical.Classes
         }
 
         public double Tolerance { get; }
-        
+
         public abstract bool Solve();
     }
 }

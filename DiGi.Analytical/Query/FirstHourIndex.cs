@@ -6,9 +6,9 @@ namespace DiGi.Analytical
     {
         public static int FirstHourIndex(this DayOfWeek dayOfWeek, int year)
         {
-            DateTime dateTime = new (year, 1, 1, 0, 0, 0);
+            DateTime dateTime = new(year, 1, 1, 0, 0, 0);
 
-            while(dateTime.DayOfWeek != dayOfWeek)
+            while (dateTime.DayOfWeek != dayOfWeek)
             {
                 dateTime = dateTime.AddDays(1);
             }

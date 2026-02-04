@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="DiGi.Analytical.Building.HVAC/DiGi.Analytical.Building.HVAC.csproj" />
+  <Project Path="DiGi.Analytical.Building.Solar/DiGi.Analytical.Building.Solar.csproj" />
+  <Project Path="DiGi.Analytical.Building/DiGi.Analytical.Building.csproj" />
+  <Project Path="DiGi.Analytical.Urban/DiGi.Analytical.Urban.csproj" />
+  <Project Path="DiGi.Analytical/DiGi.Analytical.csproj" />
+</Solution>

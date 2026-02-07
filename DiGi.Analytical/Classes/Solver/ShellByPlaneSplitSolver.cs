@@ -10,7 +10,7 @@ namespace DiGi.Analytical.Classes
     {
         private Plane? plane;
 
-        public ShellByPlaneSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
+        public ShellByPlaneSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
             : base(tolerance)
         {
         }

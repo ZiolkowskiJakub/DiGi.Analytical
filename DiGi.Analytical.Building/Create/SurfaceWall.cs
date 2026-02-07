@@ -5,7 +5,7 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Create
     {
-        public static SurfaceWall? SurfaceWall(this IPolygonalFace3D? polygonalFace3D, double tolerance = Core.Constans.Tolerance.Distance)
+        public static SurfaceWall? SurfaceWall(this IPolygonalFace3D? polygonalFace3D, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (polygonalFace3D == null)
             {

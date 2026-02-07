@@ -17,7 +17,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public Shell? Shell { get; set; }
 
-        public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
+        public double Tolerance { get; set; } = Core.Constants.Tolerance.Distance;
 
         public HashSet<IUniqueReference>? UpdatedComponentUniqueReferences { get; set; } = null;
 

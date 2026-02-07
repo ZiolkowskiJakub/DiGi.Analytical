@@ -1,4 +1,4 @@
-﻿namespace DiGi.Analytical.Urban.Constans
+﻿namespace DiGi.Analytical.Urban.Constants
 {
     public static class FileExtension
     {

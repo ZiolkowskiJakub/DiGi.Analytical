@@ -2,7 +2,7 @@
 {
     public abstract class ShellSplitSolver : SplitSolver<Shell>
     {
-        public ShellSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
+        public ShellSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
         }

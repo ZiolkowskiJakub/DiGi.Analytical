@@ -10,7 +10,7 @@ namespace DiGi.Analytical.Classes
     {
         private List<Face>? faces;
 
-        public FaceByFacesSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
+        public FaceByFacesSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
         }

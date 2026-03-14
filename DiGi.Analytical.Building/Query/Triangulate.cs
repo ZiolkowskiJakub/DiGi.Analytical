@@ -7,7 +7,7 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static List<Triangle3D>? Triangulate(this IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constants.Tolerance.Distance)
+        public static List<Triangle3D>? Triangulate(this IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if (buildingGeometry3DObject == null)
             {

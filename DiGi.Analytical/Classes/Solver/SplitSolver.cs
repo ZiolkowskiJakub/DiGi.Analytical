@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Classes
 
         protected List<TAnalyticalGeometry>? outputs;
 
-        public SplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
+        public SplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
         {
             Tolerance = tolerance;
         }

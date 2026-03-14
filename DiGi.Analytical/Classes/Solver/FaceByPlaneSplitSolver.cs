@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Classes
     {
         private Plane? plane;
 
-        public FaceByPlaneSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
+        public FaceByPlaneSplitSolver(double tolerance = Core.Constans.Tolerance.Distance)
             : base(tolerance)
         {
         }

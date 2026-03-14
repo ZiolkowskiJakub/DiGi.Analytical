@@ -16,7 +16,7 @@ namespace DiGi.Analytical.Building.Classes
 
         public int FloorCount { get; set; } = -1;
 
-        public double Tolerance { get; set; } = Core.Constants.Tolerance.Distance;
+        public double Tolerance { get; set; } = Core.Constans.Tolerance.Distance;
 
         public override bool Update()
         {

@@ -23,7 +23,7 @@ namespace DiGi.Analytical.Building.Classes
         public CurveWall(TCurve3D? curve3D, double height)
             : base(curve3D)
         {
-            vector = DiGi.Geometry.Spatial.Constants.Vector3D.WorldZ * height;
+            vector = DiGi.Geometry.Spatial.Constans.Vector3D.WorldZ * height;
         }
 
         public CurveWall(CurveWall<TCurve3D>? curveWall)
@@ -53,7 +53,7 @@ namespace DiGi.Analytical.Building.Classes
         public CurveWall(IWall wall, TCurve3D? curve3D, double height)
             : base(wall, curve3D)
         {
-            vector = DiGi.Geometry.Spatial.Constants.Vector3D.WorldZ * height;
+            vector = DiGi.Geometry.Spatial.Constans.Vector3D.WorldZ * height;
         }
 
         public CurveWall(JsonObject? jsonObject)

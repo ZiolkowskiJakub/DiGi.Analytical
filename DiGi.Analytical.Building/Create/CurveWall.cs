@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Create
     {
-        public static CurveWall? CurveWall(this Segment3D? segment3D, double height, Vector3D? direction, double tolerance = Core.Constans.Tolerance.Distance)
+        public static CurveWall? CurveWall(this Segment3D? segment3D, double height, Vector3D? direction, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (segment3D == null || double.IsNaN(height) || direction == null)
             {
@@ -27,9 +27,9 @@ namespace DiGi.Analytical.Building
             return new CurveWall(segment3D, height, direction);
         }
 
-        public static CurveWall? CurveWall(this Segment3D? segment3D, double height, double tolerance = Core.Constans.Tolerance.Distance)
+        public static CurveWall? CurveWall(this Segment3D? segment3D, double height, double tolerance = Core.Constants.Tolerance.Distance)
         {
-            return CurveWall(segment3D, height, Geometry.Spatial.Constans.Vector3D.WorldZ, tolerance);
+            return CurveWall(segment3D, height, Geometry.Spatial.Constants.Vector3D.WorldZ, tolerance);
         }
     }
 }

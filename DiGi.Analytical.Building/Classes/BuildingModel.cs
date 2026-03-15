@@ -605,7 +605,7 @@ namespace DiGi.Analytical.Building.Classes
             return GetPhysicalComponentConstruction<IRoofConstruction>(roof);
         }
 
-        public Shell? GetShell(ISpace? space, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance)
+        public Shell? GetShell(ISpace? space, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (space is null)
             {
@@ -615,7 +615,7 @@ namespace DiGi.Analytical.Building.Classes
             return GetShells([space], normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)?.FirstOrDefault();
         }
 
-        public List<Shell>? GetShells<TSpace>(IEnumerable<TSpace> spaces, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
+        public List<Shell>? GetShells<TSpace>(IEnumerable<TSpace> spaces, Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constants.Tolerance.Distance) where TSpace : ISpace
         {
             if (spaces is null)
             {
@@ -663,7 +663,7 @@ namespace DiGi.Analytical.Building.Classes
             return result;
         }
 
-        public List<Shell>? GetShells<TSpace>(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constans.Tolerance.Distance) where TSpace : ISpace
+        public List<Shell>? GetShells<TSpace>(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constants.Tolerance.Distance) where TSpace : ISpace
         {
             IEnumerable<TSpace>? spaces = buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
             if (spaces is null)
@@ -795,7 +795,7 @@ namespace DiGi.Analytical.Building.Classes
             return GetOpeningConstruction<IWindowConstruction>(window);
         }
 
-        public bool Inside(Sphere? sphere, double tolerance = Core.Constans.Tolerance.Distance)
+        public bool Inside(Sphere? sphere, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (sphere == null)
             {

@@ -6,7 +6,7 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
-        public static bool Inside(this Sphere? sphere, IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constans.Tolerance.Distance)
+        public static bool Inside(this Sphere? sphere, IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (buildingGeometry3DObject == null || sphere == null)
             {

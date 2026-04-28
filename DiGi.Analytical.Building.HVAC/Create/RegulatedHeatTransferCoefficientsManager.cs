@@ -4,7 +4,7 @@ using System;
 
 namespace DiGi.Analytical.Building.HVAC
 {
-    public static partial class Modify
+    public static partial class Create
     {
         public static RegulatedHeatTransferCoefficientsManager RegulatedHeatTransferCoefficientsManager()
         {

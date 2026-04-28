@@ -3,7 +3,7 @@ using DiGi.Analytical.Building.Interfaces;
 
 namespace DiGi.Analytical.Building.HVAC.Interfaces
 {
-    public interface IRegulatedHeatTransferCoefficients : IBuildingObject
+    public interface IRegulatedHeatTransferCoefficients : IBuildingSerializableObject
     {
         RegulationAct? RegulationAct { get; }
     }

@@ -1,5 +1,6 @@
 ﻿using DiGi.Analytical.Building.HVAC.Interfaces;
 using DiGi.Core.Classes;
+using DiGi.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
@@ -62,6 +63,23 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             }
         }
 
+        public List<TEnum> GetEnums()
+        {
+            return [.. values.Keys];
+        }
+
+        public List<string> GetNames()
+        {
+            List<string> result = [];
+
+            foreach (TEnum @enum in values.Keys)
+            {
+                result.Add(Core.Query.Description(@enum) ?? @enum.ToString());
+            }
+
+            return result;
+        }
+
         public bool SetValue(TEnum @enum, double value)
         {
             if (double.IsNaN(value))
@@ -82,6 +100,27 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             }
 
             return true;
+        }
+
+        public bool TryGetValue(string name, out double value)
+        {
+            value = double.NaN;
+
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                return false;
+            }
+
+            foreach (KeyValuePair<TEnum, double> keyValuePair in values)
+            {
+                if( name == (Core.Query.Description(keyValuePair.Key) ?? keyValuePair.Key.ToString()))
+                {
+                    value = keyValuePair.Value;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

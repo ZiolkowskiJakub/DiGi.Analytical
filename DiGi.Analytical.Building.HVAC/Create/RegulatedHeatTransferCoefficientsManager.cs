@@ -35,6 +35,8 @@ namespace DiGi.Analytical.Building.HVAC
             regulatedHeatTransferCoefficients_2002[ExternalPartitionType_2002.PublicBuilding_Window_Skylight] = 2.0;
             regulatedHeatTransferCoefficients_2002[ExternalPartitionType_2002.PublicBuilding_Door] = 2.6;
 
+            result.Add(regulatedHeatTransferCoefficients_2002);
+
             regulationAct = new(new DateTime(2008, 11, 13), new DateTime(2009, 01, 01), "Dz.U. 2008 nr 201 poz. 1238", "Rozporządzenie Ministra Infrastruktury z dnia 6 listopada 2008 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
             RegulatedHeatTransferCoefficients_2009 regulatedHeatTransferCoefficients_2009 = new RegulatedHeatTransferCoefficients_2009(regulationAct);

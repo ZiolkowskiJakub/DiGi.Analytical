@@ -1,6 +1,5 @@
 ﻿using DiGi.Analytical.Building.HVAC.Interfaces;
 using DiGi.Core.Classes;
-using DiGi.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
@@ -23,18 +22,17 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         }
 
         public RegulatedHeatTransferCoefficients(JsonObject jsonObject)
-            :base(jsonObject)
+            : base(jsonObject)
         {
-
         }
 
         public RegulatedHeatTransferCoefficients(RegulatedHeatTransferCoefficients<TEnum> regulatedHeatTransferCoefficients)
             : base(regulatedHeatTransferCoefficients)
         {
-            if(regulatedHeatTransferCoefficients is not null)
+            if (regulatedHeatTransferCoefficients is not null)
             {
                 regulationAct = Core.Query.Clone(regulatedHeatTransferCoefficients.regulationAct);
-                foreach(KeyValuePair<TEnum, double> keyValuePair in regulatedHeatTransferCoefficients.values)
+                foreach (KeyValuePair<TEnum, double> keyValuePair in regulatedHeatTransferCoefficients.values)
                 {
                     SetValue(keyValuePair.Key, keyValuePair.Value);
                 }
@@ -93,7 +91,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         public bool TryGetValue(TEnum @enum, out double value)
         {
-            if(!values.TryGetValue(@enum, out value))
+            if (!values.TryGetValue(@enum, out value))
             {
                 value = double.NaN;
                 return false;
@@ -106,14 +104,14 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         {
             value = double.NaN;
 
-            if(string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 return false;
             }
 
             foreach (KeyValuePair<TEnum, double> keyValuePair in values)
             {
-                if( name == (Core.Query.Description(keyValuePair.Key) ?? keyValuePair.Key.ToString()))
+                if (name == (Core.Query.Description(keyValuePair.Key) ?? keyValuePair.Key.ToString()))
                 {
                     value = keyValuePair.Value;
                     return true;

@@ -59,7 +59,6 @@ namespace DiGi.Analytical.Building.HVAC
 
             result.Add(regulatedHeatTransferCoefficients_2009);
 
-
             regulationAct = new(new DateTime(2013, 08, 13), new DateTime(2014, 01, 01), "Dz.U. 2013 poz. 926", "Rozporządzenie Ministra Transportu, Budownictwa i Gospodarki Morskiej z dnia 5 lipca 2013 r. zmieniające rozporządzenie w sprawie warunków technicznych, jakim powinny odpowiadać budynki i ich usytuowanie", null);
 
             RegulatedHeatTransferCoefficients_2014 regulatedHeatTransferCoefficients_2014 = new RegulatedHeatTransferCoefficients_2014(regulationAct);

@@ -20,10 +20,10 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         [JsonInclude, JsonPropertyName(nameof(PublicationDate))]
         private readonly DateTime publicationDate;
-        
+
         [JsonInclude, JsonPropertyName(nameof(Reference))]
         private readonly string? reference;
-        
+
         public RegulationAct(DateTime publicationDate, DateTime effectiveDate, string? reference, string? name, string? descriprion)
             : base()
         {
@@ -35,15 +35,14 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         }
 
         public RegulationAct(JsonObject jsonObject)
-            :base(jsonObject)
+            : base(jsonObject)
         {
-
         }
 
         public RegulationAct(RegulationAct regulationAct)
             : base(regulationAct)
         {
-            if(regulationAct is not null)
+            if (regulationAct is not null)
             {
                 publicationDate = regulationAct.PublicationDate;
                 effectiveDate = regulationAct.EffectiveDate;
@@ -88,6 +87,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
                 return publicationDate;
             }
         }
+
         [JsonIgnore]
         public string? Reference
         {

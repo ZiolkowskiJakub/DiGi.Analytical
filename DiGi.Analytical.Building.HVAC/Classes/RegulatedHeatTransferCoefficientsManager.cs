@@ -16,21 +16,19 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public RegulatedHeatTransferCoefficientsManager()
             : base()
         {
-
         }
 
         public RegulatedHeatTransferCoefficientsManager(JsonObject jsonObject)
-            :base(jsonObject)
+            : base(jsonObject)
         {
-
         }
 
         public RegulatedHeatTransferCoefficientsManager(RegulatedHeatTransferCoefficientsManager regulatedHeatTransferCoefficientsManager)
             : base(regulatedHeatTransferCoefficientsManager)
         {
-            if(regulatedHeatTransferCoefficientsManager is not null)
+            if (regulatedHeatTransferCoefficientsManager is not null)
             {
-                foreach(IRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients in values.Values)
+                foreach (IRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients in values.Values)
                 {
                     Add(regulatedHeatTransferCoefficients);
                 }
@@ -39,7 +37,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
 
         public bool Add(IRegulatedHeatTransferCoefficients? regulatedHeatTransferCoefficients)
         {
-            if(regulatedHeatTransferCoefficients?.RegulationAct is not RegulationAct regulationAct)
+            if (regulatedHeatTransferCoefficients?.RegulationAct is not RegulationAct regulationAct)
             {
                 return false;
             }
@@ -88,7 +86,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
             List<TRegulatedHeatTransferCoefficients> result = [];
             foreach (IRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients in values.Values)
             {
-                if(regulatedHeatTransferCoefficients is TRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients_Temp)
+                if (regulatedHeatTransferCoefficients is TRegulatedHeatTransferCoefficients regulatedHeatTransferCoefficients_Temp)
                 {
                     result.Add(regulatedHeatTransferCoefficients_Temp);
                 }

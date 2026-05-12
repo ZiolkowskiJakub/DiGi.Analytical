@@ -8,19 +8,16 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         public RegulatedHeatTransferCoefficients_2002(RegulationAct? regulationAct)
             : base(regulationAct)
         {
-
         }
 
         public RegulatedHeatTransferCoefficients_2002(JsonObject jsonObject)
-            :base(jsonObject)
+            : base(jsonObject)
         {
-
         }
 
         public RegulatedHeatTransferCoefficients_2002(RegulatedHeatTransferCoefficients_2002 regulatedHeatTransferCoefficients_2002)
             : base(regulatedHeatTransferCoefficients_2002)
         {
-
         }
     }
 }

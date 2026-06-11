@@ -6,6 +6,10 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Create
     {
+        /// <summary>
+        /// Creates and initializes a new instance of the <see cref="RegulatedHeatTransferCoefficientsManager"/> class populated with predefined regulatory heat transfer coefficients.
+        /// </summary>
+        /// <returns>A configured instance of <see cref="RegulatedHeatTransferCoefficientsManager"/>.</returns>
         public static RegulatedHeatTransferCoefficientsManager RegulatedHeatTransferCoefficientsManager()
         {
             RegulationAct regulationAct;

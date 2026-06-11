@@ -7,6 +7,12 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Triangulates the specified 3D building geometry object into a set of triangles.
+        /// </summary>
+        /// <param name="buildingGeometry3DObject">The building geometry object to triangulate.</param>
+        /// <param name="tolerance">The distance tolerance used during triangulation.</param>
+        /// <returns>A list of <see cref="Triangle3D"/> objects representing the triangulated geometry, or null if the object is null or cannot be triangulated.</returns>
         public static List<Triangle3D>? Triangulate(this IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (buildingGeometry3DObject == null)

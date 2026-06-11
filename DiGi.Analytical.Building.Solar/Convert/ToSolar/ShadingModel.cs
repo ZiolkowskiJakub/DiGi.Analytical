@@ -8,6 +8,11 @@ namespace DiGi.Analytical.Building.Solar
 {
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts a building model into a shading model for solar analysis.
+        /// </summary>
+        /// <param name="buildingModel">The building model to convert.</param>
+        /// <returns>A <see cref="ShadingModel"/> if the conversion is successful; otherwise, <c>null</c>.</returns>
         public static ShadingModel? ToSolar(this Classes.BuildingModel? buildingModel)
         {
             if (buildingModel is null)

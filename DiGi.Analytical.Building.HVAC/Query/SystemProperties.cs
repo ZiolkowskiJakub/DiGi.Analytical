@@ -7,6 +7,11 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Retrieves the system properties associated with the specified internal condition.
+        /// </summary>
+        /// <param name="internalCondition">The internal condition instance to query for system properties.</param>
+        /// <returns>The <see cref="SystemProperties"/> if found; otherwise, <c>null</c>.</returns>
         public static SystemProperties? SystemProperties(this IInternalCondition? internalCondition)
         {
             if (internalCondition == null)

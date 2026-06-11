@@ -7,6 +7,11 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Retrieves the thermostat associated with the specified internal condition.
+        /// </summary>
+        /// <param name="internalCondition">The internal condition to query for the thermostat parameter.</param>
+        /// <returns>The <see cref="Thermostat"/> instance if it exists; otherwise, <c>null</c>.</returns>
         public static Thermostat? Thermostat(this IInternalCondition? internalCondition)
         {
             if (internalCondition == null)

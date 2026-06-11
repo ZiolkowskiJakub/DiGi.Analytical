@@ -7,6 +7,11 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Retrieves the cooling emitter associated with the specified internal condition.
+        /// </summary>
+        /// <param name="internalCondition">The internal condition from which to retrieve the cooling emitter.</param>
+        /// <returns>The <see cref="CoolingEmitter"/> if found; otherwise, <c>null</c>.</returns>
         public static CoolingEmitter? CoolingEmitter(this IInternalCondition? internalCondition)
         {
             if (internalCondition == null)

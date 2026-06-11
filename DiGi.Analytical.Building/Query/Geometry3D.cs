@@ -6,6 +6,12 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Extracts the 3D geometry from the specified building geometry object as a specific type.
+        /// </summary>
+        /// <typeparam name="TGeometry3D">The type of 3D geometry to return, which must implement <see cref="IGeometry3D"/>.</typeparam>
+        /// <param name="buildingGeometry3DObject">The building geometry object from which the 3D geometry is extracted.</param>
+        /// <returns>The extracted 3D geometry of type <typeparamref name="TGeometry3D"/>, or <see langword="null"/> if the object is null or the geometry cannot be converted.</returns>
         public static TGeometry3D? Geometry3D<TGeometry3D>(this IBuildingGeometry3DObject? buildingGeometry3DObject) where TGeometry3D : IGeometry3D
         {
             if (buildingGeometry3DObject == null)

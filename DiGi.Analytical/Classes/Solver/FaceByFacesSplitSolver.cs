@@ -6,10 +6,17 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Classes
 {
+    /// <summary>
+    /// Provides functionality to split faces based on a collection of other faces.
+    /// </summary>
     public class FaceByFacesSplitSolver : FaceSplitSolver
     {
         private List<Face>? faces;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FaceByFacesSplitSolver"/> class.
+        /// </summary>
+        /// <param name="tolerance">The distance tolerance used for geometric operations, defaulting to <see cref="Core.Constants.Tolerance.Distance"/>.</param>
         public FaceByFacesSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
             : base(tolerance)
         {
@@ -19,6 +26,9 @@ namespace DiGi.Analytical.Classes
 
         public event NonCoplanarFaceSplitEventHandler? NonCoplanarFaceSplit;
 
+        /// <summary>
+        /// Gets or sets the list of <see cref="Face"/> objects used for the split solving process.
+        /// </summary>
         public List<Face>? Faces
         {
             get
@@ -32,6 +42,10 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Executes the face splitting operation based on the provided faces and input criteria.
+        /// </summary>
+        /// <returns>A <see cref="T:System.Boolean" /> value indicating whether the split operation was successfully completed; returns <see langword="false" /> if the faces list is null or the input data is invalid.</returns>
         public override bool Solve()
         {
             outputs = null;

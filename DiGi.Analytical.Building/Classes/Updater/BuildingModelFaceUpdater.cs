@@ -5,26 +5,50 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
+    /// <summary>
+    /// Provides functionality to update a <see cref="BuildingModel"/> specifically associated with a <see cref="Face"/>.
+    /// </summary>
     public class BuildingModelFaceUpdater : BuildingModelUpdater
     {
+        /// <summary>
+        /// Gets or sets the face used for updating the building model.
+        /// </summary>
         public Face? Face { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildingModelFaceUpdater"/> class.
+        /// </summary>
+        /// <param name="value">The building model associated with this updater.</param>
         public BuildingModelFaceUpdater(BuildingModel? value)
             : base(value)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildingModelFaceUpdater"/> class with the specified building model and face.
+        /// </summary>
+        /// <param name="value">The building model to be updated.</param>
+        /// <param name="Face">The face associated with the update operation.</param>
         public BuildingModelFaceUpdater(BuildingModel? value, Face? Face)
             : base(value)
         {
             this.Face = Face;
         }
 
+        /// <summary>
+        /// Performs the update operation for the building model face.
+        /// </summary>
+        /// <returns>True if the update was successful; otherwise, false.</returns>
         public override bool Update()
         {
             return Update(out _);
         }
 
+        /// <summary>
+        /// Performs an update operation on the building model face and retrieves the updated component.
+        /// </summary>
+        /// <param name="component">When this method returns, contains the <see cref="IComponent"/> that was updated; otherwise, null.</param>
+        /// <returns>True if any changes were made or the update was successful; otherwise, false.</returns>
         public bool Update(out IComponent? component)
         {
             component = null;

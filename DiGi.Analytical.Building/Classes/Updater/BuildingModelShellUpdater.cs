@@ -8,24 +8,49 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
+    /// <summary>
+    /// Provides functionality to update the shell components of a <see cref="BuildingModel"/>.
+    /// </summary>
     public class BuildingModelShellUpdater : BuildingModelUpdater
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuildingModelShellUpdater"/> class.
+        /// </summary>
+        /// <param name="value">The building model to be used for the update process.</param>
         public BuildingModelShellUpdater(BuildingModel value)
             : base(value)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the shell associated with the building model update process.
+        /// </summary>
         public Shell? Shell { get; set; }
 
+        /// <summary>
+        /// Gets or sets the distance tolerance used during the building model shell update process.
+        /// </summary>
         public double Tolerance { get; set; } = Core.Constants.Tolerance.Distance;
 
+        /// <summary>
+        /// Gets or sets the set of unique references for the components that have been updated during the shell update process.
+        /// </summary>
         public HashSet<IUniqueReference>? UpdatedComponentUniqueReferences { get; set; } = null;
 
+        /// <summary>
+        /// Performs the update operation.
+        /// </summary>
+        /// <returns>True if the update was successful; otherwise, false.</returns>
         public override bool Update()
         {
             return Update(out _);
         }
 
+        /// <summary>
+        /// Updates the building model shell and retrieves or creates the associated space.
+        /// </summary>
+        /// <param name="space">When this method returns, contains the <see cref="ISpace"/> associated with the shell; otherwise, null.</param>
+        /// <returns>True if the update operation was successful; otherwise, false.</returns>
         public bool Update(out ISpace? space)
         {
             space = null;

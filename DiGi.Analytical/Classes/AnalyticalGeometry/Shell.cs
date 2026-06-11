@@ -7,6 +7,9 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Classes
 {
+    /// <summary>
+    /// Represents a geometric shell consisting of a collection of faces, providing functionality for spatial analysis and analytical geometry operations.
+    /// </summary>
     public class Shell : Geometry.Spatial.Classes.Polyhedron<Face>, IAnalyticalGeometry
     {
         [JsonInclude, JsonPropertyName("Guid")]
@@ -15,6 +18,10 @@ namespace DiGi.Analytical.Classes
         [JsonInclude, JsonPropertyName("UniqueReference")]
         private readonly IUniqueReference? uniqueReference;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shell"/> class by copying an existing shell instance.
+        /// </summary>
+        /// <param name="shell">The source <see cref="Shell"/> instance to copy from.</param>
         public Shell(Shell shell)
             : base(shell)
         {
@@ -25,17 +32,31 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shell"/> class using the provided <see cref="JsonObject"/>.
+        /// </summary>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data used to initialize the shell; can be null.</param>
         public Shell(JsonObject? jsonObject)
             : base(jsonObject)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shell"/> class using the specified unique reference and collection of faces.
+        /// </summary>
+        /// <param name="uniqueReference">The unique reference to assign to this shell.</param>
+        /// <param name="faces">The collection of <see cref="Face"/> objects that compose the shell.</param>
         public Shell(IUniqueReference? uniqueReference, IEnumerable<Face> faces)
             : base(faces)
         {
             this.uniqueReference = Core.Query.Clone(uniqueReference);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Shell"/> class with a specified unique identifier and an optional source shell to clone properties from.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the shell.</param>
+        /// <param name="shell">An optional existing shell object used to initialize the reference data.</param>
         public Shell(Guid guid, Shell? shell)
             : base(shell)
         {
@@ -47,6 +68,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets the unique global identifier of the shell.
+        /// </summary>
         [JsonIgnore]
         public Guid Guid
         {
@@ -56,6 +80,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets the unique identifier of the shell.
+        /// </summary>
         [JsonIgnore]
         public string? UniqueId
         {
@@ -65,6 +92,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets the unique reference associated with this shell.
+        /// </summary>
         [JsonIgnore]
         public IUniqueReference? UniqueReference
         {
@@ -74,6 +104,11 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Creates a duplicate of the current object, optionally with a new GUID.
+        /// </summary>
+        /// <param name="guid">The optional GUID to assign to the duplicated object.</param>
+        /// <returns>A duplicate of the current object as an <see cref="T:DiGi.Core.Interfaces.IGuidObject" />, or null if duplication fails.</returns>
         public IGuidObject? Duplicate(Guid? guid = null)
         {
             if (guid is null)

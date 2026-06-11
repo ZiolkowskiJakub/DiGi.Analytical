@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Classes
 {
+    /// <summary>
+    /// Represents a material that is opaque, containing physical and thermal properties such as conductivity, density, and reflectance.
+    /// </summary>
     public class OpaqueMaterial : SolidMaterial
     {
         [JsonInclude, JsonPropertyName("Conductivity"), Description("Conductivity")]
@@ -27,11 +30,19 @@ namespace DiGi.Analytical.Classes
         [JsonInclude, JsonPropertyName("Emissivity"), Description("Emissivity")]
         private SurfaceValue? emissivity;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpaqueMaterial"/> class with the specified name.
+        /// </summary>
+        /// <param name="name">The name of the opaque material.</param>
         public OpaqueMaterial(string? name)
             : base(name)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpaqueMaterial"/> class by copying the properties from an existing <see cref="OpaqueMaterial"/> instance.
+        /// </summary>
+        /// <param name="opaqueMaterial">The source <see cref="OpaqueMaterial"/> instance to copy data from. This value can be null.</param>
         public OpaqueMaterial(OpaqueMaterial? opaqueMaterial)
             : base(opaqueMaterial)
         {
@@ -47,11 +58,18 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpaqueMaterial"/> class using the specified <see cref="JsonObject"/>.
+        /// </summary>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data to initialize the material properties.</param>
         public OpaqueMaterial(JsonObject? jsonObject)
             : base(jsonObject)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the thermal conductivity of the opaque material.
+        /// </summary>
         [JsonIgnore]
         public double Conductivity
         {
@@ -66,6 +84,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the density of the opaque material.
+        /// </summary>
         [JsonIgnore]
         public double Density
         {
@@ -80,6 +101,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the specific heat capacity of the opaque material.
+        /// </summary>
         [JsonIgnore]
         public double SpecificHeat
         {
@@ -94,6 +118,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the vapour diffusion factor of the opaque material.
+        /// </summary>
         [JsonIgnore]
         public double VapourDiffusionFactor
         {
@@ -108,6 +135,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the emissivity of the opaque material.
+        /// </summary>
         [JsonIgnore]
         public SurfaceValue? Emissivity
         {

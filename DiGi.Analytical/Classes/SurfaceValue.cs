@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Classes
 {
+    /// <summary>
+    /// Represents a value associated with a surface, containing both internal and external numeric measurements.
+    /// </summary>
     public class SurfaceValue : SerializableObject, IAnalyticalObject
     {
         [JsonIgnore]
@@ -14,6 +17,11 @@ namespace DiGi.Analytical.Classes
         [JsonIgnore]
         private double external;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SurfaceValue"/> class with specified internal and external values.
+        /// </summary>
+        /// <param name="internal">The internal value to assign.</param>
+        /// <param name="external">The external value to assign.</param>
         public SurfaceValue(double @internal, double external)
             : base()
         {
@@ -21,6 +29,10 @@ namespace DiGi.Analytical.Classes
             this.external = external;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SurfaceValue"/> class by copying values from an existing <see cref="SurfaceValue"/> instance.
+        /// </summary>
+        /// <param name="surfaceValue">The source <see cref="SurfaceValue"/> instance to copy data from, or null.</param>
         public SurfaceValue(SurfaceValue? surfaceValue)
             : base(surfaceValue)
         {
@@ -31,11 +43,18 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SurfaceValue"/> class using the specified JSON object.
+        /// </summary>
+        /// <param name="jsonObject">The JSON object used to populate the properties of the instance; can be null.</param>
         public SurfaceValue(JsonObject? jsonObject)
             : base(jsonObject)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the value associated with the external side of the surface.
+        /// </summary>
         [JsonInclude, JsonPropertyName("External"), Description("External")]
         public double External
         {
@@ -50,6 +69,9 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Gets or sets the value for the internal side of the surface.
+        /// </summary>
         [JsonInclude, JsonPropertyName("Internal"), Description("Internal")]
         public double Internal
         {

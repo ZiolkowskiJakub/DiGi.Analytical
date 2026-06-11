@@ -6,6 +6,13 @@ namespace DiGi.Analytical.Building
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Determines whether the specified sphere is located inside the given building geometry object.
+        /// </summary>
+        /// <param name="sphere">The sphere to check for containment.</param>
+        /// <param name="buildingGeometry3DObject">The 3D building geometry object to evaluate against.</param>
+        /// <param name="tolerance">The distance tolerance used for the geometric operation.</param>
+        /// <returns>True if the sphere is inside the building geometry; otherwise, false.</returns>
         public static bool Inside(this Sphere? sphere, IBuildingGeometry3DObject? buildingGeometry3DObject, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (buildingGeometry3DObject == null || sphere == null)

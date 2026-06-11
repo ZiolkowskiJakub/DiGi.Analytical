@@ -7,6 +7,14 @@ namespace DiGi.Analytical.Building.HVAC
 {
     public static partial class Modify
     {
+        /// <summary>
+        /// Assigns a specified internal condition to a space within the building model.
+        /// </summary>
+        /// <param name="buildingModel">The <see cref="BuildingModel"/> instance that manages the assignment.</param>
+        /// <param name="space">The <see cref="ISpace"/> to which the internal condition is assigned.</param>
+        /// <param name="internalCondition">The <see cref="IInternalCondition"/> to be applied to the space.</param>
+        /// <param name="id">An optional unique identifier for the assignment.</param>
+        /// <returns>True if the internal condition was successfully assigned; otherwise, false.</returns>
         public static bool Assign(this BuildingModel? buildingModel, ISpace? space, IInternalCondition? internalCondition, string? id = null)
         {
             if (buildingModel is null || space is null || internalCondition is null)

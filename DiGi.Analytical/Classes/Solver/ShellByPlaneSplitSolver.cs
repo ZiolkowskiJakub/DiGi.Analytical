@@ -6,10 +6,17 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Classes
 {
+    /// <summary>
+    /// Provides functionality to split a shell using a specified plane as the cutting surface.
+    /// </summary>
     public class ShellByPlaneSplitSolver : ShellSplitSolver
     {
         private Plane? plane;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShellByPlaneSplitSolver"/> class.
+        /// </summary>
+        /// <param name="tolerance">The distance tolerance used for geometric operations during the splitting process.</param>
         public ShellByPlaneSplitSolver(double tolerance = Core.Constants.Tolerance.Distance)
             : base(tolerance)
         {
@@ -19,6 +26,12 @@ namespace DiGi.Analytical.Classes
 
         public event ShellSplitEventHandler? ShellSplit;
 
+        /// <summary>
+        /// Gets or sets the <see cref="Plane" /> used to split the shell.
+        /// </summary>
+        /// <value>
+        /// The <see cref="Plane" /> instance, or <c>null</c> if no plane is defined.
+        /// </value>
         public Plane? Plane
         {
             get
@@ -32,6 +45,10 @@ namespace DiGi.Analytical.Classes
             }
         }
 
+        /// <summary>
+        /// Splits the shell using the specified plane.
+        /// </summary>
+        /// <returns>A <see cref="System.Boolean" /> value indicating whether the splitting operation was successful.</returns>
         public override bool Solve()
         {
             outputs = null;

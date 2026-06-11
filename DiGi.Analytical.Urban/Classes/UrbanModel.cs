@@ -12,6 +12,9 @@ using System.Text.Json.Serialization;
 
 namespace DiGi.Analytical.Urban.Classes
 {
+    /// <summary>
+    /// Represents an urban model that manages urban-related information and relation clusters within a parametrized GUID object framework.
+    /// </summary>
     public class UrbanModel : ParametrizedGuidObject, IUrbanGuidObject, IGuidModel
     {
         [JsonInclude, JsonPropertyName("UrbanRelationCluster"), System.ComponentModel.Description("UrbanRelationCluster")]
@@ -20,6 +23,10 @@ namespace DiGi.Analytical.Urban.Classes
         [JsonInclude, JsonPropertyName("UrbanInformation"), System.ComponentModel.Description("UrbanInformation")]
         private UrbanInformation urbanInformation = new();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UrbanModel"/> class by cloning an existing urban model.
+        /// </summary>
+        /// <param name="urbanModel">The source <see cref="UrbanModel"/> to clone from; if null, a default instance is initialized.</param>
         public UrbanModel(UrbanModel? urbanModel)
             : base(urbanModel)
         {
@@ -30,11 +37,18 @@ namespace DiGi.Analytical.Urban.Classes
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UrbanModel"/> class from the specified JSON object.
+        /// </summary>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data used to initialize the model; may be null.</param>
         public UrbanModel(JsonObject? jsonObject)
             : base(jsonObject)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the urban information associated with this urban model.
+        /// </summary>
         [JsonIgnore]
         public UrbanInformation UrbanInformation
         {
@@ -54,6 +68,10 @@ namespace DiGi.Analytical.Urban.Classes
             }
         }
 
+        /// <summary>
+        /// Gets the axis-aligned bounding box encompassing all building models within the urban model.
+        /// </summary>
+        /// <returns>The <see cref="T:DiGi.Geometry.Spatial.Classes.BoundingBox3D" /> representing the combined bounding box of all buildings, or null if no valid bounding boxes could be determined.</returns>
         public BoundingBox3D? GetBoundingBox()
         {
             if (urbanRelationCluster.GetValues<BuildingModel>() is not List<BuildingModel> buildingModels || buildingModels.Count == 0)
@@ -78,6 +96,11 @@ namespace DiGi.Analytical.Urban.Classes
             return Geometry.Spatial.Create.BoundingBox3D(boundingBox3Ds);
         }
 
+        /// <summary>
+        /// Gets the axis-aligned bounding box of the specified building model.
+        /// </summary>
+        /// <param name="buildingModel">The building model for which to retrieve the bounding box.</param>
+        /// <returns>A <see cref="BoundingBox3D"/> representing the bounding box of the building model, or null if it cannot be determined or the provided model is null.</returns>
         public BoundingBox3D? GetBoundingBox(BuildingModel? buildingModel)
         {
             if (buildingModel is null)
@@ -111,11 +134,21 @@ namespace DiGi.Analytical.Urban.Classes
             return result;
         }
 
+        /// <summary>
+        /// Removes the specified building model from the urban model.
+        /// </summary>
+        /// <param name="buildingModel">The building model to be removed.</param>
+        /// <returns>True if the building model was successfully removed; otherwise, false.</returns>
         public bool Remove(BuildingModel? buildingModel)
         {
             return Remove(buildingModel == null ? null : new GuidReference(buildingModel));
         }
 
+        /// <summary>
+        /// Removes the specified GUID reference from the urban model.
+        /// </summary>
+        /// <param name="guidReference">The GUID reference of the object to be removed.</param>
+        /// <returns>True if the reference was successfully removed; otherwise, false.</returns>
         public bool Remove(GuidReference? guidReference)
         {
             if (guidReference is null)
@@ -126,6 +159,11 @@ namespace DiGi.Analytical.Urban.Classes
             return urbanRelationCluster.Remove(guidReference);
         }
 
+        /// <summary>
+        /// Updates the specified building model within the urban model, refreshing its associated bounding box relations.
+        /// </summary>
+        /// <param name="buildingModel">The building model instance to be updated.</param>
+        /// <returns>True if the update operation was successful; otherwise, false.</returns>
         public bool Update(BuildingModel? buildingModel)
         {
             if (buildingModel == null)

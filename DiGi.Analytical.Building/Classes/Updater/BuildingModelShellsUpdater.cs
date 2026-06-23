@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Classes
         public List<Shell>? Shells { get; set; }
 
         /// <summary>
-        /// Gets or sets the distance tolerance used for geometric comparisons and operations during the shell update process. The default value is <see cref="DiGi.Core.Constants.Tolerance.Distance"/>.
+        /// Gets or sets the distance tolerance used for geometric comparisons and operations during the shell update process. The default value is <see cref="Core.Constants.Tolerance.Distance"/>.
         /// </summary>
         public double Tolerance { get; set; } = Core.Constants.Tolerance.Distance;
 

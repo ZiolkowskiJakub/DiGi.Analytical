@@ -51,7 +51,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="SurfaceWall"/> class from the specified JSON object.
         /// </summary>
-        /// <param name="jsonObject">The <see cref="System.Text.Json.Nodes.JsonObject"/> containing the data used to initialize this instance.</param>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data used to initialize this instance.</param>
         public SurfaceWall(JsonObject? jsonObject)
             : base(jsonObject)
         {

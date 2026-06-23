@@ -12,18 +12,22 @@ namespace DiGi.Analytical.Building.HVAC.Enums
         /// Undefined.
         /// </summary>
         [Description("Undefined")] Undefined,
+
         /// <summary>
         /// Represents the upper limit for the thermostat profile.
         /// </summary>
         [Description("Upper limit")] UpperLimit,
+
         /// <summary>
         /// Represents the lower limit of the thermostat profile.
         /// </summary>
         [Description("Lower limit")] LowerLimit,
+
         /// <summary>
         /// Represents the upper limit for humidity within the thermostat profile.
         /// </summary>
         [Description("Humidity upper limit")] HumidityUpperLimit,
+
         /// <summary>
         /// Represents the humidity lower limit thermostat profile type.
         /// </summary>

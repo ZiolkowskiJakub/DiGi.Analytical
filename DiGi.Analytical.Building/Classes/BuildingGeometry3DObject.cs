@@ -83,7 +83,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="BuildingGeometry3DObject"/> class using the specified JSON object.
         /// </summary>
-        /// <param name="jsonObject">The <see cref="System.Text.Json.Nodes.JsonObject"/> containing the data to initialize the object. This value can be null.</param>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data to initialize the object. This value can be null.</param>
         public BuildingGeometry3DObject(JsonObject? jsonObject)
             : base(jsonObject)
         {

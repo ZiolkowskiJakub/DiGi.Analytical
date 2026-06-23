@@ -12,10 +12,12 @@ namespace DiGi.Analytical.Building.Enums
         /// The opening construction part is undefined.
         /// </summary>
         [Description("Undefined")] Undefined,
+
         /// <summary>
         /// Represents the pane part of an opening construction.
         /// </summary>
         [Description("Pane")] Pane,
+
         /// <summary>
         /// Represents the frame part of the opening construction.
         /// </summary>

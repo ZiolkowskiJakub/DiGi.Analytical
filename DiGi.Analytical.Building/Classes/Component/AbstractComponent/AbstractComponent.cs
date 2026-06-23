@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 namespace DiGi.Analytical.Building.Classes
 {
     /// <summary>
-    /// Represents an abstract base class for all analytical building components, providing core functionality and implementing the <see cref="Interfaces.IComponent"/> interface.
+    /// Represents an abstract base class for all analytical building components, providing core functionality and implementing the <see cref="IComponent"/> interface.
     /// </summary>
     public abstract class AbstractComponent : Component, Interfaces.IComponent
     {

@@ -16,7 +16,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="range">The <see cref="Range{T}"/> of integers defining the index range.</param>
         /// <param name="enum">The enumeration value specifying the profile type, such as <see cref="ThermostatProfileType"/> or <see cref="InternalGainProfileType"/>.</param>
         /// <param name="id">An optional unique identifier for the internal condition.</param>
-        /// <returns>An <see cref="DiGi.Core.Classes.IndexedDoubles"/> instance if matching data is found; otherwise, <c>null</c>.</returns>
+        /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance if matching data is found; otherwise, <c>null</c>.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, System.Enum? @enum, string? id = null)
         {
             if (buildingModel == null || space == null || range == null)
@@ -153,7 +153,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="range">The range of indices to retrieve.</param>
         /// <param name="thermostatProfileType">The type of thermostat profile to query.</param>
         /// <param name="id">An optional identifier for the specific profile or data source.</param>
-        /// <returns>An <see cref="DiGi.Core.Classes.IndexedDoubles"/> instance containing the retrieved values, or <c>null</c> if the building model, space, range, or profile type is invalid or undefined.</returns>
+        /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance containing the retrieved values, or <c>null</c> if the building model, space, range, or profile type is invalid or undefined.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, ThermostatProfileType thermostatProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || range == null || thermostatProfileType == ThermostatProfileType.Undefined)
@@ -173,7 +173,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="end">The ending index of the requested range.</param>
         /// <param name="thermostatProfileType">The type of thermostat profile to be retrieved.</param>
         /// <param name="id">An optional identifier for the specific profile instance.</param>
-        /// <returns>An <see cref="DiGi.Core.Classes.IndexedDoubles"/> instance containing the values if successful; otherwise, <c>null</c>.</returns>
+        /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance containing the values if successful; otherwise, <c>null</c>.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, int start, int end, ThermostatProfileType thermostatProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || thermostatProfileType == ThermostatProfileType.Undefined)
@@ -192,7 +192,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="range">The range of indices for the values to be retrieved.</param>
         /// <param name="internalGainProfileType">The type of internal gain profile to query.</param>
         /// <param name="id">An optional identifier used to filter or specify the data source.</param>
-        /// <returns>An <see cref="DiGi.Core.Classes.IndexedDoubles"/> instance containing the retrieved values, or <c>null</c> if any required parameters are null or invalid.</returns>
+        /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance containing the retrieved values, or <c>null</c> if any required parameters are null or invalid.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, InternalGainProfileType internalGainProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || range == null || internalGainProfileType == InternalGainProfileType.Undefined)
@@ -212,7 +212,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="end">The ending index of the value range to retrieve.</param>
         /// <param name="internalGainProfileType">The type of internal gain profile to be retrieved.</param>
         /// <param name="id">An optional identifier for the specific internal gain profile.</param>
-        /// <returns>An <see cref="DiGi.Core.Classes.IndexedDoubles"/> instance containing the values if successful; otherwise, <c>null</c>.</returns>
+        /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance containing the values if successful; otherwise, <c>null</c>.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, int start, int end, InternalGainProfileType internalGainProfileType, string? id = null)
         {
             if (buildingModel == null || space == null || internalGainProfileType == InternalGainProfileType.Undefined)

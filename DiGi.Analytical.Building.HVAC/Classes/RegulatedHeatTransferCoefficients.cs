@@ -88,7 +88,7 @@ namespace DiGi.Analytical.Building.HVAC.Classes
         /// <summary>
         /// Retrieves the list of enumeration values used as keys for the heat transfer coefficients.
         /// </summary>
-        /// <returns>A <see cref="System.Collections.Generic.List{TEnum}"/> containing all the enumeration values currently defined in the coefficients collection.</returns>
+        /// <returns>A <see cref="List{TEnum}"/> containing all the enumeration values currently defined in the coefficients collection.</returns>
         public List<TEnum> GetEnums()
         {
             return [.. values.Keys];

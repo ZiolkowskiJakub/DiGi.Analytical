@@ -51,7 +51,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="PhysicalComponent"/> class using the specified JSON object.
         /// </summary>
-        /// <param name="jsonObject">The <see cref="System.Text.Json.Nodes.JsonObject"/> containing the data to initialize the component; can be null.</param>
+        /// <param name="jsonObject">The <see cref="JsonObject"/> containing the data to initialize the component; can be null.</param>
         public PhysicalComponent(JsonObject? jsonObject)
             : base(jsonObject)
         {

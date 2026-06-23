@@ -12,10 +12,12 @@ namespace DiGi.Analytical.Enums
         /// The exposure is undefined.
         /// </summary>
         [Description("Undefined")] Undefined,
+
         /// <summary>
         /// Represents external exposure.
         /// </summary>
         [Description("External")] External,
+
         /// <summary>
         /// Represents an internal exposure.
         /// </summary>

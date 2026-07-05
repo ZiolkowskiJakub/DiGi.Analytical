@@ -247,6 +247,20 @@ The building model for which to retrieve the bounding box\.
 [DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.boundingbox3d 'DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D')  
 A [DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.boundingbox3d 'DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D') representing the bounding box of the building model, or null if it cannot be determined or the provided model is null\.
 
+<a name='DiGi.Analytical.Urban.Classes.UrbanModel.GetBuildingModels()'></a>
+
+## UrbanModel\.GetBuildingModels\(\) Method
+
+Gets all building models contained in the urban model\.
+
+```csharp
+public System.Collections.Generic.List<DiGi.Analytical.Building.Classes.BuildingModel>? GetBuildingModels();
+```
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Analytical\.Building\.Classes\.BuildingModel](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list of [DiGi\.Analytical\.Building\.Classes\.BuildingModel](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') instances contained in the urban model, or null if none are available\.
+
 <a name='DiGi.Analytical.Urban.Classes.UrbanModel.Remove(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
 
 ## UrbanModel\.Remove\(BuildingModel\) Method

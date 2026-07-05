@@ -135,6 +135,15 @@ namespace DiGi.Analytical.Urban.Classes
         }
 
         /// <summary>
+        /// Gets all building models contained in the urban model.
+        /// </summary>
+        /// <returns>A list of <see cref="BuildingModel"/> instances contained in the urban model, or null if none are available.</returns>
+        public List<BuildingModel>? GetBuildingModels()
+        {
+            return urbanRelationCluster.GetValues<BuildingModel>();
+        }
+
+        /// <summary>
         /// Removes the specified building model from the urban model.
         /// </summary>
         /// <param name="buildingModel">The building model to be removed.</param>

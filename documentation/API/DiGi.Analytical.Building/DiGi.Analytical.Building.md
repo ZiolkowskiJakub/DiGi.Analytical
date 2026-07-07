@@ -107,6 +107,33 @@ The distance tolerance used for geometric validation\.
 [CurveWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall 'DiGi\.Analytical\.Building\.Classes\.CurveWall')  
 A new [CurveWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall 'DiGi\.Analytical\.Building\.Classes\.CurveWall') instance if the creation is successful; otherwise, `null`\.
 
+<a name='DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
+
+## Create\.FaceFloor\(this IPolygonalFace3D, double\) Method
+
+Creates a [FaceFloor\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.FaceFloor\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') from the specified polygonal face, provided its area is valid and exceeds the given tolerance\.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.FaceFloor? FaceFloor(this DiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D? polygonalFace3D, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).polygonalFace3D'></a>
+
+`polygonalFace3D` [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D')
+
+The polygonal face to be converted into a face floor\.
+
+<a name='DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimum area threshold required to create the face floor\. Defaults to [DiGi\.Core\.Constants\.Tolerance\.Distance](https://learn.microsoft.com/en-us/dotnet/api/digi.core.constants.tolerance.distance 'DiGi\.Core\.Constants\.Tolerance\.Distance')\.
+
+#### Returns
+[FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')  
+A new [FaceFloor\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.FaceFloor(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.FaceFloor\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
+
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double)'></a>
 
 ## Create\.StructureLayer\(this ConstructionRelationCluster, IOpeningConstruction, OpeningConstructionPart, IMaterial, double\) Method
@@ -190,6 +217,33 @@ The thickness of the structure layer\.
 #### Returns
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
 A new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
+
+## Create\.SurfaceRoof\(this IPolygonalFace3D, double\) Method
+
+Creates a [SurfaceRoof\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceRoof\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') from the specified polygonal face, provided its area is valid and exceeds the given tolerance\.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.SurfaceRoof? SurfaceRoof(this DiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D? polygonalFace3D, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).polygonalFace3D'></a>
+
+`polygonalFace3D` [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D')
+
+The polygonal face to be converted into a surface roof\.
+
+<a name='DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimum area threshold required to create the surface roof\. Defaults to [DiGi\.Core\.Constants\.Tolerance\.Distance](https://learn.microsoft.com/en-us/dotnet/api/digi.core.constants.tolerance.distance 'DiGi\.Core\.Constants\.Tolerance\.Distance')\.
+
+#### Returns
+[SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof')  
+A new [SurfaceRoof\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceRoof\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
 
 <a name='DiGi.Analytical.Building.Create.SurfaceWall(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
 

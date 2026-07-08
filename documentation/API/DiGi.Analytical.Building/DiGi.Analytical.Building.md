@@ -432,6 +432,29 @@ The physical component construction for which the next structure layer index is 
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The maximum structure layer index found; 0 if no associated structure layers exist; or \-1 if either the [constructionRelationCluster](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).constructionRelationCluster 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.constructionRelationCluster') or [physicalComponentConstruction](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).physicalComponentConstruction 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.physicalComponentConstruction') is null\.
 
+<a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IComponent)'></a>
+
+## Query\.Surface3D\(this IComponent\) Method
+
+Extracts the 3D surface representation of the specified building component\.
+
+Surface based components (e.g. [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof'), [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')) return their geometry directly, face based components (e.g. [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')) return their planar face and curve based walls (e.g. [CurveWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.CurveWall 'DiGi\.Analytical\.Building\.Classes\.CurveWall')) return the surface created by extruding the base curve by the wall vector.
+
+```csharp
+public static DiGi.Geometry.Spatial.Interfaces.ISurface3D? Surface3D(this DiGi.Analytical.Building.Interfaces.IComponent? component);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IComponent).component'></a>
+
+`component` [DiGi\.Analytical\.Building\.Interfaces\.IComponent](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.icomponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
+
+The building component\. This value can be null\.
+
+#### Returns
+[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')  
+The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') representing the component, or null if the component has no supported surface geometry\.
+
 <a name='DiGi.Analytical.Building.Query.Triangulate(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 
 ## Query\.Triangulate\(this IBuildingGeometry3DObject, double\) Method

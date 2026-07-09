@@ -1,3 +1,5 @@
+#### [DiGi\.Analytical\.Building\.Solar](DiGi.Analytical.Building.Solar.Overview.md 'DiGi\.Analytical\.Building\.Solar\.Overview')
+
 ## DiGi\.Analytical\.Building\.Solar Namespace
 ### Classes
 

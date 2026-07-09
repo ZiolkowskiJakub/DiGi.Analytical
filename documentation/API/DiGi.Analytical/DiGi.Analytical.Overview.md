@@ -1,4 +1,4 @@
-#### [DiGi\.Analytical](index.md 'index')
+#### [DiGi\.Analytical](DiGi.Analytical.Overview.md 'DiGi\.Analytical\.Overview')
 
 ## DiGi\.Analytical Assembly
 

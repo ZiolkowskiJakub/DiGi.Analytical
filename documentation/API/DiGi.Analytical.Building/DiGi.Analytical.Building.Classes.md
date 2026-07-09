@@ -1,4 +1,4 @@
-#### [DiGi\.Analytical\.Building](index.md 'index')
+#### [DiGi\.Analytical\.Building](DiGi.Analytical.Building.Overview.md 'DiGi\.Analytical\.Building\.Overview')
 
 ## DiGi\.Analytical\.Building\.Classes Namespace
 ### Classes

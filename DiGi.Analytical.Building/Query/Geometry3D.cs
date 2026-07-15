@@ -1,4 +1,5 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Building.Classes;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.Collections.Generic;
 
@@ -19,7 +20,20 @@ namespace DiGi.Analytical.Building
                 return default;
             }
 
-            IGeometry3D? geometry3D = (buildingGeometry3DObject as dynamic).Geometry;
+            IGeometry3D? geometry3D = null;
+            if (buildingGeometry3DObject is CurveWall curveWall)
+            {
+                geometry3D = curveWall.GetSurface3D();
+            }
+            else if (buildingGeometry3DObject is CurveWall<ICurve3D> curveWallGeneric)
+            {
+                geometry3D = curveWallGeneric.GetSurface3D();
+            }
+            else
+            {
+                geometry3D = (buildingGeometry3DObject as dynamic).Geometry;
+            }
+
             if (geometry3D is null)
             {
                 return default;

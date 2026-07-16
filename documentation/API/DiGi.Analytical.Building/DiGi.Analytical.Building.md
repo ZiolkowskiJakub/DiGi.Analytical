@@ -153,7 +153,7 @@ The construction relation cluster to which the structure layer and its relations
 
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart,DiGi.Analytical.Interfaces.IMaterial,double).openinigConstruction'></a>
 
-`openinigConstruction` [DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iopeningconstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+`openinigConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
 
 The opening construction associated with the new structure layer\.
 
@@ -198,7 +198,7 @@ The construction relation cluster where the structure layer will be created and 
 
 <a name='DiGi.Analytical.Building.Create.StructureLayer(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction,DiGi.Analytical.Interfaces.IMaterial,double).physicalComponentConstruction'></a>
 
-`physicalComponentConstruction` [DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iphysicalcomponentconstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
+`physicalComponentConstruction` [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
 
 The physical component construction associated with the structure layer\.
 
@@ -304,7 +304,7 @@ The type of 3D geometry to return, which must implement [DiGi\.Geometry\.Spatial
 
 <a name='DiGi.Analytical.Building.Query.Geometry3D_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).buildingGeometry3DObject'></a>
 
-`buildingGeometry3DObject` [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildinggeometry3dobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
+`buildingGeometry3DObject` [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
 
 The building geometry object from which the 3D geometry is extracted\.
 
@@ -331,7 +331,7 @@ The sphere to check for containment\.
 
 <a name='DiGi.Analytical.Building.Query.Inside(thisDiGi.Geometry.Spatial.Classes.Sphere,DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double).buildingGeometry3DObject'></a>
 
-`buildingGeometry3DObject` [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildinggeometry3dobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
+`buildingGeometry3DObject` [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
 
 The 3D building geometry object to evaluate against\.
 
@@ -358,7 +358,7 @@ public static DiGi.Geometry.Spatial.Classes.Mesh3D? Mesh3D(this DiGi.Analytical.
 
 <a name='DiGi.Analytical.Building.Query.Mesh3D(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double).buildingGeometryObject'></a>
 
-`buildingGeometryObject` [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildinggeometry3dobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
+`buildingGeometryObject` [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
 
 The building geometry object to convert into a mesh\.
 
@@ -391,7 +391,7 @@ The relation cluster used to retrieve the structure layer relations\.
 
 <a name='DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IOpeningConstruction,DiGi.Analytical.Building.Enums.OpeningConstructionPart).openingConstruction'></a>
 
-`openingConstruction` [DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iopeningconstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
+`openingConstruction` [IOpeningConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpeningConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IOpeningConstruction')
 
 The opening construction instance\.
 
@@ -424,7 +424,7 @@ The construction relation cluster used to retrieve relations and structure layer
 
 <a name='DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).physicalComponentConstruction'></a>
 
-`physicalComponentConstruction` [DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iphysicalcomponentconstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
+`physicalComponentConstruction` [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')
 
 The physical component construction for which the next structure layer index is determined\.
 
@@ -447,7 +447,7 @@ public static DiGi.Geometry.Spatial.Interfaces.ISurface3D? Surface3D(this DiGi.A
 
 <a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IComponent).component'></a>
 
-`component` [DiGi\.Analytical\.Building\.Interfaces\.IComponent](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.icomponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
+`component` [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
 
 The building component\. This value can be null\.
 
@@ -468,7 +468,7 @@ public static System.Collections.Generic.List<DiGi.Geometry.Spatial.Classes.Tria
 
 <a name='DiGi.Analytical.Building.Query.Triangulate(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double).buildingGeometry3DObject'></a>
 
-`buildingGeometry3DObject` [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.ibuildinggeometry3dobject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
+`buildingGeometry3DObject` [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
 
 The building geometry object to triangulate\.
 

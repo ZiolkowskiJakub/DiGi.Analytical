@@ -3,6 +3,27 @@
 ## DiGi\.Analytical\.Building\.Enums Namespace
 ### Enums
 
+<a name='DiGi.Analytical.Building.Enums.BuildingModelDetailLevel'></a>
+
+## BuildingModelDetailLevel Enum
+
+```csharp
+public enum BuildingModelDetailLevel
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.BuildingModelDetailLevel.Component'></a>
+
+`Component` 0
+
+Each component \(wall, roof, floor, window\) becomes a separate selectable node\.
+
+<a name='DiGi.Analytical.Building.Enums.BuildingModelDetailLevel.Envelope'></a>
+
+`Envelope` 1
+
+All components are merged into a single node per building, making the building selectable as a whole\.
+
 <a name='DiGi.Analytical.Building.Enums.OpeningConstructionPart'></a>
 
 ## OpeningConstructionPart Enum

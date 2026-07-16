@@ -22,8 +22,14 @@ namespace DiGi.Analytical.Classes
         {
         }
 
+        /// <summary>
+        /// Occurs when a face split is performed during the shell splitting process.
+        /// </summary>
         public event FaceSplitEventHandler? FaceSplit;
 
+        /// <summary>
+        /// Occurs when a shell split is completed during the solving process.
+        /// </summary>
         public event ShellSplitEventHandler? ShellSplit;
 
         /// <summary>

@@ -6,3 +6,4 @@
 | :--- | :--- |
 | [DiGi\.Analytical\.Urban\.Classes](DiGi.Analytical.Urban.Classes.md 'DiGi\.Analytical\.Urban\.Classes') | |
 | [DiGi\.Analytical\.Urban\.Constants](DiGi.Analytical.Urban.Constants.md 'DiGi\.Analytical\.Urban\.Constants') | |
+| [DiGi\.Analytical\.Urban\.Interfaces](DiGi.Analytical.Urban.Interfaces.md 'DiGi\.Analytical\.Urban\.Interfaces') | |

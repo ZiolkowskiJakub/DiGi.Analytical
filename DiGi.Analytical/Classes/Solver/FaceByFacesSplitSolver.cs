@@ -22,8 +22,14 @@ namespace DiGi.Analytical.Classes
         {
         }
 
+        /// <summary>
+        /// Occurs when a coplanar face split is performed during the solving process.
+        /// </summary>
         public event CoplanarFaceSplitEventHandler? CoplanarFaceSplit;
 
+        /// <summary>
+        /// Occurs when a non-coplanar face split is performed during the solving process.
+        /// </summary>
         public event NonCoplanarFaceSplitEventHandler? NonCoplanarFaceSplit;
 
         /// <summary>

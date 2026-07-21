@@ -2,7 +2,6 @@ using System.ComponentModel;
 
 namespace DiGi.Analytical.Building.Enums
 {
-
     [Description("BuildingModel detail level")]
     public enum BuildingModelDetailLevel
     {

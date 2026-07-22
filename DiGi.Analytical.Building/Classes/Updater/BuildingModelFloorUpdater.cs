@@ -1,37 +1,59 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core;
-using DiGi.Core.Classes;
 using DiGi.Geometry.Spatial.Classes;
 using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Classes
 {
-    internal class BuildingModelFloorUpdater : BuildingModelUpdater
+    /// <summary>
+    /// Slices all the spaces of a <see cref="BuildingModel"/> into <see cref="FloorCount"/> storeys of equal height.
+    /// <para>The height of a storey is derived from the overall bounding box of the spaces of the model and rounded to one decimal place. The model is then cut by a horizontal plane on every resulting level: spaces crossed by a plane are replaced by the part below and the part above it, the components bounding them are rebuilt and a floor is created on the plane.</para>
+    /// <para>Use BuildingModel.TrySplit directly when a single, explicitly placed division is needed - this updater is a convenience wrapper applying it on evenly distributed elevations.</para>
+    /// </summary>
+    /// <remarks>
+    /// Openings hosted by a component that gets cut are not re-hosted onto the resulting components, they stay assigned to the one keeping the identifier of the original component.
+    /// </remarks>
+    /// <seealso cref="BuildingModelShellsUpdater"/>
+    public class BuildingModelFloorUpdater : BuildingModelUpdater
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BuildingModelFloorUpdater"/> class.
         /// </summary>
-        /// <param name="value">The <see cref="BuildingModel"/> instance to update.</param>
+        /// <param name="value">The <see cref="BuildingModel"/> instance to be updated in place.</param>
         public BuildingModelFloorUpdater(BuildingModel? value)
             : base(value)
         {
         }
 
         /// <summary>
-        /// Gets or sets the number of floors to partition the building model into.
+        /// Gets or sets the number of storeys the building model is partitioned into.
+        /// <para>Values lower than two leave the model untouched, a model of two storeys is cut by one plane placed in the middle of its height.</para>
         /// </summary>
         public int FloorCount { get; set; } = -1;
 
         /// <summary>
+        /// Gets or sets the construction assigned to the floors created on the cutting planes.
+        /// <para>When null an air component is created on every cutting plane instead of a floor.</para>
+        /// </summary>
+        public IFloorConstruction? FloorConstruction { get; set; } = null;
+
+        /// <summary>
+        /// Gets or sets the minimal height of the part of a space above a cutting plane.
+        /// <para>Spaces whose part above a plane is lower than this value are not cut by that plane and stay combined with the space below it. The default value places no practical limit, so that the storeys follow <see cref="FloorCount"/>.</para>
+        /// </summary>
+        public double MinHeight { get; set; } = Core.Constants.Tolerance.Distance;
+
+        /// <summary>
         /// Gets or sets the distance tolerance used for geometric operations during the update.
+        /// <para>It is passed on to every split of the model and is the lower limit of the storey height below which the model is not cut at all.</para>
         /// </summary>
         public double Tolerance { get; set; } = Core.Constants.Tolerance.Distance;
 
         /// <summary>
-        /// Executes the floor-based update operation on the building model.
+        /// Cuts the spaces of the building model into <see cref="FloorCount"/> storeys and writes the result back into the model.
         /// </summary>
-        /// <returns><see langword="true"/> if the update was successful; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if at least one space was cut; otherwise, <see langword="false"/>.</returns>
         public override bool Update()
         {
             if (FloorCount < 2 || Value is null)
@@ -55,66 +77,33 @@ namespace DiGi.Analytical.Building.Classes
 
             double maxElevation = boundingBox3D.Max.Z;
 
-            double height = minElevation - maxElevation;
+            double height = maxElevation - minElevation;
+            if (double.IsNaN(height) || height <= Tolerance)
+            {
+                return false;
+            }
 
             double floorHeight = System.Math.Round(height / FloorCount, 1);
-
-            ShellByPlaneSplitSolver shellByPlaneSplitSolver = new(Tolerance);
-            shellByPlaneSplitSolver.FaceSplit += (s, e) =>
+            if (double.IsNaN(floorHeight) || floorHeight <= Tolerance)
             {
-                e.UniqueReference = e.Input?.UniqueReference ?? new GuidReference(typeof(SurfaceAir), System.Guid.NewGuid());
-                e.Handled = true;
-            };
+                return false;
+            }
 
-            bool split = false;
+            bool result = false;
 
-            double currentElevation = minElevation;
-            while (currentElevation < maxElevation)
+            // Cutting planes are placed between the storeys, a plane on the bottom of the model would not cut anything
+            double currentElevation = minElevation + floorHeight;
+            while (currentElevation < maxElevation - Tolerance)
             {
-                Plane? plane = Geometry.Spatial.Create.Plane(currentElevation);
-                if (plane is null)
+                if (Modify.TrySplit(Value, currentElevation, MinHeight, FloorConstruction, null, Tolerance))
                 {
-                    break;
-                }
-
-                shellByPlaneSplitSolver.Plane = plane;
-
-                for (int i = shells.Count - 1; i >= 0; i--)
-                {
-                    shellByPlaneSplitSolver.Input = shells[i];
-                    if (!shellByPlaneSplitSolver.Solve())
-                    {
-                        continue;
-                    }
-
-                    List<Shell>? shells_Split = shellByPlaneSplitSolver.Outputs;
-                    if (shells_Split is null || shells_Split.Count == 0)
-                    {
-                        continue;
-                    }
-
-                    split = true;
-
-                    shells.RemoveAt(i);
-
-                    shells.AddRange(shells_Split);
+                    result = true;
                 }
 
                 currentElevation += floorHeight;
             }
 
-            if (!split)
-            {
-                return false;
-            }
-
-            BuildingModelShellsUpdater buildingModelShellsUpdater = new(Value)
-            {
-                Tolerance = Tolerance,
-                Shells = shells,
-            };
-
-            return buildingModelShellsUpdater.Update();
+            return result;
         }
     }
 }

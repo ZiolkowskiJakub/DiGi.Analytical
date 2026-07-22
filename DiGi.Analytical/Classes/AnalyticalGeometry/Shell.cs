@@ -95,6 +95,9 @@ namespace DiGi.Analytical.Classes
         /// <summary>
         /// Gets the unique reference associated with this shell.
         /// </summary>
+        /// <remarks>
+        /// A fresh clone is returned on every call, so read this property into a local instead of calling it repeatedly, and compare it with <see cref="Core.Query.Equals(IReference?, IReference?)"/> - == is reference equality between two <see cref="IUniqueReference"/> typed operands and is false even when both sides come from the same shell.
+        /// </remarks>
         [JsonIgnore]
         public IUniqueReference? UniqueReference
         {
@@ -102,6 +105,15 @@ namespace DiGi.Analytical.Classes
             {
                 return Core.Query.Clone(uniqueReference);
             }
+        }
+
+        /// <summary>
+        /// Creates a clone of the current instance.
+        /// </summary>
+        /// <returns>A new <see cref="ISerializableObject"/> that is a copy of the current instance, or null.</returns>
+        public override ISerializableObject? Clone()
+        {
+            return new Shell(this);
         }
 
         /// <summary>

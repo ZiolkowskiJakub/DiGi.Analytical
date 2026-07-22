@@ -394,7 +394,26 @@ public DiGi.Core.Interfaces.IUniqueReference? UniqueReference { get; }
 
 #### Property Value
 [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')
+
+### Remarks
+A fresh clone is returned on every call, so read this property into a local instead of calling it repeatedly, and compare it with [DiGi\.Core\.Query\.Equals\(DiGi\.Core\.Interfaces\.IReference,DiGi\.Core\.Interfaces\.IReference\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.query.equals#digi-core-query-equals(digi-core-interfaces-ireference-digi-core-interfaces-ireference) 'DiGi\.Core\.Query\.Equals\(DiGi\.Core\.Interfaces\.IReference,DiGi\.Core\.Interfaces\.IReference\)') \- == is reference equality between two [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') typed operands and is false even when both sides come from the same face\.
 ### Methods
+
+<a name='DiGi.Analytical.Classes.Face.Clone()'></a>
+
+## Face\.Clone\(\) Method
+
+Creates a clone of the current instance\.
+
+```csharp
+public override DiGi.Core.Interfaces.ISerializableObject? Clone();
+```
+
+Implements [Clone\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1.clone 'DiGi\.Core\.Interfaces\.ICloneableObject\`1\.Clone')
+
+#### Returns
+[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')  
+A new [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject') that is a copy of the current instance, or null\.
 
 <a name='DiGi.Analytical.Classes.Face.Duplicate(System.Nullable_System.Guid_)'></a>
 
@@ -575,6 +594,8 @@ A [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 
 
 Provides data for events that occur when a face is split\.
 
+A handler decides which [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') the face created out of [PolygonalFace3D](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FaceSplitEventArgs.PolygonalFace3D 'DiGi\.Analytical\.Classes\.FaceSplitEventArgs\.PolygonalFace3D') receives and sets [Handled](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FaceSplitEventArgs.Handled 'DiGi\.Analytical\.Classes\.FaceSplitEventArgs\.Handled') to true. When no handler sets it, the solver falls back to the reference of [Input](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.FaceSplitEventArgs.Input 'DiGi\.Analytical\.Classes\.FaceSplitEventArgs\.Input').
+
 ```csharp
 public class FaceSplitEventArgs : System.EventArgs
 ```
@@ -584,6 +605,9 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 Derived  
 ↳ [CoplanarFaceSplitEventArgs](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.CoplanarFaceSplitEventArgs 'DiGi\.Analytical\.Classes\.CoplanarFaceSplitEventArgs')  
 ↳ [NonCoplanarFaceSplitEventArgs](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.NonCoplanarFaceSplitEventArgs 'DiGi\.Analytical\.Classes\.NonCoplanarFaceSplitEventArgs')
+
+### Remarks
+This is the reference\-assignment hook of the solver based split\. The updater based path assigns references differently: it groups the faces by the reference they already carry, see BuildingModelShellUpdater in DiGi\.Analytical\.Building\.
 ### Constructors
 
 <a name='DiGi.Analytical.Classes.FaceSplitEventArgs.FaceSplitEventArgs(DiGi.Analytical.Classes.Face,DiGi.Geometry.Spatial.Classes.PolygonalFace3D)'></a>
@@ -1338,7 +1362,26 @@ public DiGi.Core.Interfaces.IUniqueReference? UniqueReference { get; }
 
 #### Property Value
 [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')
+
+### Remarks
+A fresh clone is returned on every call, so read this property into a local instead of calling it repeatedly, and compare it with [DiGi\.Core\.Query\.Equals\(DiGi\.Core\.Interfaces\.IReference,DiGi\.Core\.Interfaces\.IReference\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.query.equals#digi-core-query-equals(digi-core-interfaces-ireference-digi-core-interfaces-ireference) 'DiGi\.Core\.Query\.Equals\(DiGi\.Core\.Interfaces\.IReference,DiGi\.Core\.Interfaces\.IReference\)') \- == is reference equality between two [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') typed operands and is false even when both sides come from the same shell\.
 ### Methods
+
+<a name='DiGi.Analytical.Classes.Shell.Clone()'></a>
+
+## Shell\.Clone\(\) Method
+
+Creates a clone of the current instance\.
+
+```csharp
+public override DiGi.Core.Interfaces.ISerializableObject? Clone();
+```
+
+Implements [Clone\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1.clone 'DiGi\.Core\.Interfaces\.ICloneableObject\`1\.Clone')
+
+#### Returns
+[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')  
+A new [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject') that is a copy of the current instance, or null\.
 
 <a name='DiGi.Analytical.Classes.Shell.Duplicate(System.Nullable_System.Guid_)'></a>
 
@@ -1369,11 +1412,20 @@ A duplicate of the current object as an [DiGi\.Core\.Interfaces\.IGuidObject](ht
 
 Provides functionality to split a shell using a specified plane as the cutting surface\.
 
+The shell is cut into the parts above and below the plane; faces of the original shell are inherited by the part they belong to, faces created on the cutting plane and faces produced by cutting a face in two are matched to the closest original face, and the reference each of them receives can be overridden through the [FaceSplit](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellByPlaneSplitSolver.FaceSplit 'DiGi\.Analytical\.Classes\.ShellByPlaneSplitSolver\.FaceSplit') event. Every resulting shell inherits the reference of the split shell unless [ShellSplit](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellByPlaneSplitSolver.ShellSplit 'DiGi\.Analytical\.Classes\.ShellByPlaneSplitSolver\.ShellSplit') overrides it.
+
+The resulting shells describe geometry only - use BuildingModelShellsUpdater in DiGi.Analytical.Building to turn them back into spaces and components of a building model.
+
 ```csharp
 public class ShellByPlaneSplitSolver : DiGi.Analytical.Classes.ShellSplitSolver
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Analytical\.Classes\.SplitSolver&lt;](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SplitSolver_TAnalyticalGeometry_ 'DiGi\.Analytical\.Classes\.SplitSolver\<TAnalyticalGeometry\>')[Shell](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Shell 'DiGi\.Analytical\.Classes\.Shell')[&gt;](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SplitSolver_TAnalyticalGeometry_ 'DiGi\.Analytical\.Classes\.SplitSolver\<TAnalyticalGeometry\>') → [ShellSplitSolver](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellSplitSolver 'DiGi\.Analytical\.Classes\.ShellSplitSolver') → ShellByPlaneSplitSolver
+
+### Remarks
+References are compared by value, not with the equality operators\. Those operators are declared on [DiGi\.Core\.Classes\.SerializableReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializablereference 'DiGi\.Core\.Classes\.SerializableReference') and do not apply to [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') typed operands, while [UniqueReference](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Face.UniqueReference 'DiGi\.Analytical\.Classes\.Face\.UniqueReference') returns a fresh clone on every call \- comparing with == therefore never matches\.
+
+Faces that survive the split intact are matched to the original faces by [UniqueReference](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.Face.UniqueReference 'DiGi\.Analytical\.Classes\.Face\.UniqueReference'), which identifies the component a face came from rather than the face itself. Where several faces of the split shell share one reference - the usual case for a component bounding the shell with more than one face - the match takes the first of them, so the closest face candidates the remaining fragments are attributed to are only as precise as that reference.
 ### Constructors
 
 <a name='DiGi.Analytical.Classes.ShellByPlaneSplitSolver.ShellByPlaneSplitSolver(double)'></a>
@@ -1457,6 +1509,8 @@ public event ShellSplitEventHandler? ShellSplit;
 ## ShellSplitEventArgs Class
 
 Provides the event data for shell splitting operations\.
+
+A handler decides which [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') the shell created out of [Polyhedron](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellSplitEventArgs.Polyhedron 'DiGi\.Analytical\.Classes\.ShellSplitEventArgs\.Polyhedron') receives and sets [Handled](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellSplitEventArgs.Handled 'DiGi\.Analytical\.Classes\.ShellSplitEventArgs\.Handled') to true. When no handler sets it, the solver falls back to the reference of [Input](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.ShellSplitEventArgs.Input 'DiGi\.Analytical\.Classes\.ShellSplitEventArgs\.Input'), so that every part of a split space points back at the space it came from.
 
 ```csharp
 public class ShellSplitEventArgs : System.EventArgs
@@ -1647,6 +1701,10 @@ The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/do
 ## SplitSolver\<TAnalyticalGeometry\> Class
 
 Provides a base abstract implementation for solvers that split a single analytical geometry entity into one or more resulting entities\.
+
+A solver is a mutable command object: assign [Input](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SplitSolver_TAnalyticalGeometry_.Input 'DiGi\.Analytical\.Classes\.SplitSolver\<TAnalyticalGeometry\>\.Input') together with the cutting geometry declared by the derived class, call [Solve\(\)](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SplitSolver_TAnalyticalGeometry_.Solve() 'DiGi\.Analytical\.Classes\.SplitSolver\<TAnalyticalGeometry\>\.Solve\(\)') and read [Outputs](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.SplitSolver_TAnalyticalGeometry_.Outputs 'DiGi\.Analytical\.Classes\.SplitSolver\<TAnalyticalGeometry\>\.Outputs'). Unlike the updaters of DiGi.Analytical.Building it works purely on analytical geometry and never touches a building model, therefore its results have to be written back separately.
+
+Derived solvers raise split events, letting a handler decide which [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') each resulting entity receives; without a handler the reference of the split entity is inherited.
 
 ```csharp
 public abstract class SplitSolver<TAnalyticalGeometry> : DiGi.Core.Interfaces.IOneToManySolver<TAnalyticalGeometry, TAnalyticalGeometry>, DiGi.Core.Interfaces.ISolver, DiGi.Core.Interfaces.IEvaluator

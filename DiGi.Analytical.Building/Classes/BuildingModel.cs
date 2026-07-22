@@ -212,11 +212,13 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Assigns a component to one or two spaces and establishes the corresponding relationship within the building model.
+        /// <para>The relation REPLACES any existing space assignment of the component, it is not added to it. Pass both spaces in one call to have a component bound by two spaces, and pass the component and its spaces through <see cref="Update(IComponent)"/> beforehand only if their other data changed - this method already stores all of them.</para>
         /// </summary>
         /// <param name="component">The component to be assigned.</param>
         /// <param name="space_1">The primary space associated with the component.</param>
         /// <param name="space_2">An optional secondary space associated with the component.</param>
         /// <returns>True if the component and spaces were successfully updated and the relationship was created; otherwise, false.</returns>
+        /// <seealso cref="Unassign(IComponent, ISpace)"/>
         public bool Assign(IComponent? component, ISpace? space_1, ISpace? space_2 = null)
         {
             if (component == null || space_1 == null)
@@ -430,7 +432,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>Retrieves a list of components of the specified type associated with the given space.</summary>
         /// <typeparam name="TComponent">The type of component to retrieve, which must implement <see cref="IComponent"/>.</typeparam>
         /// <param name="space">The space for which to retrieve the associated components. May be null.</param>
-        /// <returns>A list of components of type <typeparamref name="TComponent"/> if successful; otherwise, null.</returns>
+        /// <returns>A list of CLONED components of type <typeparamref name="TComponent"/> if successful; otherwise, null. Modifying them does not affect the model, pass them through <see cref="Update(IComponent)"/> to store the changes.</returns>
         public List<TComponent>? GetComponents<TComponent>(ISpace? space) where TComponent : IComponent
         {
             if (buildingRelationCluster == null || space == null)
@@ -514,9 +516,10 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Retrieves the floor construction associated with the specified floor.
+        /// <para>The construction is the one established by <see cref="Assign(IFloor, IFloorConstruction)"/> for the identifier of the given floor, which is why a component rebuilt under the same identifier keeps its construction.</para>
         /// </summary>
         /// <param name="floor">The floor for which to retrieve the construction.</param>
-        /// <returns>The <see cref="IFloorConstruction"/> associated with the provided floor, or <c>null</c> if no such construction exists or the floor is null.</returns>
+        /// <returns>A CLONE of the <see cref="IFloorConstruction"/> associated with the provided floor, or <c>null</c> if no such construction exists or the floor is null.</returns>
         public IFloorConstruction? GetFloorConstruction(IFloor? floor)
         {
             return GetPhysicalComponentConstruction<IFloorConstruction>(floor);
@@ -773,9 +776,10 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Gets the construction associated with the specified roof.
+        /// <para>The construction is the one established by <see cref="Assign(IRoof, IRoofConstruction)"/> for the identifier of the given roof, which is why a component rebuilt under the same identifier keeps its construction.</para>
         /// </summary>
         /// <param name="roof">The roof for which to retrieve the construction.</param>
-        /// <returns>The <see cref="IRoofConstruction"/> associated with the roof, or <see langword="null"/> if no such construction exists or the <paramref name="roof"/> is null.</returns>
+        /// <returns>A CLONE of the <see cref="IRoofConstruction"/> associated with the roof, or <see langword="null"/> if no such construction exists or the <paramref name="roof"/> is null.</returns>
         public IRoofConstruction? GetRoofConstruction(IRoof? roof)
         {
             return GetPhysicalComponentConstruction<IRoofConstruction>(roof);
@@ -783,6 +787,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Retrieves a shell associated with the specified space based on the provided criteria.
+        /// <para>The shell carries a <see cref="GuidReference"/> of the space and every one of its faces carries a <see cref="GuidReference"/> of the component it was built from, which is what lets the shell be written back into the model by <see cref="BuildingModelShellUpdater"/> after it was processed geometrically.</para>
         /// </summary>
         /// <param name="space">The space from which to retrieve the shell.</param>
         /// <param name="normalSide">The optional side or orientation of the boundary.</param>
@@ -802,6 +807,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Retrieves a list of shells associated with the specified spaces, applying optional filters for side orientation, edge orientations, and geometric tolerance.
+        /// <para>Every shell carries a <see cref="GuidReference"/> of its space and every face a <see cref="GuidReference"/> of the component it was built from; components whose geometry is not a polygonal face are skipped.</para>
         /// </summary>
         /// <typeparam name="TSpace">The type of space objects, which must implement <see cref="ISpace"/>.</typeparam>
         /// <param name="spaces">A collection of spaces to process.</param>
@@ -940,9 +946,10 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Retrieves the list of spaces associated with the specified component.
+        /// <para>A component bounds at most two spaces, an external one bounds a single space.</para>
         /// </summary>
         /// <param name="component">The component for which to retrieve the associated spaces.</param>
-        /// <returns>A list of <see cref="ISpace"/> objects if found; otherwise, null.</returns>
+        /// <returns>A list of CLONED <see cref="ISpace"/> objects if found; otherwise, null.</returns>
         public List<ISpace>? GetSpaces(IComponent? component)
         {
             if (component == null)
@@ -1020,9 +1027,10 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Gets the wall construction for the specified wall.
+        /// <para>The construction is the one established by <see cref="Assign(IWall, IWallConstruction)"/> for the identifier of the given wall, which is why a component rebuilt under the same identifier keeps its construction.</para>
         /// </summary>
         /// <param name="wall">The wall for which to retrieve the construction.</param>
-        /// <returns>The <see cref="IWallConstruction"/> associated with the wall, or <see langword="null"/> if no construction is found or the wall is null.</returns>
+        /// <returns>A CLONE of the <see cref="IWallConstruction"/> associated with the wall, or <see langword="null"/> if no construction is found or the wall is null.</returns>
         public IWallConstruction? GetWallConstruction(IWall? wall)
         {
             return GetPhysicalComponentConstruction<IWallConstruction>(wall);
@@ -1036,6 +1044,14 @@ namespace DiGi.Analytical.Building.Classes
         public IWindowConstruction? GetWindowConstruction(IWindow? window)
         {
             return GetOpeningConstruction<IWindowConstruction>(window);
+        }
+
+        /// <summary>Retrieves all zones of the specified type from the building model.</summary>
+        /// <typeparam name="TZone">The type of zone to retrieve, which must implement <see cref="IZone"/>.</typeparam>
+        /// <returns>A list containing the retrieved zones of type <typeparamref name="TZone"/>, or null if no such zones are found.</returns>
+        public List<TZone>? GetZones<TZone>() where TZone : IZone
+        {
+            return buildingRelationCluster.GetValues<TZone>().CloneAndFilterNulls();
         }
 
         /// <summary>
@@ -1181,10 +1197,12 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Unassigns a component from a specific space by removing the association between them.
+        /// <para>The component itself stays in the model; when the space was its last one the whole space relation is dropped, leaving the component unassigned.</para>
         /// </summary>
         /// <param name="component">The component to be unassigned.</param>
         /// <param name="space">The space from which the component should be removed.</param>
         /// <returns>True if the component was successfully unassigned; otherwise, false.</returns>
+        /// <seealso cref="Assign(IComponent, ISpace, ISpace)"/>
         public bool Unassign(IComponent? component, ISpace? space)
         {
             if (component == null || space == null)
@@ -1288,6 +1306,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Updates the building model by adding a clone of the specified component to the relation cluster.
+        /// <para>The component is stored under its own identifier, therefore a component carrying the identifier of one already held by the model REPLACES it, keeping the relations established for that identifier. That is how a component is rebuilt with a new geometry - see <see cref="BuildingModelFaceUpdater"/>.</para>
         /// </summary>
         /// <param name="component">The component to be updated in the model; can be null.</param>
         /// <returns>True if the component was successfully added to the relation cluster; otherwise, false.</returns>
@@ -1318,6 +1337,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Updates the building model by adding a clone of the specified space to the relation cluster.
+        /// <para>The space is stored under its own identifier, therefore a space carrying the identifier of one already held by the model replaces it and keeps the relations established for that identifier.</para>
         /// </summary>
         /// <param name="space">The space object to be added or updated in the building model.</param>
         /// <returns>True if the space was successfully added; otherwise, false.</returns>
@@ -1481,8 +1501,8 @@ namespace DiGi.Analytical.Building.Classes
                 return default;
             }
 
-            IPhysicalComponent? physicalConstruction = buildingRelationCluster.GetPhysicalComponent(physicalComponentConstructionRelation);
-            if (physicalConstruction is TPhysicalComponentConstruction result)
+            IPhysicalComponentConstruction? physicalComponentConstruction = buildingRelationCluster.GetPhysicalComponentConstruction(physicalComponentConstructionRelation);
+            if (physicalComponentConstruction is TPhysicalComponentConstruction result)
             {
                 return result.Clone<TPhysicalComponentConstruction>();
             }

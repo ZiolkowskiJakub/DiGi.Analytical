@@ -6,6 +6,7 @@ namespace DiGi.Analytical.Classes
 {
     /// <summary>
     /// Provides the event data for shell splitting operations.
+    /// <para>A handler decides which <see cref="IUniqueReference"/> the shell created out of <see cref="Polyhedron"/> receives and sets <see cref="Handled"/> to true. When no handler sets it, the solver falls back to the reference of <see cref="Input"/>, so that every part of a split space points back at the space it came from.</para>
     /// </summary>
     public class ShellSplitEventArgs : EventArgs
     {

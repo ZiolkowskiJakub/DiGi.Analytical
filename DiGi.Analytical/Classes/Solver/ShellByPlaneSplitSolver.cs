@@ -1,4 +1,5 @@
 ﻿using DiGi.Analytical.Delegates;
+using DiGi.Core.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System;
@@ -8,7 +9,13 @@ namespace DiGi.Analytical.Classes
 {
     /// <summary>
     /// Provides functionality to split a shell using a specified plane as the cutting surface.
+    /// <para>The shell is cut into the parts above and below the plane; faces of the original shell are inherited by the part they belong to, faces created on the cutting plane and faces produced by cutting a face in two are matched to the closest original face, and the reference each of them receives can be overridden through the <see cref="FaceSplit"/> event. Every resulting shell inherits the reference of the split shell unless <see cref="ShellSplit"/> overrides it.</para>
+    /// <para>The resulting shells describe geometry only - use BuildingModelShellsUpdater in DiGi.Analytical.Building to turn them back into spaces and components of a building model.</para>
     /// </summary>
+    /// <remarks>
+    /// References are compared by value, not with the equality operators. Those operators are declared on <see cref="DiGi.Core.Classes.SerializableReference"/> and do not apply to <see cref="DiGi.Core.Interfaces.IUniqueReference"/> typed operands, while <see cref="Face.UniqueReference"/> returns a fresh clone on every call - comparing with == therefore never matches.
+    /// <para>Faces that survive the split intact are matched to the original faces by <see cref="Face.UniqueReference"/>, which identifies the component a face came from rather than the face itself. Where several faces of the split shell share one reference - the usual case for a component bounding the shell with more than one face - the match takes the first of them, so the closest face candidates the remaining fragments are attributed to are only as precise as that reference.</para>
+    /// </remarks>
     public class ShellByPlaneSplitSolver : ShellSplitSolver
     {
         private Plane? plane;
@@ -83,7 +90,10 @@ namespace DiGi.Analytical.Classes
                             continue;
                         }
 
-                        int index = faces.FindIndex(x => x.UniqueReference == face.UniqueReference);
+                        // References have to be compared by value, the equality operators are declared on SerializableReference and do not apply to IUniqueReference typed operands
+                        IUniqueReference? uniqueReference = face.UniqueReference;
+
+                        int index = faces.FindIndex(x => Core.Query.Equals(x?.UniqueReference, uniqueReference));
                         if (index == -1)
                         {
                             continue;

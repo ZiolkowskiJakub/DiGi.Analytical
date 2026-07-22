@@ -286,7 +286,7 @@ Implements [Geometry](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry
 Represents an abstract base class for air components within a building analytical model\.
 
 ```csharp
-public abstract class Air<T> : DiGi.Analytical.Building.Classes.AbstractComponent<T>, DiGi.Analytical.Building.Interfaces.IAir<T>, DiGi.Analytical.Building.Interfaces.IAbstractComponent<T>, DiGi.Analytical.Building.Interfaces.IAbstractComponent, DiGi.Analytical.Building.Interfaces.IComponent, DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IConstructable, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<T>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<T>
+public abstract class Air<T> : DiGi.Analytical.Building.Classes.AbstractComponent<T>, DiGi.Analytical.Building.Interfaces.IAir<T>, DiGi.Analytical.Building.Interfaces.IAir, DiGi.Analytical.Building.Interfaces.IAbstractComponent, DiGi.Analytical.Building.Interfaces.IComponent, DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IConstructable, DiGi.Analytical.Building.Interfaces.IAbstractComponent<T>, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<T>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<T>
     where T : DiGi.Geometry.Spatial.Interfaces.IGeometry3D
 ```
 #### Type parameters
@@ -302,7 +302,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 Derived  
 ↳ [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir')
 
-Implements [DiGi\.Analytical\.Building\.Interfaces\.IAir&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>'), [DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>'), [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent'), [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent'), [IBuildingBoundable3D](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingBoundable3D'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')
+Implements [DiGi\.Analytical\.Building\.Interfaces\.IAir&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>'), [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir'), [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent'), [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent'), [IBuildingBoundable3D](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingBoundable3D'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable'), [DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_.T 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.Air_T_.Air(DiGi.Analytical.Building.Classes.Air_T_)'></a>
@@ -1040,6 +1040,8 @@ public DiGi.Analytical.Building.Classes.BuildingInformation BuildingInformation 
 
 Assigns a component to one or two spaces and establishes the corresponding relationship within the building model\.
 
+The relation REPLACES any existing space assignment of the component, it is not added to it. Pass both spaces in one call to have a component bound by two spaces, and pass the component and its spaces through [Update\(IComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)') beforehand only if their other data changed - this method already stores all of them.
+
 ```csharp
 public bool Assign(DiGi.Analytical.Building.Interfaces.IComponent? component, DiGi.Analytical.Building.Interfaces.ISpace? space_1, DiGi.Analytical.Building.Interfaces.ISpace? space_2=null);
 ```
@@ -1066,6 +1068,9 @@ An optional secondary space associated with the component\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the component and spaces were successfully updated and the relationship was created; otherwise, false\.
+
+### See Also
+- [Unassign\(IComponent, ISpace\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Unassign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Unassign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.ISpace\)')
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IDoor,DiGi.Analytical.Building.Interfaces.IDoorConstruction)'></a>
 
@@ -1438,7 +1443,7 @@ The space for which to retrieve the associated components\. May be null\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_(DiGi.Analytical.Building.Interfaces.ISpace).TComponent 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetComponents\<TComponent\>\(DiGi\.Analytical\.Building\.Interfaces\.ISpace\)\.TComponent')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of components of type [TComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_(DiGi.Analytical.Building.Interfaces.ISpace).TComponent 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetComponents\<TComponent\>\(DiGi\.Analytical\.Building\.Interfaces\.ISpace\)\.TComponent') if successful; otherwise, null\.
+A list of CLONED components of type [TComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_(DiGi.Analytical.Building.Interfaces.ISpace).TComponent 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetComponents\<TComponent\>\(DiGi\.Analytical\.Building\.Interfaces\.ISpace\)\.TComponent') if successful; otherwise, null\. Modifying them does not affect the model, pass them through [Update\(IComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)') to store the changes\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_(DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
@@ -1502,6 +1507,8 @@ The [IDoorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.B
 
 Retrieves the floor construction associated with the specified floor\.
 
+The construction is the one established by [Assign\(IFloor, IFloorConstruction\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IFloor,DiGi.Analytical.Building.Interfaces.IFloorConstruction) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IFloor, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction\)') for the identifier of the given floor, which is why a component rebuilt under the same identifier keeps its construction.
+
 ```csharp
 public DiGi.Analytical.Building.Interfaces.IFloorConstruction? GetFloorConstruction(DiGi.Analytical.Building.Interfaces.IFloor? floor);
 ```
@@ -1515,7 +1522,7 @@ The floor for which to retrieve the construction\.
 
 #### Returns
 [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction')  
-The [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction') associated with the provided floor, or `null` if no such construction exists or the floor is null\.
+A CLONE of the [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction') associated with the provided floor, or `null` if no such construction exists or the floor is null\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetInternalConditions_TInternalCondition_(DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
@@ -1796,6 +1803,8 @@ A list of matching [TBuildingRelation](DiGi.Analytical.Building.Classes.md#DiGi.
 
 Gets the construction associated with the specified roof\.
 
+The construction is the one established by [Assign\(IRoof, IRoofConstruction\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IRoof,DiGi.Analytical.Building.Interfaces.IRoofConstruction) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IRoof, DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction\)') for the identifier of the given roof, which is why a component rebuilt under the same identifier keeps its construction.
+
 ```csharp
 public DiGi.Analytical.Building.Interfaces.IRoofConstruction? GetRoofConstruction(DiGi.Analytical.Building.Interfaces.IRoof? roof);
 ```
@@ -1809,13 +1818,15 @@ The roof for which to retrieve the construction\.
 
 #### Returns
 [IRoofConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoofConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction')  
-The [IRoofConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoofConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction') associated with the roof, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if no such construction exists or the [roof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetRoofConstruction(DiGi.Analytical.Building.Interfaces.IRoof).roof 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetRoofConstruction\(DiGi\.Analytical\.Building\.Interfaces\.IRoof\)\.roof') is null\.
+A CLONE of the [IRoofConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoofConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction') associated with the roof, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if no such construction exists or the [roof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetRoofConstruction(DiGi.Analytical.Building.Interfaces.IRoof).roof 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetRoofConstruction\(DiGi\.Analytical\.Building\.Interfaces\.IRoof\)\.roof') is null\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetShell(DiGi.Analytical.Building.Interfaces.ISpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double)'></a>
 
 ## BuildingModel\.GetShell\(ISpace, Nullable\<Side\>, Nullable\<Orientation\>, Nullable\<Orientation\>, double\) Method
 
 Retrieves a shell associated with the specified space based on the provided criteria\.
+
+The shell carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the space and every one of its faces carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the component it was built from, which is what lets the shell be written back into the model by [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater') after it was processed geometrically.
 
 ```csharp
 public DiGi.Analytical.Classes.Shell? GetShell(DiGi.Analytical.Building.Interfaces.ISpace? space, System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation=null, double tolerance=1E-06);
@@ -1861,6 +1872,8 @@ The [DiGi\.Analytical\.Classes\.Shell](https://learn.microsoft.com/en-us/dotnet/
 ## BuildingModel\.GetShells\<TSpace\>\(IEnumerable\<TSpace\>, Nullable\<Side\>, Nullable\<Orientation\>, Nullable\<Orientation\>, double\) Method
 
 Retrieves a list of shells associated with the specified spaces, applying optional filters for side orientation, edge orientations, and geometric tolerance\.
+
+Every shell carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of its space and every face a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the component it was built from; components whose geometry is not a polygonal face are skipped.
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Classes.Shell>? GetShells<TSpace>(System.Collections.Generic.IEnumerable<TSpace> spaces, System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation=null, double tolerance=1E-06)
@@ -1983,6 +1996,8 @@ A list of [SpaceInternalCondition](DiGi.Analytical.Building.Classes.md#DiGi.Anal
 
 Retrieves the list of spaces associated with the specified component\.
 
+A component bounds at most two spaces, an external one bounds a single space.
+
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.ISpace>? GetSpaces(DiGi.Analytical.Building.Interfaces.IComponent? component);
 ```
@@ -1996,7 +2011,7 @@ The component for which to retrieve the associated spaces\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace') objects if found; otherwise, null\.
+A list of CLONED [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace') objects if found; otherwise, null\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetSpaces(DiGi.Analytical.Building.Interfaces.IOpening)'></a>
 
@@ -2097,6 +2112,8 @@ A list of spaces of type [TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analy
 
 Gets the wall construction for the specified wall\.
 
+The construction is the one established by [Assign\(IWall, IWallConstruction\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IWall,DiGi.Analytical.Building.Interfaces.IWallConstruction) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IWall, DiGi\.Analytical\.Building\.Interfaces\.IWallConstruction\)') for the identifier of the given wall, which is why a component rebuilt under the same identifier keeps its construction.
+
 ```csharp
 public DiGi.Analytical.Building.Interfaces.IWallConstruction? GetWallConstruction(DiGi.Analytical.Building.Interfaces.IWall? wall);
 ```
@@ -2110,7 +2127,7 @@ The wall for which to retrieve the construction\.
 
 #### Returns
 [IWallConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWallConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWallConstruction')  
-The [IWallConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWallConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWallConstruction') associated with the wall, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if no construction is found or the wall is null\.
+A CLONE of the [IWallConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWallConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWallConstruction') associated with the wall, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if no construction is found or the wall is null\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetWindowConstruction(DiGi.Analytical.Building.Interfaces.IWindow)'></a>
 
@@ -2132,6 +2149,28 @@ The window for which to retrieve the construction\.
 #### Returns
 [IWindowConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindowConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction')  
 The [IWindowConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWindowConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IWindowConstruction') associated with the window, or `null` if no construction is found or the provided window is null\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetZones_TZone_()'></a>
+
+## BuildingModel\.GetZones\<TZone\>\(\) Method
+
+Retrieves all zones of the specified type from the building model\.
+
+```csharp
+public System.Collections.Generic.List<TZone>? GetZones<TZone>()
+    where TZone : DiGi.Analytical.Building.Interfaces.IZone;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetZones_TZone_().TZone'></a>
+
+`TZone`
+
+The type of zone to retrieve, which must implement [IZone](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IZone 'DiGi\.Analytical\.Building\.Interfaces\.IZone')\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TZone](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetZones_TZone_().TZone 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetZones\<TZone\>\(\)\.TZone')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list containing the retrieved zones of type [TZone](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetZones_TZone_().TZone 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetZones\<TZone\>\(\)\.TZone'), or null if no such zones are found\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Inside(DiGi.Geometry.Spatial.Classes.Sphere,double)'></a>
 
@@ -2396,6 +2435,8 @@ True if the unassignment was successful; otherwise, false\.
 
 Unassigns a component from a specific space by removing the association between them\.
 
+The component itself stays in the model; when the space was its last one the whole space relation is dropped, leaving the component unassigned.
+
 ```csharp
 public bool Unassign(DiGi.Analytical.Building.Interfaces.IComponent? component, DiGi.Analytical.Building.Interfaces.ISpace? space);
 ```
@@ -2416,6 +2457,9 @@ The space from which the component should be removed\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the component was successfully unassigned; otherwise, false\.
+
+### See Also
+- [Assign\(IComponent, ISpace, ISpace\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.ISpace, DiGi\.Analytical\.Building\.Interfaces\.ISpace\)')
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Unassign(DiGi.Analytical.Building.Interfaces.IZone,DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
@@ -2449,6 +2493,8 @@ True if the space was successfully unassigned from the zone; otherwise, false\.
 ## BuildingModel\.Update\(IComponent\) Method
 
 Updates the building model by adding a clone of the specified component to the relation cluster\.
+
+The component is stored under its own identifier, therefore a component carrying the identifier of one already held by the model REPLACES it, keeping the relations established for that identifier. That is how a component is rebuilt with a new geometry - see [BuildingModelFaceUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater').
 
 ```csharp
 public bool Update(DiGi.Analytical.Building.Interfaces.IComponent? component);
@@ -2555,6 +2601,8 @@ True if the update was successful; otherwise, false\.
 
 Updates the building model by adding a clone of the specified space to the relation cluster\.
 
+The space is stored under its own identifier, therefore a space carrying the identifier of one already held by the model replaces it and keeps the relations established for that identifier.
+
 ```csharp
 public bool Update(DiGi.Analytical.Building.Interfaces.ISpace? space);
 ```
@@ -2595,13 +2643,23 @@ The zone to update\. Can be [null](https://docs.microsoft.com/en-us/dotnet/cshar
 
 ## BuildingModelFaceUpdater Class
 
-Provides functionality to update a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') specifically associated with a [Face](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Face')\.
+Writes a single analytical [Face](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Face') back into a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') as a component\.
+
+The [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') of the face, when it is a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference'), identifies the component the face originates from. That component is rebuilt with the geometry of the face, keeping its type, its construction and the spaces it is assigned to. A face without a resolvable reference becomes a new [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir').
+
+The type of the rebuilt component follows the type of the source component: [IWall](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWall 'DiGi\.Analytical\.Building\.Interfaces\.IWall') becomes a [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall'), [IFloor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloor 'DiGi\.Analytical\.Building\.Interfaces\.IFloor') a [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor'), [IRoof](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoof 'DiGi\.Analytical\.Building\.Interfaces\.IRoof') a [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof') and [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir') a [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir').
 
 ```csharp
 public class BuildingModelFaceUpdater : DiGi.Analytical.Building.Classes.BuildingModelUpdater
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [BuildingModelUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater') → BuildingModelFaceUpdater
+
+### Remarks
+Openings \(windows and doors\) hosted by the source component are NOT re\-hosted by this updater\. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component\. Re\-hosting requires a public counterpart of the currently private BuildingModel\.Assign\(IComponent, IOpening\) method\.
+
+### See Also
+- [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.BuildingModelFaceUpdater(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
@@ -2636,20 +2694,22 @@ public BuildingModelFaceUpdater(DiGi.Analytical.Building.Classes.BuildingModel? 
 
 `value` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
 
-The building model to be updated\.
+The building model to be updated in place\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.BuildingModelFaceUpdater(DiGi.Analytical.Building.Classes.BuildingModel,DiGi.Analytical.Classes.Face).Face'></a>
 
 `Face` [DiGi\.Analytical\.Classes\.Face](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.face 'DiGi\.Analytical\.Classes\.Face')
 
-The face associated with the update operation\.
+The face the component is created from\.
 ### Properties
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face'></a>
 
 ## BuildingModelFaceUpdater\.Face Property
 
-Gets or sets the face used for updating the building model\.
+Gets or sets the face the component is created from\.
+
+Its [DiGi\.Analytical\.Classes\.Face\.UniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.face.uniquereference 'DiGi\.Analytical\.Classes\.Face\.UniqueReference') selects the source component, its geometry becomes the geometry of the created component.
 
 ```csharp
 public DiGi.Analytical.Classes.Face? Face { get; set; }
@@ -2657,13 +2717,30 @@ public DiGi.Analytical.Classes.Face? Face { get; set; }
 
 #### Property Value
 [DiGi\.Analytical\.Classes\.Face](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.face 'DiGi\.Analytical\.Classes\.Face')
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Guid'></a>
+
+## BuildingModelFaceUpdater\.Guid Property
+
+Gets or sets the unique identifier to be assigned to the updated component\.
+
+When null the created component keeps the identifier of the component referenced by [Face](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Face') and therefore REPLACES it in the model. When set the component is stored under the given identifier as an additional component, keeping the type and the construction of the source component.
+
+Use a fresh identifier for every face beyond the first one when a single source component was split into several faces, so that the fragments do not overwrite each other.
+
+```csharp
+public System.Nullable<System.Guid> Guid { get; set; }
+```
+
+#### Property Value
+[System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Update()'></a>
 
 ## BuildingModelFaceUpdater\.Update\(\) Method
 
-Performs the update operation for the building model face\.
+Creates or rebuilds the component represented by [Face](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Face') and stores it in the building model\.
 
 ```csharp
 public override bool Update();
@@ -2673,13 +2750,15 @@ Implements [Update\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.i
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if the update was successful; otherwise, false\.
+True if a component was created or rebuilt; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Update(DiGi.Analytical.Building.Interfaces.IComponent)'></a>
 
 ## BuildingModelFaceUpdater\.Update\(IComponent\) Method
 
-Performs an update operation on the building model face and retrieves the updated component\.
+Creates or rebuilds the component represented by [Face](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Face 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Face'), stores it in the building model and returns it\.
+
+The component is stored together with the construction and the space assignments of its source component. When [Guid](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater.Guid 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater\.Guid') is null the source component is replaced, otherwise an additional component is created.
 
 ```csharp
 public bool Update(out DiGi.Analytical.Building.Interfaces.IComponent? component);
@@ -2690,21 +2769,33 @@ public bool Update(out DiGi.Analytical.Building.Interfaces.IComponent? component
 
 `component` [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
 
-When this method returns, contains the [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent') that was updated; otherwise, null\.
+When this method returns, contains the created or rebuilt [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent'); otherwise, null\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if any changes were made or the update was successful; otherwise, false\.
+True if a component was created or rebuilt; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater'></a>
 
 ## BuildingModelFloorUpdater Class
 
+Slices all the spaces of a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') into [FloorCount](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.FloorCount 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater\.FloorCount') storeys of equal height\.
+
+The height of a storey is derived from the overall bounding box of the spaces of the model and rounded to one decimal place. The model is then cut by a horizontal plane on every resulting level: spaces crossed by a plane are replaced by the part below and the part above it, the components bounding them are rebuilt and a floor is created on the plane.
+
+Use BuildingModel.TrySplit directly when a single, explicitly placed division is needed - this updater is a convenience wrapper applying it on evenly distributed elevations.
+
 ```csharp
-internal class BuildingModelFloorUpdater : DiGi.Analytical.Building.Classes.BuildingModelUpdater
+public class BuildingModelFloorUpdater : DiGi.Analytical.Building.Classes.BuildingModelUpdater
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [BuildingModelUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater') → BuildingModelFloorUpdater
+
+### Remarks
+Openings hosted by a component that gets cut are not re\-hosted onto the resulting components, they stay assigned to the one keeping the identifier of the original component\.
+
+### See Also
+- [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.BuildingModelFloorUpdater(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
@@ -2722,14 +2813,31 @@ public BuildingModelFloorUpdater(DiGi.Analytical.Building.Classes.BuildingModel?
 
 `value` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
 
-The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') instance to update\.
+The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') instance to be updated in place\.
 ### Properties
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.FloorConstruction'></a>
+
+## BuildingModelFloorUpdater\.FloorConstruction Property
+
+Gets or sets the construction assigned to the floors created on the cutting planes\.
+
+When null an air component is created on every cutting plane instead of a floor.
+
+```csharp
+public DiGi.Analytical.Building.Interfaces.IFloorConstruction? FloorConstruction { get; set; }
+```
+
+#### Property Value
+[IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction')
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.FloorCount'></a>
 
 ## BuildingModelFloorUpdater\.FloorCount Property
 
-Gets or sets the number of floors to partition the building model into\.
+Gets or sets the number of storeys the building model is partitioned into\.
+
+Values lower than two leave the model untouched, a model of two storeys is cut by one plane placed in the middle of its height.
 
 ```csharp
 public int FloorCount { get; set; }
@@ -2738,11 +2846,28 @@ public int FloorCount { get; set; }
 #### Property Value
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.MinHeight'></a>
+
+## BuildingModelFloorUpdater\.MinHeight Property
+
+Gets or sets the minimal height of the part of a space above a cutting plane\.
+
+Spaces whose part above a plane is lower than this value are not cut by that plane and stay combined with the space below it. The default value places no practical limit, so that the storeys follow [FloorCount](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.FloorCount 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater\.FloorCount').
+
+```csharp
+public double MinHeight { get; set; }
+```
+
+#### Property Value
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.Tolerance'></a>
 
 ## BuildingModelFloorUpdater\.Tolerance Property
 
 Gets or sets the distance tolerance used for geometric operations during the update\.
+
+It is passed on to every split of the model and is the lower limit of the storey height below which the model is not cut at all.
 
 ```csharp
 public double Tolerance { get; set; }
@@ -2756,7 +2881,7 @@ public double Tolerance { get; set; }
 
 ## BuildingModelFloorUpdater\.Update\(\) Method
 
-Executes the floor\-based update operation on the building model\.
+Cuts the spaces of the building model into [FloorCount](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater.FloorCount 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater\.FloorCount') storeys and writes the result back into the model\.
 
 ```csharp
 public override bool Update();
@@ -2766,19 +2891,27 @@ Implements [Update\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.i
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') if the update was successful; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') if at least one space was cut; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater'></a>
 
 ## BuildingModelShellsUpdater Class
 
-Provides functionality to update shell components within a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')\.
+Writes a collection of analytical shells back into a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') as spaces bounded by components\.
+
+Every shell is processed by a [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater'), all of them sharing one set of caches. That is what makes a component bounding two of the updated spaces be created once and assigned to both, and what keeps the result independent of the order the shells are given in.
+
+This is the entry point to use whenever more than one shell is written into a model, for example after splitting the spaces of a model - see BuildingModel.TrySplit.
 
 ```csharp
 public class BuildingModelShellsUpdater : DiGi.Analytical.Building.Classes.BuildingModelUpdater
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [BuildingModelUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater') → BuildingModelShellsUpdater
+
+### See Also
+- [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater')
+- [BuildingModelFaceUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.BuildingModelShellsUpdater(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
@@ -2796,14 +2929,16 @@ public BuildingModelShellsUpdater(DiGi.Analytical.Building.Classes.BuildingModel
 
 `value` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
 
-The building model to be updated\.
+The building model to be updated in place\.
 ### Properties
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.Shells'></a>
 
 ## BuildingModelShellsUpdater\.Shells Property
 
-Gets or sets the collection of shell elements to be updated in the building model\.
+Gets or sets the shells to be written into the building model\.
+
+The reference of every shell selects the space it represents, therefore two shells describing two different spaces must not carry the same reference.
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Classes.Shell>? Shells { get; set; }
@@ -2818,6 +2953,8 @@ public System.Collections.Generic.List<DiGi.Analytical.Classes.Shell>? Shells { 
 
 Gets or sets the distance tolerance used for geometric comparisons and operations during the shell update process\. The default value is [DiGi\.Core\.Constants\.Tolerance\.Distance](https://learn.microsoft.com/en-us/dotnet/api/digi.core.constants.tolerance.distance 'DiGi\.Core\.Constants\.Tolerance\.Distance')\.
 
+It is passed on to every [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater') created by this updater.
+
 ```csharp
 public double Tolerance { get; set; }
 ```
@@ -2825,25 +2962,42 @@ public double Tolerance { get; set; }
 #### Property Value
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
-<a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.UpdatedComponentUniqueReferences'></a>
+<a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.UpdatedComponents'></a>
 
-## BuildingModelShellsUpdater\.UpdatedComponentUniqueReferences Property
+## BuildingModelShellsUpdater\.UpdatedComponents Property
 
-Gets or sets the set of unique references for the components that have been updated\.
+Gets or sets the components created during the update process, grouped by the [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') of the component they originate from and keyed by the internal point of the face they were created from\.
+
+Populated by the update and shared by all the shells; supply an existing cache to continue an update started by another instance of this updater.
 
 ```csharp
-public System.Collections.Generic.HashSet<DiGi.Core.Interfaces.IUniqueReference>? UpdatedComponentUniqueReferences { get; set; }
+public System.Collections.Generic.Dictionary<DiGi.Core.Interfaces.IUniqueReference,System.Collections.Generic.List<System.Tuple<DiGi.Geometry.Spatial.Classes.Point3D,DiGi.Analytical.Building.Interfaces.IComponent>>>? UpdatedComponents { get; set; }
 ```
 
 #### Property Value
-[System\.Collections\.Generic\.HashSet&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')[DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Tuple&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[DiGi\.Geometry\.Spatial\.Classes\.Point3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.point3d 'DiGi\.Geometry\.Spatial\.Classes\.Point3D')[,](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.UpdatedComponentSpaces'></a>
+
+## BuildingModelShellsUpdater\.UpdatedComponentSpaces Property
+
+Gets or sets the spaces assigned to the components during the update process, keyed by the unique identifier of the component\.
+
+Populated by the update and shared by all the shells, so that a component bounding two of the updated spaces keeps both assignments.
+
+```csharp
+public System.Collections.Generic.Dictionary<System.Guid,System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.ISpace>>? UpdatedComponentSpaces { get; set; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.Update()'></a>
 
 ## BuildingModelShellsUpdater\.Update\(\) Method
 
-Performs the update operation for the building model shells\.
+Writes [Shells](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.Shells 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater\.Shells') into the building model as spaces bounded by components\.
 
 ```csharp
 public override bool Update();
@@ -2853,13 +3007,15 @@ Implements [Update\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.i
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if any changes were made; otherwise, false\.
+True if at least one shell was written into the model; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.Update(System.Collections.Generic.List_DiGi.Analytical.Building.Interfaces.ISpace_)'></a>
 
 ## BuildingModelShellsUpdater\.Update\(List\<ISpace\>\) Method
 
-Updates the building model shells and retrieves the associated spaces\.
+Writes [Shells](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater.Shells 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater\.Shells') into the building model as spaces bounded by components and returns those spaces\.
+
+The identifiers of the spaces of all the shells are collected before the first shell is processed, so that assignments of a component to any of them can be recognized as outdated and rebuilt from the shells regardless of the order the shells are processed in. Assignments to spaces outside this update are preserved.
 
 ```csharp
 public bool Update(out System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.ISpace>? spaces);
@@ -2874,19 +3030,30 @@ When this method returns, contains a list of [ISpace](DiGi.Analytical.Building.I
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if the update operation was successful; otherwise, false\.
+True if at least one shell was written into the model; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater'></a>
 
 ## BuildingModelShellUpdater Class
 
-Provides functionality to update the shell components of a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')\.
+Writes a single analytical [Shell](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Shell 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater\.Shell') back into a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') as a space bounded by components\.
+
+The [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') of the shell identifies the space it represents; when it cannot be resolved a new [Space](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Space 'DiGi\.Analytical\.Building\.Classes\.Space') is created at the internal point of the shell. Every face of the shell is then turned into a component by [BuildingModelFaceUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater') and assigned to that space.
+
+Faces sharing the same [DiGi\.Analytical\.Classes\.Face\.UniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.face.uniquereference 'DiGi\.Analytical\.Classes\.Face\.UniqueReference') originate from one component: the first of them keeps the identifier of that component, the remaining ones become additional components of the same type and construction.
 
 ```csharp
 public class BuildingModelShellUpdater : DiGi.Analytical.Building.Classes.BuildingModelUpdater
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [BuildingModelUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater') → BuildingModelShellUpdater
+
+### Remarks
+References are compared by value, not with the equality operators\. Those operators are declared on [DiGi\.Core\.Classes\.SerializableReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializablereference 'DiGi\.Core\.Classes\.SerializableReference') and do not apply to [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') typed operands, while [DiGi\.Analytical\.Classes\.Face\.UniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.face.uniquereference 'DiGi\.Analytical\.Classes\.Face\.UniqueReference') returns a fresh clone on every call \- comparing with == therefore never matches\.
+
+### See Also
+- [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater')
+- [BuildingModelFaceUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.BuildingModelShellUpdater(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
@@ -2904,14 +3071,33 @@ public BuildingModelShellUpdater(DiGi.Analytical.Building.Classes.BuildingModel 
 
 `value` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
 
-The building model to be used for the update process\.
+The building model to be updated in place\.
 ### Properties
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.ProcessedSpaceGuids'></a>
+
+## BuildingModelShellUpdater\.ProcessedSpaceGuids Property
+
+Gets or sets the unique identifiers of the spaces that are rebuilt during the current update process\.
+
+Assignments of a component to any of those spaces are treated as outdated and are replaced by the assignments derived from the updated shells; assignments to spaces outside this set are preserved, which keeps neighbouring spaces that are not part of the update untouched.
+
+The set has to be complete BEFORE the first shell is processed, otherwise the outcome depends on the order the shells are updated in. [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater') seeds it from all its shells upfront.
+
+```csharp
+public System.Collections.Generic.HashSet<System.Guid>? ProcessedSpaceGuids { get; set; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.HashSet&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Shell'></a>
 
 ## BuildingModelShellUpdater\.Shell Property
 
-Gets or sets the shell associated with the building model update process\.
+Gets or sets the shell to be written into the building model\.
+
+Its reference selects the space, its faces become the components bounding that space.
 
 ```csharp
 public DiGi.Analytical.Classes.Shell? Shell { get; set; }
@@ -2926,6 +3112,8 @@ public DiGi.Analytical.Classes.Shell? Shell { get; set; }
 
 Gets or sets the distance tolerance used during the building model shell update process\.
 
+It is used to obtain the internal points of the shell and of its faces, and to decide whether a face matches a component already created for the same source component.
+
 ```csharp
 public double Tolerance { get; set; }
 ```
@@ -2933,25 +3121,44 @@ public double Tolerance { get; set; }
 #### Property Value
 [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
-<a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.UpdatedComponentUniqueReferences'></a>
+<a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.UpdatedComponents'></a>
 
-## BuildingModelShellUpdater\.UpdatedComponentUniqueReferences Property
+## BuildingModelShellUpdater\.UpdatedComponents Property
 
-Gets or sets the set of unique references for the components that have been updated during the shell update process\.
+Gets or sets the components created during the shell update process, grouped by the [DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference') of the component they originate from and keyed by the internal point of the face they were created from\.
+
+Sharing the same instance across several shells makes a component that bounds more than one space be created once and reused, instead of being duplicated for every shell. It also decides which fragment of a split component keeps the identifier of that component: the first one added for a given reference.
+
+Left null a private cache is created for the single shell, which is enough when the shells are updated one by one and none of their components is shared.
 
 ```csharp
-public System.Collections.Generic.HashSet<DiGi.Core.Interfaces.IUniqueReference>? UpdatedComponentUniqueReferences { get; set; }
+public System.Collections.Generic.Dictionary<DiGi.Core.Interfaces.IUniqueReference,System.Collections.Generic.List<System.Tuple<DiGi.Geometry.Spatial.Classes.Point3D,DiGi.Analytical.Building.Interfaces.IComponent>>>? UpdatedComponents { get; set; }
 ```
 
 #### Property Value
-[System\.Collections\.Generic\.HashSet&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')[DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.hashset-1 'System\.Collections\.Generic\.HashSet\`1')
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[DiGi\.Core\.Interfaces\.IUniqueReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniquereference 'DiGi\.Core\.Interfaces\.IUniqueReference')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Tuple&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[DiGi\.Geometry\.Spatial\.Classes\.Point3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.point3d 'DiGi\.Geometry\.Spatial\.Classes\.Point3D')[,](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.tuple-2 'System\.Tuple\`2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.UpdatedComponentSpaces'></a>
+
+## BuildingModelShellUpdater\.UpdatedComponentSpaces Property
+
+Gets or sets the spaces assigned to the components during the shell update process, keyed by the unique identifier of the component\.
+
+Sharing the same instance across several shells lets a component bounding two spaces keep both assignments, instead of the second shell overwriting the assignment made by the first one.
+
+```csharp
+public System.Collections.Generic.Dictionary<System.Guid,System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.ISpace>>? UpdatedComponentSpaces { get; set; }
+```
+
+#### Property Value
+[System\.Collections\.Generic\.Dictionary&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')[,](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2 'System\.Collections\.Generic\.Dictionary\`2')
 ### Methods
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Update()'></a>
 
 ## BuildingModelShellUpdater\.Update\(\) Method
 
-Performs the update operation\.
+Writes [Shell](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Shell 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater\.Shell') into the building model as a space bounded by components\.
 
 ```csharp
 public override bool Update();
@@ -2961,13 +3168,15 @@ Implements [Update\(\)](https://learn.microsoft.com/en-us/dotnet/api/digi.core.i
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if the update was successful; otherwise, false\.
+True if the shell was written into the model; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Update(DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
 ## BuildingModelShellUpdater\.Update\(ISpace\) Method
 
-Updates the building model shell and retrieves or creates the associated space\.
+Writes [Shell](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater.Shell 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater\.Shell') into the building model as a space bounded by components and returns that space\.
+
+The space is taken from the model when the reference of the shell resolves to one, otherwise a new [Space](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Space 'DiGi\.Analytical\.Building\.Classes\.Space') is created at the internal point of the shell. Components are created face by face, reusing the ones already created for the same source component, and are assigned to the space afterwards.
 
 ```csharp
 public bool Update(out DiGi.Analytical.Building.Interfaces.ISpace? space);
@@ -2978,17 +3187,19 @@ public bool Update(out DiGi.Analytical.Building.Interfaces.ISpace? space);
 
 `space` [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')
 
-When this method returns, contains the [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace') associated with the shell; otherwise, null\.
+When this method returns, contains the [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace') the components were assigned to; otherwise, null\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if the update operation was successful; otherwise, false\.
+True if the shell was written into the model; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelUpdater'></a>
 
 ## BuildingModelUpdater Class
 
 Provides an abstract base class for implementing logic to update a [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')\.
+
+An updater is a mutable command object: assign [Value](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater.Value 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater\.Value') together with the inputs declared by the derived class and call [Update\(\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater.Update() 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater\.Update\(\)'). The same instance can be reused for several updates by reassigning its inputs.
 
 ```csharp
 public abstract class BuildingModelUpdater : DiGi.Core.Interfaces.IUpdater<DiGi.Analytical.Building.Classes.BuildingModel>, DiGi.Core.Interfaces.IUpdater, DiGi.Core.Interfaces.IEvaluator
@@ -3003,6 +3214,9 @@ Derived
 ↳ [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater')
 
 Implements [DiGi\.Core\.Interfaces\.IUpdater&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iupdater-1 'DiGi\.Core\.Interfaces\.IUpdater\`1')[BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iupdater-1 'DiGi\.Core\.Interfaces\.IUpdater\`1'), [DiGi\.Core\.Interfaces\.IUpdater](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iupdater 'DiGi\.Core\.Interfaces\.IUpdater'), [DiGi\.Core\.Interfaces\.IEvaluator](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.ievaluator 'DiGi\.Core\.Interfaces\.IEvaluator')
+
+### Remarks
+The building model is held by reference and is NOT cloned, therefore every update modifies the model given on the input in place\. Invalid or incomplete input never throws, the update returns false instead\. The updaters of the family are layered: [BuildingModelFloorUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater') works on a whole model, [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater') on a collection of shells, [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater') on a single shell and [BuildingModelFaceUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFaceUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFaceUpdater') on a single face, each one driving the layer below it\.
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModelUpdater.BuildingModelUpdater(DiGi.Analytical.Building.Classes.BuildingModel)'></a>
@@ -3029,6 +3243,8 @@ The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building
 
 Gets or sets the building model associated with the updater\.
 
+The model is referenced, not cloned, so [Update\(\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater.Update() 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater\.Update\(\)') writes its results directly into this instance.
+
 ```csharp
 public DiGi.Analytical.Building.Classes.BuildingModel? Value { get; set; }
 ```
@@ -3044,6 +3260,8 @@ Implements [Value](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interf
 ## BuildingModelUpdater\.Update\(\) Method
 
 Performs the update operation on the building model\.
+
+Implementations modify [Value](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater.Value 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater\.Value') in place and return false, without throwing, when the model or the inputs of the updater are missing or cannot be processed.
 
 ```csharp
 public abstract bool Update();
@@ -7661,12 +7879,12 @@ The JSON object used to initialize the relation; may be [null](https://docs.micr
 Represents an analytical building air element associated with a 3D surface\.
 
 ```csharp
-public class SurfaceAir : DiGi.Analytical.Building.Classes.Air<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.ISurfaceAir, DiGi.Analytical.Building.Interfaces.IAir<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IAbstractComponent<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IAbstractComponent, DiGi.Analytical.Building.Interfaces.IComponent, DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IConstructable, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IBuildingSurfaceObject
+public class SurfaceAir : DiGi.Analytical.Building.Classes.Air<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.ISurfaceAir, DiGi.Analytical.Building.Interfaces.IAir<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IAir, DiGi.Analytical.Building.Interfaces.IAbstractComponent, DiGi.Analytical.Building.Interfaces.IComponent, DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IConstructable, DiGi.Analytical.Building.Interfaces.IAbstractComponent<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Interfaces.ISurface3D>, DiGi.Analytical.Building.Interfaces.IBuildingSurfaceObject
 ```
 
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [Component](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Component 'DiGi\.Analytical\.Building\.Classes\.Component') → [AbstractComponent](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.AbstractComponent 'DiGi\.Analytical\.Building\.Classes\.AbstractComponent') → [DiGi\.Analytical\.Building\.Classes\.AbstractComponent&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.AbstractComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.AbstractComponent\<T\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.AbstractComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.AbstractComponent\<T\>') → [DiGi\.Analytical\.Building\.Classes\.Air&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_ 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Air_T_ 'DiGi\.Analytical\.Building\.Classes\.Air\<T\>') → SurfaceAir
 
-Implements [ISurfaceAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISurfaceAir 'DiGi\.Analytical\.Building\.Interfaces\.ISurfaceAir'), [DiGi\.Analytical\.Building\.Interfaces\.IAir&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>'), [DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>'), [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent'), [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent'), [IBuildingBoundable3D](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingBoundable3D'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IBuildingSurfaceObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSurfaceObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSurfaceObject')
+Implements [ISurfaceAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISurfaceAir 'DiGi\.Analytical\.Building\.Interfaces\.ISurfaceAir'), [DiGi\.Analytical\.Building\.Interfaces\.IAir&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAir\<TGeometry3D\>'), [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir'), [IAbstractComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent'), [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent'), [IBuildingBoundable3D](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingBoundable3D 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingBoundable3D'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [IConstructable](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IConstructable 'DiGi\.Analytical\.Building\.Interfaces\.IConstructable'), [DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAbstractComponent_TGeometry3D_ 'DiGi\.Analytical\.Building\.Interfaces\.IAbstractComponent\<TGeometry3D\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [IBuildingSurfaceObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSurfaceObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSurfaceObject')
 ### Constructors
 
 <a name='DiGi.Analytical.Building.Classes.SurfaceAir.SurfaceAir(DiGi.Analytical.Building.Classes.SurfaceAir)'></a>

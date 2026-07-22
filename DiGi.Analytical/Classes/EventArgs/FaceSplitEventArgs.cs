@@ -6,7 +6,11 @@ namespace DiGi.Analytical.Classes
 {
     /// <summary>
     /// Provides data for events that occur when a face is split.
+    /// <para>A handler decides which <see cref="IUniqueReference"/> the face created out of <see cref="PolygonalFace3D"/> receives and sets <see cref="Handled"/> to true. When no handler sets it, the solver falls back to the reference of <see cref="Input"/>.</para>
     /// </summary>
+    /// <remarks>
+    /// This is the reference-assignment hook of the solver based split. The updater based path assigns references differently: it groups the faces by the reference they already carry, see BuildingModelShellUpdater in DiGi.Analytical.Building.
+    /// </remarks>
     public class FaceSplitEventArgs : EventArgs
     {
         /// <summary>

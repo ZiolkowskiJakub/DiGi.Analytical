@@ -218,6 +218,33 @@ The thickness of the structure layer\.
 [StructureLayer](DiGi.Analytical.Classes.md#DiGi.Analytical.Classes.StructureLayer 'DiGi\.Analytical\.Classes\.StructureLayer')  
 A new [DiGi\.Analytical\.Building\.Classes\.StructureLayer](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.structurelayer 'DiGi\.Analytical\.Building\.Classes\.StructureLayer') instance if successfully created and added; otherwise, `null`\.
 
+<a name='DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
+
+## Create\.SurfaceAir\(this IPolygonalFace3D, double\) Method
+
+Creates a [SurfaceAir\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceAir\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') from the specified polygonal face, provided its area is valid and exceeds the given tolerance\.
+
+```csharp
+public static DiGi.Analytical.Building.Classes.SurfaceAir? SurfaceAir(this DiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D? polygonalFace3D, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).polygonalFace3D'></a>
+
+`polygonalFace3D` [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D')
+
+The polygonal face to be converted into a surface air\.
+
+<a name='DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimum area threshold required to create the surface air\. Defaults to [DiGi\.Core\.Constants\.Tolerance\.Distance](https://learn.microsoft.com/en-us/dotnet/api/digi.core.constants.tolerance.distance 'DiGi\.Core\.Constants\.Tolerance\.Distance')\.
+
+#### Returns
+[SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir')  
+A new [SurfaceAir\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceAir(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceAir\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
+
 <a name='DiGi.Analytical.Building.Create.SurfaceRoof(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double)'></a>
 
 ## Create\.SurfaceRoof\(this IPolygonalFace3D, double\) Method
@@ -271,6 +298,79 @@ The minimum area threshold required to create the surface wall\. Defaults to [Di
 #### Returns
 [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')  
 A new [SurfaceWall\(this IPolygonalFace3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Create.SurfaceWall(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D,double) 'DiGi\.Analytical\.Building\.Create\.SurfaceWall\(this DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D, double\)') instance if the face is not null and its area is greater than or equal to the tolerance; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Modify'></a>
+
+## Modify Class
+
+```csharp
+public static class Modify
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Modify
+### Methods
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double)'></a>
+
+## Modify\.TrySplit\(this BuildingModel, double, double, IFloorConstruction, IEnumerable\<ISpace\>, double\) Method
+
+Attempts to split the spaces of the given [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') by a horizontal plane placed on the given elevation\.
+
+Each space crossed by the plane is replaced by a lower and an upper space. The part containing the internal point of the original space keeps the original [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace'), the remaining parts become new spaces carrying the name, description, internal conditions and zone assignments of the original space.
+
+Components bounding those spaces are rebuilt out of the split faces: the first part of a component keeps the identifier of the original component, the remaining parts are created as new components of the same type, all of them keeping the construction of the original component. Faces created on the cutting plane become a single [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor') assigned to [floorConstruction](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).floorConstruction 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.floorConstruction') (or a single [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir') when [floorConstruction](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).floorConstruction 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.floorConstruction') is null) shared by both spaces; any other face without a source component becomes a [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir').
+
+```csharp
+public static bool TrySplit(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, double elevation, double minHeight=1.0, DiGi.Analytical.Building.Interfaces.IFloorConstruction? floorConstruction=null, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Interfaces.ISpace>? spaces=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') to be split\. The model is modified in place\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).elevation'></a>
+
+`elevation` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The elevation the horizontal cutting plane is placed on\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).minHeight'></a>
+
+`minHeight` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimal height of the part of a space above the cutting plane\. Spaces with a smaller part above the plane are not split and stay combined\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).floorConstruction'></a>
+
+`floorConstruction` [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction')
+
+The [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction') assigned to the floors created on the cutting plane\. When null a [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir') is created instead of a [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).spaces'></a>
+
+`spaces` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The spaces to be split\. When null all spaces of the [buildingModel](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).buildingModel 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.buildingModel') are taken\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double') value representing the distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+A [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean') value indicating whether at least one space was split\.
+
+### Remarks
+Openings \(windows and doors\) hosted by a split component are NOT re\-hosted onto the component fragment that geometrically contains them \- they stay assigned to the fragment that inherits the identifier of the original component\. Re\-hosting requires a public counterpart of the currently private BuildingModel\.Assign\(IComponent, IOpening\) method\.
+
+### See Also
+- [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater')
+- [BuildingModelFloorUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater')
 
 <a name='DiGi.Analytical.Building.Query'></a>
 

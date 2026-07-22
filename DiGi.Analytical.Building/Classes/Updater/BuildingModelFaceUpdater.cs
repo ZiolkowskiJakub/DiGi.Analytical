@@ -6,14 +6,28 @@ using System.Collections.Generic;
 namespace DiGi.Analytical.Building.Classes
 {
     /// <summary>
-    /// Provides functionality to update a <see cref="BuildingModel"/> specifically associated with a <see cref="Face"/>.
+    /// Writes a single analytical <see cref="Face"/> back into a <see cref="BuildingModel"/> as a component.
+    /// <para>The <see cref="DiGi.Core.Interfaces.IUniqueReference"/> of the face, when it is a <see cref="GuidReference"/>, identifies the component the face originates from. That component is rebuilt with the geometry of the face, keeping its type, its construction and the spaces it is assigned to. A face without a resolvable reference becomes a new <see cref="SurfaceAir"/>.</para>
+    /// <para>The type of the rebuilt component follows the type of the source component: <see cref="IWall"/> becomes a <see cref="SurfaceWall"/>, <see cref="IFloor"/> a <see cref="FaceFloor"/>, <see cref="IRoof"/> a <see cref="SurfaceRoof"/> and <see cref="IAir"/> a <see cref="SurfaceAir"/>.</para>
     /// </summary>
+    /// <remarks>
+    /// Openings (windows and doors) hosted by the source component are NOT re-hosted by this updater. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component. Re-hosting requires a public counterpart of the currently private BuildingModel.Assign(IComponent, IOpening) method.
+    /// </remarks>
+    /// <seealso cref="BuildingModelShellUpdater"/>
     public class BuildingModelFaceUpdater : BuildingModelUpdater
     {
         /// <summary>
-        /// Gets or sets the face used for updating the building model.
+        /// Gets or sets the face the component is created from.
+        /// <para>Its <see cref="Face.UniqueReference"/> selects the source component, its geometry becomes the geometry of the created component.</para>
         /// </summary>
         public Face? Face { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique identifier to be assigned to the updated component.
+        /// <para>When null the created component keeps the identifier of the component referenced by <see cref="Face"/> and therefore REPLACES it in the model. When set the component is stored under the given identifier as an additional component, keeping the type and the construction of the source component.</para>
+        /// <para>Use a fresh identifier for every face beyond the first one when a single source component was split into several faces, so that the fragments do not overwrite each other.</para>
+        /// </summary>
+        public System.Guid? Guid { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BuildingModelFaceUpdater"/> class.
@@ -27,8 +41,8 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Initializes a new instance of the <see cref="BuildingModelFaceUpdater"/> class with the specified building model and face.
         /// </summary>
-        /// <param name="value">The building model to be updated.</param>
-        /// <param name="Face">The face associated with the update operation.</param>
+        /// <param name="value">The building model to be updated in place.</param>
+        /// <param name="Face">The face the component is created from.</param>
         public BuildingModelFaceUpdater(BuildingModel? value, Face? Face)
             : base(value)
         {
@@ -36,19 +50,20 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
-        /// Performs the update operation for the building model face.
+        /// Creates or rebuilds the component represented by <see cref="Face"/> and stores it in the building model.
         /// </summary>
-        /// <returns>True if the update was successful; otherwise, false.</returns>
+        /// <returns>True if a component was created or rebuilt; otherwise, false.</returns>
         public override bool Update()
         {
             return Update(out _);
         }
 
         /// <summary>
-        /// Performs an update operation on the building model face and retrieves the updated component.
+        /// Creates or rebuilds the component represented by <see cref="Face"/>, stores it in the building model and returns it.
+        /// <para>The component is stored together with the construction and the space assignments of its source component. When <see cref="Guid"/> is null the source component is replaced, otherwise an additional component is created.</para>
         /// </summary>
-        /// <param name="component">When this method returns, contains the <see cref="IComponent"/> that was updated; otherwise, null.</param>
-        /// <returns>True if any changes were made or the update was successful; otherwise, false.</returns>
+        /// <param name="component">When this method returns, contains the created or rebuilt <see cref="IComponent"/>; otherwise, null.</param>
+        /// <returns>True if a component was created or rebuilt; otherwise, false.</returns>
         public bool Update(out IComponent? component)
         {
             component = null;
@@ -114,6 +129,11 @@ namespace DiGi.Analytical.Building.Classes
                 surfaceAir = new(polygonalFace3D);
             }
 
+            if (Guid is System.Guid guid)
+            {
+                surfaceAir = new(guid, surfaceAir);
+            }
+
             if (!Value.Update(surfaceAir))
             {
                 return null;
@@ -165,6 +185,11 @@ namespace DiGi.Analytical.Building.Classes
             else
             {
                 faceFloor = new(polygonalFace3D);
+            }
+
+            if (Guid is System.Guid guid)
+            {
+                faceFloor = new(guid, faceFloor);
             }
 
             if (!Value.Update(faceFloor))
@@ -225,6 +250,11 @@ namespace DiGi.Analytical.Building.Classes
                 surfaceRoof = new(polygonalFace3D);
             }
 
+            if (Guid is System.Guid guid)
+            {
+                surfaceRoof = new(guid, surfaceRoof);
+            }
+
             if (!Value.Update(surfaceRoof))
             {
                 return null;
@@ -281,6 +311,11 @@ namespace DiGi.Analytical.Building.Classes
             else
             {
                 surfaceWall = new(polygonalFace3D);
+            }
+
+            if (Guid is System.Guid guid)
+            {
+                surfaceWall = new(guid, surfaceWall);
             }
 
             if (!Value.Update(surfaceWall))

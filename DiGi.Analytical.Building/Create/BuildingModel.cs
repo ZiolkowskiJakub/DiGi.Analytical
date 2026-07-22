@@ -1,4 +1,4 @@
-﻿using DiGi.Analytical.Building.Classes;
+using DiGi.Analytical.Building.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
 using System.Collections.Generic;
 
@@ -18,7 +18,9 @@ namespace DiGi.Analytical.Building
                 return null;
             }
 
-            return new BuildingModel();
+            throw new System.NotImplementedException();
+
+            //return new BuildingModel();
         }
     }
 }

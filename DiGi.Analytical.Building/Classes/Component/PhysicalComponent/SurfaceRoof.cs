@@ -39,6 +39,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="SurfaceRoof"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the surface roof.</param>
+        /// <param name="geometry">The <see cref="ISurface3D"/> geometry to associate with the roof. This value can be null.</param>
+        public SurfaceRoof(System.Guid guid, ISurface3D? geometry)
+            : base(guid, geometry)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SurfaceRoof"/> class using an existing roof and surface geometry.
         /// </summary>
         /// <param name="roof">The roof object to initialize from.</param>

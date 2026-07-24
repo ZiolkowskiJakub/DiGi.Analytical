@@ -39,6 +39,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FaceFloor"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the floor face.</param>
+        /// <param name="geometry">The 3D face geometry to associate with this floor instance.</param>
+        public FaceFloor(System.Guid guid, IFace3D? geometry)
+            : base(guid, geometry)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="FaceFloor"/> class using the specified floor and geometry.
         /// </summary>
         /// <param name="floor">The source floor object to initialize from.</param>

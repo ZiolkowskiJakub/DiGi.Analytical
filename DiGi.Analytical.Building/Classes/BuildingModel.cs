@@ -1,4 +1,5 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Building.Enums;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core;
 using DiGi.Core.Classes;
@@ -378,7 +379,7 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             OpeningRelation? openingRelation = GetRelation<OpeningRelation>(opening);
-            if (opening == null)
+            if (openingRelation == null)
             {
                 return default;
             }
@@ -1409,6 +1410,85 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return buildingRelationCluster.Add(shade.Clone<IShade>());
+        }
+
+        /// <summary>
+        /// Replaces the specified air component with a physical component of the given type, built from the geometry of the air.
+        /// <para>The air is REMOVED from the model together with all its relations and the physical component is stored under the SAME identifier, therefore every <see cref="GuidReference"/> held for the air becomes stale - a reference carries the type of the object it points to, so it no longer resolves once the type changes.</para>
+        /// <para>The space binding of the air is preserved: the one or two spaces it was bound to are re-assigned to the physical component. Openings hosted by the air are NOT re-hosted and the parameters of the air are NOT carried over.</para>
+        /// <para>The geometry decides the resulting class: <see cref="PhysicalComponentType.Wall"/> and <see cref="PhysicalComponentType.Roof"/> need an <see cref="ISurface3D"/> and produce a <see cref="SurfaceWall"/> or a <see cref="SurfaceRoof"/>, <see cref="PhysicalComponentType.Floor"/> needs an <see cref="IFace3D"/> and produces a <see cref="FaceFloor"/>. Any other combination leaves the model untouched.</para>
+        /// </summary>
+        /// <param name="air">The air component to be replaced.</param>
+        /// <param name="physicalComponentType">The type of the physical component the air is to be replaced with.</param>
+        /// <param name="physicalComponent">When this method returns <see langword="true"/>, contains the physical component the air was replaced with; otherwise, <see langword="null"/>. The model holds a CLONE of it, therefore modifying it does not affect the model - pass it through <see cref="Update(IComponent)"/> to store the changes.</param>
+        /// <returns>True if the air was replaced by the physical component; otherwise, false.</returns>
+        /// <seealso cref="Assign(IComponent, ISpace, ISpace)"/>
+        public bool ConvertAir(IAir? air, PhysicalComponentType physicalComponentType, out IPhysicalComponent? physicalComponent)
+        {
+            physicalComponent = null;
+
+            if (air == null || physicalComponentType == PhysicalComponentType.Undefined)
+            {
+                return false;
+            }
+
+            IGeometry3D? geometry3D = air.Geometry3D<IGeometry3D>();
+            if (geometry3D == null)
+            {
+                return false;
+            }
+
+            IPhysicalComponent? physicalComponent_Temp = null;
+
+            switch (physicalComponentType)
+            {
+                case PhysicalComponentType.Wall:
+                    if (geometry3D is ISurface3D surface3D_Wall)
+                    {
+                        physicalComponent_Temp = new SurfaceWall(air.Guid, surface3D_Wall);
+                    }
+                    break;
+
+                case PhysicalComponentType.Roof:
+                    if (geometry3D is ISurface3D surface3D_Roof)
+                    {
+                        physicalComponent_Temp = new SurfaceRoof(air.Guid, surface3D_Roof);
+                    }
+                    break;
+
+                case PhysicalComponentType.Floor:
+                    if (geometry3D is IFace3D face3D)
+                    {
+                        physicalComponent_Temp = new FaceFloor(air.Guid, face3D);
+                    }
+                    break;
+            }
+
+            if (physicalComponent_Temp is null)
+            {
+                return false;
+            }
+
+            List<ISpace>? spaces = GetSpaces(air);
+
+            if (!Remove(air))
+            {
+                return false;
+            }
+
+            if (!Update(physicalComponent_Temp))
+            {
+                return false;
+            }
+
+            if (spaces != null && spaces.Count != 0)
+            {
+                Assign(physicalComponent_Temp, spaces[0], spaces.Count > 1 ? spaces[1] : null);
+            }
+
+            physicalComponent = physicalComponent_Temp;
+
+            return true;
         }
 
         private bool Assign(IComponent? component, IOpening? opening)

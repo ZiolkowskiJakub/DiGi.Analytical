@@ -11,6 +11,136 @@ namespace DiGi.Analytical.Building
     public static partial class Modify
     {
         /// <summary>
+        /// Attempts to split the spaces of the given <see cref="BuildingModel"/> by horizontal planes placed on the given elevations.
+        /// <para>The elevations are sorted ascending and the cuts are applied one by one, each of them behaving exactly like the single elevation overload. Spaces created by an earlier cut are candidates for the following cuts, so a space crossed by all the given elevations is split into as many parts as there are cuts increased by one.</para>
+        /// </summary>
+        /// <remarks>
+        /// Openings (windows and doors) hosted by a split component are NOT re-hosted onto the component fragment that geometrically contains them - they stay assigned to the fragment that inherits the identifier of the original component.
+        /// <para>The elevations are deduplicated and filtered before the cuts are applied: an elevation closer than <paramref name="minHeight"/> to the previously accepted elevation is dropped, so that no space smaller than <paramref name="minHeight"/> is created between two consecutive cuts. The filter works on the given elevations only, the distance from the bottom of a particular space to the first cut crossing it is guarded by <paramref name="tolerance"/> alone.</para>
+        /// </remarks>
+        /// <param name="buildingModel">The <see cref="BuildingModel"/> to be split. The model is modified in place.</param>
+        /// <param name="elevations">The elevations the horizontal cutting planes are placed on.</param>
+        /// <param name="minHeight">The minimal height of the part of a space above a cutting plane and the minimal distance between two consecutive cutting planes.</param>
+        /// <param name="floorConstruction">The <see cref="IFloorConstruction"/> assigned to the floors created on the cutting planes. When null a <see cref="SurfaceAir"/> is created instead of a <see cref="FaceFloor"/>.</param>
+        /// <param name="spaces">The spaces to be split. When null all spaces of the <paramref name="buildingModel"/> are taken.</param>
+        /// <param name="tolerance">The <see cref="double"/> value representing the distance tolerance.</param>
+        /// <returns>A <see cref="bool"/> value indicating whether at least one space was split by at least one of the cutting planes.</returns>
+        /// <seealso cref="TrySplit(BuildingModel, double, double, IFloorConstruction, IEnumerable{ISpace}, double)"/>
+        public static bool TrySplit(this BuildingModel? buildingModel, IEnumerable<double> elevations, double minHeight = 1, IFloorConstruction? floorConstruction = null, IEnumerable<ISpace>? spaces = null, double tolerance = Core.Constants.Tolerance.Distance)
+        {
+            if (buildingModel == null || elevations == null)
+            {
+                return false;
+            }
+
+            List<double> elevations_Sorted = [.. elevations];
+            elevations_Sorted.Sort();
+
+            List<double> elevations_Split = [];
+            for (int i = 0; i < elevations_Sorted.Count; i++)
+            {
+                double elevation = elevations_Sorted[i];
+
+                if (double.IsNaN(elevation))
+                {
+                    continue;
+                }
+
+                // Cut too close to the previous one, a space smaller than the minimal height would be created between them
+                if (elevations_Split.Count != 0 && elevation - elevations_Split[elevations_Split.Count - 1] < Math.Max(minHeight, tolerance))
+                {
+                    continue;
+                }
+
+                elevations_Split.Add(elevation);
+            }
+
+            if (elevations_Split.Count == 0)
+            {
+                return false;
+            }
+
+            HashSet<Guid>? guids_Space = null;
+
+            if (spaces != null)
+            {
+                guids_Space = [];
+                foreach (ISpace space in spaces)
+                {
+                    if (space == null)
+                    {
+                        continue;
+                    }
+
+                    guids_Space.Add(space.Guid);
+                }
+
+                if (guids_Space.Count == 0)
+                {
+                    return false;
+                }
+            }
+
+            bool result = false;
+
+            for (int i = 0; i < elevations_Split.Count; i++)
+            {
+                List<ISpace>? spaces_Split = null;
+                HashSet<Guid> guids_Existing = [];
+
+                if (guids_Space != null)
+                {
+                    // Space instances are replaced by the updater of the previous cut, they have to be resolved again
+                    if (buildingModel.GetSpaces<ISpace>() is not List<ISpace> spaces_Model)
+                    {
+                        return result;
+                    }
+
+                    spaces_Split = [];
+                    for (int j = 0; j < spaces_Model.Count; j++)
+                    {
+                        ISpace space = spaces_Model[j];
+
+                        guids_Existing.Add(space.Guid);
+
+                        if (guids_Space.Contains(space.Guid))
+                        {
+                            spaces_Split.Add(space);
+                        }
+                    }
+
+                    if (spaces_Split.Count == 0)
+                    {
+                        return result;
+                    }
+                }
+
+                if (!TrySplit(buildingModel, elevations_Split[i], minHeight, floorConstruction, spaces_Split, tolerance))
+                {
+                    continue;
+                }
+
+                result = true;
+
+                // Fragments created by this cut become candidates for the following cuts
+                if (guids_Space != null && buildingModel.GetSpaces<ISpace>() is List<ISpace> spaces_Updated)
+                {
+                    for (int j = 0; j < spaces_Updated.Count; j++)
+                    {
+                        Guid guid = spaces_Updated[j].Guid;
+
+                        if (!guids_Existing.Contains(guid))
+                        {
+                            guids_Space.Add(guid);
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Attempts to split the spaces of the given <see cref="BuildingModel"/> by a horizontal plane placed on the given elevation.
         /// <para>Each space crossed by the plane is replaced by a lower and an upper space. The part containing the internal point of the original space keeps the original <see cref="ISpace"/>, the remaining parts become new spaces carrying the name, description, internal conditions and zone assignments of the original space.</para>
         /// <para>Components bounding those spaces are rebuilt out of the split faces: the first part of a component keeps the identifier of the original component, the remaining parts are created as new components of the same type, all of them keeping the construction of the original component. Faces created on the cutting plane become a single <see cref="FaceFloor"/> assigned to <paramref name="floorConstruction"/> (or a single <see cref="SurfaceAir"/> when <paramref name="floorConstruction"/> is null) shared by both spaces; any other face without a source component becomes a <see cref="SurfaceAir"/>.</para>
@@ -27,13 +157,7 @@ namespace DiGi.Analytical.Building
         /// <returns>A <see cref="bool"/> value indicating whether at least one space was split.</returns>
         /// <seealso cref="BuildingModelShellsUpdater"/>
         /// <seealso cref="BuildingModelFloorUpdater"/>
-        public static bool TrySplit(
-            this BuildingModel? buildingModel,
-            double elevation,
-            double minHeight = 1,
-            IFloorConstruction? floorConstruction = null,
-            IEnumerable<ISpace>? spaces = null,
-            double tolerance = Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this BuildingModel? buildingModel, double elevation, double minHeight = 1, IFloorConstruction? floorConstruction = null, IEnumerable<ISpace>? spaces = null, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (buildingModel == null)
             {

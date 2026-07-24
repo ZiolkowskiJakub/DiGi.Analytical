@@ -22,7 +22,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (physicalComponent is not null)
             {
-                physicalComponent.StructurePosition = StructurePosition;
+                StructurePosition = physicalComponent.StructurePosition;
             }
         }
 
@@ -36,7 +36,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             if (physicalComponent is not null)
             {
-                physicalComponent.StructurePosition = StructurePosition;
+                StructurePosition = physicalComponent.StructurePosition;
             }
         }
 
@@ -148,6 +148,20 @@ namespace DiGi.Analytical.Building.Classes
                 {
                     geometry = physicalComponent.geometry.Clone<T>();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicalComponent{T}"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the physical component.</param>
+        /// <param name="geometry">The geometry to assign to the component; this object is cloned if it is not null.</param>
+        public PhysicalComponent(System.Guid guid, T? geometry)
+            : base(guid)
+        {
+            if (geometry != null)
+            {
+                this.geometry = geometry.Clone<T>();
             }
         }
 

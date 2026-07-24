@@ -310,6 +310,65 @@ public static class Modify
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Modify
 ### Methods
 
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double)'></a>
+
+## Modify\.ConvertAirs\<TAir\>\(this BuildingModel, IEnumerable\<TAir\>, IEnumerable\<PhysicalComponentType\>, double\) Method
+
+Replaces the given airs of the [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') by physical components matching their geometry\.
+
+Each air is classified by [PhysicalComponentType\(this IComponent, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double) 'DiGi\.Analytical\.Building\.Query\.PhysicalComponentType\(this DiGi\.Analytical\.Building\.Interfaces\.IComponent, double\)') and, when the resulting type passes the [physicalComponentTypes](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).physicalComponentTypes 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.physicalComponentTypes') filter, replaced by [ConvertAir\(IAir, PhysicalComponentType, IPhysicalComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.ConvertAir\(DiGi\.Analytical\.Building\.Interfaces\.IAir, DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent\)'). Airs classified as [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Undefined 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Undefined') and airs whose geometry does not suit the classified type are left untouched.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Analytical.Building.Interfaces.IPhysicalComponent>? ConvertAirs<TAir>(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, System.Collections.Generic.IEnumerable<TAir>? airs=null, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Enums.PhysicalComponentType>? physicalComponentTypes=null, double tolerance=0.0349066)
+    where TAir : DiGi.Analytical.Building.Interfaces.IAir;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).TAir'></a>
+
+`TAir`
+
+The type of the air components to be converted\.
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') to be modified\. The model is modified in place\.
+
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).airs'></a>
+
+`airs` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[TAir](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).TAir 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.TAir')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The airs to be converted\. When null all airs of type [TAir](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).TAir 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.TAir') of the [buildingModel](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).buildingModel 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.buildingModel') are taken\.
+
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).physicalComponentTypes'></a>
+
+`physicalComponentTypes` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The physical component types the conversion is restricted to\. When null no restriction is applied\.
+
+<a name='DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The angle tolerance, in radians, used to classify the geometry of an air, within which its normal still counts as horizontal, i\.e\. as belonging to a wall\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[IPhysicalComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponent 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The physical components the airs were replaced with, an empty list when no air was converted, or null when the [buildingModel](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).buildingModel 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.buildingModel') is null or holds no airs of type [TAir](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double).TAir 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)\.TAir')\.
+
+### Remarks
+Every converted air is REMOVED from the model together with all its relations and the physical component is stored under the SAME identifier, therefore every [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') held for the air becomes stale \- a reference carries the type of the object it points to, so it no longer resolves once the type changes\.
+
+The space binding of an air is preserved, but the openings it hosts are NOT re-hosted and its parameters are NOT carried over.
+
+The returned components are the CLONES returned by [ConvertAir\(IAir, PhysicalComponentType, IPhysicalComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.ConvertAir\(DiGi\.Analytical\.Building\.Interfaces\.IAir, DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent\)') - modifying them does not affect the model, pass them through [Update\(IComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)') to store the changes.
+
+### See Also
+- [PhysicalComponentType\(this IComponent, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double) 'DiGi\.Analytical\.Building\.Query\.PhysicalComponentType\(this DiGi\.Analytical\.Building\.Interfaces\.IComponent, double\)')
+
 <a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double)'></a>
 
 ## Modify\.TrySplit\(this BuildingModel, double, double, IFloorConstruction, IEnumerable\<ISpace\>, double\) Method
@@ -371,6 +430,67 @@ Openings \(windows and doors\) hosted by a split component are NOT re\-hosted on
 ### See Also
 - [BuildingModelShellsUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellsUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellsUpdater')
 - [BuildingModelFloorUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelFloorUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelFloorUpdater')
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double)'></a>
+
+## Modify\.TrySplit\(this BuildingModel, IEnumerable\<double\>, double, IFloorConstruction, IEnumerable\<ISpace\>, double\) Method
+
+Attempts to split the spaces of the given [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') by horizontal planes placed on the given elevations\.
+
+The elevations are sorted ascending and the cuts are applied one by one, each of them behaving exactly like the single elevation overload. Spaces created by an earlier cut are candidates for the following cuts, so a space crossed by all the given elevations is split into as many parts as there are cuts increased by one.
+
+```csharp
+public static bool TrySplit(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, System.Collections.Generic.IEnumerable<double> elevations, double minHeight=1.0, DiGi.Analytical.Building.Interfaces.IFloorConstruction? floorConstruction=null, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Interfaces.ISpace>? spaces=null, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') to be split\. The model is modified in place\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).elevations'></a>
+
+`elevations` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The elevations the horizontal cutting planes are placed on\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).minHeight'></a>
+
+`minHeight` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The minimal height of the part of a space above a cutting plane and the minimal distance between two consecutive cutting planes\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).floorConstruction'></a>
+
+`floorConstruction` [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction')
+
+The [IFloorConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloorConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction') assigned to the floors created on the cutting planes\. When null a [SurfaceAir](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceAir 'DiGi\.Analytical\.Building\.Classes\.SurfaceAir') is created instead of a [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).spaces'></a>
+
+`spaces` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The spaces to be split\. When null all spaces of the [buildingModel](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).buildingModel 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<double\>, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.buildingModel') are taken\.
+
+<a name='DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double') value representing the distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+A [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean') value indicating whether at least one space was split by at least one of the cutting planes\.
+
+### Remarks
+Openings \(windows and doors\) hosted by a split component are NOT re\-hosted onto the component fragment that geometrically contains them \- they stay assigned to the fragment that inherits the identifier of the original component\.
+
+The elevations are deduplicated and filtered before the cuts are applied: an elevation closer than [minHeight](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).minHeight 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<double\>, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.minHeight') to the previously accepted elevation is dropped, so that no space smaller than [minHeight](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).minHeight 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<double\>, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.minHeight') is created between two consecutive cuts. The filter works on the given elevations only, the distance from the bottom of a particular space to the first cut crossing it is guarded by [tolerance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_double_,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double).tolerance 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<double\>, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)\.tolerance') alone.
+
+### See Also
+- [TrySplit\(this BuildingModel, double, double, IFloorConstruction, IEnumerable&lt;ISpace&gt;, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.TrySplit(thisDiGi.Analytical.Building.Classes.BuildingModel,double,double,DiGi.Analytical.Building.Interfaces.IFloorConstruction,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.ISpace_,double) 'DiGi\.Analytical\.Building\.Modify\.TrySplit\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double, double, DiGi\.Analytical\.Building\.Interfaces\.IFloorConstruction, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Interfaces\.ISpace\>, double\)')
 
 <a name='DiGi.Analytical.Building.Query'></a>
 
@@ -531,6 +651,69 @@ The physical component construction for which the next structure layer index is 
 #### Returns
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The maximum structure layer index found; 0 if no associated structure layers exist; or \-1 if either the [constructionRelationCluster](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).constructionRelationCluster 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.constructionRelationCluster') or [physicalComponentConstruction](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.NextStructureLayerIndex(thisDiGi.Analytical.Building.Classes.ConstructionRelationCluster,DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction).physicalComponentConstruction 'DiGi\.Analytical\.Building\.Query\.NextStructureLayerIndex\(this DiGi\.Analytical\.Building\.Classes\.ConstructionRelationCluster, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction\)\.physicalComponentConstruction') is null\.
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double)'></a>
+
+## Query\.PhysicalComponentType\(this IComponent, double\) Method
+
+Determines the [PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType') of the given [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')\.
+
+Components already carrying a physical type are classified by their interface: an [IWall](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IWall 'DiGi\.Analytical\.Building\.Interfaces\.IWall') gives [Wall](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Wall 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Wall'), an [IFloor](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IFloor 'DiGi\.Analytical\.Building\.Interfaces\.IFloor') gives [Floor](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Floor 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Floor') and an [IRoof](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoof 'DiGi\.Analytical\.Building\.Interfaces\.IRoof') gives [Roof](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Roof 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Roof').
+
+An [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir') carries no physical type, therefore it is classified geometrically: the normal of the plane of its [DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.iface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D') geometry is passed to [PhysicalComponentType\(this Vector3D, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Geometry.Spatial.Classes.Vector3D,double) 'DiGi\.Analytical\.Building\.Query\.PhysicalComponentType\(this DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double\)'). An air of any other geometry cannot be classified.
+
+```csharp
+public static DiGi.Analytical.Building.Enums.PhysicalComponentType PhysicalComponentType(this DiGi.Analytical.Building.Interfaces.IComponent? component, double tolerance=0.0349066);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double).component'></a>
+
+`component` [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
+
+The component to be classified\.
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Analytical.Building.Interfaces.IComponent,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The angle tolerance, in radians, within which the normal of an [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir') still counts as horizontal, i\.e\. as belonging to a wall\. Not used for components classified by their interface\.
+
+#### Returns
+[PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType')  
+The [PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType') of the component, or [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Undefined 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Undefined') when the component is null or cannot be classified\.
+
+### See Also
+- [ConvertAirs&lt;TAir&gt;\(this BuildingModel, IEnumerable&lt;TAir&gt;, IEnumerable&lt;PhysicalComponentType&gt;, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Modify.ConvertAirs_TAir_(thisDiGi.Analytical.Building.Classes.BuildingModel,System.Collections.Generic.IEnumerable_TAir_,System.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Enums.PhysicalComponentType_,double) 'DiGi\.Analytical\.Building\.Modify\.ConvertAirs\<TAir\>\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, System\.Collections\.Generic\.IEnumerable\<TAir\>, System\.Collections\.Generic\.IEnumerable\<DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\>, double\)')
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Geometry.Spatial.Classes.Vector3D,double)'></a>
+
+## Query\.PhysicalComponentType\(this Vector3D, double\) Method
+
+Determines the [PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType') represented by the given normal\.
+
+The normal is normalized and its dot product with [DiGi\.Geometry\.Spatial\.Constants\.Vector3D\.WorldZ](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.constants.vector3d.worldz 'DiGi\.Geometry\.Spatial\.Constants\.Vector3D\.WorldZ') is taken, which equals the sine of the tilt of the surface away from vertical. A normal lying within [tolerance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Geometry.Spatial.Classes.Vector3D,double).tolerance 'DiGi\.Analytical\.Building\.Query\.PhysicalComponentType\(this DiGi\.Geometry\.Spatial\.Classes\.Vector3D, double\)\.tolerance') of horizontal gives [Wall](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Wall 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Wall'), a normal pointing downwards gives [Floor](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Floor 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Floor') and a normal pointing upwards gives [Roof](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Roof 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Roof').
+
+```csharp
+public static DiGi.Analytical.Building.Enums.PhysicalComponentType PhysicalComponentType(this DiGi.Geometry.Spatial.Classes.Vector3D? normal, double tolerance=0.0349066);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Geometry.Spatial.Classes.Vector3D,double).normal'></a>
+
+`normal` [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.vector3d 'DiGi\.Geometry\.Spatial\.Classes\.Vector3D')
+
+The normal of the surface to be classified\.
+
+<a name='DiGi.Analytical.Building.Query.PhysicalComponentType(thisDiGi.Geometry.Spatial.Classes.Vector3D,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The angle tolerance, in radians, within which the normal still counts as horizontal, i\.e\. as belonging to a wall\.
+
+#### Returns
+[PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType')  
+The [PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType') represented by the normal, or [Undefined](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Undefined 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Undefined') when the normal is null or has no unit vector\.
 
 <a name='DiGi.Analytical.Building.Query.Surface3D(thisDiGi.Analytical.Building.Interfaces.IComponent)'></a>
 

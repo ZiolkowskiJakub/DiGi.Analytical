@@ -103,7 +103,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="Vector3D"/> that defines the direction and magnitude of the curved wall's extrusion.
+        /// Gets the <see cref="Vector3D"/> that defines the direction and magnitude of the curved wall's extrusion.
         /// </summary>
         [JsonIgnore]
         public Vector3D? Vector
@@ -111,11 +111,6 @@ namespace DiGi.Analytical.Building.Classes
             get
             {
                 return vector == null ? null : new Vector3D(vector);
-            }
-
-            set
-            {
-                Vector = value;
             }
         }
 

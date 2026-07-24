@@ -49,6 +49,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Floor{T}"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the floor.</param>
+        /// <param name="geometry">The 3D geometry associated with this floor.</param>
+        public Floor(System.Guid guid, T? geometry)
+            : base(guid, geometry)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Floor{T}"/> class using the specified JSON object.
         /// </summary>
         /// <param name="jsonObject">The JSON object containing the data used to initialize the instance.</param>

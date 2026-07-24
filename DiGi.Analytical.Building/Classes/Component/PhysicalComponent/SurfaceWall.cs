@@ -39,6 +39,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="SurfaceWall"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the surface wall.</param>
+        /// <param name="geometry">The <see cref="ISurface3D"/> geometry to assign to the wall. This value can be null.</param>
+        public SurfaceWall(System.Guid guid, ISurface3D? geometry)
+            : base(guid, geometry)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SurfaceWall"/> class using an existing wall and a specific surface geometry.
         /// </summary>
         /// <param name="wall">The source wall from which to copy properties.</param>

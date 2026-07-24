@@ -53,6 +53,43 @@ Represents the pane part of an opening construction\.
 
 Represents the frame part of the opening construction\.
 
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentType'></a>
+
+## PhysicalComponentType Enum
+
+Specifies the kind of physical building component an element represents or is to be converted into\.
+
+The value drives the class created by [ConvertAir\(IAir, PhysicalComponentType, IPhysicalComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.ConvertAir\(DiGi\.Analytical\.Building\.Interfaces\.IAir, DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType, DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent\)').
+
+```csharp
+public enum PhysicalComponentType
+```
+### Fields
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentType.Undefined'></a>
+
+`Undefined` 0
+
+The physical component type could not be determined\. No conversion is performed for this value\.
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentType.Wall'></a>
+
+`Wall` 1
+
+A vertical component, i\.e\. one whose normal is roughly perpendicular to the world Z axis\. Converts into a [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall')\.
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentType.Roof'></a>
+
+`Roof` 2
+
+A horizontal component facing upwards\. Converts into a [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof')\.
+
+<a name='DiGi.Analytical.Building.Enums.PhysicalComponentType.Floor'></a>
+
+`Floor` 3
+
+A horizontal component facing downwards\. Converts into a [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor')\.
+
 <a name='DiGi.Analytical.Building.Enums.SpaceParameter'></a>
 
 ## SpaceParameter Enum

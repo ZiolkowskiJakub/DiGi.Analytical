@@ -20,6 +20,10 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(AbstractComponent? abstractComponent)
             : base(abstractComponent)
         {
+            if (abstractComponent is not null)
+            {
+                StructurePosition = abstractComponent.StructurePosition;
+            }
         }
 
         /// <summary>
@@ -30,6 +34,10 @@ namespace DiGi.Analytical.Building.Classes
         public AbstractComponent(System.Guid guid, AbstractComponent? abstractComponent)
             : base(guid, abstractComponent)
         {
+            if (abstractComponent is not null)
+            {
+                StructurePosition = abstractComponent.StructurePosition;
+            }
         }
 
         /// <summary>

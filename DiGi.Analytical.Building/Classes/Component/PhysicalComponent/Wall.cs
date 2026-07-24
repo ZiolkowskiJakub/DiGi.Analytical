@@ -57,6 +57,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Wall{T}"/> class using the specified unique identifier and geometry.
+        /// </summary>
+        /// <param name="guid">The unique identifier for the wall.</param>
+        /// <param name="geometry">The 3D geometry to assign to the wall.</param>
+        public Wall(System.Guid guid, T? geometry)
+            : base(guid, geometry)
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Wall{T}"/> class using the specified JSON object.
         /// </summary>
         /// <param name="jsonObject">The JSON object containing the data for initialization.</param>

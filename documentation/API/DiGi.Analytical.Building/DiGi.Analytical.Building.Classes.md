@@ -1320,6 +1320,48 @@ An optional unique identifier for the relation\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 `true` if at least one space was successfully assigned; otherwise, `false`\.
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent)'></a>
+
+## BuildingModel\.ConvertAir\(IAir, PhysicalComponentType, IPhysicalComponent\) Method
+
+Replaces the specified air component with a physical component of the given type, built from the geometry of the air\.
+
+The air is REMOVED from the model together with all its relations and the physical component is stored under the SAME identifier, therefore every [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') held for the air becomes stale - a reference carries the type of the object it points to, so it no longer resolves once the type changes.
+
+The space binding of the air is preserved: the one or two spaces it was bound to are re-assigned to the physical component. Openings hosted by the air are NOT re-hosted and the parameters of the air are NOT carried over.
+
+The geometry decides the resulting class: [Wall](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Wall 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Wall') and [Roof](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Roof 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Roof') need an [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') and produce a [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall') or a [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof'), [Floor](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType.Floor 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType\.Floor') needs an [DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.iface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D') and produces a [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor'). Any other combination leaves the model untouched.
+
+```csharp
+public bool ConvertAir(DiGi.Analytical.Building.Interfaces.IAir? air, DiGi.Analytical.Building.Enums.PhysicalComponentType physicalComponentType, out DiGi.Analytical.Building.Interfaces.IPhysicalComponent? physicalComponent);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent).air'></a>
+
+`air` [IAir](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IAir 'DiGi\.Analytical\.Building\.Interfaces\.IAir')
+
+The air component to be replaced\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent).physicalComponentType'></a>
+
+`physicalComponentType` [PhysicalComponentType](DiGi.Analytical.Building.Enums.md#DiGi.Analytical.Building.Enums.PhysicalComponentType 'DiGi\.Analytical\.Building\.Enums\.PhysicalComponentType')
+
+The type of the physical component the air is to be replaced with\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.ConvertAir(DiGi.Analytical.Building.Interfaces.IAir,DiGi.Analytical.Building.Enums.PhysicalComponentType,DiGi.Analytical.Building.Interfaces.IPhysicalComponent).physicalComponent'></a>
+
+`physicalComponent` [IPhysicalComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponent 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponent')
+
+When this method returns [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool'), contains the physical component the air was replaced with; otherwise, [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null')\. The model holds a CLONE of it, therefore modifying it does not affect the model \- pass it through [Update\(IComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)') to store the changes\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the air was replaced by the physical component; otherwise, false\.
+
+### See Also
+- [Assign\(IComponent, ISpace, ISpace\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.ISpace, DiGi\.Analytical\.Building\.Interfaces\.ISpace\)')
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetBoundingBox()'></a>
 
 ## BuildingModel\.GetBoundingBox\(\) Method
@@ -5033,10 +5075,10 @@ The [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-
 
 ## CurveWall\<TCurve3D\>\.Vector Property
 
-Gets or sets the [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.vector3d 'DiGi\.Geometry\.Spatial\.Classes\.Vector3D') that defines the direction and magnitude of the curved wall's extrusion\.
+Gets the [DiGi\.Geometry\.Spatial\.Classes\.Vector3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.vector3d 'DiGi\.Geometry\.Spatial\.Classes\.Vector3D') that defines the direction and magnitude of the curved wall's extrusion\.
 
 ```csharp
-public DiGi.Geometry.Spatial.Classes.Vector3D? Vector { get; set; }
+public DiGi.Geometry.Spatial.Classes.Vector3D? Vector { get; }
 ```
 
 Implements [Vector](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ICurveWall_TCurve3D_.Vector 'DiGi\.Analytical\.Building\.Interfaces\.ICurveWall\<TCurve3D\>\.Vector')
@@ -5265,6 +5307,29 @@ The unique identifier for the floor face\.
 
 An optional [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor') instance to initialize from\.
 
+<a name='DiGi.Analytical.Building.Classes.FaceFloor.FaceFloor(System.Guid,DiGi.Geometry.Spatial.Interfaces.IFace3D)'></a>
+
+## FaceFloor\(Guid, IFace3D\) Constructor
+
+Initializes a new instance of the [FaceFloor](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.FaceFloor 'DiGi\.Analytical\.Building\.Classes\.FaceFloor') class using the specified unique identifier and geometry\.
+
+```csharp
+public FaceFloor(System.Guid guid, DiGi.Geometry.Spatial.Interfaces.IFace3D? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.FaceFloor.FaceFloor(System.Guid,DiGi.Geometry.Spatial.Interfaces.IFace3D).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the floor face\.
+
+<a name='DiGi.Analytical.Building.Classes.FaceFloor.FaceFloor(System.Guid,DiGi.Geometry.Spatial.Interfaces.IFace3D).geometry'></a>
+
+`geometry` [DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.iface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IFace3D')
+
+The 3D face geometry to associate with this floor instance\.
+
 <a name='DiGi.Analytical.Building.Classes.FaceFloor.FaceFloor(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## FaceFloor\(JsonObject\) Constructor
@@ -5387,6 +5452,29 @@ The unique identifier for the floor\.
 `floor` [DiGi\.Analytical\.Building\.Classes\.Floor&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_.T 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>')
 
 An existing [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>') instance to initialize from\.
+
+<a name='DiGi.Analytical.Building.Classes.Floor_T_.Floor(System.Guid,T)'></a>
+
+## Floor\(Guid, T\) Constructor
+
+Initializes a new instance of the [Floor&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_ 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>') class using the specified unique identifier and geometry\.
+
+```csharp
+public Floor(System.Guid guid, T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Floor_T_.Floor(System.Guid,T).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the floor\.
+
+<a name='DiGi.Analytical.Building.Classes.Floor_T_.Floor(System.Guid,T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Floor_T_.T 'DiGi\.Analytical\.Building\.Classes\.Floor\<T\>\.T')
+
+The 3D geometry associated with this floor\.
 
 <a name='DiGi.Analytical.Building.Classes.Floor_T_.Floor(System.Text.Json.Nodes.JsonObject)'></a>
 
@@ -6677,6 +6765,29 @@ The unique identifier for the new physical component\.
 
 An optional existing physical component used to initialize the current instance's geometry\.
 
+<a name='DiGi.Analytical.Building.Classes.PhysicalComponent_T_.PhysicalComponent(System.Guid,T)'></a>
+
+## PhysicalComponent\(Guid, T\) Constructor
+
+Initializes a new instance of the [PhysicalComponent&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_ 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>') class using the specified unique identifier and geometry\.
+
+```csharp
+public PhysicalComponent(System.Guid guid, T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PhysicalComponent_T_.PhysicalComponent(System.Guid,T).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the physical component\.
+
+<a name='DiGi.Analytical.Building.Classes.PhysicalComponent_T_.PhysicalComponent(System.Guid,T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PhysicalComponent_T_.T 'DiGi\.Analytical\.Building\.Classes\.PhysicalComponent\<T\>\.T')
+
+The geometry to assign to the component; this object is cloned if it is not null\.
+
 <a name='DiGi.Analytical.Building.Classes.PhysicalComponent_T_.PhysicalComponent(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## PhysicalComponent\(JsonObject\) Constructor
@@ -7200,6 +7311,29 @@ The unique identifier for the roof\.
 `roof` [DiGi\.Analytical\.Building\.Classes\.Roof&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_ 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_.T 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_ 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>')
 
 The existing roof instance to copy properties from\.
+
+<a name='DiGi.Analytical.Building.Classes.Roof_T_.Roof(System.Guid,T)'></a>
+
+## Roof\(Guid, T\) Constructor
+
+Initializes a new instance of the [Roof&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_ 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>') class using the specified unique identifier and geometry\.
+
+```csharp
+public Roof(System.Guid guid, T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Roof_T_.Roof(System.Guid,T).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the roof\.
+
+<a name='DiGi.Analytical.Building.Classes.Roof_T_.Roof(System.Guid,T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Roof_T_.T 'DiGi\.Analytical\.Building\.Classes\.Roof\<T\>\.T')
+
+The geometry to associate with the roof\.
 
 <a name='DiGi.Analytical.Building.Classes.Roof_T_.Roof(System.Text.Json.Nodes.JsonObject)'></a>
 
@@ -8096,6 +8230,29 @@ The unique identifier for the object\.
 
 An optional [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof') instance to initialize from\.
 
+<a name='DiGi.Analytical.Building.Classes.SurfaceRoof.SurfaceRoof(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D)'></a>
+
+## SurfaceRoof\(Guid, ISurface3D\) Constructor
+
+Initializes a new instance of the [SurfaceRoof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceRoof 'DiGi\.Analytical\.Building\.Classes\.SurfaceRoof') class using the specified unique identifier and geometry\.
+
+```csharp
+public SurfaceRoof(System.Guid guid, DiGi.Geometry.Spatial.Interfaces.ISurface3D? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.SurfaceRoof.SurfaceRoof(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the surface roof\.
+
+<a name='DiGi.Analytical.Building.Classes.SurfaceRoof.SurfaceRoof(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D).geometry'></a>
+
+`geometry` [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')
+
+The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') geometry to associate with the roof\. This value can be null\.
+
 <a name='DiGi.Analytical.Building.Classes.SurfaceRoof.SurfaceRoof(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## SurfaceRoof\(JsonObject\) Constructor
@@ -8314,6 +8471,29 @@ The unique identifier for the surface wall\.
 
 An optional existing [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall') instance to initialize from\.
 
+<a name='DiGi.Analytical.Building.Classes.SurfaceWall.SurfaceWall(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D)'></a>
+
+## SurfaceWall\(Guid, ISurface3D\) Constructor
+
+Initializes a new instance of the [SurfaceWall](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.SurfaceWall 'DiGi\.Analytical\.Building\.Classes\.SurfaceWall') class using the specified unique identifier and geometry\.
+
+```csharp
+public SurfaceWall(System.Guid guid, DiGi.Geometry.Spatial.Interfaces.ISurface3D? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.SurfaceWall.SurfaceWall(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the surface wall\.
+
+<a name='DiGi.Analytical.Building.Classes.SurfaceWall.SurfaceWall(System.Guid,DiGi.Geometry.Spatial.Interfaces.ISurface3D).geometry'></a>
+
+`geometry` [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D')
+
+The [DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.isurface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.ISurface3D') geometry to assign to the wall\. This value can be null\.
+
 <a name='DiGi.Analytical.Building.Classes.SurfaceWall.SurfaceWall(System.Text.Json.Nodes.JsonObject)'></a>
 
 ## SurfaceWall\(JsonObject\) Constructor
@@ -8437,6 +8617,29 @@ The unique identifier for the wall\.
 `wall` [DiGi\.Analytical\.Building\.Classes\.Wall&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_.T 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>')
 
 An existing wall instance from which to copy properties, such as the structure position\.
+
+<a name='DiGi.Analytical.Building.Classes.Wall_T_.Wall(System.Guid,T)'></a>
+
+## Wall\(Guid, T\) Constructor
+
+Initializes a new instance of the [Wall&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_ 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>') class using the specified unique identifier and geometry\.
+
+```csharp
+public Wall(System.Guid guid, T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Wall_T_.Wall(System.Guid,T).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the wall\.
+
+<a name='DiGi.Analytical.Building.Classes.Wall_T_.Wall(System.Guid,T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Wall_T_.T 'DiGi\.Analytical\.Building\.Classes\.Wall\<T\>\.T')
+
+The 3D geometry to assign to the wall\.
 
 <a name='DiGi.Analytical.Building.Classes.Wall_T_.Wall(System.Text.Json.Nodes.JsonObject)'></a>
 

@@ -1,4 +1,4 @@
-﻿using DiGi.Analytical.Delegates;
+using DiGi.Analytical.Delegates;
 using DiGi.Core.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Classes
     /// <para>The resulting shells describe geometry only - use BuildingModelShellsUpdater in DiGi.Analytical.Building to turn them back into spaces and components of a building model.</para>
     /// </summary>
     /// <remarks>
-    /// References are compared by value, not with the equality operators. Those operators are declared on <see cref="DiGi.Core.Classes.SerializableReference"/> and do not apply to <see cref="DiGi.Core.Interfaces.IUniqueReference"/> typed operands, while <see cref="Face.UniqueReference"/> returns a fresh clone on every call - comparing with == therefore never matches.
+    /// References are compared by value, not with the equality operators. Those operators are declared on <see cref="Core.Classes.SerializableReference"/> and do not apply to <see cref="IUniqueReference"/> typed operands, while <see cref="Face.UniqueReference"/> returns a fresh clone on every call - comparing with == therefore never matches.
     /// <para>Faces that survive the split intact are matched to the original faces by <see cref="Face.UniqueReference"/>, which identifies the component a face came from rather than the face itself. Where several faces of the split shell share one reference - the usual case for a component bounding the shell with more than one face - the match takes the first of them, so the closest face candidates the remaining fragments are attributed to are only as precise as that reference.</para>
     /// </remarks>
     public class ShellByPlaneSplitSolver : ShellSplitSolver

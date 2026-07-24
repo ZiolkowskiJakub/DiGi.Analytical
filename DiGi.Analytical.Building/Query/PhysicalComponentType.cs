@@ -10,12 +10,12 @@ namespace DiGi.Analytical.Building
     {
         /// <summary>
         /// Determines the <see cref="Enums.PhysicalComponentType"/> of the given <see cref="IComponent"/>.
-        /// <para>Components already carrying a physical type are classified by their interface: an <see cref="IWall"/> gives <see cref="Enums.PhysicalComponentType.Wall"/>, an <see cref="IFloor"/> gives <see cref="Enums.PhysicalComponentType.Floor"/> and an <see cref="IRoof"/> gives <see cref="Enums.PhysicalComponentType.Roof"/>.</para>
+        /// <para>Components already carrying a physical type are classified by their interface: an <see cref="IWall"/> gives <see cref="PhysicalComponentType.Wall"/>, an <see cref="IFloor"/> gives <see cref="PhysicalComponentType.Floor"/> and an <see cref="IRoof"/> gives <see cref="PhysicalComponentType.Roof"/>.</para>
         /// <para>An <see cref="IAir"/> carries no physical type, therefore it is classified geometrically: the normal of the plane of its <see cref="IFace3D"/> geometry is passed to <see cref="PhysicalComponentType(Vector3D, double)"/>. An air of any other geometry cannot be classified.</para>
         /// </summary>
         /// <param name="component">The component to be classified.</param>
         /// <param name="tolerance">The angle tolerance, in radians, within which the normal of an <see cref="IAir"/> still counts as horizontal, i.e. as belonging to a wall. Not used for components classified by their interface.</param>
-        /// <returns>The <see cref="Enums.PhysicalComponentType"/> of the component, or <see cref="Enums.PhysicalComponentType.Undefined"/> when the component is null or cannot be classified.</returns>
+        /// <returns>The <see cref="Enums.PhysicalComponentType"/> of the component, or <see cref="PhysicalComponentType.Undefined"/> when the component is null or cannot be classified.</returns>
         /// <seealso cref="Modify.ConvertAirs{TAir}(Classes.BuildingModel, System.Collections.Generic.IEnumerable{TAir}, System.Collections.Generic.IEnumerable{Enums.PhysicalComponentType}, double)"/>
         public static PhysicalComponentType PhysicalComponentType(this IComponent? component, double tolerance = Tolerance.Angle)
         {
@@ -57,11 +57,11 @@ namespace DiGi.Analytical.Building
 
         /// <summary>
         /// Determines the <see cref="Enums.PhysicalComponentType"/> represented by the given normal.
-        /// <para>The normal is normalized and its dot product with <see cref="Geometry.Spatial.Constants.Vector3D.WorldZ"/> is taken, which equals the sine of the tilt of the surface away from vertical. A normal lying within <paramref name="tolerance"/> of horizontal gives <see cref="Enums.PhysicalComponentType.Wall"/>, a normal pointing downwards gives <see cref="Enums.PhysicalComponentType.Floor"/> and a normal pointing upwards gives <see cref="Enums.PhysicalComponentType.Roof"/>.</para>
+        /// <para>The normal is normalized and its dot product with <see cref="Geometry.Spatial.Constants.Vector3D.WorldZ"/> is taken, which equals the sine of the tilt of the surface away from vertical. A normal lying within <paramref name="tolerance"/> of horizontal gives <see cref="PhysicalComponentType.Wall"/>, a normal pointing downwards gives <see cref="PhysicalComponentType.Floor"/> and a normal pointing upwards gives <see cref="PhysicalComponentType.Roof"/>.</para>
         /// </summary>
         /// <param name="normal">The normal of the surface to be classified.</param>
         /// <param name="tolerance">The angle tolerance, in radians, within which the normal still counts as horizontal, i.e. as belonging to a wall.</param>
-        /// <returns>The <see cref="Enums.PhysicalComponentType"/> represented by the normal, or <see cref="Enums.PhysicalComponentType.Undefined"/> when the normal is null or has no unit vector.</returns>
+        /// <returns>The <see cref="Enums.PhysicalComponentType"/> represented by the normal, or <see cref="PhysicalComponentType.Undefined"/> when the normal is null or has no unit vector.</returns>
         public static PhysicalComponentType PhysicalComponentType(this Vector3D? normal, double tolerance = Tolerance.Angle)
         {
             if(normal?.Unit is not Vector3D unit)

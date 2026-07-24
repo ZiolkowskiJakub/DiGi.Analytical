@@ -1,4 +1,4 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
 using DiGi.Core.Interfaces;
@@ -10,11 +10,11 @@ namespace DiGi.Analytical.Building.Classes
 {
     /// <summary>
     /// Writes a single analytical <see cref="Shell"/> back into a <see cref="BuildingModel"/> as a space bounded by components.
-    /// <para>The <see cref="DiGi.Core.Interfaces.IUniqueReference"/> of the shell identifies the space it represents; when it cannot be resolved a new <see cref="Space"/> is created at the internal point of the shell. Every face of the shell is then turned into a component by <see cref="BuildingModelFaceUpdater"/> and assigned to that space.</para>
+    /// <para>The <see cref="IUniqueReference"/> of the shell identifies the space it represents; when it cannot be resolved a new <see cref="Space"/> is created at the internal point of the shell. Every face of the shell is then turned into a component by <see cref="BuildingModelFaceUpdater"/> and assigned to that space.</para>
     /// <para>Faces sharing the same <see cref="Face.UniqueReference"/> originate from one component: the first of them keeps the identifier of that component, the remaining ones become additional components of the same type and construction.</para>
     /// </summary>
     /// <remarks>
-    /// References are compared by value, not with the equality operators. Those operators are declared on <see cref="DiGi.Core.Classes.SerializableReference"/> and do not apply to <see cref="DiGi.Core.Interfaces.IUniqueReference"/> typed operands, while <see cref="Face.UniqueReference"/> returns a fresh clone on every call - comparing with == therefore never matches.
+    /// References are compared by value, not with the equality operators. Those operators are declared on <see cref="SerializableReference"/> and do not apply to <see cref="IUniqueReference"/> typed operands, while <see cref="Face.UniqueReference"/> returns a fresh clone on every call - comparing with == therefore never matches.
     /// </remarks>
     /// <seealso cref="BuildingModelShellsUpdater"/>
     /// <seealso cref="BuildingModelFaceUpdater"/>

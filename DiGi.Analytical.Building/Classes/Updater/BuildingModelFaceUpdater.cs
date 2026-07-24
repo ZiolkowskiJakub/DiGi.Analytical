@@ -1,4 +1,4 @@
-﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Analytical.Building.Interfaces;
 using DiGi.Analytical.Classes;
 using DiGi.Core.Classes;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ namespace DiGi.Analytical.Building.Classes
 {
     /// <summary>
     /// Writes a single analytical <see cref="Face"/> back into a <see cref="BuildingModel"/> as a component.
-    /// <para>The <see cref="DiGi.Core.Interfaces.IUniqueReference"/> of the face, when it is a <see cref="GuidReference"/>, identifies the component the face originates from. That component is rebuilt with the geometry of the face, keeping its type, its construction and the spaces it is assigned to. A face without a resolvable reference becomes a new <see cref="SurfaceAir"/>.</para>
+    /// <para>The <see cref="Core.Interfaces.IUniqueReference"/> of the face, when it is a <see cref="GuidReference"/>, identifies the component the face originates from. That component is rebuilt with the geometry of the face, keeping its type, its construction and the spaces it is assigned to. A face without a resolvable reference becomes a new <see cref="SurfaceAir"/>.</para>
     /// <para>The type of the rebuilt component follows the type of the source component: <see cref="IWall"/> becomes a <see cref="SurfaceWall"/>, <see cref="IFloor"/> a <see cref="FaceFloor"/>, <see cref="IRoof"/> a <see cref="SurfaceRoof"/> and <see cref="IAir"/> a <see cref="SurfaceAir"/>.</para>
     /// </summary>
     /// <remarks>

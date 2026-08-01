@@ -565,6 +565,27 @@ The distance tolerance used for the geometric operation\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the sphere is inside the building geometry; otherwise, false\.
 
+<a name='DiGi.Analytical.Building.Query.IsValid(thisDiGi.Analytical.Building.Classes.BuildingModel)'></a>
+
+## Query\.IsValid\(this BuildingModel\) Method
+
+Checks that a building model is non\-null and that every component sits on a usable, finite plane\.
+
+```csharp
+public static bool IsValid(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.IsValid(thisDiGi.Analytical.Building.Classes.BuildingModel).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model to check\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') when the building model is non\-null and all components carry finite plane normals; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
+
 <a name='DiGi.Analytical.Building.Query.Mesh3D(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 
 ## Query\.Mesh3D\(this IBuildingGeometry3DObject, double\) Method

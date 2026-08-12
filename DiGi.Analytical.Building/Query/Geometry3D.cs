@@ -40,8 +40,11 @@ namespace DiGi.Analytical.Building
             }
 
             List<TGeometry3D>? geometries = Geometry.Spatial.Query.Convert<TGeometry3D>(geometry3D);
-            if (geometries is null)
+            if (geometries is null || geometries.Count == 0)
             {
+                // A geometry the requested type cannot represent yields an empty list, not a null one -
+                // indexing it here threw on every component carrying such geometry, which is exactly what
+                // a component of a stored model is most likely to be.
                 return default;
             }
 

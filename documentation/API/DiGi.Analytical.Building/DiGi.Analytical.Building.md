@@ -565,6 +565,74 @@ The distance tolerance used for the geometric operation\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the sphere is inside the building geometry; otherwise, false\.
 
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,bool,double)'></a>
+
+## Query\.IsEnclosed\(this BuildingModel, bool, double\) Method
+
+Checks that every space of a building model is bounded by a closed shell\.
+
+The shell of a space is assembled by [GetShells&lt;TSpace&gt;\(IEnumerable&lt;TSpace&gt;, Nullable&lt;Side&gt;, Nullable&lt;Orientation&gt;, Nullable&lt;Orientation&gt;, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShells_TSpace_(System.Collections.Generic.IEnumerable_TSpace_,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShells\<TSpace\>\(System\.Collections\.Generic\.IEnumerable\<TSpace\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)'), which resolves a curve wall into the surface it sweeps, so a model extruded from a footprint and a model converted from CityGML are both covered.
+
+A space contributing no shell - it carries no component, or fewer than the four faces a closed solid needs - fails the check rather than being skipped, since a space without a boundary is exactly the state this is meant to catch.
+
+[tolerance](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,bool,double).tolerance 'DiGi\.Analytical\.Building\.Query\.IsEnclosed\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, bool, double\)\.tolerance') is an upper bound, not an exact value: a shell closing at a finer tolerance is enclosed. Welding is not transitive, so a coarser tolerance can merge vertices that were meant to stay apart, collapse the edges between them and report a genuinely closed shell as open - a shell is therefore retried at finer tolerances before it is rejected.
+
+```csharp
+public static bool IsEnclosed(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, bool manifold, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,bool,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model to check\.
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,bool,double).manifold'></a>
+
+`manifold` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+When [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool'), every edge of a shell must be used exactly twice, so an edge shared by three or more faces is rejected\.
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,bool,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The coarsest distance tolerance the vertices of a shell may be welded at while pairing its edges\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') when the building model holds at least one space and every one of them is enclosed; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,double)'></a>
+
+## Query\.IsEnclosed\(this BuildingModel, double\) Method
+
+Checks that every space of a building model is bounded by a closed shell\.
+
+Complements [IsValid\(this BuildingModel\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.IsValid(thisDiGi.Analytical.Building.Classes.BuildingModel) 'DiGi\.Analytical\.Building\.Query\.IsValid\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel\)'), which only checks that the components sit on usable planes - a model can pass that and still be a set of surfaces that does not enclose anything.
+
+```csharp
+public static bool IsEnclosed(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model to check\.
+
+<a name='DiGi.Analytical.Building.Query.IsEnclosed(thisDiGi.Analytical.Building.Classes.BuildingModel,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used to weld coincident vertices while pairing the edges of the shell\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') when the building model holds at least one space and every one of them is enclosed; otherwise, [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool')\.
+
 <a name='DiGi.Analytical.Building.Query.IsValid(thisDiGi.Analytical.Building.Classes.BuildingModel)'></a>
 
 ## Query\.IsValid\(this BuildingModel\) Method

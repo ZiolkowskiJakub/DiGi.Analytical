@@ -1026,6 +1026,14 @@ namespace DiGi.Analytical.Building.Classes
             return buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
         }
 
+        /// <summary>Retrieves all terrains of the specified type from the building model.</summary>
+        /// <typeparam name="TTerrain">The type of terrain to retrieve, which must implement <see cref="ITerrain"/>.</typeparam>
+        /// <returns>A list containing CLONES of the retrieved terrains of type <typeparamref name="TTerrain"/>. The list is EMPTY when the model holds no terrain of that type.</returns>
+        public List<TTerrain>? GetTerrains<TTerrain>() where TTerrain : ITerrain
+        {
+            return buildingRelationCluster.GetValues<TTerrain>().CloneAndFilterNulls();
+        }
+
         /// <summary>
         /// Gets the wall construction for the specified wall.
         /// <para>The construction is the one established by <see cref="Assign(IWall, IWallConstruction)"/> for the identifier of the given wall, which is why a component rebuilt under the same identifier keeps its construction.</para>
@@ -1153,6 +1161,16 @@ namespace DiGi.Analytical.Building.Classes
         public bool Remove(IShade? shade)
         {
             return Remove(shade == null ? null : new GuidReference(shade));
+        }
+
+        /// <summary>
+        /// Removes the terrain associated with the specified object from the building model.
+        /// </summary>
+        /// <param name="terrain">The terrain to be removed.</param>
+        /// <returns>True if the terrain was successfully removed; otherwise, false.</returns>
+        public bool Remove(ITerrain? terrain)
+        {
+            return Remove(terrain == null ? null : new GuidReference(terrain));
         }
 
         /// <summary>
@@ -1410,6 +1428,21 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             return buildingRelationCluster.Add(shade.Clone<IShade>());
+        }
+
+        /// <summary>
+        /// Updates the building model by adding or updating the specified terrain in the relation cluster.
+        /// </summary>
+        /// <param name="terrain">The terrain object to be updated. The model stores a CLONE of it, therefore modifying it afterwards does not affect the model.</param>
+        /// <returns>True if the update was successful; otherwise, false.</returns>
+        public bool Update(ITerrain? terrain)
+        {
+            if (terrain == null)
+            {
+                return false;
+            }
+
+            return buildingRelationCluster.Add(terrain.Clone<ITerrain>());
         }
 
         /// <summary>

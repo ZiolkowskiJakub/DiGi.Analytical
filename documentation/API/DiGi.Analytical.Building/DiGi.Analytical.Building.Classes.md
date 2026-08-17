@@ -2149,6 +2149,28 @@ The internal condition for which to retrieve associated spaces\.
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetSpaces_TSpace_(DiGi.Analytical.Building.Interfaces.IInternalCondition).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetSpaces\<TSpace\>\(DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition\)\.TSpace')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of spaces of type [TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetSpaces_TSpace_(DiGi.Analytical.Building.Interfaces.IInternalCondition).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetSpaces\<TSpace\>\(DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition\)\.TSpace'), or null if no relations are found\.
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetTerrains_TTerrain_()'></a>
+
+## BuildingModel\.GetTerrains\<TTerrain\>\(\) Method
+
+Retrieves all terrains of the specified type from the building model\.
+
+```csharp
+public System.Collections.Generic.List<TTerrain>? GetTerrains<TTerrain>()
+    where TTerrain : DiGi.Analytical.Building.Interfaces.ITerrain;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetTerrains_TTerrain_().TTerrain'></a>
+
+`TTerrain`
+
+The type of terrain to retrieve, which must implement [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain')\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetTerrains_TTerrain_().TTerrain 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetTerrains\<TTerrain\>\(\)\.TTerrain')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list containing CLONES of the retrieved terrains of type [TTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetTerrains_TTerrain_().TTerrain 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetTerrains\<TTerrain\>\(\)\.TTerrain')\. The list is EMPTY when the model holds no terrain of that type\.
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetWallConstruction(DiGi.Analytical.Building.Interfaces.IWall)'></a>
 
 ## BuildingModel\.GetWallConstruction\(IWall\) Method
@@ -2367,6 +2389,27 @@ The space to be removed\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the space was successfully removed; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Remove(DiGi.Analytical.Building.Interfaces.ITerrain)'></a>
+
+## BuildingModel\.Remove\(ITerrain\) Method
+
+Removes the terrain associated with the specified object from the building model\.
+
+```csharp
+public bool Remove(DiGi.Analytical.Building.Interfaces.ITerrain? terrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Remove(DiGi.Analytical.Building.Interfaces.ITerrain).terrain'></a>
+
+`terrain` [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain')
+
+The terrain to be removed\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the terrain was successfully removed; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Remove(DiGi.Analytical.Building.Interfaces.IZone)'></a>
 
@@ -2660,6 +2703,27 @@ The space object to be added or updated in the building model\.
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the space was successfully added; otherwise, false\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.ITerrain)'></a>
+
+## BuildingModel\.Update\(ITerrain\) Method
+
+Updates the building model by adding or updating the specified terrain in the relation cluster\.
+
+```csharp
+public bool Update(DiGi.Analytical.Building.Interfaces.ITerrain? terrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.ITerrain).terrain'></a>
+
+`terrain` [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain')
+
+The terrain object to be updated\. The model stores a CLONE of it, therefore modifying it afterwards does not affect the model\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the update was successful; otherwise, false\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IZone)'></a>
 

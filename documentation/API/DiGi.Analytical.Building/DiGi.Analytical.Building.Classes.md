@@ -768,7 +768,8 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 
 Derived  
 ↳ [Shade&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Shade_T_ 'DiGi\.Analytical\.Building\.Classes\.Shade\<T\>')  
-↳ [Space](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Space 'DiGi\.Analytical\.Building\.Classes\.Space')
+↳ [Space](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Space 'DiGi\.Analytical\.Building\.Classes\.Space')  
+↳ [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')
 
 Implements [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_.T 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')
 ### Constructors
@@ -7104,6 +7105,184 @@ public PhysicalComponentConstructionStructureLayersRelation(System.Text.Json.Nod
 
 The JSON object from which to initialize the relation\.
 
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain'></a>
+
+## PlaneTerrain Class
+
+Represents a terrain element that is defined by an infinite plane\.
+
+```csharp
+public class PlaneTerrain : DiGi.Analytical.Building.Classes.Terrain<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IPlaneTerrain, DiGi.Analytical.Building.Interfaces.ITerrain<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.ITerrain, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject<DiGi.Geometry.Spatial.Classes.Plane>, DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → [DiGi\.Analytical\.Building\.Classes\.Terrain&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') → PlaneTerrain
+
+Implements [IPlaneTerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPlaneTerrain 'DiGi\.Analytical\.Building\.Interfaces\.IPlaneTerrain'), [DiGi\.Analytical\.Building\.Interfaces\.ITerrain&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>'), [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')[DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1'), [IBuildingPlaneObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingPlaneObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingPlaneObject')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(DiGi.Analytical.Building.Classes.PlaneTerrain)'></a>
+
+## PlaneTerrain\(PlaneTerrain\) Constructor
+
+Initializes a new instance of the [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') class using the specified [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') instance\.
+
+```csharp
+public PlaneTerrain(DiGi.Analytical.Building.Classes.PlaneTerrain? planeTerrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(DiGi.Analytical.Building.Classes.PlaneTerrain).planeTerrain'></a>
+
+`planeTerrain` [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')
+
+The [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') instance to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(DiGi.Geometry.Spatial.Classes.Plane)'></a>
+
+## PlaneTerrain\(Plane\) Constructor
+
+Initializes a new instance of the [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') class using the specified plane\.
+
+```csharp
+public PlaneTerrain(DiGi.Geometry.Spatial.Classes.Plane? plane);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(DiGi.Geometry.Spatial.Classes.Plane).plane'></a>
+
+`plane` [DiGi\.Geometry\.Spatial\.Classes\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.plane 'DiGi\.Geometry\.Spatial\.Classes\.Plane')
+
+The plane to be used as the terrain geometry\.
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(System.Guid,DiGi.Analytical.Building.Classes.PlaneTerrain)'></a>
+
+## PlaneTerrain\(Guid, PlaneTerrain\) Constructor
+
+Initializes a new instance of the [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') class with a specified unique identifier and an optional source plane terrain\.
+
+```csharp
+public PlaneTerrain(System.Guid guid, DiGi.Analytical.Building.Classes.PlaneTerrain? planeTerrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(System.Guid,DiGi.Analytical.Building.Classes.PlaneTerrain).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the object\.
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(System.Guid,DiGi.Analytical.Building.Classes.PlaneTerrain).planeTerrain'></a>
+
+`planeTerrain` [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')
+
+An optional existing [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') instance to initialize from\.
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(System.Text.Json.Nodes.JsonObject)'></a>
+
+## PlaneTerrain\(JsonObject\) Constructor
+
+Initializes a new instance of the [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain') class using the specified JSON object\.
+
+```csharp
+public PlaneTerrain(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PlaneTerrain.PlaneTerrain(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain'></a>
+
+## PointCloudTerrain Class
+
+Represents a terrain element that is defined by a 3D point cloud, such as a surveyed ground surface\.
+
+```csharp
+public class PointCloudTerrain : DiGi.Analytical.Building.Classes.Terrain<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>, DiGi.Analytical.Building.Interfaces.IPointCloudTerrain, DiGi.Analytical.Building.Interfaces.ITerrain<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>, DiGi.Analytical.Building.Interfaces.ITerrain, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject<DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D>
+```
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → [DiGi\.Analytical\.Building\.Classes\.Terrain&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') → PointCloudTerrain
+
+Implements [IPointCloudTerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPointCloudTerrain 'DiGi\.Analytical\.Building\.Interfaces\.IPointCloudTerrain'), [DiGi\.Analytical\.Building\.Interfaces\.ITerrain&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>'), [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')[DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(DiGi.Analytical.Building.Classes.PointCloudTerrain)'></a>
+
+## PointCloudTerrain\(PointCloudTerrain\) Constructor
+
+Initializes a new instance of the [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') class using the specified [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') instance\.
+
+```csharp
+public PointCloudTerrain(DiGi.Analytical.Building.Classes.PointCloudTerrain? pointCloudTerrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(DiGi.Analytical.Building.Classes.PointCloudTerrain).pointCloudTerrain'></a>
+
+`pointCloudTerrain` [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain')
+
+The [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') instance to copy from\.
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D)'></a>
+
+## PointCloudTerrain\(PointCloud3D\) Constructor
+
+Initializes a new instance of the [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') class using the specified point cloud\.
+
+```csharp
+public PointCloudTerrain(DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D? pointCloud3D);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(DiGi.Geometry.PointCloud.Spatial.Classes.PointCloud3D).pointCloud3D'></a>
+
+`pointCloud3D` [DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.pointcloud.spatial.classes.pointcloud3d 'DiGi\.Geometry\.PointCloud\.Spatial\.Classes\.PointCloud3D')
+
+The point cloud to be used as the terrain geometry\.
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(System.Guid,DiGi.Analytical.Building.Classes.PointCloudTerrain)'></a>
+
+## PointCloudTerrain\(Guid, PointCloudTerrain\) Constructor
+
+Initializes a new instance of the [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') class with a specified unique identifier and an optional source point cloud terrain\.
+
+```csharp
+public PointCloudTerrain(System.Guid guid, DiGi.Analytical.Building.Classes.PointCloudTerrain? pointCloudTerrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(System.Guid,DiGi.Analytical.Building.Classes.PointCloudTerrain).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique identifier for the object\.
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(System.Guid,DiGi.Analytical.Building.Classes.PointCloudTerrain).pointCloudTerrain'></a>
+
+`pointCloudTerrain` [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain')
+
+An optional existing [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') instance to initialize from\.
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(System.Text.Json.Nodes.JsonObject)'></a>
+
+## PointCloudTerrain\(JsonObject\) Constructor
+
+Initializes a new instance of the [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain') class using the specified JSON object\.
+
+```csharp
+public PointCloudTerrain(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.PointCloudTerrain.PointCloudTerrain(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject') containing the data used to initialize this instance\.
+
 <a name='DiGi.Analytical.Building.Classes.Profile'></a>
 
 ## Profile Class
@@ -8527,6 +8706,107 @@ Implements [GetBoundingBox\(\)](DiGi.Analytical.Building.Interfaces.md#DiGi.Anal
 #### Returns
 [DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.boundingbox3d 'DiGi\.Geometry\.Spatial\.Classes\.BoundingBox3D')  
 The bounding box encompassing the surface wall, or null if it cannot be determined\.
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_'></a>
+
+## Terrain\<T\> Class
+
+Represents an abstract base class for terrain elements within a building's analytical geometry\.
+
+```csharp
+public abstract class Terrain<T> : DiGi.Analytical.Building.Classes.BuildingGeometry3DObject<T>, DiGi.Analytical.Building.Interfaces.ITerrain<T>, DiGi.Analytical.Building.Interfaces.ITerrain, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject, DiGi.Analytical.Building.Interfaces.IBuildingGuidObject, DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject, DiGi.Analytical.Building.Interfaces.IBuildingObject, DiGi.Analytical.Interfaces.IAnalyticalObject, DiGi.Core.Interfaces.IObject, DiGi.Core.Interfaces.ISerializableObject, DiGi.Core.Interfaces.ICloneableObject<DiGi.Core.Interfaces.ISerializableObject>, DiGi.Core.Interfaces.ICloneableObject, DiGi.Analytical.Interfaces.IAnalyticalGuidObject, DiGi.Analytical.Interfaces.IAnalyticalUniqueObject, DiGi.Core.Interfaces.IUniqueObject, DiGi.Core.Interfaces.IGuidObject, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject, DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject<T>, DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject<T>, DiGi.Geometry.Object.Core.Interfaces.IGeometryObject<T>, DiGi.Geometry.Object.Spatial.Interfaces.IGeometry3DObject<T>
+    where T : DiGi.Geometry.Spatial.Interfaces.IGeometry3D
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.T'></a>
+
+`T`
+
+The type of the 3D geometry associated with the terrain, which must implement [DiGi\.Geometry\.Spatial\.Interfaces\.IGeometry3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.igeometry3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IGeometry3D')\.
+
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [DiGi\.Core\.Classes\.Object](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.object 'DiGi\.Core\.Classes\.Object') → [DiGi\.Core\.Classes\.SerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.serializableobject 'DiGi\.Core\.Classes\.SerializableObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedObject') → [DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.parameter.classes.parametrizedguidobject 'DiGi\.Core\.Parameter\.Classes\.ParametrizedGuidObject') → [BuildingObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingObject 'DiGi\.Analytical\.Building\.Classes\.BuildingObject') → [BuildingGeometry3DObject](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject') → [DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Classes\.BuildingGeometry3DObject\<T\>') → Terrain\<T\>
+
+Derived  
+↳ [PlaneTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PlaneTerrain 'DiGi\.Analytical\.Building\.Classes\.PlaneTerrain')  
+↳ [PointCloudTerrain](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.PointCloudTerrain 'DiGi\.Analytical\.Building\.Classes\.PointCloudTerrain')
+
+Implements [DiGi\.Analytical\.Building\.Interfaces\.ITerrain&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain_T_ 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain\<T\>'), [ITerrain](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ITerrain 'DiGi\.Analytical\.Building\.Interfaces\.ITerrain'), [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject'), [IBuildingGeometryObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject'), [IBuildingGuidObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGuidObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGuidObject'), [IBuildingSerializableObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingSerializableObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingSerializableObject'), [IBuildingObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalObject'), [DiGi\.Core\.Interfaces\.IObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iobject 'DiGi\.Core\.Interfaces\.IObject'), [DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject'), [DiGi\.Core\.Interfaces\.ICloneableObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1')[DiGi\.Core\.Interfaces\.ISerializableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iserializableobject 'DiGi\.Core\.Interfaces\.ISerializableObject')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject-1 'DiGi\.Core\.Interfaces\.ICloneableObject\`1'), [DiGi\.Core\.Interfaces\.ICloneableObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.icloneableobject 'DiGi\.Core\.Interfaces\.ICloneableObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticalguidobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalGuidObject'), [DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.interfaces.ianalyticaluniqueobject 'DiGi\.Analytical\.Interfaces\.IAnalyticalUniqueObject'), [DiGi\.Core\.Interfaces\.IUniqueObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iuniqueobject 'DiGi\.Core\.Interfaces\.IUniqueObject'), [DiGi\.Core\.Interfaces\.IGuidObject](https://learn.microsoft.com/en-us/dotnet/api/digi.core.interfaces.iguidobject 'DiGi\.Core\.Interfaces\.IGuidObject'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject_T_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\<T\>'), [DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject&lt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometryObject_TGeometry_ 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometryObject\<TGeometry\>'), [DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.core.interfaces.igeometryobject-1 'DiGi\.Geometry\.Object\.Core\.Interfaces\.IGeometryObject\`1'), [DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject&lt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.object.spatial.interfaces.igeometry3dobject-1 'DiGi\.Geometry\.Object\.Spatial\.Interfaces\.IGeometry3DObject\`1')
+### Constructors
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(DiGi.Analytical.Building.Classes.Terrain_T_)'></a>
+
+## Terrain\(Terrain\<T\>\) Constructor
+
+Initializes a new instance of the [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') class using the specified terrain object\.
+
+```csharp
+public Terrain(DiGi.Analytical.Building.Classes.Terrain<T>? terrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(DiGi.Analytical.Building.Classes.Terrain_T_).terrain'></a>
+
+`terrain` [DiGi\.Analytical\.Building\.Classes\.Terrain&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')
+
+The source terrain instance from which to initialize this instance\.
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(System.Guid,DiGi.Analytical.Building.Classes.Terrain_T_)'></a>
+
+## Terrain\(Guid, Terrain\<T\>\) Constructor
+
+Initializes a new instance of the [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') class with a specified unique identifier and an existing terrain object\.
+
+```csharp
+public Terrain(System.Guid guid, DiGi.Analytical.Building.Classes.Terrain<T>? terrain);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(System.Guid,DiGi.Analytical.Building.Classes.Terrain_T_).guid'></a>
+
+`guid` [System\.Guid](https://learn.microsoft.com/en-us/dotnet/api/system.guid 'System\.Guid')
+
+The unique global identifier for the terrain object\.
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(System.Guid,DiGi.Analytical.Building.Classes.Terrain_T_).terrain'></a>
+
+`terrain` [DiGi\.Analytical\.Building\.Classes\.Terrain&lt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')[T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')[&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>')
+
+The existing terrain object to initialize from\.
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(System.Text.Json.Nodes.JsonObject)'></a>
+
+## Terrain\(JsonObject\) Constructor
+
+Initializes a new instance of the [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') class using the specified JSON object\.
+
+```csharp
+public Terrain(System.Text.Json.Nodes.JsonObject? jsonObject);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(System.Text.Json.Nodes.JsonObject).jsonObject'></a>
+
+`jsonObject` [System\.Text\.Json\.Nodes\.JsonObject](https://learn.microsoft.com/en-us/dotnet/api/system.text.json.nodes.jsonobject 'System\.Text\.Json\.Nodes\.JsonObject')
+
+The JSON object containing the data used to initialize the terrain instance\.
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(T)'></a>
+
+## Terrain\(T\) Constructor
+
+Initializes a new instance of the [Terrain&lt;T&gt;](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_ 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>') class using the specified geometry\.
+
+```csharp
+public Terrain(T? geometry);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.Terrain_T_.Terrain(T).geometry'></a>
+
+`geometry` [T](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.Terrain_T_.T 'DiGi\.Analytical\.Building\.Classes\.Terrain\<T\>\.T')
+
+The geometry to be assigned to the terrain instance\.
 
 <a name='DiGi.Analytical.Building.Classes.Wall_T_'></a>
 

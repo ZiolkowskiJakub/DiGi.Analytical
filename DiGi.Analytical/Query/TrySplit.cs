@@ -18,7 +18,7 @@ namespace DiGi.Analytical
         /// <param name="result">When this method returns, contains a <see cref="List{Face}"/> of the resulting split faces if successful; otherwise, null.</param>
         /// <param name="tolerance">The <see cref="double"/> value representing the distance tolerance for intersection calculations.</param>
         /// <returns>A <see cref="bool"/> value indicating whether the face was successfully split.</returns>
-        public static bool TrySplit(this Face? face, IEnumerable<Face>? faces, out List<Face>? result, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this Face? face, IEnumerable<Face>? faces, out List<Face>? result, double tolerance = Core.Constants.Tolerance.Distance)
         {
             result = null;
 
@@ -99,7 +99,7 @@ namespace DiGi.Analytical
         /// <param name="result">When this method returns, contains the resulting <see cref="Shell"/> if the operation succeeded; otherwise, null.</param>
         /// <param name="tolerance">A <see cref="double"/> value specifying the distance tolerance.</param>
         /// <returns>A <see cref="bool"/> value indicating whether the split was successful.</returns>
-        public static bool TrySplit(this Shell? shell, IEnumerable<Shell>? shells, out Shell? result, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this Shell? shell, IEnumerable<Shell>? shells, out Shell? result, double tolerance = Core.Constants.Tolerance.Distance)
         {
             result = null;
 
@@ -199,7 +199,7 @@ namespace DiGi.Analytical
         /// <param name="result">When this method returns, contains the <see cref="List{Shell}"/> of resulting shells if the operation succeeded; otherwise, null.</param>
         /// <param name="tolerance">The <see cref="double"/> tolerance value used to determine splitting boundaries.</param>
         /// <returns>A <see cref="bool"/> value indicating whether the split was successful.</returns>
-        public static bool TrySplit(this IEnumerable<Shell>? shells, out List<Shell>? result, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this IEnumerable<Shell>? shells, out List<Shell>? result, double tolerance = Core.Constants.Tolerance.Distance)
         {
             result = null;
 
@@ -280,7 +280,7 @@ namespace DiGi.Analytical
         /// <remarks>
         /// The resulting shells describe geometry only. Writing them back into an analytical model, so that the components bounding the split spaces are rebuilt, is done by the updaters of DiGi.Analytical.Building - see BuildingModelShellsUpdater and BuildingModel.TrySplit.
         /// </remarks>
-        public static bool TrySplit(this Plane? plane, Shell? shell, out List<Shell>? result, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this Plane? plane, Shell? shell, out List<Shell>? result, double tolerance = Core.Constants.Tolerance.Distance)
         {
             result = null;
 
@@ -325,7 +325,7 @@ namespace DiGi.Analytical
                 }
             }
 
-            if (!DiGi.Core.Query.Filter(faces_Split, x => Geometry.Spatial.Query.Above(plane, x?.GetBoundingBox()?.GetCentroid(), tolerance), out List<Face>? faces_Above, out List<Face>? faces_Below))
+            if (!Core.Query.Filter(faces_Split, x => Geometry.Spatial.Query.Above(plane, x?.GetBoundingBox()?.GetCentroid(), tolerance), out List<Face>? faces_Above, out List<Face>? faces_Below))
             {
                 return false;
             }
@@ -414,7 +414,7 @@ namespace DiGi.Analytical
         /// <param name="result">When this method returns, contains a <see cref="List{Face}"/> of the resulting faces if the operation succeeded; otherwise, null.</param>
         /// <param name="tolerance">The <see cref="double"/> distance tolerance used for intersection calculations.</param>
         /// <returns>A <see cref="bool"/> value indicating whether the split was successful.</returns>
-        public static bool TrySplit(this Plane? plane, Face? face, out List<Face>? result, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
+        public static bool TrySplit(this Plane? plane, Face? face, out List<Face>? result, double tolerance = Core.Constants.Tolerance.Distance)
         {
             result = null;
 

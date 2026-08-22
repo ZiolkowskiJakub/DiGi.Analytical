@@ -503,6 +503,97 @@ public static class Query
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Query
 ### Methods
 
+<a name='DiGi.Analytical.Building.Query.Footprints(thisDiGi.Analytical.Building.Classes.BuildingModel,double)'></a>
+
+## Query\.Footprints\(this BuildingModel, double\) Method
+
+Gets the outline a building model occupies on the ground, as the shapes its components cover when seen from above\.
+
+Openings within the outline are kept, so a building around a courtyard gives a face with the courtyard as an internal edge.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Geometry.Planar.Classes.PolygonalFace2D>? Footprints(this DiGi.Analytical.Building.Classes.BuildingModel? buildingModel, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisDiGi.Analytical.Building.Classes.BuildingModel,double).buildingModel'></a>
+
+`buildingModel` [BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')
+
+The building model to get the outline of\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisDiGi.Analytical.Building.Classes.BuildingModel,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used for the projection, and the smallest area a projected component must cover to count\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The outline of the building model, an empty list when none of its components covers any ground, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the building model is null\.
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double)'></a>
+
+## Query\.Footprints\(this IEnumerable\<BuildingModel\>, double\) Method
+
+Gets the outlines a collection of building models occupies on the ground \(see [Footprints\(this BuildingModel, double\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Footprints(thisDiGi.Analytical.Building.Classes.BuildingModel,double) 'DiGi\.Analytical\.Building\.Query\.Footprints\(this DiGi\.Analytical\.Building\.Classes\.BuildingModel, double\)')\)\.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Geometry.Planar.Classes.PolygonalFace2D>? Footprints(this System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Classes.BuildingModel>? buildingModels, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double).buildingModels'></a>
+
+`buildingModels` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[BuildingModel](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The building models to get the outlines of\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Classes.BuildingModel_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used for the projection, and the smallest area a projected component must cover to count\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The outlines of all the building models, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the collection is null\.
+
+### Remarks
+The outlines are only joined per building, never across buildings, so each building keeps its own face and two buildings sharing a party wall stay two faces\.
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.IComponent_,double)'></a>
+
+## Query\.Footprints\(this IEnumerable\<IComponent\>, double\) Method
+
+Gets the outline a collection of building components occupies on the ground, as the joined shapes they cover when seen from above\.
+
+```csharp
+public static System.Collections.Generic.List<DiGi.Geometry.Planar.Classes.PolygonalFace2D>? Footprints(this System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Interfaces.IComponent>? components, double tolerance=1E-06);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.IComponent_,double).components'></a>
+
+`components` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The components to get the outline of\. This value can be null\.
+
+<a name='DiGi.Analytical.Building.Query.Footprints(thisSystem.Collections.Generic.IEnumerable_DiGi.Analytical.Building.Interfaces.IComponent_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used for the projection, and the smallest area a projected component must cover to count\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.planar.classes.polygonalface2d 'DiGi\.Geometry\.Planar\.Classes\.PolygonalFace2D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+The outline of the components, an empty list when none of them covers any ground, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the collection is null\.
+
+### Remarks
+This is the overload to call when the components are already at hand: [GetComponents&lt;TComponent&gt;\(\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_() 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetComponents\<TComponent\>\(\)') hands out a clone of every component it returns, so reaching the same components through the building model twice pays for them twice\.
+
+A component standing on its edge, a wall above all, covers no ground at all and is left out by the area test rather than by its type, which is what keeps the outline correct for a model whose walls are not vertical.
+
 <a name='DiGi.Analytical.Building.Query.Geometry3D_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject)'></a>
 
 ## Query\.Geometry3D\<TGeometry3D\>\(this IBuildingGeometry3DObject\) Method

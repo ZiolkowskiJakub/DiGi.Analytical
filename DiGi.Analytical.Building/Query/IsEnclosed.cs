@@ -23,7 +23,7 @@ namespace DiGi.Analytical.Building
         /// Checks that every space of a building model is bounded by a closed shell.
         /// <para>The shell of a space is assembled by <see cref="BuildingModel.GetShells{TSpace}(IEnumerable{TSpace}, DiGi.Geometry.Core.Enums.Side?, DiGi.Geometry.Core.Enums.Orientation?, DiGi.Geometry.Core.Enums.Orientation?, double)"/>, which resolves a curve wall into the surface it sweeps, so a model extruded from a footprint and a model converted from CityGML are both covered.</para>
         /// <para>A space contributing no shell - it carries no component, or fewer than the four faces a closed solid needs - fails the check rather than being skipped, since a space without a boundary is exactly the state this is meant to catch.</para>
-        /// <para><paramref name="tolerance"/> is an upper bound, not an exact value: a shell closing at a finer tolerance is enclosed. Welding is not transitive, so a coarser tolerance can merge vertices that were meant to stay apart, collapse the edges between them and report a genuinely closed shell as open - a shell is therefore retried at finer tolerances before it is rejected.</para>
+        /// <para><paramref name="tolerance"/> is an upper bound, not an exact value: a shell closing at a finer tolerance is enclosed. For the default criterion that is now automatic, because <see cref="DiGi.Geometry.Spatial.Query.IsClosed{TPolygonalFace3D}(DiGi.Geometry.Spatial.Classes.Polyhedron{TPolygonalFace3D}?, bool, double)"/> is monotonic in tolerance - a shell closing at a finer value closes at the requested one too. The <paramref name="manifold"/> criterion is scale-relative and is not, so a shell that fails it at the requested tolerance is retried at finer ones through <see cref="DiGi.Geometry.Spatial.Query.ClosingTolerance{TPolygonalFace3D}(DiGi.Geometry.Spatial.Classes.Polyhedron{TPolygonalFace3D}?, IEnumerable{double}?, bool)"/> before it is rejected.</para>
         /// </summary>
         /// <param name="buildingModel">The building model to check.</param>
         /// <param name="manifold">When <see langword="true"/>, every edge of a shell must be used exactly twice, so an edge shared by three or more faces is rejected.</param>
@@ -48,7 +48,7 @@ namespace DiGi.Analytical.Building
                 return false;
             }
 
-            // Ascending and stopping at the requested tolerance, so the retry only ever narrows the welding.
+            // Ascending, so the retry only ever narrows the tolerance.
             double[] tolerances = [Core.Constants.Tolerance.Distance, 1E-05, 0.0001, Core.Constants.Tolerance.MacroDistance, 0.01];
 
             foreach (Shell shell in shells)
@@ -58,17 +58,16 @@ namespace DiGi.Analytical.Building
                     continue;
                 }
 
-                bool closed = false;
-                for (int i = 0; i < tolerances.Length && tolerances[i] < tolerance; i++)
+                // The default criterion is monotonic, so a shell open at the requested tolerance is open at every
+                // finer one and there is nothing to retry. Only the scale-relative manifold criterion can still
+                // succeed further down the ladder.
+                if (!manifold)
                 {
-                    if (shell.IsClosed(manifold, tolerances[i]))
-                    {
-                        closed = true;
-                        break;
-                    }
+                    return false;
                 }
 
-                if (!closed)
+                double? closingTolerance = shell.ClosingTolerance(tolerances, true);
+                if (closingTolerance is null || closingTolerance.Value >= tolerance)
                 {
                     return false;
                 }

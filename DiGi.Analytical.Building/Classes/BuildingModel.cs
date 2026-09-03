@@ -604,7 +604,7 @@ namespace DiGi.Analytical.Building.Classes
                     continue;
                 }
 
-                if (!buildingRelationCluster.TryGetValue(guidReference, out TBuildingGuidObject? result))
+                if (buildingRelationCluster.TryGetValue(guidReference, out TBuildingGuidObject? result))
                 {
                     return result.Clone<TBuildingGuidObject>();
                 }

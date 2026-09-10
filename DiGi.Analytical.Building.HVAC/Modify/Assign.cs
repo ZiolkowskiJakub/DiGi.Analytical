@@ -13,7 +13,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="buildingModel">The <see cref="BuildingModel"/> instance that manages the assignment.</param>
         /// <param name="space">The <see cref="ISpace"/> to which the internal condition is assigned.</param>
         /// <param name="internalCondition">The <see cref="IInternalCondition"/> to be applied to the space.</param>
-        /// <param name="id">An optional unique identifier for the assignment.</param>
+        /// <param name="id">An optional identifier shared by every relation created in one assignment - a group tag rather than a per-relation unique identifier.</param>
         /// <returns>True if the internal condition was successfully assigned; otherwise, false.</returns>
         public static bool Assign(this BuildingModel? buildingModel, ISpace? space, IInternalCondition? internalCondition, string? id = null)
         {

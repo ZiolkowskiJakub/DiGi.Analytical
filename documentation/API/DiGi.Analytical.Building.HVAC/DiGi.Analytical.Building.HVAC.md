@@ -72,7 +72,7 @@ The [DiGi\.Analytical\.Building\.Interfaces\.IInternalCondition](https://learn.m
 
 `id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-An optional unique identifier for the assignment\.
+An optional identifier shared by every relation created in one assignment \- a group tag rather than a per\-relation unique identifier\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
@@ -461,7 +461,7 @@ The enumeration value specifying the profile type, such as [ThermostatProfileTyp
 
 `id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-An optional unique identifier for the internal condition\.
+An optional identifier shared by the internal condition relations created in one assignment \- a group tag rather than a per\-relation unique identifier\. The query keeps the matching relations\.
 
 #### Returns
 [DiGi\.Core\.Classes\.IndexedDoubles](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.indexeddoubles 'DiGi\.Core\.Classes\.IndexedDoubles')  

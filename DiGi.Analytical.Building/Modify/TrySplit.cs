@@ -146,7 +146,7 @@ namespace DiGi.Analytical.Building
         /// <para>Components bounding those spaces are rebuilt out of the split faces: the first part of a component keeps the identifier of the original component, the remaining parts are created as new components of the same type, all of them keeping the construction of the original component. Faces created on the cutting plane become a single <see cref="FaceFloor"/> assigned to <paramref name="floorConstruction"/> (or a single <see cref="SurfaceAir"/> when <paramref name="floorConstruction"/> is null) shared by both spaces; any other face without a source component becomes a <see cref="SurfaceAir"/>.</para>
         /// </summary>
         /// <remarks>
-        /// Openings (windows and doors) hosted by a split component are NOT re-hosted onto the component fragment that geometrically contains them - they stay assigned to the fragment that inherits the identifier of the original component. Re-hosting requires a public counterpart of the currently private BuildingModel.Assign(IComponent, IOpening) method.
+        /// Openings (windows and doors) hosted by a split component are NOT re-hosted onto the component fragment that geometrically contains them - they stay assigned to the fragment that inherits the identifier of the original component. Re-hosting can be performed with <see cref="BuildingModel.Assign(IComponent, IOpening)"/>.
         /// </remarks>
         /// <param name="buildingModel">The <see cref="BuildingModel"/> to be split. The model is modified in place.</param>
         /// <param name="elevation">The elevation the horizontal cutting plane is placed on.</param>

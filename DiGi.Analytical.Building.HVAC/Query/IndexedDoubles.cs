@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building.HVAC
         /// <param name="space">The <see cref="ISpace"/> associated with the data retrieval.</param>
         /// <param name="range">The <see cref="Range{T}"/> of integers defining the index range.</param>
         /// <param name="enum">The enumeration value specifying the profile type, such as <see cref="ThermostatProfileType"/> or <see cref="InternalGainProfileType"/>.</param>
-        /// <param name="id">An optional unique identifier for the internal condition.</param>
+        /// <param name="id">An optional identifier shared by the internal condition relations created in one assignment - a group tag rather than a per-relation unique identifier. The query keeps the matching relations.</param>
         /// <returns>An <see cref="Core.Classes.IndexedDoubles"/> instance if matching data is found; otherwise, <c>null</c>.</returns>
         public static IndexedDoubles? IndexedDoubles(this BuildingModel? buildingModel, ISpace? space, Range<int>? range, System.Enum? @enum, string? id = null)
         {

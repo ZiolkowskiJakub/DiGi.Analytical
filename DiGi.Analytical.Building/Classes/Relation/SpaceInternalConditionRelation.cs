@@ -24,7 +24,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <param name="space">The space associated with this relation.</param>
         /// <param name="internalCondition">The internal condition associated with this relation.</param>
         /// <param name="hourRange">The hour range during which the internal condition applies to the space.</param>
-        /// <param name="id">The unique identifier for the relation.</param>
+        /// <param name="id">The identifier shared by the relations created in one assignment - a group tag rather than a per-relation unique identifier.</param>
         public SpaceInternalConditionRelation(ISpace? space, IInternalCondition? internalCondition, HourRange? hourRange, string? id)
             : base(space, internalCondition)
         {
@@ -68,7 +68,7 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
-        /// Gets the unique identifier of the space internal condition relation.
+        /// Gets the identifier shared by the space internal condition relations created in one assignment - a group tag rather than a per-relation unique identifier.
         /// </summary>
         [JsonIgnore]
         public string? Id

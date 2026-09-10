@@ -57,6 +57,8 @@ namespace DiGi.Analytical.Building.Classes
         public BuildingModel(JsonObject? jsonObject)
             : base(jsonObject)
         {
+            buildingRelationCluster ??= [];
+            buildingInformation ??= new();
         }
 
         /// <summary>
@@ -250,6 +252,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Assigns a collection of spaces to a specified zone within the building model.
+        /// <para>The assignment is all-or-nothing: when any space cannot be stored the method returns <see langword="false"/> and no relation is created, rather than silently creating one over a partial subset of the spaces.</para>
         /// </summary>
         /// <param name="zone">The zone to which the spaces should be assigned. May be null.</param>
         /// <param name="spaces">The collection of spaces to associate with the zone. May be null.</param>
@@ -269,10 +272,12 @@ namespace DiGi.Analytical.Building.Classes
             List<ISpace> spaces_Temp = [];
             foreach (ISpace space in spaces)
             {
-                if (Update(space))
+                if (!Update(space))
                 {
-                    spaces_Temp.Add(space);
+                    return false;
                 }
+
+                spaces_Temp.Add(space);
             }
 
             return buildingRelationCluster.AddRelation(zone, spaces_Temp) != null;
@@ -284,7 +289,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <param name="space">The space object to which the internal condition is assigned.</param>
         /// <param name="internalCondition">The internal condition object to be assigned to the space.</param>
         /// <param name="hourRange">An optional hour range specifying when the internal condition applies.</param>
-        /// <param name="id">An optional unique identifier for the assignment relation.</param>
+        /// <param name="id">An optional identifier shared by every relation created in one assignment - a group tag rather than a per-relation unique identifier. The HVAC IndexedDoubles query filters relations by it and Modify.TrySplit propagates it to the spaces a split creates.</param>
         /// <returns>True if the internal condition was successfully assigned to the space; otherwise, false.</returns>
         public bool Assign(ISpace? space, IInternalCondition? internalCondition, HourRange? hourRange, string? id = null)
         {
@@ -308,12 +313,13 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Assigns a collection of spaces to an internal condition with an optional time range and identifier.
+        /// <para>Succeeds when at least one space was assigned: spaces that cannot be stored are skipped without failing the call, so a <see langword="true"/> result does not mean every space was assigned.</para>
         /// </summary>
         /// <typeparam name="TSpace">The type of the space objects, which must implement <see cref="ISpace"/>.</typeparam>
         /// <param name="spaces">A collection of spaces to be assigned.</param>
         /// <param name="internalCondition">The internal condition to associate with the spaces.</param>
         /// <param name="hourRange">An optional time range during which the assignment is valid.</param>
-        /// <param name="id">An optional unique identifier for the relation.</param>
+        /// <param name="id">An optional identifier shared by every relation the call creates - a group tag rather than a per-relation unique identifier. The HVAC IndexedDoubles query filters relations by it and Modify.TrySplit propagates it to the spaces a split creates.</param>
         /// <returns><c>true</c> if at least one space was successfully assigned; otherwise, <c>false</c>.</returns>
         public bool Assign<TSpace>(IEnumerable<TSpace>? spaces, IInternalCondition? internalCondition, HourRange? hourRange, string? id = null) where TSpace : ISpace
         {
@@ -384,7 +390,7 @@ namespace DiGi.Analytical.Building.Classes
                 return default;
             }
 
-            IComponent? component = buildingRelationCluster?.GetComponent(openingRelation);
+            IComponent? component = buildingRelationCluster.GetComponent(openingRelation);
             if (component == null)
             {
                 return default;
@@ -406,7 +412,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of components of type <typeparamref name="TComponent"/> if found; otherwise, <see langword="null"/>.</returns>
         public List<TComponent>? GetComponents<TComponent>(IPhysicalComponentConstruction? physicalComponentConstruction) where TComponent : IComponent
         {
-            if (buildingRelationCluster == null || physicalComponentConstruction == null)
+            if (physicalComponentConstruction == null)
             {
                 return null;
             }
@@ -436,7 +442,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of CLONED components of type <typeparamref name="TComponent"/> if successful; otherwise, null. Modifying them does not affect the model, pass them through <see cref="Update(IComponent)"/> to store the changes.</returns>
         public List<TComponent>? GetComponents<TComponent>(ISpace? space) where TComponent : IComponent
         {
-            if (buildingRelationCluster == null || space == null)
+            if (space == null)
             {
                 return null;
             }
@@ -469,7 +475,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of components of type <typeparamref name="TComponent"/> if successful; otherwise, <see langword="null"/>.</returns>
         public List<TComponent>? GetComponents<TComponent>(ISpace? space_1, ISpace? space_2) where TComponent : IComponent
         {
-            if (buildingRelationCluster == null || space_1 == null || space_2 == null)
+            if (space_1 == null || space_2 == null)
             {
                 return null;
             }
@@ -534,7 +540,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of internal conditions of type <typeparamref name="TInternalCondition"/> associated with the specified space, or null if no such conditions are found or if the input is null.</returns>
         public List<TInternalCondition>? GetInternalConditions<TInternalCondition>(ISpace? space) where TInternalCondition : IInternalCondition
         {
-            if (buildingRelationCluster == null || space == null)
+            if (space == null)
             {
                 return default;
             }
@@ -586,7 +592,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>The retrieved and cloned building object if found; otherwise, <see langword="null"/>.</returns>
         public TBuildingGuidObject? GetObject<TBuildingGuidObject>(IBuildingRelation? buildingRelation) where TBuildingGuidObject : IBuildingGuidObject
         {
-            if (buildingRelation == null || buildingRelationCluster == null)
+            if (buildingRelation == null)
             {
                 return default;
             }
@@ -619,7 +625,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of objects of type <typeparamref name="TBuildingGuidObject"/> if found; otherwise, null.</returns>
         public List<TBuildingGuidObject>? GetObjects<TBuildingGuidObject>(IBuildingRelation? buildingRelation) where TBuildingGuidObject : IBuildingGuidObject
         {
-            if (buildingRelation == null || buildingRelationCluster == null)
+            if (buildingRelation == null)
             {
                 return null;
             }
@@ -630,7 +636,16 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<TBuildingGuidObject>? result))
+            List<GuidReference> guidReferences = [];
+            foreach (IUniqueReference uniqueReference in uniqueReferences)
+            {
+                if (uniqueReference is GuidReference guidReference_Temp)
+                {
+                    guidReferences.Add(guidReference_Temp);
+                }
+            }
+
+            if (!buildingRelationCluster.TryGetValues(guidReferences, out List<TBuildingGuidObject>? result))
             {
                 return null;
             }
@@ -643,10 +658,10 @@ namespace DiGi.Analytical.Building.Classes
         /// </summary>
         /// <typeparam name="TOpening">The type of opening object to retrieve, which must implement <see cref="IOpening"/>.</typeparam>
         /// <param name="component">The component for which associated openings are retrieved.</param>
-        /// <returns>A list of objects of type <typeparam ref="TOpening"/> if associations are found; otherwise, <see langword="null"/>.</returns>
+        /// <returns>A list of CLONED openings of type <typeparamref name="TOpening"/> if associations are found; otherwise, <see langword="null"/>. Modifying them does not affect the model, pass them through <see cref="Update(IOpening)"/> to store the changes.</returns>
         public List<TOpening>? GetOpenings<TOpening>(IComponent? component) where TOpening : IOpening
         {
-            if (buildingRelationCluster == null || component == null)
+            if (component == null)
             {
                 return null;
             }
@@ -663,26 +678,30 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            if (!buildingRelationCluster.TryGetValues(uniqueReferences.FindAll(x => x is GuidReference).Cast<GuidReference>(), out List<TOpening>? result))
+            List<GuidReference> guidReferences = [];
+            foreach (IUniqueReference uniqueReference in uniqueReferences)
+            {
+                if (uniqueReference is GuidReference guidReference_Temp)
+                {
+                    guidReferences.Add(guidReference_Temp);
+                }
+            }
+
+            if (!buildingRelationCluster.TryGetValues(guidReferences, out List<TOpening>? result))
             {
                 return null;
             }
 
-            return result;
+            return result.CloneAndFilterNulls();
         }
 
         /// <summary>Retrieves a list of openings that match the specified criteria.</summary>
         /// <typeparam name="TOpening">The type of opening to retrieve, which must implement <see cref="IOpening"/>.</typeparam>
         /// <param name="func">An optional predicate used to filter the retrieved openings.</param>
-        /// <returns>A list of openings matching the criteria, or null if the building relation cluster is not available.</returns>
+        /// <returns>A list of CLONED openings matching the criteria, or null if no opening matches.</returns>
         public List<TOpening>? GetOpenings<TOpening>(Func<TOpening?, bool>? func = null) where TOpening : IOpening
         {
-            if (buildingRelationCluster == null)
-            {
-                return null;
-            }
-
-            return buildingRelationCluster?.GetValues(func)?.CloneAndFilterNulls();
+            return buildingRelationCluster.GetValues(func)?.CloneAndFilterNulls();
         }
 
         /// <summary>
@@ -693,7 +712,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of openings of type <typeparam ref="TOpening"/> associated with the provided construction, or null if no such openings are found or if inputs are null.</returns>
         public List<TOpening>? GetOpenings<TOpening>(IOpeningConstruction? openingConstruction) where TOpening : IOpening
         {
-            if (buildingRelationCluster == null || openingConstruction == null)
+            if (openingConstruction == null)
             {
                 return null;
             }
@@ -726,7 +745,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A cloned instance of <typeparamref name="TBuildingRelation"/> if a matching relation is found; otherwise, <c>null</c>.</returns>
         public TBuildingRelation? GetRelation<TBuildingRelation>(IBuildingGuidObject? buildingUniqueObject, Func<TBuildingRelation?, bool>? func = null) where TBuildingRelation : IBuildingRelation
         {
-            if (buildingUniqueObject == null || buildingRelationCluster == null)
+            if (buildingUniqueObject == null)
             {
                 return default;
             }
@@ -756,7 +775,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of matching <typeparamref name="TBuildingRelation"/> instances, or <see langword="null"/> if no relations exist or the input object is null.</returns>
         public List<TBuildingRelation>? GetRelations<TBuildingRelation>(IBuildingGuidObject? buildingUniqueObject, Func<TBuildingRelation?, bool>? func = null) where TBuildingRelation : IBuildingRelation
         {
-            if (buildingUniqueObject == null || buildingRelationCluster == null)
+            if (buildingUniqueObject == null)
             {
                 return null;
             }
@@ -789,6 +808,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Retrieves a shell associated with the specified space based on the provided criteria.
         /// <para>The shell carries a <see cref="GuidReference"/> of the space and every one of its faces carries a <see cref="GuidReference"/> of the component it was built from, which is what lets the shell be written back into the model by <see cref="BuildingModelShellUpdater"/> after it was processed geometrically.</para>
+        /// <para>Throws <see cref="InvalidOperationException"/> when the space yields no shell face - see <see cref="GetShells{TSpace}(IEnumerable{TSpace}, Side?, Orientation?, Orientation?, double)"/>.</para>
         /// </summary>
         /// <param name="space">The space from which to retrieve the shell.</param>
         /// <param name="normalSide">The optional side or orientation of the boundary.</param>
@@ -803,12 +823,14 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            return GetShells([space], normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)?.FirstOrDefault();
+            return CreateShell(space, normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance);
         }
 
         /// <summary>
         /// Retrieves a list of shells associated with the specified spaces, applying optional filters for side orientation, edge orientations, and geometric tolerance.
         /// <para>Every shell carries a <see cref="GuidReference"/> of its space and every face a <see cref="GuidReference"/> of the component it was built from; components whose geometry is not a polygonal face are skipped.</para>
+        /// <para>A space none of whose components yields a polygonal face - it carries no component or only components of other geometry - throws <see cref="InvalidOperationException"/> rather than emitting a zero-face shell. A space that carries no space relation at all is skipped.</para>
+        /// <para>The shells are built by reading the stored components directly; only the face geometry is cloned, so the shells are detached from the model but building them does not clone the components.</para>
         /// </summary>
         /// <typeparam name="TSpace">The type of space objects, which must implement <see cref="ISpace"/>.</typeparam>
         /// <param name="spaces">A collection of spaces to process.</param>
@@ -827,34 +849,8 @@ namespace DiGi.Analytical.Building.Classes
             List<Shell> result = [];
             foreach (TSpace space in spaces)
             {
-                if (GetComponents<IComponent>(space) is not List<IComponent> components)
-                {
-                    continue;
-                }
-
-                List<Face> faces = [];
-                foreach (IComponent component in components)
-                {
-                    if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
-                    {
-                        continue;
-                    }
-
-                    faces.Add(new Face(new GuidReference(component), polygonalFace3D));
-                }
-
-                Shell? shell = new(new GuidReference(space), faces);
-
-                if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
-                {
-                    PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationSolver = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
-                    {
-                        Value = shell
-                    };
-                    polyhedronNormalizationSolver.Update();
-                }
-
-                if (shell is null)
+                Shell? shell = CreateShell(space, normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance);
+                if (shell == null)
                 {
                     continue;
                 }
@@ -867,6 +863,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Retrieves the shells for all spaces of type <typeparamref name="TSpace" /> within the building model.
+        /// <para>Throws <see cref="InvalidOperationException"/> for a space that yields no shell face - see <see cref="GetShells{TSpace}(IEnumerable{TSpace}, Side?, Orientation?, Orientation?, double)"/>.</para>
         /// </summary>
         /// <typeparam name="TSpace">The type of space that implements the <see cref="ISpace" /> interface.</typeparam>
         /// <param name="normalSide">Optional specification for the side or orientation of boundary normals.</param>
@@ -876,7 +873,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <returns>A list of <see cref="Shell" /> objects if spaces are found; otherwise, null.</returns>
         public List<Shell>? GetShells<TSpace>(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constants.Tolerance.Distance) where TSpace : ISpace
         {
-            IEnumerable<TSpace>? spaces = buildingRelationCluster.GetSpaces<TSpace>()?.CloneAndFilterNulls();
+            IEnumerable<TSpace>? spaces = buildingRelationCluster.GetSpaces<TSpace>();
             if (spaces is null)
             {
                 return null;
@@ -886,13 +883,67 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Builds the shell of a single space from the geometry of its stored components.
+        /// </summary>
+        /// <typeparam name="TSpace">The type of the space, which must implement <see cref="ISpace"/>.</typeparam>
+        /// <param name="space">The space to build the shell of.</param>
+        /// <param name="normalSide">Optional specification for the side or orientation of a boundary.</param>
+        /// <param name="externalEdgeOrientation">Optional specification for the orientation of external edges.</param>
+        /// <param name="internalEdgeOrientation">Optional specification for the orientation of internal edges.</param>
+        /// <param name="tolerance">The distance tolerance used for geometric operations.</param>
+        /// <returns>The built <see cref="Shell"/>, or <see langword="null"/> when the space carries no space relation.</returns>
+        private Shell? CreateShell<TSpace>(TSpace space, Side? normalSide, Orientation? externalEdgeOrientation, Orientation? internalEdgeOrientation, double tolerance) where TSpace : ISpace
+        {
+            List<SpaceRelation>? spaceRelations = buildingRelationCluster.GetRelations<SpaceRelation>(space);
+            if (spaceRelations == null || spaceRelations.Count == 0)
+            {
+                return null;
+            }
+
+            List<Face> faces = [];
+            foreach (SpaceRelation spaceRelation in spaceRelations)
+            {
+                IComponent? component = buildingRelationCluster.GetComponent(spaceRelation);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
+                {
+                    continue;
+                }
+
+                faces.Add(new Face(new GuidReference(component), polygonalFace3D));
+            }
+
+            if (faces.Count == 0)
+            {
+                throw new InvalidOperationException(string.Format("The space {0} yields no shell face - none of its components carries a polygonal face geometry.", space.Guid));
+            }
+
+            Shell shell = new(new GuidReference(space), faces);
+
+            if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
+            {
+                PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationSolver = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
+                {
+                    Value = shell
+                };
+                polyhedronNormalizationSolver.Update();
+            }
+
+            return shell;
+        }
+
+        /// <summary>
         /// Retrieves the internal conditions associated with the specified space.
         /// </summary>
         /// <param name="space">The space for which to retrieve internal conditions.</param>
         /// <returns>A list of <see cref="SpaceInternalCondition"/> objects if found; otherwise, null.</returns>
         public List<SpaceInternalCondition>? GetSpaceInternalConditions(ISpace? space)
         {
-            if (buildingRelationCluster == null || space == null)
+            if (space == null)
             {
                 return default;
             }
@@ -936,7 +987,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            List<ISpace>? spaces = buildingRelationCluster?.GetSpaces(zoneRelation);
+            List<ISpace>? spaces = buildingRelationCluster.GetSpaces(zoneRelation);
             if (spaces == null)
             {
                 return null;
@@ -964,7 +1015,7 @@ namespace DiGi.Analytical.Building.Classes
                 return null;
             }
 
-            List<ISpace>? spaces = buildingRelationCluster?.GetSpaces(spaceRelation);
+            List<ISpace>? spaces = buildingRelationCluster.GetSpaces(spaceRelation);
             if (spaces == null)
             {
                 return null;
@@ -1077,7 +1128,7 @@ namespace DiGi.Analytical.Building.Classes
             }
 
             List<IComponent>? components = buildingRelationCluster.GetValues<IComponent>();
-            if (components == null || components.Count() == 0)
+            if (components == null || components.Count == 0)
             {
                 return false;
             }
@@ -1199,7 +1250,7 @@ namespace DiGi.Analytical.Building.Classes
         {
             buildingUniqueObject = default;
 
-            if (guidReference is null || buildingRelationCluster is null)
+            if (guidReference is null)
             {
                 return false;
             }
@@ -1217,6 +1268,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Unassigns a component from a specific space by removing the association between them.
         /// <para>The component itself stays in the model; when the space was its last one the whole space relation is dropped, leaving the component unassigned.</para>
+        /// <para>Returns <see langword="false"/> and leaves the relation untouched when the space is not among the spaces the component is assigned to.</para>
         /// </summary>
         /// <param name="component">The component to be unassigned.</param>
         /// <param name="space">The space from which the component should be removed.</param>
@@ -1229,15 +1281,13 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            SpaceRelation? spaceRelation = GetRelation<SpaceRelation>(component);
+            SpaceRelation? spaceRelation = buildingRelationCluster.GetRelation<SpaceRelation>(component);
             if (spaceRelation == null)
             {
                 return false;
             }
 
-            GuidReference guidReference = new(space);
-
-            if (!spaceRelation.Remove(RelationSide.To, guidReference))
+            if (!spaceRelation.Remove(RelationSide.To, new GuidReference(space)))
             {
                 return false;
             }
@@ -1253,6 +1303,7 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Unassigns a space from a specific zone within the building model.
+        /// <para>Returns <see langword="false"/> and leaves the relation untouched when the space is not among the spaces assigned to the zone.</para>
         /// </summary>
         /// <param name="zone">The zone from which the space should be unassigned. Can be null.</param>
         /// <param name="space">The space to be removed from the zone's association. Can be null.</param>
@@ -1264,15 +1315,13 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            ZoneRelation? zoneRelation = GetRelation<ZoneRelation>(zone);
+            ZoneRelation? zoneRelation = buildingRelationCluster.GetRelation<ZoneRelation>(zone);
             if (zoneRelation == null)
             {
                 return false;
             }
 
-            GuidReference guidReference = new(space);
-
-            if (!zoneRelation.Remove(RelationSide.To, guidReference))
+            if (!zoneRelation.Remove(RelationSide.To, new GuidReference(space)))
             {
                 return false;
             }
@@ -1288,10 +1337,12 @@ namespace DiGi.Analytical.Building.Classes
 
         /// <summary>
         /// Unassigns a component from a specific opening.
+        /// <para>Returns <see langword="false"/> and leaves the relation untouched when the opening is not among the openings hosted by the component - only the requested opening's reference is removed, the component's other openings stay.</para>
         /// </summary>
         /// <param name="component">The component to be unassigned.</param>
         /// <param name="opening">The opening from which the component is being removed.</param>
         /// <returns>True if the unassignment was successful; otherwise, false.</returns>
+        /// <seealso cref="Assign(IComponent, IOpening)"/>
         public bool Unassign(IComponent? component, IOpening? opening)
         {
             if (component == null || opening == null)
@@ -1299,25 +1350,21 @@ namespace DiGi.Analytical.Building.Classes
                 return false;
             }
 
-            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(component);
+            OpeningRelation? openingRelation = buildingRelationCluster.GetRelation<OpeningRelation>(component);
             if (openingRelation == null)
             {
                 return false;
             }
 
-            List<IUniqueReference>? uniqueReferences = openingRelation?.UniqueReferences_To;
-            if (uniqueReferences == null)
+            if (!openingRelation.Remove(RelationSide.To, new GuidReference(opening)))
             {
                 return false;
             }
 
-            if (uniqueReferences.Count == 1)
+            List<IUniqueReference>? uniqueReferences = openingRelation.UniqueReferences_To;
+            if (uniqueReferences == null || uniqueReferences.Count == 0)
             {
                 buildingRelationCluster.Remove(openingRelation);
-            }
-            else
-            {
-                openingRelation!.Remove(RelationSide.To, new GuidReference(opening));
             }
 
             return true;
@@ -1504,6 +1551,8 @@ namespace DiGi.Analytical.Building.Classes
 
             List<ISpace>? spaces = GetSpaces(air);
 
+            IAir? air_Clone = air.Clone<IAir>();
+
             if (!Remove(air))
             {
                 return false;
@@ -1511,12 +1560,18 @@ namespace DiGi.Analytical.Building.Classes
 
             if (!Update(physicalComponent_Temp))
             {
+                buildingRelationCluster.Add(air_Clone);
+                if (spaces != null && spaces.Count != 0)
+                {
+                    buildingRelationCluster.AddRelation(air_Clone, spaces[0], spaces.Count > 1 ? spaces[1] : null);
+                }
+
                 return false;
             }
 
             if (spaces != null && spaces.Count != 0)
             {
-                Assign(physicalComponent_Temp, spaces[0], spaces.Count > 1 ? spaces[1] : null);
+                buildingRelationCluster.AddRelation(physicalComponent_Temp, spaces[0], spaces.Count > 1 ? spaces[1] : null);
             }
 
             physicalComponent = physicalComponent_Temp;
@@ -1524,7 +1579,15 @@ namespace DiGi.Analytical.Building.Classes
             return true;
         }
 
-        private bool Assign(IComponent? component, IOpening? opening)
+        /// <summary>
+        /// Hosts the specified opening on the component within the building model.
+        /// <para>The opening is REMOVED from the component that hosted it before, when there is one, and added to the openings of this component; the component's existing openings stay. Both objects are stored by this method, there is no need to pass them through <see cref="Update(IComponent)"/> beforehand.</para>
+        /// </summary>
+        /// <param name="component">The component to host the opening.</param>
+        /// <param name="opening">The opening to be hosted on the component.</param>
+        /// <returns>True if the opening was successfully hosted on the component; otherwise, false.</returns>
+        /// <seealso cref="Unassign(IComponent, IOpening)"/>
+        public bool Assign(IComponent? component, IOpening? opening)
         {
             if (component == null || opening == null)
             {
@@ -1543,45 +1606,31 @@ namespace DiGi.Analytical.Building.Classes
 
             GuidReference guidReference = new(opening);
 
-            OpeningRelation? openingRelation = GetRelation<OpeningRelation>(opening);
-            if (openingRelation != null)
+            OpeningRelation? openingRelation_Opening = buildingRelationCluster.GetRelation<OpeningRelation>(opening);
+            if (openingRelation_Opening != null)
             {
-                List<IUniqueReference>? uniqueReferences = openingRelation.UniqueReferences_To;
-                if (uniqueReferences != null)
+                if (openingRelation_Opening.Remove(RelationSide.To, guidReference))
                 {
-                    if (uniqueReferences.Count == 1)
+                    List<IUniqueReference>? uniqueReferences_Opening = openingRelation_Opening.UniqueReferences_To;
+                    if (uniqueReferences_Opening == null || uniqueReferences_Opening.Count == 0)
                     {
-                        buildingRelationCluster.Remove(openingRelation);
-                    }
-                    else
-                    {
-                        openingRelation.Remove(RelationSide.To, guidReference);
+                        buildingRelationCluster.Remove(openingRelation_Opening);
                     }
                 }
             }
 
-            List<IOpening>? openings = null;
-
-            openingRelation = GetRelation<OpeningRelation>(component);
-            if (openingRelation != null)
+            OpeningRelation? openingRelation_Component = buildingRelationCluster.GetRelation<OpeningRelation>(component);
+            if (openingRelation_Component == null)
             {
-                buildingRelationCluster.Remove(openingRelation);
-
-                buildingRelationCluster.TryGetValues(openingRelation.UniqueReferences_To?.FindAll(x => x is GuidReference).Cast<GuidReference>(), out openings);
+                return buildingRelationCluster.AddRelation(new OpeningRelation(component, opening)) != null;
             }
 
-            openings ??= [];
-
-            openings.Add(opening);
-
-            buildingRelationCluster.AddRelation(new OpeningRelation(component, openings));
-
-            return true;
+            return openingRelation_Component.Add(RelationSide.To, guidReference);
         }
 
         private TOpeningConstruction? GetOpeningConstruction<TOpeningConstruction>(IOpening? opening) where TOpeningConstruction : IOpeningConstruction
         {
-            if (buildingRelationCluster == null || opening == null)
+            if (opening == null)
             {
                 return default;
             }
@@ -1603,7 +1652,7 @@ namespace DiGi.Analytical.Building.Classes
 
         private TPhysicalComponentConstruction? GetPhysicalComponentConstruction<TPhysicalComponentConstruction>(IPhysicalComponent? physicalComponent) where TPhysicalComponentConstruction : IPhysicalComponentConstruction
         {
-            if (buildingRelationCluster == null || physicalComponent == null)
+            if (physicalComponent == null)
             {
                 return default;
             }

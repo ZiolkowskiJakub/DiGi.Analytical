@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Building.Classes
     /// <para>The type of the rebuilt component follows the type of the source component: <see cref="IWall"/> becomes a <see cref="SurfaceWall"/>, <see cref="IFloor"/> a <see cref="FaceFloor"/>, <see cref="IRoof"/> a <see cref="SurfaceRoof"/> and <see cref="IAir"/> a <see cref="SurfaceAir"/>.</para>
     /// </summary>
     /// <remarks>
-    /// Openings (windows and doors) hosted by the source component are NOT re-hosted by this updater. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component. Re-hosting requires a public counterpart of the currently private BuildingModel.Assign(IComponent, IOpening) method.
+    /// Openings (windows and doors) hosted by the source component are NOT re-hosted by this updater. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component. Re-hosting can be performed with <see cref="BuildingModel.Assign(IComponent, IOpening)"/>.
     /// </remarks>
     /// <seealso cref="BuildingModelShellUpdater"/>
     public class BuildingModelFaceUpdater : BuildingModelUpdater

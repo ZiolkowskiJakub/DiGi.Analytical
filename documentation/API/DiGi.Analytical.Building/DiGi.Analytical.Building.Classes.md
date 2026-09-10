@@ -1035,6 +1035,38 @@ public DiGi.Analytical.Building.Classes.BuildingInformation BuildingInformation 
 [BuildingInformation](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingInformation 'DiGi\.Analytical\.Building\.Classes\.BuildingInformation')
 ### Methods
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening)'></a>
+
+## BuildingModel\.Assign\(IComponent, IOpening\) Method
+
+Hosts the specified opening on the component within the building model\.
+
+The opening is REMOVED from the component that hosted it before, when there is one, and added to the openings of this component; the component's existing openings stay. Both objects are stored by this method, there is no need to pass them through [Update\(IComponent\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IComponent) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)') beforehand.
+
+```csharp
+public bool Assign(DiGi.Analytical.Building.Interfaces.IComponent? component, DiGi.Analytical.Building.Interfaces.IOpening? opening);
+```
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening).component'></a>
+
+`component` [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')
+
+The component to host the opening\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening).opening'></a>
+
+`opening` [IOpening](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IOpening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')
+
+The opening to be hosted on the component\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the opening was successfully hosted on the component; otherwise, false\.
+
+### See Also
+- [Unassign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Unassign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Unassign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)')
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
 ## BuildingModel\.Assign\(IComponent, ISpace, ISpace\) Method
@@ -1187,7 +1219,7 @@ An optional hour range specifying when the internal condition applies\.
 
 `id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-An optional unique identifier for the assignment relation\.
+An optional identifier shared by every relation created in one assignment \- a group tag rather than a per\-relation unique identifier\. The HVAC IndexedDoubles query filters relations by it and Modify\.TrySplit propagates it to the spaces a split creates\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
@@ -1253,6 +1285,8 @@ True if the assignment was successfully created; otherwise, false\.
 
 Assigns a collection of spaces to a specified zone within the building model\.
 
+The assignment is all-or-nothing: when any space cannot be stored the method returns [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') and no relation is created, rather than silently creating one over a partial subset of the spaces.
+
 ```csharp
 public bool Assign(DiGi.Analytical.Building.Interfaces.IZone? zone, System.Collections.Generic.IEnumerable<DiGi.Analytical.Building.Interfaces.ISpace>? spaces);
 ```
@@ -1279,6 +1313,8 @@ True if the assignment was successful and the relation was created; otherwise, f
 ## BuildingModel\.Assign\<TSpace\>\(IEnumerable\<TSpace\>, IInternalCondition, HourRange, string\) Method
 
 Assigns a collection of spaces to an internal condition with an optional time range and identifier\.
+
+Succeeds when at least one space was assigned: spaces that cannot be stored are skipped without failing the call, so a [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') result does not mean every space was assigned.
 
 ```csharp
 public bool Assign<TSpace>(System.Collections.Generic.IEnumerable<TSpace>? spaces, DiGi.Analytical.Building.Interfaces.IInternalCondition? internalCondition, DiGi.Analytical.Classes.HourRange? hourRange, string? id=null)
@@ -1315,7 +1351,7 @@ An optional time range during which the assignment is valid\.
 
 `id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-An optional unique identifier for the relation\.
+An optional identifier shared by every relation the call creates \- a group tag rather than a per\-relation unique identifier\. The HVAC IndexedDoubles query filters relations by it and Modify\.TrySplit propagates it to the spaces a split creates\.
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
@@ -1362,6 +1398,59 @@ True if the air was replaced by the physical component; otherwise, false\.
 
 ### See Also
 - [Assign\(IComponent, ISpace, ISpace\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace,DiGi.Analytical.Building.Interfaces.ISpace) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.ISpace, DiGi\.Analytical\.Building\.Interfaces\.ISpace\)')
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double)'></a>
+
+## BuildingModel\.CreateShell\<TSpace\>\(TSpace, Nullable\<Side\>, Nullable\<Orientation\>, Nullable\<Orientation\>, double\) Method
+
+Builds the shell of a single space from the geometry of its stored components\.
+
+```csharp
+private DiGi.Analytical.Classes.Shell? CreateShell<TSpace>(TSpace space, System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation, double tolerance)
+    where TSpace : DiGi.Analytical.Building.Interfaces.ISpace;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).TSpace'></a>
+
+`TSpace`
+
+The type of the space, which must implement [ISpace](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.ISpace 'DiGi\.Analytical\.Building\.Interfaces\.ISpace')\.
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).space'></a>
+
+`space` [TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.CreateShell\<TSpace\>\(TSpace, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)\.TSpace')
+
+The space to build the shell of\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).normalSide'></a>
+
+`normalSide` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[DiGi\.Geometry\.Core\.Enums\.Side](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.core.enums.side 'DiGi\.Geometry\.Core\.Enums\.Side')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+Optional specification for the side or orientation of a boundary\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).externalEdgeOrientation'></a>
+
+`externalEdgeOrientation` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[DiGi\.Geometry\.Core\.Enums\.Orientation](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.core.enums.orientation 'DiGi\.Geometry\.Core\.Enums\.Orientation')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+Optional specification for the orientation of external edges\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).internalEdgeOrientation'></a>
+
+`internalEdgeOrientation` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[DiGi\.Geometry\.Core\.Enums\.Orientation](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.core.enums.orientation 'DiGi\.Geometry\.Core\.Enums\.Orientation')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+Optional specification for the orientation of internal edges\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.CreateShell_TSpace_(TSpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance used for geometric operations\.
+
+#### Returns
+[DiGi\.Analytical\.Classes\.Shell](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.shell 'DiGi\.Analytical\.Classes\.Shell')  
+The built [DiGi\.Analytical\.Classes\.Shell](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.classes.shell 'DiGi\.Analytical\.Classes\.Shell'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the space carries no space relation\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetBoundingBox()'></a>
 
@@ -1710,7 +1799,7 @@ The component for which associated openings are retrieved\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TOpening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetOpenings_TOpening_(DiGi.Analytical.Building.Interfaces.IComponent).TOpening 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetOpenings\<TOpening\>\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)\.TOpening')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of objects of type \<typeparam ref="TOpening" /\> if associations are found; otherwise, [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null')\.
+A list of CLONED openings of type [TOpening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetOpenings_TOpening_(DiGi.Analytical.Building.Interfaces.IComponent).TOpening 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetOpenings\<TOpening\>\(DiGi\.Analytical\.Building\.Interfaces\.IComponent\)\.TOpening') if associations are found; otherwise, [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null')\. Modifying them does not affect the model, pass them through [Update\(IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Update(DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Update\(DiGi\.Analytical\.Building\.Interfaces\.IOpening\)') to store the changes\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetOpenings_TOpening_(DiGi.Analytical.Building.Interfaces.IOpeningConstruction)'></a>
 
@@ -1768,7 +1857,7 @@ An optional predicate used to filter the retrieved openings\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TOpening](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetOpenings_TOpening_(System.Func_TOpening,bool_).TOpening 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetOpenings\<TOpening\>\(System\.Func\<TOpening,bool\>\)\.TOpening')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of openings matching the criteria, or null if the building relation cluster is not available\.
+A list of CLONED openings matching the criteria, or null if no opening matches\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetRelation_TBuildingRelation_(DiGi.Analytical.Building.Interfaces.IBuildingGuidObject,System.Func_TBuildingRelation,bool_)'></a>
 
@@ -1871,6 +1960,8 @@ Retrieves a shell associated with the specified space based on the provided crit
 
 The shell carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the space and every one of its faces carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the component it was built from, which is what lets the shell be written back into the model by [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater') after it was processed geometrically.
 
+Throws [System\.InvalidOperationException](https://learn.microsoft.com/en-us/dotnet/api/system.invalidoperationexception 'System\.InvalidOperationException') when the space yields no shell face - see [GetShells&lt;TSpace&gt;\(IEnumerable&lt;TSpace&gt;, Nullable&lt;Side&gt;, Nullable&lt;Orientation&gt;, Nullable&lt;Orientation&gt;, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShells_TSpace_(System.Collections.Generic.IEnumerable_TSpace_,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShells\<TSpace\>\(System\.Collections\.Generic\.IEnumerable\<TSpace\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)').
+
 ```csharp
 public DiGi.Analytical.Classes.Shell? GetShell(DiGi.Analytical.Building.Interfaces.ISpace? space, System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation=null, double tolerance=1E-06);
 ```
@@ -1917,6 +2008,10 @@ The [DiGi\.Analytical\.Classes\.Shell](https://learn.microsoft.com/en-us/dotnet/
 Retrieves a list of shells associated with the specified spaces, applying optional filters for side orientation, edge orientations, and geometric tolerance\.
 
 Every shell carries a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of its space and every face a [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference') of the component it was built from; components whose geometry is not a polygonal face are skipped.
+
+A space none of whose components yields a polygonal face - it carries no component or only components of other geometry - throws [System\.InvalidOperationException](https://learn.microsoft.com/en-us/dotnet/api/system.invalidoperationexception 'System\.InvalidOperationException') rather than emitting a zero-face shell. A space that carries no space relation at all is skipped.
+
+The shells are built by reading the stored components directly; only the face geometry is cloned, so the shells are detached from the model but building them does not clone the components.
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Classes.Shell>? GetShells<TSpace>(System.Collections.Generic.IEnumerable<TSpace> spaces, System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation=null, double tolerance=1E-06)
@@ -1970,6 +2065,8 @@ A list of [DiGi\.Analytical\.Classes\.Shell](https://learn.microsoft.com/en-us/d
 ## BuildingModel\.GetShells\<TSpace\>\(Nullable\<Side\>, Nullable\<Orientation\>, Nullable\<Orientation\>, double\) Method
 
 Retrieves the shells for all spaces of type [TSpace](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShells_TSpace_(System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double).TSpace 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShells\<TSpace\>\(System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)\.TSpace') within the building model\.
+
+Throws [System\.InvalidOperationException](https://learn.microsoft.com/en-us/dotnet/api/system.invalidoperationexception 'System\.InvalidOperationException') for a space that yields no shell face - see [GetShells&lt;TSpace&gt;\(IEnumerable&lt;TSpace&gt;, Nullable&lt;Side&gt;, Nullable&lt;Orientation&gt;, Nullable&lt;Orientation&gt;, double\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShells_TSpace_(System.Collections.Generic.IEnumerable_TSpace_,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShells\<TSpace\>\(System\.Collections\.Generic\.IEnumerable\<TSpace\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Side\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, System\.Nullable\<DiGi\.Geometry\.Core\.Enums\.Orientation\>, double\)').
 
 ```csharp
 public System.Collections.Generic.List<DiGi.Analytical.Classes.Shell>? GetShells<TSpace>(System.Nullable<DiGi.Geometry.Core.Enums.Side> normalSide=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> externalEdgeOrientation=null, System.Nullable<DiGi.Geometry.Core.Enums.Orientation> internalEdgeOrientation=null, double tolerance=1E-06)
@@ -2494,6 +2591,8 @@ When this method returns [true](https://docs.microsoft.com/en-us/dotnet/csharp/l
 
 Unassigns a component from a specific opening\.
 
+Returns [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') and leaves the relation untouched when the opening is not among the openings hosted by the component - only the requested opening's reference is removed, the component's other openings stay.
+
 ```csharp
 public bool Unassign(DiGi.Analytical.Building.Interfaces.IComponent? component, DiGi.Analytical.Building.Interfaces.IOpening? opening);
 ```
@@ -2515,6 +2614,9 @@ The opening from which the component is being removed\.
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the unassignment was successful; otherwise, false\.
 
+### See Also
+- [Assign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)')
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.Unassign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.ISpace)'></a>
 
 ## BuildingModel\.Unassign\(IComponent, ISpace\) Method
@@ -2522,6 +2624,8 @@ True if the unassignment was successful; otherwise, false\.
 Unassigns a component from a specific space by removing the association between them\.
 
 The component itself stays in the model; when the space was its last one the whole space relation is dropped, leaving the component unassigned.
+
+Returns [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') and leaves the relation untouched when the space is not among the spaces the component is assigned to.
 
 ```csharp
 public bool Unassign(DiGi.Analytical.Building.Interfaces.IComponent? component, DiGi.Analytical.Building.Interfaces.ISpace? space);
@@ -2552,6 +2656,8 @@ True if the component was successfully unassigned; otherwise, false\.
 ## BuildingModel\.Unassign\(IZone, ISpace\) Method
 
 Unassigns a space from a specific zone within the building model\.
+
+Returns [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/builtin\-types/bool') and leaves the relation untouched when the space is not among the spaces assigned to the zone.
 
 ```csharp
 public bool Unassign(DiGi.Analytical.Building.Interfaces.IZone? zone, DiGi.Analytical.Building.Interfaces.ISpace? space);
@@ -2763,7 +2869,7 @@ public class BuildingModelFaceUpdater : DiGi.Analytical.Building.Classes.Buildin
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → [BuildingModelUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelUpdater') → BuildingModelFaceUpdater
 
 ### Remarks
-Openings \(windows and doors\) hosted by the source component are NOT re\-hosted by this updater\. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component\. Re\-hosting requires a public counterpart of the currently private BuildingModel\.Assign\(IComponent, IOpening\) method\.
+Openings \(windows and doors\) hosted by the source component are NOT re\-hosted by this updater\. When a component is rebuilt as several components, its openings stay assigned to the one keeping the identifier of the source component\. Re\-hosting can be performed with [Assign\(IComponent, IOpening\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.Assign(DiGi.Analytical.Building.Interfaces.IComponent,DiGi.Analytical.Building.Interfaces.IOpening) 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.Assign\(DiGi\.Analytical\.Building\.Interfaces\.IComponent, DiGi\.Analytical\.Building\.Interfaces\.IOpening\)')\.
 
 ### See Also
 - [BuildingModelShellUpdater](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModelShellUpdater 'DiGi\.Analytical\.Building\.Classes\.BuildingModelShellUpdater')
@@ -8102,7 +8208,7 @@ The hour range during which the internal condition applies to the space\.
 
 `id` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The unique identifier for the relation\.
+The identifier shared by the relations created in one assignment \- a group tag rather than a per\-relation unique identifier\.
 
 <a name='DiGi.Analytical.Building.Classes.SpaceInternalConditionRelation.SpaceInternalConditionRelation(System.Text.Json.Nodes.JsonObject)'></a>
 
@@ -8139,7 +8245,7 @@ public DiGi.Analytical.Classes.HourRange? HourRange { get; }
 
 ## SpaceInternalConditionRelation\.Id Property
 
-Gets the unique identifier of the space internal condition relation\.
+Gets the identifier shared by the space internal condition relations created in one assignment \- a group tag rather than a per\-relation unique identifier\.
 
 ```csharp
 public string? Id { get; }

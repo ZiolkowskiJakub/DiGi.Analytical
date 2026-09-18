@@ -522,6 +522,70 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Builds the external envelope of the whole building model as one shell: every face of a component that bounds exactly one space, with the orientation resolved over that envelope rather than per space.
+        /// <para>Selection rule, stated here once for every consumer: a component is external when its <see cref="SpaceRelation"/> carries exactly one space. A component bounding two spaces is an internal partition and a component bounding no space is not part of any closed envelope, so both are left out. Every returned <see cref="Face"/> carries the <see cref="GuidReference"/> of the component it was built from and the shell carries the <see cref="GuidReference"/> of this model. A consumer that has to account for every component derives coverage from those references under its own policy; the method reports nothing about what it left out.</para>
+        /// <para>Pass <see cref="Side.External"/> as <paramref name="normalSide"/> to get outward normals. The faces are then oriented by <see cref="PolyhedronNormalizationUpdater{TPolyhedron}"/> over the envelope, which decides the side of each face by ray parity against the other faces of the shell. Parity is topological, so a courtyard is handled and detached volumes do not disturb each other - a closed body adds an even number of crossings to any ray. It is also the cost: every face is tested against every other face of the envelope, so the method is quadratic in the number of external faces. Nothing is oriented when all three orientation parameters are <see langword="null"/>.</para>
+        /// <para>The rule needs a closed envelope. On an open one - a model missing its roof, say - the parity of a face whose ray leaves through the gap is arbitrary, so such a face may be reported outward whether it is or not, and a face none of whose rays can be resolved keeps its stored normal.</para>
+        /// <para>A component whose geometry is not a polygonal face is skipped silently, a curve wall is resolved to the surface it sweeps, and a component carrying more than one geometry propagates the <see cref="NotImplementedException"/> of <see cref="Query.Geometry3D{TGeometry3D}(IBuildingGeometry3DObject)"/> - the same rules as <see cref="GetShells{TSpace}(IEnumerable{TSpace}, Side?, Orientation?, Orientation?, double)"/>. Unlike that method it never throws for a space that yields no face, because it does not visit spaces at all.</para>
+        /// <para>Like <see cref="GetShells{TSpace}(Side?, Orientation?, Orientation?, double)"/> this is an instance member rather than a <c>Query</c> extension because it reads the stored relations and components directly, without the clone every public accessor of this class returns; only the face geometry is cloned, so the shell is detached from the model and building it leaves the model untouched.</para>
+        /// </summary>
+        /// <param name="normalSide">The side every face normal is turned to; <see cref="Side.External"/> for outward normals. <see langword="null"/> leaves the stored orientation of each face as it is.</param>
+        /// <param name="externalEdgeOrientation">Optional specification for the orientation of external edges.</param>
+        /// <param name="internalEdgeOrientation">Optional specification for the orientation of internal edges.</param>
+        /// <param name="tolerance">The distance tolerance used for geometric operations. Defaults to <see cref="Core.Constants.Tolerance.Distance"/>.</param>
+        /// <returns>The <see cref="Shell"/> of the external envelope; <see langword="null"/> when the model holds no space relation at all or when fewer than four external components yield a polygonal face, since a closed solid needs at least four.</returns>
+        public Shell? GetExternalShell(Side? normalSide = null, Orientation? externalEdgeOrientation = null, Orientation? internalEdgeOrientation = null, double tolerance = Core.Constants.Tolerance.Distance)
+        {
+            if (!buildingRelationCluster.TryGetRelations(out List<SpaceRelation>? spaceRelations) || spaceRelations is null)
+            {
+                return null;
+            }
+
+            List<Face> faces = [];
+            foreach (SpaceRelation spaceRelation in spaceRelations)
+            {
+                // The getter hands out a clone of the reference list, so it is read once per relation.
+                List<IUniqueReference>? uniqueReferences_To = spaceRelation.UniqueReferences_To;
+                if (uniqueReferences_To is null || uniqueReferences_To.Count != 1)
+                {
+                    continue;
+                }
+
+                IComponent? component = buildingRelationCluster.GetComponent(spaceRelation);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (Query.Geometry3D<IPolygonalFace3D>(component) is not PolygonalFace3D polygonalFace3D)
+                {
+                    continue;
+                }
+
+                faces.Add(new Face(new GuidReference(component), polygonalFace3D));
+            }
+
+            // Guarded here rather than left to the Polyhedron constructor, which silently keeps no face at all below four.
+            if (faces.Count < 4)
+            {
+                return null;
+            }
+
+            Shell shell = new(new GuidReference(this), faces);
+
+            if (normalSide is not null || externalEdgeOrientation is not null || internalEdgeOrientation is not null)
+            {
+                PolyhedronNormalizationUpdater<Shell> polyhedronNormalizationUpdater = new(normalSide, externalEdgeOrientation, internalEdgeOrientation, tolerance)
+                {
+                    Value = shell
+                };
+                polyhedronNormalizationUpdater.Update();
+            }
+
+            return shell;
+        }
+
+        /// <summary>
         /// Retrieves the floor construction associated with the specified floor.
         /// <para>The construction is the one established by <see cref="Assign(IFloor, IFloorConstruction)"/> for the identifier of the given floor, which is why a component rebuilt under the same identifier keeps its construction.</para>
         /// </summary>
@@ -864,6 +928,7 @@ namespace DiGi.Analytical.Building.Classes
         /// <summary>
         /// Retrieves the shells for all spaces of type <typeparamref name="TSpace" /> within the building model.
         /// <para>Throws <see cref="InvalidOperationException"/> for a space that yields no shell face - see <see cref="GetShells{TSpace}(IEnumerable{TSpace}, Side?, Orientation?, Orientation?, double)"/>.</para>
+        /// <para>These are the shells of the spaces, one each, so a component bounding two spaces appears in both and is oriented for each. For the outward envelope of the whole model - external components only, oriented once - see <see cref="GetExternalShell(Side?, Orientation?, Orientation?, double)"/>.</para>
         /// </summary>
         /// <typeparam name="TSpace">The type of space that implements the <see cref="ISpace" /> interface.</typeparam>
         /// <param name="normalSide">Optional specification for the side or orientation of boundary normals.</param>

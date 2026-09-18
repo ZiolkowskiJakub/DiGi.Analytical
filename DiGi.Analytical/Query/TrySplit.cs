@@ -295,8 +295,8 @@ namespace DiGi.Analytical
                 return false;
             }
 
-            PlanarIntersectionResult? planarIntersectionResult = Geometry.Spatial.Create.PlanarIntersectionResult(plane, shell, tolerance);
-            if (planarIntersectionResult == null || !planarIntersectionResult.Any() || planarIntersectionResult.GetGeometry3Ds<PolygonalFace3D>() is not List<PolygonalFace3D> polygonalFace3Ds_Plane || polygonalFace3Ds_Plane.Count == 0)
+            // Section faces keep the ring nesting of the cut, so a loop enclosed by another loop (a courtyard, a void) becomes a hole of the cap rather than a solid cap of its own
+            if (Geometry.Spatial.Create.PolygonalFace3Ds(plane, shell, tolerance) is not List<PolygonalFace3D> polygonalFace3Ds_Plane || polygonalFace3Ds_Plane.Count == 0)
             {
                 return false;
             }

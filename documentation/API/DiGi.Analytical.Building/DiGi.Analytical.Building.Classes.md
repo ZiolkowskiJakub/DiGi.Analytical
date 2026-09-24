@@ -2003,6 +2003,30 @@ The roof for which to retrieve the construction\.
 [IRoofConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoofConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction')  
 A CLONE of the [IRoofConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IRoofConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IRoofConstruction') associated with the roof, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if no such construction exists or the [roof](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetRoofConstruction(DiGi.Analytical.Building.Interfaces.IRoof).roof 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetRoofConstruction\(DiGi\.Analytical\.Building\.Interfaces\.IRoof\)\.roof') is null\.
 
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetShades_TShade_()'></a>
+
+## BuildingModel\.GetShades\<TShade\>\(\) Method
+
+Retrieves all shades of the specified type from the building relation cluster\.
+
+A shade is not a component ([IShade](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IShade 'DiGi\.Analytical\.Building\.Interfaces\.IShade') does not derive from [IComponent](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IComponent 'DiGi\.Analytical\.Building\.Interfaces\.IComponent')), so [GetComponents&lt;TComponent&gt;\(\)](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetComponents_TComponent_() 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetComponents\<TComponent\>\(\)') never returns one.
+
+```csharp
+public System.Collections.Generic.List<TShade>? GetShades<TShade>()
+    where TShade : DiGi.Analytical.Building.Interfaces.IShade;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingModel.GetShades_TShade_().TShade'></a>
+
+`TShade`
+
+The type of shade to retrieve, which must implement [IShade](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IShade 'DiGi\.Analytical\.Building\.Interfaces\.IShade')\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TShade](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShades_TShade_().TShade 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShades\<TShade\>\(\)\.TShade')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list of shades of type [TShade](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingModel.GetShades_TShade_().TShade 'DiGi\.Analytical\.Building\.Classes\.BuildingModel\.GetShades\<TShade\>\(\)\.TShade'), or null if no such shades are found\.
+
 <a name='DiGi.Analytical.Building.Classes.BuildingModel.GetShell(DiGi.Analytical.Building.Interfaces.ISpace,System.Nullable_DiGi.Geometry.Core.Enums.Side_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,System.Nullable_DiGi.Geometry.Core.Enums.Orientation_,double)'></a>
 
 ## BuildingModel\.GetShell\(ISpace, Nullable\<Side\>, Nullable\<Orientation\>, Nullable\<Orientation\>, double\) Method
@@ -4284,6 +4308,28 @@ The relation used to identify the physical component construction\.
 #### Returns
 [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction')  
 The matching [IPhysicalComponentConstruction](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IPhysicalComponentConstruction 'DiGi\.Analytical\.Building\.Interfaces\.IPhysicalComponentConstruction') if found; otherwise, `null`\.
+
+<a name='DiGi.Analytical.Building.Classes.BuildingRelationCluster.GetShades_TShade_()'></a>
+
+## BuildingRelationCluster\.GetShades\<TShade\>\(\) Method
+
+Retrieves all shades of the specified type from the cluster\.
+
+```csharp
+public System.Collections.Generic.List<TShade> GetShades<TShade>()
+    where TShade : DiGi.Analytical.Building.Interfaces.IShade;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Classes.BuildingRelationCluster.GetShades_TShade_().TShade'></a>
+
+`TShade`
+
+The type of shade to retrieve, which must implement [IShade](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IShade 'DiGi\.Analytical\.Building\.Interfaces\.IShade')\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TShade](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingRelationCluster.GetShades_TShade_().TShade 'DiGi\.Analytical\.Building\.Classes\.BuildingRelationCluster\.GetShades\<TShade\>\(\)\.TShade')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+A list containing all shades of type [TShade](DiGi.Analytical.Building.Classes.md#DiGi.Analytical.Building.Classes.BuildingRelationCluster.GetShades_TShade_().TShade 'DiGi\.Analytical\.Building\.Classes\.BuildingRelationCluster\.GetShades\<TShade\>\(\)\.TShade')\.
 
 <a name='DiGi.Analytical.Building.Classes.BuildingRelationCluster.GetSpace_TSpace_(DiGi.Analytical.Building.Classes.SpaceInternalConditionRelation)'></a>
 

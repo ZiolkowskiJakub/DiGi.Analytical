@@ -512,6 +512,17 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Retrieves all shades of the specified type from the building relation cluster.
+        /// <para>A shade is not a component (<see cref="IShade"/> does not derive from <see cref="IComponent"/>), so <see cref="GetComponents{TComponent}()"/> never returns one.</para>
+        /// </summary>
+        /// <typeparam name="TShade">The type of shade to retrieve, which must implement <see cref="IShade"/>.</typeparam>
+        /// <returns>A list of shades of type <typeparamref name="TShade"/>, or null if no such shades are found.</returns>
+        public List<TShade>? GetShades<TShade>() where TShade : IShade
+        {
+            return buildingRelationCluster.GetShades<TShade>().CloneAndFilterNulls();
+        }
+
+        /// <summary>
         /// Retrieves the door construction associated with the specified door.
         /// </summary>
         /// <param name="door">The door for which to retrieve the construction.</param>

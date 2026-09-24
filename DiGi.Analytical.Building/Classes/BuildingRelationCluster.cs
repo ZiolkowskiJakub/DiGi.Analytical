@@ -278,6 +278,16 @@ namespace DiGi.Analytical.Building.Classes
         }
 
         /// <summary>
+        /// Retrieves all shades of the specified type from the cluster.
+        /// </summary>
+        /// <typeparam name="TShade">The type of shade to retrieve, which must implement <see cref="IShade"/>.</typeparam>
+        /// <returns>A list containing all shades of type <typeparamref name="TShade"/>.</returns>
+        public List<TShade> GetShades<TShade>() where TShade : IShade
+        {
+            return GetValues<TShade>();
+        }
+
+        /// <summary>
         /// Retrieves the internal condition associated with the specified space internal condition relation.
         /// </summary>
         /// <param name="spaceInternalConditionRelation">The relation used to identify the internal condition.</param>

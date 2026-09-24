@@ -600,6 +600,8 @@ A component standing on its edge, a wall above all, covers no ground at all and 
 
 Extracts the 3D geometry from the specified building geometry object as a specific type\.
 
+Returns a result only when the conversion yields exactly one geometry. When it yields several (for example a face with holes requested as [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonal3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonal3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonal3D')), use [Geometry3Ds&lt;TGeometry3D&gt;\(this IBuildingGeometry3DObject\)](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject) 'DiGi\.Analytical\.Building\.Query\.Geometry3Ds\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)').
+
 ```csharp
 public static TGeometry3D? Geometry3D<TGeometry3D>(this DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject? buildingGeometry3DObject)
     where TGeometry3D : DiGi.Geometry.Spatial.Interfaces.IGeometry3D;
@@ -621,7 +623,38 @@ The building geometry object from which the 3D geometry is extracted\.
 
 #### Returns
 [TGeometry3D](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3D_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D 'DiGi\.Analytical\.Building\.Query\.Geometry3D\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)\.TGeometry3D')  
-The extracted 3D geometry of type [TGeometry3D](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3D_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D 'DiGi\.Analytical\.Building\.Query\.Geometry3D\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)\.TGeometry3D'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the object is null or the geometry cannot be converted\.
+The extracted 3D geometry of type [TGeometry3D](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3D_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D 'DiGi\.Analytical\.Building\.Query\.Geometry3D\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)\.TGeometry3D'), or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the object is null, the geometry cannot be converted, or the conversion yields several geometries\.
+
+<a name='DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject)'></a>
+
+## Query\.Geometry3Ds\<TGeometry3D\>\(this IBuildingGeometry3DObject\) Method
+
+Extracts the 3D geometry from the specified building geometry object and converts it to every representation of the requested type\.
+
+A conversion can yield several results: a face requested as [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonal3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonal3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonal3D') gives its outer edge followed by each hole, and a polygon requested as [DiGi\.Geometry\.Spatial\.Classes\.Segment3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.segment3d 'DiGi\.Geometry\.Spatial\.Classes\.Segment3D') gives its segments. Requests for a face, plane or the geometry itself give at most one.
+
+```csharp
+public static System.Collections.Generic.List<TGeometry3D>? Geometry3Ds<TGeometry3D>(this DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject? buildingGeometry3DObject)
+    where TGeometry3D : DiGi.Geometry.Spatial.Interfaces.IGeometry3D;
+```
+#### Type parameters
+
+<a name='DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D'></a>
+
+`TGeometry3D`
+
+The type of 3D geometry to return, which must implement [DiGi\.Geometry\.Spatial\.Interfaces\.IGeometry3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.igeometry3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IGeometry3D')\.
+#### Parameters
+
+<a name='DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).buildingGeometry3DObject'></a>
+
+`buildingGeometry3DObject` [IBuildingGeometry3DObject](DiGi.Analytical.Building.Interfaces.md#DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject 'DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject')
+
+The building geometry object from which the 3D geometry is extracted\.
+
+#### Returns
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[TGeometry3D](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D 'DiGi\.Analytical\.Building\.Query\.Geometry3Ds\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)\.TGeometry3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+Every converted geometry of type [TGeometry3D](DiGi.Analytical.Building.md#DiGi.Analytical.Building.Query.Geometry3Ds_TGeometry3D_(thisDiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject).TGeometry3D 'DiGi\.Analytical\.Building\.Query\.Geometry3Ds\<TGeometry3D\>\(this DiGi\.Analytical\.Building\.Interfaces\.IBuildingGeometry3DObject\)\.TGeometry3D'); an empty list when the geometry cannot be represented as that type; [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') if the object is null or has no geometry\.
 
 <a name='DiGi.Analytical.Building.Query.Inside(thisDiGi.Geometry.Spatial.Classes.Sphere,DiGi.Analytical.Building.Interfaces.IBuildingGeometry3DObject,double)'></a>
 

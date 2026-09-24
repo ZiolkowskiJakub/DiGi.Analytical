@@ -47,7 +47,7 @@ Receivers are the components of [buildingModel](DiGi.Analytical.Building.Solar.m
 
 No distance or height culling is applied - the caller chooses the surroundings (search radius). A surrounding model with the [DiGi\.Analytical\.Building\.Classes\.BuildingModel](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.classes.buildingmodel 'DiGi\.Analytical\.Building\.Classes\.BuildingModel') guid of the analysed model, or one already added, is skipped.
 
-A component whose geometry converts to several faces yields one element per face, all carrying the component's [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference'); group by [DiGi\.Solar\.Classes\.ShadingElement\.Reference](https://learn.microsoft.com/en-us/dotnet/api/digi.solar.classes.shadingelement.reference 'DiGi\.Solar\.Classes\.ShadingElement\.Reference') to aggregate results per component. The model is returned even when it holds no receiver.
+Each component or shade with polygonal face geometry yields one element carrying its [DiGi\.Core\.Classes\.GuidReference](https://learn.microsoft.com/en-us/dotnet/api/digi.core.classes.guidreference 'DiGi\.Core\.Classes\.GuidReference'); one without it is skipped. The model is returned even when it holds no receiver.
 
 Openings ([DiGi\.Analytical\.Building\.Interfaces\.IOpening](https://learn.microsoft.com/en-us/dotnet/api/digi.analytical.building.interfaces.iopening 'DiGi\.Analytical\.Building\.Interfaces\.IOpening')) are not components and are not converted: the host component's face goes in whole, so windows and doors neither get results of their own nor punch holes in the receiver. Terrain is not added.
 
